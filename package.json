@@ -1,0 +1,38 @@
+{
+  "name": "Emus",
+  "version": "1.0.0",
+  "description": "Hoja de ruta para la implementación de proyectos de movilidad urbana sustentable",
+  "author": "ITDP México, @pokaxperia, @caarloshugo",
+  "contributors": [
+    {
+      "name": "Mario Suriel Flores",
+      "email": "pokazzam@gmail.com"
+    },
+    {
+      "name": "Carlos Hugo González",
+      "email": "carlos.hugo.gonzalez.castell@gmail.com"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "preferGlobal": true,
+  "private": true,
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.4.3",
+    "angular-ui-router": "^0.2.15",
+    "gulp": "3.9.0",
+    "gulp-css": "0.1.0",
+    "gulp-uglify": "1.2.0"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.8.2",
+    "gulp-babel": "5.1.0",
+    "gulp-concat": "2.6.0",
+    "gulp-livereload": "^3.8.0",
+    "gulp-sass": "2.0.3",
+    "gulp-webserver": "^0.9.1"
+  }
+}

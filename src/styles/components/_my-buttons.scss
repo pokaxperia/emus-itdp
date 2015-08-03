@@ -1,0 +1,630 @@
+@import "helpers/_mixins";
+@import "helpers/_variables";
+
+$color-mod1:#F53D54;
+$color-mod2:#0092B2;
+$color-mod3:#71B095;
+$color-mod4:#E97F4A;
+$color-mod5:#78909C;
+
+$color-mod6:#0092B2;
+$color-mod7:#DB475A;
+$color-mod8:#71B095;
+$color-mod9:#EF5350;
+$color-mod10:#78909C;
+
+// Button Ghost 1
+.btn-ghost1 {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-mod1;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-ghost1:focus,
+.btn-ghost1.focus,
+.btn-ghost1:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod1,0.8);
+	border-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-ghost1:active,
+.btn-ghost1.active,
+.open > .dropdown-toggle.btn-ghost1 {
+	color: #ffffff;
+	background-color: $color-mod1;
+	border-color: $color-mod1;
+	background-image: none;
+}
+.btn-ghost1:active:hover,
+.btn-ghost1.active:hover,
+.open > .dropdown-toggle.btn-ghost1:hover,
+.btn-ghost1:active:focus,
+.btn-ghost1.active:focus,
+.open > .dropdown-toggle.btn-ghost1:focus,
+.btn-ghost1:active.focus,
+.btn-ghost1.active.focus,
+.open > .dropdown-toggle.btn-ghost1.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod1,0.90);
+	border-color: transparent;
+}
+.btn-ghost1.disabled,
+.btn-ghost1[disabled],
+fieldset[disabled] .btn-ghost1,
+.btn-ghost1.disabled:hover,
+.btn-ghost1[disabled]:hover,
+fieldset[disabled] .btn-ghost1:hover,
+.btn-ghost1.disabled:focus,
+.btn-ghost1[disabled]:focus,
+fieldset[disabled] .btn-ghost1:focus,
+.btn-ghost1.disabled.focus,
+.btn-ghost1[disabled].focus,
+fieldset[disabled] .btn-ghost1.focus,
+.btn-ghost1.disabled:active,
+.btn-ghost1[disabled]:active,
+fieldset[disabled] .btn-ghost1:active,
+.btn-ghost1.disabled.active,
+.btn-ghost1[disabled].active,
+fieldset[disabled] .btn-ghost1.active {
+	background-color: $color-mod1;
+	border-color: transparent;
+}
+.btn-ghost1 .badge {
+	color: $color-mod1;
+	background-color: #ffffff;
+}
+// Button Ghost 2
+.btn-ghost2 {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-mod2;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-ghost2:focus,
+.btn-ghost2.focus,
+.btn-ghost2:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod2,0.80);
+	border-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-ghost2:active,
+.btn-ghost2.active,
+.open > .dropdown-toggle.btn-ghost2 {
+	color: #ffffff;
+	background-color: $color-mod2;
+	border-color: $color-mod2;
+	background-image: none;
+}
+.btn-ghost2:active:hover,
+.btn-ghost2.active:hover,
+.open > .dropdown-toggle.btn-ghost2:hover,
+.btn-ghost2:active:focus,
+.btn-ghost2.active:focus,
+.open > .dropdown-toggle.btn-ghost2:focus,
+.btn-ghost2:active.focus,
+.btn-ghost2.active.focus,
+.open > .dropdown-toggle.btn-ghost2.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod2,0.90);
+	border-color: transparent;
+}
+.btn-ghost2.disabled,
+.btn-ghost2[disabled],
+fieldset[disabled] .btn-ghost2,
+.btn-ghost2.disabled:hover,
+.btn-ghost2[disabled]:hover,
+fieldset[disabled] .btn-ghost2:hover,
+.btn-ghost2.disabled:focus,
+.btn-ghost2[disabled]:focus,
+fieldset[disabled] .btn-ghost2:focus,
+.btn-ghost2.disabled.focus,
+.btn-ghost2[disabled].focus,
+fieldset[disabled] .btn-ghost2.focus,
+.btn-ghost2.disabled:active,
+.btn-ghost2[disabled]:active,
+fieldset[disabled] .btn-ghost2:active,
+.btn-ghost2.disabled.active,
+.btn-ghost2[disabled].active,
+fieldset[disabled] .btn-ghost2.active {
+	background-color: $color-mod2;
+	border-color: transparent;
+}
+.btn-ghost2 .badge {
+	color: $color-mod2;
+	background-color: #ffffff;
+}
+// Button Ghost 3
+.btn-ghost3 {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-mod3;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-ghost3:focus,
+.btn-ghost3.focus,
+.btn-ghost3:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod3,0.80);
+	border-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-ghost3:active,
+.btn-ghost3.active,
+.open > .dropdown-toggle.btn-ghost3 {
+	color: #ffffff;
+	background-color: $color-mod3;
+	border-color: $color-mod3;
+	background-image: none;
+}
+.btn-ghost3:active:hover,
+.btn-ghost3.active:hover,
+.open > .dropdown-toggle.btn-ghost3:hover,
+.btn-ghost3:active:focus,
+.btn-ghost3.active:focus,
+.open > .dropdown-toggle.btn-ghost3:focus,
+.btn-ghost3:active.focus,
+.btn-ghost3.active.focus,
+.open > .dropdown-toggle.btn-ghost3.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod3,0.90);
+	border-color: transparent;
+}
+.btn-ghost3.disabled,
+.btn-ghost3[disabled],
+fieldset[disabled] .btn-ghost3,
+.btn-ghost3.disabled:hover,
+.btn-ghost3[disabled]:hover,
+fieldset[disabled] .btn-ghost3:hover,
+.btn-ghost3.disabled:focus,
+.btn-ghost3[disabled]:focus,
+fieldset[disabled] .btn-ghost3:focus,
+.btn-ghost3.disabled.focus,
+.btn-ghost3[disabled].focus,
+fieldset[disabled] .btn-ghost3.focus,
+.btn-ghost3.disabled:active,
+.btn-ghost3[disabled]:active,
+fieldset[disabled] .btn-ghost3:active,
+.btn-ghost3.disabled.active,
+.btn-ghost3[disabled].active,
+fieldset[disabled] .btn-ghost3.active {
+	background-color: $color-mod3;
+	border-color: transparent;
+}
+.btn-ghost3 .badge {
+	color: $color-mod3;
+	background-color: #ffffff;
+}
+// Button Ghost 4
+.btn-ghost4 {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-mod4;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-ghost4:focus,
+.btn-ghost4.focus,
+.btn-ghost4:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod4,0.80);
+	border-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-ghost4:active,
+.btn-ghost4.active,
+.open > .dropdown-toggle.btn-ghost4 {
+	color: #ffffff;
+	background-color: $color-mod4;
+	border-color: $color-mod4;
+	background-image: none;
+}
+.btn-ghost4:active:hover,
+.btn-ghost4.active:hover,
+.open > .dropdown-toggle.btn-ghost4:hover,
+.btn-ghost4:active:focus,
+.btn-ghost4.active:focus,
+.open > .dropdown-toggle.btn-ghost4:focus,
+.btn-ghost4:active.focus,
+.btn-ghost4.active.focus,
+.open > .dropdown-toggle.btn-ghost4.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod4,0.90);
+	border-color: transparent;
+}
+.btn-ghost4.disabled,
+.btn-ghost4[disabled],
+fieldset[disabled] .btn-ghost4,
+.btn-ghost4.disabled:hover,
+.btn-ghost4[disabled]:hover,
+fieldset[disabled] .btn-ghost4:hover,
+.btn-ghost4.disabled:focus,
+.btn-ghost4[disabled]:focus,
+fieldset[disabled] .btn-ghost4:focus,
+.btn-ghost4.disabled.focus,
+.btn-ghost4[disabled].focus,
+fieldset[disabled] .btn-ghost4.focus,
+.btn-ghost4.disabled:active,
+.btn-ghost4[disabled]:active,
+fieldset[disabled] .btn-ghost4:active,
+.btn-ghost4.disabled.active,
+.btn-ghost4[disabled].active,
+fieldset[disabled] .btn-ghost4.active {
+	background-color: $color-mod4;
+	border-color: transparent;
+}
+.btn-ghost4 .badge {
+	color: $color-mod4;
+	background-color: #ffffff;
+}
+// Button Ghost 5
+.btn-ghost5 {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-mod5;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-ghost5:focus,
+.btn-ghost5.focus,
+.btn-ghost5:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod5,0.80);
+	border-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-ghost5:active,
+.btn-ghost5.active,
+.open > .dropdown-toggle.btn-ghost5 {
+	color: #ffffff;
+	background-color: $color-mod5;
+	border-color: $color-mod5;
+	background-image: none;
+}
+.btn-ghost5:active:hover,
+.btn-ghost5.active:hover,
+.open > .dropdown-toggle.btn-ghost5:hover,
+.btn-ghost5:active:focus,
+.btn-ghost5.active:focus,
+.open > .dropdown-toggle.btn-ghost5:focus,
+.btn-ghost5:active.focus,
+.btn-ghost5.active.focus,
+.open > .dropdown-toggle.btn-ghost5.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod5,0.90);
+	border-color: transparent;
+}
+.btn-ghost5.disabled,
+.btn-ghost5[disabled],
+fieldset[disabled] .btn-ghost5,
+.btn-ghost5.disabled:hover,
+.btn-ghost5[disabled]:hover,
+fieldset[disabled] .btn-ghost5:hover,
+.btn-ghost5.disabled:focus,
+.btn-ghost5[disabled]:focus,
+fieldset[disabled] .btn-ghost5:focus,
+.btn-ghost5.disabled.focus,
+.btn-ghost5[disabled].focus,
+fieldset[disabled] .btn-ghost5.focus,
+.btn-ghost5.disabled:active,
+.btn-ghost5[disabled]:active,
+fieldset[disabled] .btn-ghost5:active,
+.btn-ghost5.disabled.active,
+.btn-ghost5[disabled].active,
+fieldset[disabled] .btn-ghost5.active {
+	background-color: $color-mod5;
+	border-color: transparent;
+}
+.btn-ghost5 .badge {
+	color: $color-mod5;
+	background-color: #ffffff;
+}
+// Button Mod 1
+.btn-mod1 {
+	color: #ffffff;
+	background-color: $color-mod1;
+	border-color: $color-mod1;
+}
+.btn-mod1:focus,
+.btn-mod1.focus,
+.btn-mod1:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod1,0.90);
+	border-color: transparent;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-mod1:active,
+.btn-mod1.active,
+.open > .dropdown-toggle.btn-mod1 {
+	color: #ffffff;
+	background-color: $color-mod1;
+	border-color: $color-mod1;
+	background-image: none;
+}
+.btn-mod1:active:hover,
+.btn-mod1.active:hover,
+.open > .dropdown-toggle.btn-mod1:hover,
+.btn-mod1:active:focus,
+.btn-mod1.active:focus,
+.open > .dropdown-toggle.btn-mod1:focus,
+.btn-mod1:active.focus,
+.btn-mod1.active.focus,
+.open > .dropdown-toggle.btn-mod1.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod1,0.90);
+	border-color: transparent;
+}
+.btn-mod1.disabled,
+.btn-mod1[disabled],
+fieldset[disabled] .btn-mod1,
+.btn-mod1.disabled:hover,
+.btn-mod1[disabled]:hover,
+fieldset[disabled] .btn-mod1:hover,
+.btn-mod1.disabled:focus,
+.btn-mod1[disabled]:focus,
+fieldset[disabled] .btn-mod1:focus,
+.btn-mod1.disabled.focus,
+.btn-mod1[disabled].focus,
+fieldset[disabled] .btn-mod1.focus,
+.btn-mod1.disabled:active,
+.btn-mod1[disabled]:active,
+fieldset[disabled] .btn-mod1:active,
+.btn-mod1.disabled.active,
+.btn-mod1[disabled].active,
+fieldset[disabled] .btn-mod1.active {
+	background-color: $color-mod1;
+	border-color: transparent;
+}
+.btn-mod1 .badge {
+	color: $color-mod1;
+	background-color: #ffffff;
+}
+// Button Mod 2
+.btn-mod2 {
+	color: #ffffff;
+	background-color: $color-mod2;
+	border-color: $color-mod2;
+}
+.btn-mod2:focus,
+.btn-mod2.focus,
+.btn-mod2:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod2,0.90);
+	border-color: transparent;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-mod2:active,
+.btn-mod2.active,
+.open > .dropdown-toggle.btn-mod2 {
+	color: #ffffff;
+	background-color: $color-mod2;
+	border-color: $color-mod2;
+	background-image: none;
+}
+.btn-mod2:active:hover,
+.btn-mod2.active:hover,
+.open > .dropdown-toggle.btn-mod2:hover,
+.btn-mod2:active:focus,
+.btn-mod2.active:focus,
+.open > .dropdown-toggle.btn-mod2:focus,
+.btn-mod2:active.focus,
+.btn-mod2.active.focus,
+.open > .dropdown-toggle.btn-mod2.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod2,0.90);
+	border-color: transparent;
+}
+.btn-mod2.disabled,
+.btn-mod2[disabled],
+fieldset[disabled] .btn-mod2,
+.btn-mod2.disabled:hover,
+.btn-mod2[disabled]:hover,
+fieldset[disabled] .btn-mod2:hover,
+.btn-mod2.disabled:focus,
+.btn-mod2[disabled]:focus,
+fieldset[disabled] .btn-mod2:focus,
+.btn-mod2.disabled.focus,
+.btn-mod2[disabled].focus,
+fieldset[disabled] .btn-mod2.focus,
+.btn-mod2.disabled:active,
+.btn-mod2[disabled]:active,
+fieldset[disabled] .btn-mod2:active,
+.btn-mod2.disabled.active,
+.btn-mod2[disabled].active,
+fieldset[disabled] .btn-mod2.active {
+	background-color: $color-mod2;
+	border-color: transparent;
+}
+.btn-mod2 .badge {
+	color: $color-mod2;
+	background-color: #ffffff;
+}
+// Button Mod 3
+.btn-mod3 {
+	color: #ffffff;
+	background-color: $color-mod3;
+	border-color: $color-mod3;
+}
+.btn-mod3:focus,
+.btn-mod3.focus,
+.btn-mod3:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod3,0.90);
+	border-color: transparent;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-mod3:active,
+.btn-mod3.active,
+.open > .dropdown-toggle.btn-mod3 {
+	color: #ffffff;
+	background-color: $color-mod3;
+	border-color: $color-mod3;
+	background-image: none;
+}
+.btn-mod3:active:hover,
+.btn-mod3.active:hover,
+.open > .dropdown-toggle.btn-mod3:hover,
+.btn-mod3:active:focus,
+.btn-mod3.active:focus,
+.open > .dropdown-toggle.btn-mod3:focus,
+.btn-mod3:active.focus,
+.btn-mod3.active.focus,
+.open > .dropdown-toggle.btn-mod3.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod3,0.90);
+	border-color: transparent;
+}
+.btn-mod3.disabled,
+.btn-mod3[disabled],
+fieldset[disabled] .btn-mod3,
+.btn-mod3.disabled:hover,
+.btn-mod3[disabled]:hover,
+fieldset[disabled] .btn-mod3:hover,
+.btn-mod3.disabled:focus,
+.btn-mod3[disabled]:focus,
+fieldset[disabled] .btn-mod3:focus,
+.btn-mod3.disabled.focus,
+.btn-mod3[disabled].focus,
+fieldset[disabled] .btn-mod3.focus,
+.btn-mod3.disabled:active,
+.btn-mod3[disabled]:active,
+fieldset[disabled] .btn-mod3:active,
+.btn-mod3.disabled.active,
+.btn-mod3[disabled].active,
+fieldset[disabled] .btn-mod3.active {
+	background-color: $color-mod3;
+	border-color: transparent;
+}
+.btn-mod3 .badge {
+	color: $color-mod3;
+	background-color: #ffffff;
+}
+// Button Mod 4
+.btn-mod4 {
+	color: #ffffff;
+	background-color: $color-mod4;
+	border-color: $color-mod4;
+}
+.btn-mod4:focus,
+.btn-mod4.focus,
+.btn-mod4:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod4,0.90);
+	border-color: transparent;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-mod4:active,
+.btn-mod4.active,
+.open > .dropdown-toggle.btn-mod4 {
+	color: #ffffff;
+	background-color: $color-mod4;
+	border-color: $color-mod4;
+	background-image: none;
+}
+.btn-mod4:active:hover,
+.btn-mod4.active:hover,
+.open > .dropdown-toggle.btn-mod4:hover,
+.btn-mod4:active:focus,
+.btn-mod4.active:focus,
+.open > .dropdown-toggle.btn-mod4:focus,
+.btn-mod4:active.focus,
+.btn-mod4.active.focus,
+.open > .dropdown-toggle.btn-mod4.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod4,0.90);
+	border-color: transparent;
+}
+.btn-mod4.disabled,
+.btn-mod4[disabled],
+fieldset[disabled] .btn-mod4,
+.btn-mod4.disabled:hover,
+.btn-mod4[disabled]:hover,
+fieldset[disabled] .btn-mod4:hover,
+.btn-mod4.disabled:focus,
+.btn-mod4[disabled]:focus,
+fieldset[disabled] .btn-mod4:focus,
+.btn-mod4.disabled.focus,
+.btn-mod4[disabled].focus,
+fieldset[disabled] .btn-mod4.focus,
+.btn-mod4.disabled:active,
+.btn-mod4[disabled]:active,
+fieldset[disabled] .btn-mod4:active,
+.btn-mod4.disabled.active,
+.btn-mod4[disabled].active,
+fieldset[disabled] .btn-mod4.active {
+	background-color: $color-mod4;
+	border-color: transparent;
+}
+.btn-mod4 .badge {
+	color: $color-mod4;
+	background-color: #ffffff;
+}
+// Button Mod 5
+.btn-mod5 {
+	color: #ffffff;
+	background-color: $color-mod5;
+	border-color: $color-mod5;
+}
+.btn-mod5:focus,
+.btn-mod5.focus,
+.btn-mod5:hover {
+	color: #ffffff;
+	background-color: rgba($color-mod5,0.90);
+	border-color: transparent;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-mod5:active,
+.btn-mod5.active,
+.open > .dropdown-toggle.btn-mod5 {
+	color: #ffffff;
+	background-color: $color-mod5;
+	border-color: $color-mod5;
+	background-image: none;
+}
+.btn-mod5:active:hover,
+.btn-mod5.active:hover,
+.open > .dropdown-toggle.btn-mod5:hover,
+.btn-mod5:active:focus,
+.btn-mod5.active:focus,
+.open > .dropdown-toggle.btn-mod5:focus,
+.btn-mod5:active.focus,
+.btn-mod5.active.focus,
+.open > .dropdown-toggle.btn-mod5.focus {
+	color: #ffffff;
+	background-color: rgba($color-mod5,0.90);
+	border-color: transparent;
+}
+.btn-mod5.disabled,
+.btn-mod5[disabled],
+fieldset[disabled] .btn-mod5,
+.btn-mod5.disabled:hover,
+.btn-mod5[disabled]:hover,
+fieldset[disabled] .btn-mod5:hover,
+.btn-mod5.disabled:focus,
+.btn-mod5[disabled]:focus,
+fieldset[disabled] .btn-mod5:focus,
+.btn-mod5.disabled.focus,
+.btn-mod5[disabled].focus,
+fieldset[disabled] .btn-mod5.focus,
+.btn-mod5.disabled:active,
+.btn-mod5[disabled]:active,
+fieldset[disabled] .btn-mod5:active,
+.btn-mod5.disabled.active,
+.btn-mod5[disabled].active,
+fieldset[disabled] .btn-mod5.active {
+	background-color: $color-mod5;
+	border-color: transparent;
+}
+.btn-mod5 .badge {
+	color: $color-mod5;
+	background-color: #ffffff;
+}
