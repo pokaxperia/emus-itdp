@@ -5,6 +5,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync');
+var del = require('del');
 
 gulp.task('build', ['dev', 'sass','css']);
 
@@ -20,8 +21,8 @@ gulp.task('prod', function(){
 	gulp.src(['public/components/**/*.*']);
 });
 
-gulp.task('sass',function () {
-	gulp.src('src/**/*.scss')
+gulp.task('sass', function () {
+	gulp.src('src/styles/**/*.scss')
 		.pipe(sass().on('error', sass.logError))
 		.pipe(sass({outputStyle: 'compressed'}))
 		.pipe(concat('styles.css'))
@@ -36,6 +37,7 @@ gulp.task('assets', function() {
 gulp.task('server', function(){
 	browserSync.init({
 		files: [
+			"src/**/*.scss",
 			"public/assets",
 			"public/*.css",
 			"public/*.js",
@@ -49,7 +51,7 @@ gulp.task('server', function(){
 		},
 		logFileChanges: true,
 		logLevel: "debug",
-		logPrefix: "My Awesome Project",
+		logPrefix: "Emus Project",
 		notify: true,
 		port: 1982,
 		reloadOnRestart: true,
@@ -68,9 +70,9 @@ gulp.task('server', function(){
 
 gulp.task('watch', function(){
 	gulp.watch('src/**/*.js', ['dev']);
-	gulp.watch('public/components/**/*.js', ['prod']);
 	gulp.watch('src/**/*.scss', ['sass']);
 	gulp.watch('src/assets/*.{jpg,png}', ['assets']);
+	gulp.watch('public/components/**/*.*', ['prod']);
 });
 
 
