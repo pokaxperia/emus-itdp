@@ -13,6 +13,46 @@ $color-mod8:#71B095;
 $color-mod9:#EF5350;
 $color-mod10:#78909C;
 
+
+// Modalities button
+.btn-modality {
+	background-color: transparent;
+	border: 1px solid #ffffff;
+	color: #ffffff;
+}
+.btn-modality:focus,
+.btn-modality.focus,
+.btn-modality:hover {
+	color: #ffffff;
+	background-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+// Landing button
+.btn-landing {
+	background-color: transparent;
+	border: 1px solid #ffffff;
+	color: #ffffff;
+}
+.btn-landing:focus,
+.btn-landing.focus,
+.btn-landing:hover {
+	color: #ffffff;
+	background-color: #35AAB7;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+.btn-landing1 {
+	background-color: transparent;
+	border: 1px solid #414C5A;
+	color: #414C5A;
+	@include box-shadow(none);
+}
+.btn-landing1:focus,
+.btn-landing1.focus,
+.btn-landing1:hover {
+	color: #414C5A;
+	background-color: transparent;
+	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
 // Button Ghost 1
 .btn-ghost1 {
 	background-color: transparent;
@@ -328,12 +368,18 @@ fieldset[disabled] .btn-ghost5.active {
 	color: $color-mod5;
 	background-color: #ffffff;
 }
-// Button Mod 1
-.btn-mod1 {
+// Modalities buttons
+.btn-mod1,
+.btn-mod2,
+.btn-mod3,
+.btn-mod4,
+.btn-mod5 {
+	background-color: transparent;
+	border-color: #ffffff;
 	color: #ffffff;
-	background-color: $color-mod1;
-	border-color: $color-mod1;
 }
+// Button Mod 1
+
 .btn-mod1:focus,
 .btn-mod1.focus,
 .btn-mod1:hover {
@@ -389,11 +435,7 @@ fieldset[disabled] .btn-mod1.active {
 	background-color: #ffffff;
 }
 // Button Mod 2
-.btn-mod2 {
-	color: #ffffff;
-	background-color: $color-mod2;
-	border-color: $color-mod2;
-}
+
 .btn-mod2:focus,
 .btn-mod2.focus,
 .btn-mod2:hover {
@@ -449,11 +491,6 @@ fieldset[disabled] .btn-mod2.active {
 	background-color: #ffffff;
 }
 // Button Mod 3
-.btn-mod3 {
-	color: #ffffff;
-	background-color: $color-mod3;
-	border-color: $color-mod3;
-}
 .btn-mod3:focus,
 .btn-mod3.focus,
 .btn-mod3:hover {
@@ -509,11 +546,6 @@ fieldset[disabled] .btn-mod3.active {
 	background-color: #ffffff;
 }
 // Button Mod 4
-.btn-mod4 {
-	color: #ffffff;
-	background-color: $color-mod4;
-	border-color: $color-mod4;
-}
 .btn-mod4:focus,
 .btn-mod4.focus,
 .btn-mod4:hover {
@@ -569,11 +601,6 @@ fieldset[disabled] .btn-mod4.active {
 	background-color: #ffffff;
 }
 // Button Mod 5
-.btn-mod5 {
-	color: #ffffff;
-	background-color: $color-mod5;
-	border-color: $color-mod5;
-}
 .btn-mod5:focus,
 .btn-mod5.focus,
 .btn-mod5:hover {

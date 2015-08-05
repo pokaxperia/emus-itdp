@@ -1,0 +1,28 @@
+.calculator{
+	padding: 0px 0 50px;
+	.calculator-description{
+		h1{
+			color: $color-text;
+			font-size: 25px;
+			text-align: center;
+			font-weight: normal;
+		}
+		p{
+			font-size: 18px;
+			font-weight: 300;
+			line-height: 1.5;
+			margin: 18px 0 36px;
+			color: $color-text;
+		}
+	}
+}
+.breadcrumb-city{
+	position: absolute;
+	right: 15px;
+	top: 95%;
+	small{
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: 100;
+	}
+}

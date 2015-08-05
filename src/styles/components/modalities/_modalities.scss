@@ -1,0 +1,153 @@
+.modalities{
+	@include background-size(cover);
+	background: url("assets/modalities.jpg") no-repeat center;
+	background-position: 50% 100%;
+	background-size:cover;
+	padding-bottom: 25px;
+	>.container{
+		position: relative;
+	}
+}
+.breadcrumb{
+	position: absolute;
+	right: 15px;
+	top: 75px;
+	small{
+		color: #ffffff;
+		font-size: 14px;
+		font-weight: 100;
+	}
+}
+.modalities-body{
+	margin-top: 100px;
+	position: relative;
+	h1{
+		color: #ffffff;
+		font-size: 26px;
+		text-align: center;
+		padding: 35px 50px 0;
+		font-weight: normal;
+	}
+	ul{
+		-webkit-flex-direction: column;
+		-webkit-justify-content: center;
+		display: -webkit-flex;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		li{
+			button{
+				@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+				color: #ffffff;
+				display: block;
+				margin: 15px 0;
+				width: 100%;
+			}
+			&:nth-child(1):hover button{
+				background-color: rgba($color-mod1,0.90);
+				border-color: transparent;
+				color: #ffffff;
+			}
+			&:nth-child(2):hover button{
+				background-color: rgba($color-mod2,0.90);
+				border-color: transparent;
+			}
+			&:nth-child(3):hover button{
+				background-color: rgba($color-mod3,0.90);
+				border-color: transparent;
+			}
+			&:nth-child(4):hover button{
+				background-color: rgba($color-mod4,0.90);
+				border-color: transparent;
+			}
+			&:nth-child(5):hover button{
+				background-color: rgba($color-mod5,0.90);
+				border-color: transparent;
+			}
+		}
+	}
+}
+.cards{
+	padding: 0px 0 50px;
+	.card-description{
+		h1{
+			color: $color-text;
+			font-size: 25px;
+			text-align: center;
+			font-weight: normal;
+		}
+		p{
+			font-size: 18px;
+			font-weight: 300;
+			line-height: 1.5;
+			margin: 18px 0 36px;
+			color: $color-text;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.breadcrumb{
+		position: absolute;
+		top: 90px;
+	}
+	.modalities{
+		@include background-size(cover);
+		background-position: 50% 74%;
+	}
+	.modalities-body{
+		padding:25px 0;
+		h1{
+			font-size: 34px;
+			margin: 0;
+			padding: 35px 50px;
+		}
+		ul{
+			-webkit-flex-direction: row;
+			flex-direction: row;
+			-webkit-justify-content: space-around;
+			justify-content: space-around;
+			flex-wrap: wrap;
+			-webkit-flex-wrap: wrap;
+			align-content: space-around;
+			-webkit-align-content: space-around;
+			align-items: flex-start;
+			-webkit-align-items: flex-start;
+			li{
+				flex-basis: auto;
+				-webkit-flex-basis: auto;
+				align-self: center;
+				-webkit-align-self: center;
+				
+				button{
+					white-space: normal;
+					height: 60px;
+					width: 200px;
+				}
+			}
+		}
+	}
+	.cards{
+		.card-description{
+			h1{
+				font-size: 30px;
+			}
+		}
+	}
+}
+@media (min-width: 992px) {
+	.cards{
+		.card-description{
+			h1{
+				font-size: 36px;
+				margin: 30px 0 20px;
+			}
+		}
+	}
+}
+@media (min-width: 1200px) {
+
+}
