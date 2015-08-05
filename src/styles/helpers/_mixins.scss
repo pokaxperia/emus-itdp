@@ -5,9 +5,16 @@
 	box-shadow: $args;
 }
 @mixin transition($transition){
-	webkit-transition: $transition;
+	-webkit-transition: $transition;
 	-moz-transition: $transition;
 	-o-transition: $transition;
 	-ms-transition: $transition;
 	transition: $transition;
+}
+@mixin background-size($bsize){
+	-webkit-background-size: $bsize;
+	-moz-background-size: $bsize;
+	-o-background-size: $bsize;
+	-ms-background-size: $bsize;
+	background-size: $bsize;
 }

@@ -1,10 +1,13 @@
 @import "helpers/_mixins";
 @import "helpers/_variables";
+@import "helpers/_forms";
 @import "components/_btp-buttons";
 @import "components/_my-buttons";
+@import "components/landing/_landing";
+@import "components/modalities/_modalities";
+@import "components/calculator/_calculator";
 body{
 	font-family: 'Roboto', sans-serif;
-	padding-top:60px;;
 }
 h1,h2{
 	font-family: 'Montserrat', sans-serif;
