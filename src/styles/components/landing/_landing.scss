@@ -78,11 +78,12 @@ nav.landing-menu{
 	@include transition(all 0.25s linear);
 }
 section.titles{
-	@include background-size(cover);
 	background: url("assets/landing.jpg") no-repeat center;
 	position: relative;
 	width: 100%;
 	padding:15px 0 50px;
+	background-size: 200%;
+	background-position: 43% 37%;
 	h1,
 	h2{
 		color:#ffffff;
@@ -116,10 +117,11 @@ section.who{
 	background:#EFF2F9;
 	padding: 50px 0;
 	position: relative;
-	.container h2{
+	.container h1{
 		color: $color-text;
 		font-weight: normal;
 		margin: 0;
+		font-size: 30px;
 	}
 }
 section.who-header{
@@ -137,7 +139,8 @@ section.who-header{
 			h1{
 				font-size: 30px;
 				margin: 0;
-				font-weight: 100;
+				color: #ffffff;
+				font-weight: normal;
 				padding: 18px 0;
 			}
 		}
@@ -156,7 +159,7 @@ section.who-body{
 			position: relative;
 			i{
 				position: absolute;
-				left: 15px;
+				left: 20px;
 				&:before{
 					font-size: 35px;
 					color: #989FAA;
@@ -244,6 +247,8 @@ section.about{
 // Media queries
 @media (min-width: 768px) {
 	section.titles{
+		@include background-size(cover);
+		background-position: initial;
 		h1{
 			font-size: 30px;
 			padding: 100px;
