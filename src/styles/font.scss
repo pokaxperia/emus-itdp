@@ -16,16 +16,16 @@
 	font-size: 20px;
 	font-style: normal;
 }
-.emus-down-arrow:before {
+.emus-arrow-down:before {
 	content: "\e000";
 }
 .emus-facebook:before {
 	content: "\e001";
 }
-.emus-github1:before {
+.emus-google:before {
 	content: "\e002";
 }
-.emus-github:before {
+.emus-arrow-left:before {
 	content: "\e003";
 }
 .emus-menu:before {
@@ -34,9 +34,15 @@
 .emus-user:before {
 	content: "\e005";
 }
-.emus-twitter:before {
+.emus-arrow-right:before {
 	content: "\e006";
 }
-.emus-users:before {
+.emus-done:before {
 	content: "\e007";
+}
+.emus-twitter:before {
+	content: "\e008";
+}
+.emus-users:before {
+	content: "\e009";
 }
