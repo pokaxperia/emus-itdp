@@ -275,11 +275,9 @@ section.about{
 	.black{
 		@include box-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 		@include transition(all 0.25s linear);
-		background-color:#EFF2F9;
+		background-color:#414C5A;
 		padding: 0 !important;
-		.item{
-			color: #35AAB7;
-		}
+
 	}
 	header{
 		@include transition(all 0.25s linear);
