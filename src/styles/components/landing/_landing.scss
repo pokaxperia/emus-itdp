@@ -103,7 +103,7 @@ section.titles{
 	hr{
 		width: 250px;
 	}
-	div>i.emus-down-arrow{
+	div>i.emus-arrow-down{
 		color: #ffffff;
 		display: inline-block;
 		margin-top: 25px;
@@ -121,17 +121,56 @@ section.who{
 		font-weight: normal;
 		margin: 0;
 	}
-	> .container > .row article{
-		padding: 25px;
-		i:before{
-			color: #35AAB7;
-			font-size: 55px;
+}
+section.who-header{
+	background: #35AAB7;
+	color: #ffffff;
+	margin-top: 40px;
+	.row{
+		div:nth-child(1){
+			i:before{
+				color: #ffffff;
+				font-size: 55px;
+			}
 		}
-		p{
-			font-size: 18px;
-			font-weight: 100;
-			line-height: 1.5;
-			color: $color-text;
+		div:nth-child(2){
+			h1{
+				font-size: 30px;
+				margin: 0;
+				font-weight: 100;
+				padding: 18px 0;
+			}
+		}
+	}
+}
+section.who-body{
+	background: #414C5A;
+	padding: 20px 0;
+	ul{
+		margin: 0;
+		list-style: none;
+		padding: 0;
+		li{
+			margin: 0;
+			padding: 10px;
+			position: relative;
+			i{
+				position: absolute;
+				left: 15px;
+				&:before{
+					font-size: 35px;
+					color: #989FAA;
+				}
+			}
+			p{
+				color: #ffffff;
+				font-size: 18px;
+				font-weight: 100;
+				line-height: 1.5;
+				margin: 0;
+				padding-left: 60px;
+				padding-right: 30px;
+			}
 		}
 	}
 }
@@ -212,17 +251,16 @@ section.about{
 		h2{
 			padding: 0px 175px 0;
 		}
-		div>i.emus-down-arrow{
+		div>i.emus-arrow-down{
 			&:before{
 				font-size: 40px;
 			}
 		}
 	}
-	section.who{
+	section.who-header{
 		> .container > .row article{
 			i:before{
-				color: #35AAB7;
-				font-size: 75px;
+				font-size: 60px;
 			}
 		}
 	}
