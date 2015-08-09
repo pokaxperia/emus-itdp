@@ -1,7 +1,7 @@
 @import "helpers/_mixins";
 @import "helpers/_variables";
 
-$color-mod1:#F53D54;
+$color-mod1:#D54562;
 $color-mod2:#0092B2;
 $color-mod3:#71B095;
 $color-mod4:#E97F4A;
@@ -32,12 +32,13 @@ $color-mod10:#78909C;
 	background-color: transparent;
 	border: 1px solid #ffffff;
 	color: #ffffff;
+	font-weight: 300;
 }
 .btn-landing:focus,
 .btn-landing.focus,
 .btn-landing:hover {
-	color: #ffffff;
-	background-color: #35AAB7;
+	color: $color-text;
+	background-color: #ffffff;
 	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
 .btn-landing1 {

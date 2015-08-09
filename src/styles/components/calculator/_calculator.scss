@@ -16,6 +16,30 @@
 		}
 	}
 }
+.calculator-form-row{
+	overflow: hidden;
+	padding: 20px 0 10px;
+	border-bottom: 1px solid #F1F3F6;
+	ul{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li{
+			padding-left: 10px;
+			margin-bottom: 20px;
+			-webkit-flex-grow: 1;
+			flex-grow: 1;
+		}
+	}
+}
+.form-group{
+	position: relative;
+}
+label{
+	font-family: 'Montserrat';
+	font-weight: normal;
+	color: $color-text;
+}
 .breadcrumb-city{
 	position: absolute;
 	right: 15px;
@@ -24,5 +48,94 @@
 		color: #ffffff;
 		font-size: 14px;
 		font-weight: 100;
+	}
+}
+.gender{
+	label small{
+		position: relative;
+		top: 5px;
+		font-size: 16px;
+	}
+	input.radio{
+		/* hide input */
+		&:empty {
+			visibility: hidden;
+			position:absolute;
+		}
+		/* style label */
+		&:empty ~ label {
+			-moz-user-select: none;
+			-ms-user-select: none;
+			-webkit-user-select: none;
+			cursor: pointer;
+			font-family: 'Roboto';
+			font-size: initial;
+			font-weight: normal;
+			padding-left: 50px;
+			position: relative;
+			user-select: none;
+		}
+		& ~ label:after {
+			@include transition(all 0.25s linear);
+			background: #fff;
+			border-radius: 50%;
+			border: 1px solid rgba($color-text,0.5);
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 30px;
+			left: 6px;
+			position: absolute;
+			top: 6px;
+			width: 30px;
+		}
+		&:empty ~ label:before {
+			@include transform(scale(0));
+			@include transition(all 0.25s linear);
+			border-radius: 50%;
+			bottom: 0;
+			content: '';
+			display: block;
+			height: 30px;
+			left: 6px;
+			position: absolute;
+			top: 6px;
+			width: 30px;
+		}
+		/* toggle on */
+		&:checked ~ label:before {
+			content:'';
+			background:#414C5A;
+			z-index: 3;
+			@include transform(scale(0.5));
+			@include transition(all 0.25s linear);
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.calculator-form-row{
+		ul{
+			-webkit-flex-direction: row;
+			display: -webkit-flex;
+			display: flex;
+			flex-direction: row;
+			li{
+				padding-left: 0px;
+				width: 50%;
+			}
+		}
+	}
+	.gender{
+		label small{
+			font-size: 14px;
+		}
+	}
+}
+@media (min-width: 992px) {
+	.gender{
+		label small{
+			font-size: 16px;
+		}
 	}
 }

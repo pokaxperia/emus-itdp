@@ -18,3 +18,10 @@
 	-ms-background-size: $bsize;
 	background-size: $bsize;
 }
+@mixin transform($trans){
+	-webkit-transform: $trans;
+	-moz-transform: $trans;
+	-o-transform: $trans;
+	-ms-transform: $trans;
+	transform: $trans;
+}
