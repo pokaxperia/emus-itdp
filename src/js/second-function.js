@@ -1,3 +1,3 @@
 secondFunction(() => {
-	console.log("function two")
-})
+	console.log("function two");
+});
