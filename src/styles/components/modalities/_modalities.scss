@@ -1,3 +1,6 @@
+section.modalities-container{
+	position:relative;
+}
 .modalities{
 	@include background-size(cover);
 	background: url("assets/modalities.jpg") no-repeat center;
@@ -71,21 +74,19 @@
 		}
 	}
 }
-.cards{
-	.card-description{
-		h1{
-			color: $color-text;
-			font-size: 25px;
-			text-align: center;
-			font-weight: normal;
-		}
-		p{
-			font-size: 18px;
-			font-weight: 300;
-			line-height: 1.5;
-			margin: 18px 0 36px;
-			color: $color-text;
-		}
+.card-description{
+	h1{
+		color: $color-text;
+		font-size: 25px;
+		text-align: center;
+		font-weight: normal;
+	}
+	p{
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 1.5;
+		margin: 18px 0 36px;
+		color: $color-text;
 	}
 }
 @media (min-width: 768px) {
@@ -129,24 +130,17 @@
 			}
 		}
 	}
-	.cards{
-		.card-description{
-			h1{
-				font-size: 30px;
-			}
+	.card-description{
+		h1{
+			font-size: 30px;
 		}
 	}
 }
 @media (min-width: 992px) {
-	.cards{
-		.card-description{
-			h1{
-				font-size: 36px;
-				margin: 30px 0 20px;
-			}
+	.card-description{
+		h1{
+			font-size: 36px;
+			margin: 30px 0 20px;
 		}
 	}
-}
-@media (min-width: 1200px) {
-
 }
