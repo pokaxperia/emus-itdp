@@ -1,4 +1,3 @@
 # Ignore Node & Bower
 ###################
 node_modules
-public
