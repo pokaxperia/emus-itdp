@@ -1,40 +1,70 @@
-var babel = require('gulp-babel');
+var gulp = require('gulp');
+var del = require('del');
+var browserSync = require('browser-sync');
+
+/*var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var css = require('gulp-css');
-var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-var browserSync = require('browser-sync');
-var del = require('del');
+var jshint = require('gulp-jshint');
+var util = require('gulp-util');*/
+var $ = require('gulp-load-plugins')({lazy: true});
 
-gulp.task('build', ['dev', 'sass','css']);
+gulp.task('build', ['src', 'sass','css']);
 
-gulp.task('dev', function(){
-	return gulp.src(['src/**/*.js','!./bower_components/**'])
-	.pipe(concat('index.js'))
-	.pipe(babel())
-	.pipe(uglify())
+gulp.task('src', function(){
+	log('Analizyng src...');
+
+	gulp.src(['src/**/*.js', '!./bower_components/**'])
+	.pipe($.jshint())
+	.pipe($.jshint.reporter('jshint-stylish', {verbose:true}))
+	.pipe($.concat('index.js'))
+	.pipe($.babel())
+	.pipe($.uglify())
 	.pipe(gulp.dest('public'));
 });
 
-gulp.task('prod', function(){
-	gulp.src(['public/components/**/*.*']);
+gulp.task('dev-components', function(){
+	log('Analizyng components...');
+
+	gulp.src(['public/components/**/*.js'])
+	.pipe($.jshint())
+	.pipe($.jshint.reporter('jshint-stylish', {verbose:true}));
 });
 
-gulp.task('sass', function () {
+gulp.task('prod', function(){
+	log('Analizyng production...');
+
+	return gulp.src(['public/components/**/*.*']);
+});
+
+gulp.task('sass', ['clean-styles'], function () {
+	log('Compiling sass ---> css ...');
+
 	gulp.src('src/styles/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
-		.pipe(sass({outputStyle: 'compressed'}))
-		.pipe(concat('styles.css'))
+		.pipe($.sass().on('error', $.sass.logError))
+		.pipe($.sass({outputStyle: 'compressed'}))
+		.pipe($.concat('styles.css'))
 		.pipe(gulp.dest('public'));
 });
 
+gulp.task('clean-styles', function(done){
+	log('Cleaning styles...');
+	var files = 'public/styles.css';
+	clean(files, done);
+});
+
 gulp.task('assets', function() {
-	 gulp.src('src/assets/*.{jpg,png}')
-	 .pipe(gulp.dest('public/assets'));
+	log('Copying assets...');
+
+	gulp.src('src/assets/*.{jpg,png}')
+	.pipe(gulp.dest('public/assets'));
 });
 
 gulp.task('server', function(){
+	log('Server running...');
+
 	browserSync.init({
 		files: [
 			"src/**/*.scss",
@@ -50,7 +80,6 @@ gulp.task('server', function(){
 			scroll: true
 		},
 		logFileChanges: true,
-		logLevel: "debug",
 		logPrefix: "Emus Project",
 		notify: true,
 		port: 1982,
@@ -58,8 +87,8 @@ gulp.task('server', function(){
 		server: {
 			baseDir: 'public',
 			routes: {
-        "/node_modules": "node_modules"
-    }
+				"/node_modules": "node_modules"
+			}
 		},
 		tunnel: true,
 		ui: {
@@ -69,14 +98,34 @@ gulp.task('server', function(){
 });
 
 gulp.task('watch', function(){
-	gulp.watch('src/**/*.js', ['dev']);
+	log('Watching files!');
+
+	gulp.watch('src/**/*.js', ['src']);
 	gulp.watch('src/**/*.scss', ['sass']);
 	gulp.watch('src/assets/*.{jpg,png}', ['assets']);
 	gulp.watch('public/components/**/*.*', ['prod']);
+	gulp.watch('public/components/**/*.*', ['dev-components']);
 });
 
+gulp.task('default',['server','watch']);
 
-gulp.task('default',['server','watch'])
+function clean(path, done){
+	log('Cleaning: '+ $.util.colors.blue(path));
+	del(path, done)
+}
+
+function log(msg) {
+	if (typeof(msg) === 'object') {
+		for (var item in msg) {
+			if (msg.hasOwnProperty(item)) {
+				$.util.log($.util.colors.green(msg[item]));
+			}
+		}
+	}
+	else {
+		$.util.log($.util.colors.green(msg));
+	}
+}
 /*
 gulp.task('scripts:watch', function(){
 	gulp.watch('src/*.js', ['scripts']);
