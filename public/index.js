@@ -1,0 +1,1 @@
+"use strict";firstFunction(function(){console.log("Testing scss, ecms205")}),secondFunction(function(){console.log("function two")});
