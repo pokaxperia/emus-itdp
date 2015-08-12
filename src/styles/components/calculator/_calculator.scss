@@ -1,12 +1,16 @@
+.calculator-container{
+	background-color: #ECEFF1;
+}
 .calculator{
 	padding: 0px 0 50px;
 	.calculator-description{
 		h1{
 			color: $color-text;
 			font-size: 25px;
-			text-align: center;
 			font-weight: normal;
-			margin: 50px 0 35px 0;
+			margin: 0;
+			padding: 45px 0;
+			text-align: center;
 		}
 		p{
 			font-size: 18px;
@@ -17,9 +21,17 @@
 		}
 	}
 	.calculator-form{
+		.calculator-form-c{
+			background-color: #fff;
+		}
+		padding: 0 10px;
+		p{
+			color: $color-text;
+			margin: 15px;
+		}
 		button{
 			display: block;
-			margin: 0 auto;
+			margin: 20px auto 20px;;
 		}
 	}
 }
@@ -93,7 +105,7 @@ input.radio{
 			@include transition(all 0.25s linear);
 			background: #fff;
 			border-radius: 50%;
-			border: 1px solid rgba($color-text,0.5);
+			border: 1px solid $color-text;
 			bottom: 0;
 			content: '';
 			display: block;
@@ -119,7 +131,7 @@ input.radio{
 		/* toggle on */
 		&:checked ~ label:before {
 			content:'';
-			background:#414C5A;
+			background:#5E6B7E;
 			z-index: 3;
 			@include transform(scale(0.5));
 			@include transition(all 0.25s linear);
