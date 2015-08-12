@@ -41,7 +41,7 @@
 					$scope.calculator.tipo_calle = "Primaria";
 					break;
 			}
-		}
+		};
 
 		$scope.saveQuote = function(calculatorForm, calculator){
 			console.log(calculatorForm);
