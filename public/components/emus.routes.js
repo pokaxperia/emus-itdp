@@ -12,7 +12,8 @@
 			})
 			.state('modalidades', {
 				url: '/modalidades',
-				templateUrl: './components/modalities/modalities.html'
+				templateUrl: './components/modalities/modalities.html',
+				controller: 'ModalitiesController'
 			})
 			.state('modalidades.calles', {
 				url: '/calles',
