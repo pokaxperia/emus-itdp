@@ -1,10 +1,10 @@
 @import "helpers/_mixins";
 @import "helpers/_variables";
 
-$color-mod1:#D54562;
+$color-mod1:#ED5565;
 $color-mod2:#0092B2;
 $color-mod3:#71B095;
-$color-mod4:#E97F4A;
+$color-mod4:#FF6B6B;
 $color-mod5:#78909C;
 
 $color-mod6:#0092B2;
@@ -67,7 +67,7 @@ $color-mod10:#78909C;
 .btn-ghost1.focus,
 .btn-ghost1:hover {
 	color: #ffffff;
-	background-color: rgba($color-mod1,0.8);
+	background-color: rgba($color-mod1,0.9);
 	border-color: transparent;
 	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
