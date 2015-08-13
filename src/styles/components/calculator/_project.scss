@@ -1,4 +1,7 @@
 .calculator-project{
+	background-color: #fff;
+	overflow: hidden;
+	padding-bottom: 10px;
 	>div{
 		margin-bottom: 20px;
 	}
@@ -33,10 +36,14 @@
 }
 @media (min-width: 768px) {
 	.calculator-project{
+		>div{
+			margin: 0;
+		}
 		article{
 			figure{
 				label{
 					overflow: hidden;
+					margin: 0;
 					img{
 						-webkit-backface-visibility: hidden;
 						@include transform(scale(1));
