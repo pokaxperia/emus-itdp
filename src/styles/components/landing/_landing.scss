@@ -7,7 +7,7 @@ header{
 	position: fixed;
 	right: 0;
 	top: 0;
-	z-index: 3;
+	z-index: 20;
 }
 .landing-icon{
 	display: -webkit-inline-flex;
@@ -38,7 +38,7 @@ nav.landing-menu{
 	padding-top: 60px;
 	position: absolute;
 	right: 0;
-	top: 0;
+	top: -2px;
 	z-index: 2;
 	ul{
 		-webkit-flex-direction: column;
