@@ -5,6 +5,7 @@
 	'use strict';
 
 	var CalculatorController = function($scope,$location, $state, $log){
+
 		var tipo;
 		$scope.calculator = {};
 		var getQuotesValues = sessionStorage.getItem('valor');
@@ -26,20 +27,20 @@
 		$scope.getType = function(tipo){
 			tipo = tipo.infraestructura;
 			if(tipo){
+				switch($scope.calculator.infraestructura){
+					case "Ciclovia":
+						$scope.calculator.tipo_calle = "Primaria";
+						break;
+					case "Ciclocarril":
+						$scope.calculator.tipo_calle = "Secundaria";
+						break;
+					case "Bus-bici":
+						$scope.calculator.tipo_calle = "Primaria";
+						break;
+				}
 				var valores = JSON.stringify($scope.calculator);
 				sessionStorage.setItem('valor',valores);
 				$state.go('modalidades.calculadora.formulario');
-			}
-			switch($scope.calculator.infraestructura){
-				case "Ciclovia":
-					$scope.calculator.tipo_calle = "Primaria";
-					break;
-				case "Ciclocarril":
-					$scope.calculator.tipo_calle = "Secundaria";
-					break;
-				case "Bus-bici":
-					$scope.calculator.tipo_calle = "Primaria";
-					break;
 			}
 		};
 
