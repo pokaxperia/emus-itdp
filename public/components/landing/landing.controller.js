@@ -4,7 +4,8 @@
 (function(){
 	'use strict';
 
-	var LandingController = function($scope,$window){
+	var LandingController = function($scope,$window,$state){
+
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
 		
@@ -32,7 +33,7 @@
 		});
 	};
 	
-	LandingController.$inject = ['$scope', '$window'];
+	LandingController.$inject = ['$scope', '$window','$state'];
 	
 	angular.module('emus.landing', []).
 	controller('LandingController', LandingController);
