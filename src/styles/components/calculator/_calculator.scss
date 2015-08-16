@@ -122,7 +122,7 @@ input.radio{
 		top: 5px;
 	}
 }
-.gender{
+.item-option{
 	input.radio{
 		/* hide input */
 		&:empty {
@@ -192,14 +192,14 @@ input.radio{
 			}
 		}
 	}
-	.gender{
+	.item-option{
 		label small{
 			font-size: 14px;
 		}
 	}
 }
 @media (min-width: 992px) {
-	.gender{
+	.item-option{
 		label small{
 			font-size: 16px;
 		}
