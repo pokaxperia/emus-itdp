@@ -1,10 +1,10 @@
 /**
-* Service Module
+* Factory Module
 *
 * Description
 */
 angular.module('emus.calculator.factory', []).
-factory('SendQuote', ['$http', '$q',function($http, $q){
+factory('SendQuote', ['$http', '$q', function($http, $q){
 	var deferred = $q.defer();
 	return {
 		sendQuote: function(quote_values){
@@ -15,7 +15,6 @@ factory('SendQuote', ['$http', '$q',function($http, $q){
 				deferred.reject(error);
 			});
 		}
-		
 	};
 	return deferred.promise;
 }]);
