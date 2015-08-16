@@ -7,6 +7,7 @@
 		'emus.landing',
 		'emus.modalities',
 		'emus.calculator',
+		'emus.calculator.factory',
 		'duScroll'
 		]
 	)
