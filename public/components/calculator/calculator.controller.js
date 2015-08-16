@@ -249,9 +249,9 @@
 				sessionStorage.setItem('setQuote',valores);
 				SendQuote.sendQuote(valores).
 				then(function(data){
-					$log.info(data);
+					$log.info("Result: " + data);
 				}, function(error){
-					$log.error(error);
+					$log.error("Error: " + error);
 				});
 			}
 		};
