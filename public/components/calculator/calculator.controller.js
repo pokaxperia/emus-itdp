@@ -275,7 +275,9 @@
 				sessionStorage.setItem('setQuote',valores);
 				SendQuote.sendQuote(valores).
 				then(function(data){
-					$log.info("Result: " + data);
+					if(data){
+						$log.info("Ok");
+					}
 				}, function(error){
 					$log.error("Error: " + error);
 				});
