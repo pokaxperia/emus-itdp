@@ -156,7 +156,8 @@ section.modality-container{
 				-webkit-flex-basis: auto;
 				align-self: center;
 				-webkit-align-self: center;
-				
+				-webkit-flex-grow: 1;
+				flex-grow: 1;
 				button{
 					white-space: normal;
 					height: 60px;
