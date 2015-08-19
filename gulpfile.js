@@ -90,7 +90,7 @@ gulp.task('server', function(){
 				"/node_modules": "node_modules"
 			}
 		},
-		tunnel: true,
+		tunnel: false,
 		ui: {
 			port: 8080
 		}
