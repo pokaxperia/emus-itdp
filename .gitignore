@@ -1,3 +1,11 @@
 # Ignore Node & Bower
 ###################
 node_modules
+bower_components
+build
+tmp
+
+# Ignore Build and Temp folders
+###################
+build
+tmp
