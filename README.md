@@ -5,11 +5,23 @@ Strategy of Sustainable Urban Mobility
 
 Requirements
 -------
-- nodejs
-- bower
+- [nodejs](https://nodejs.org/)
+- [bower](http://bower.io/#install-bower)
+
+First
+-------
+Clone:
+
+```
+$ git clone https://github.com/pokaxperia/emus-itdp.git
+```
+
+or [download ZIP](https://github.com/pokaxperia/emus-itdp/archive/master.zip)
+
 
 Install packages and dependencies
 -------
+**Important** Make sure you go to the root folder before
 ##### For frontend packages
 ```
 $ bower install
@@ -46,10 +58,10 @@ Folder Structure
 |   |   |_ images
 |   |   |_ js
 |   |   |_ styles
-|   |   |   |_  ...           # Sass stylesheets for each view's component 
-|   |   |_ index.html         # Main index for Dev server
-|   |_ server                 # Other configurations
-|--tmp                        # Final template file from each angular view (for production)
+|   |   |   |_  ...         # Sass stylesheets for each view's component 
+|   |   |_ index.html       # Main index for Dev server
+|   |_ server               # Other configurations
+|--tmp                      # Final template file from each angular view (for production)
 ```
 
 Quick start (dev server)
