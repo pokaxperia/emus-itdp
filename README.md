@@ -64,7 +64,6 @@ port: 1982
 ```
 Quick start (build server)
 -------
-**soon**
 
 Run **gulp build**:
 ```js
@@ -76,4 +75,4 @@ Run **gulp prod**:
 ```js
 $ gulp prod
 ```
-this will run server for final test.
+this will run server on port 2015 for final test.
