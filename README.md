@@ -66,15 +66,14 @@ Quick start (build server)
 -------
 **soon**
 
-Run **gulp prod**:
-```js
-$ gulp prod
-```
-this will run server for final test.
 Run **gulp build**:
 ```js
 $ gulp build
 ```
 this will create a **build** folder for upload on server for production.
 
-
+Run **gulp prod**:
+```js
+$ gulp prod
+```
+this will run server for final test.
