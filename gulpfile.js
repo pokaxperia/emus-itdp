@@ -125,9 +125,9 @@ gulp.task('cleaning-iconfonts', function(done){
 gulp.task('cleaning-js', function(done){
 	clean('build/js/**/*.js', done);
 });
-/* Server */
-gulp.task('server', function(){
-	log('Server running...');
+/* Dev Server */
+gulp.task('dev-server', function(){
+	log('Dev server running...');
 
 	browserSync.init({
 		files: [
@@ -162,6 +162,32 @@ gulp.task('server', function(){
 	});
 });
 
+/* Prod Server */
+gulp.task('prod-server', function(){
+	log('Prod server running...');
+
+	browserSync.init({
+		ghostMode: {
+			clicks: true,
+			forms: true,
+			scroll: true
+		},
+		logFileChanges: true,
+		logPrefix: "Final",
+		notify: true,
+		port: 2015,
+		reloadDelay: 1500,
+		reloadOnRestart: true,
+		server: {
+			baseDir: 'build',
+		},
+		tunnel: true,
+		ui: {
+			port: 8080
+		}
+	});
+});
+
 /* Watch files */
 gulp.task('watch', function(){
 	log('Watching files!');
@@ -172,8 +198,9 @@ gulp.task('watch', function(){
 	gulp.watch('src/client/iconfont/*.*', ['iconfont']);
 });
 
-// Default task
-gulp.task('default',['server','watch']);
+// Main task
+gulp.task('dev',['dev-server', 'watch']);
+gulp.task('prod', ['prod-server']);
 
 // Clean and log
 function clean(path, done){
