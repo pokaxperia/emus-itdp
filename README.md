@@ -39,7 +39,7 @@ Folder Structure
 |--src                      # Main DEV
 |   |_ client  
 |   |   |_ components
-|   |   |   |_ ...          # html and js compontents (angular view, controller, factory, service, etc.)
+|   |   |   |_ ...          # html and js components (angular)
 |   |   |   |_ emus.module  # Main angular module
 |   |   |   |_ emus.routes  # Routes
 |   |   |_ iconfonts
@@ -54,7 +54,27 @@ Folder Structure
 
 Quick start (dev server)
 -------
-
+Run **gulp**:
+```js
+$ gulp dev
+```
+this will run server on port 1982, or can be changed on gulpfile.js file, **server** gulp task:
+```js
+port: 1982
+```
 Quick start (build server)
 -------
 **soon**
+
+Run **gulp prod**:
+```js
+$ gulp prod
+```
+this will run server for final test.
+Run **gulp build**:
+```js
+$ gulp build
+```
+this will create a **build** folder for upload on server for production.
+
+
