@@ -1,7 +1,7 @@
+(function(){
 	/*
 	* Langind Module
 	*/
-(function(){
 	'use strict';
 
 	var ModalitiesController = function($scope,$window, $state, $rootScope){

@@ -1,7 +1,7 @@
+(function(){
 	/*
 	* Langind Module
 	*/
-(function(){
 	'use strict';
 
 	var LandingController = function($scope,$window,$state){

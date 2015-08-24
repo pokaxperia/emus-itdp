@@ -3,12 +3,34 @@ var browserSync = require('browser-sync').create();
 var wiredep = require('wiredep').stream;
 var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
+var args = require('yargs').argv;
 
 /* Task listing */
 gulp.task('tasklisting', function(){
 	log('Loading task');
 	$.taskListing();
 });
+
+/* Bump version */
+gulp.task('bump', function(){
+	var msg = 'Bumping version';
+	var type = args.type;
+	var version = args.version;
+	var options = {};
+	if (version) {
+		options.version = version;
+		msg += 'to' + version;
+	}
+	else{
+		options.type = type;
+		msg += 'to' + type;
+	}
+	log(msg);
+	return gulp.src(['./package.json', './bower.json'])
+		.pipe($.bump(options))
+		.pipe(gulp.dest('./'));
+});
+
 
 /*** To Dev ***/
 
