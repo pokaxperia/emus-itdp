@@ -1,0 +1,26 @@
+{
+  "name": "emus",
+  "version": "0.1.0",
+  "homepage": "https://github.com/pokaxperia/emus-itdp",
+  "authors": [
+    "pokazzam@gmail.com",
+    "carlos.hugo.gonzalez.castell@gmail.com"
+  ],
+  "description": "Emus es una hoja de ruta para la implementación de proyectos de movilidad urbana sustentable en sus diferentes modalidades.",
+  "main": "index.html",
+  "keywords": [
+    "movilidad",
+    "sustentable"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular-scroll": "~0.7.2",
+    "angular": "~1.4.4",
+    "angular-ui-router": "~0.2.15"
+  }
+}
