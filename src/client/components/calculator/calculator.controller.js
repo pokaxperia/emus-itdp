@@ -1,7 +1,7 @@
+(function(){
 	/**
 	*  Calculator Module
 	*/
-(function(){
 	'use strict';
 
 	var CalculatorController = function($scope,$location, $state, $log, $filter, SendQuote){
