@@ -64,24 +64,26 @@ port: 1982
 ```
 Quick start (build server)
 -------
-1. Run **gulp inject**
-```js
-$ gulp inject
-```
+
+1. Run **gulp inject**.
+
+  ```js
+  $ gulp inject
+  ```
   - To add css and js paths to index.html.
   - To minifying HTML and putting in $templateCache.
   - To add main directory for each HTML templates.
+  
+2. Run **gulp build**.
+
+  ```js
+  $ gulp build
+  ```
+  this will create a **build** folder for test or upload on server for production.
 
 
-
-2. Run **gulp build**
-```js
-$ gulp build
-```
-this will create a **build** folder for test or upload on server for production.
-
-Run **gulp prod**:
-```js
-$ gulp prod
-```
+3. Run **gulp prod**:
+  ```js
+  $ gulp prod
+  ```
 this will run server on port 2015 for final test.
