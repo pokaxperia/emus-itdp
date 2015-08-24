@@ -64,8 +64,17 @@ port: 1982
 ```
 Quick start (build server)
 -------
+1. Run **gulp inject**
+```js
+$ gulp inject
+```
+  - To add css and js paths to index.html.
+  - To minifying HTML and putting in $templateCache.
+  - To add main directory for each HTML templates.
 
-Run **gulp build**:
+
+
+2. Run **gulp build**
 ```js
 $ gulp build
 ```
