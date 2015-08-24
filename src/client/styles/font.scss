@@ -1,0 +1,48 @@
+@font-face {
+	font-family: "emus";
+	src: url("../iconfonts/emus.eot");
+	src: url("../iconfonts/emus.eot#iefix") format("embedded-opentype"),
+	url("../iconfonts/emus.woff") format("woff"),
+	url("../iconfonts/emus.ttf") format("truetype"),
+	url("../iconfonts/emus.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="emus-"]:before, [class*=" emus-"]:before,
+[class^="emus-"]:after, [class*=" emus-"]:after {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-family: emus;
+	font-size: 20px;
+	font-style: normal;
+}
+.emus-arrow-down:before {
+	content: "\e000";
+}
+.emus-facebook:before {
+	content: "\e001";
+}
+.emus-google:before {
+	content: "\e002";
+}
+.emus-arrow-left:before {
+	content: "\e003";
+}
+.emus-menu:before {
+	content: "\e004";
+}
+.emus-user:before {
+	content: "\e005";
+}
+.emus-arrow-right:before {
+	content: "\e006";
+}
+.emus-done:before {
+	content: "\e007";
+}
+.emus-twitter:before {
+	content: "\e008";
+}
+.emus-users:before {
+	content: "\e009";
+}
