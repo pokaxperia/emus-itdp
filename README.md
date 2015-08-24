@@ -70,7 +70,7 @@ Run **gulp build**:
 ```js
 $ gulp build
 ```
-this will create a **build** folder for upload on server for production.
+this will create a **build** folder for test or upload on server for production.
 
 Run **gulp prod**:
 ```js
