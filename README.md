@@ -1,7 +1,7 @@
 Emus ITDP México
 ====================
 Strategy of Sustainable Urban Mobility
-- Roadmap for implementing sustainable urban mobility projects
+- Roadmap for implementing sustainable urban mobility projects.
 
 Requirements
 -------
@@ -16,21 +16,21 @@ Clone:
 $ git clone https://github.com/pokaxperia/emus-itdp.git
 ```
 
-or [download ZIP](https://github.com/pokaxperia/emus-itdp/archive/master.zip)
+or [download ZIP](https://github.com/pokaxperia/emus-itdp/archive/master.zip).
 
 
 Install packages and dependencies
 -------
-**Important** Make sure you go to the root folder before
-##### For frontend packages
+**Important** Make sure you go to the root folder before run installs.
+##### For frontend packages:
 ```
 $ bower install
 ```
-##### For gulp packages and dependencies
+##### For gulp packages and dependencies:
 ```
 $ npm install
 ```
-or for root permissions
+or for root permissions:
 ```
 $ sudo npm install
 ```
