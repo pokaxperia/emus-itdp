@@ -1,24 +1,36 @@
 Emus ITDP México
 ====================
 Strategy of Sustainable Urban Mobility
-- Roadmap for implementing sustainable urban mobility projects
+- Roadmap for implementing sustainable urban mobility projects.
 
 Requirements
 -------
-- nodejs
-- bower
+- [nodejs](https://nodejs.org/)
+- [bower](http://bower.io/#install-bower)
+
+First
+-------
+Clone:
+
+```
+$ git clone https://github.com/pokaxperia/emus-itdp.git
+```
+
+or [download ZIP](https://github.com/pokaxperia/emus-itdp/archive/master.zip).
+
 
 Install packages and dependencies
 -------
-##### For frontend packages
+**Important** Make sure you go to the root folder before run installs.
+##### For frontend packages:
 ```
 $ bower install
 ```
-##### For gulp packages and dependencies
+##### For gulp packages and dependencies:
 ```
 $ npm install
 ```
-or for root permissions
+or for root permissions:
 ```
 $ sudo npm install
 ```
@@ -46,10 +58,10 @@ Folder Structure
 |   |   |_ images
 |   |   |_ js
 |   |   |_ styles
-|   |   |   |_  ...           # Sass stylesheets for each view's component 
-|   |   |_ index.html         # Main index for Dev server
-|   |_ server                 # Other configurations
-|--tmp                        # Final template file from each angular view (for production)
+|   |   |   |_  ...         # Sass stylesheets for each view's component 
+|   |   |_ index.html       # Main index for Dev server
+|   |_ server               # Other configurations
+|--tmp                      # Final template file from each angular view (for production)
 ```
 
 Quick start (dev server)
