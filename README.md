@@ -1,4 +1,6 @@
 # Emus-Itdp México
-Estratégia de Movilidad Urbana Sustentable
+Strategy of Sustainable Urban Mobility
 
-Hoja de ruta para la implementación de proyectos de movilidad urbana sustentable
+Roadmap for implementing sustainable urban mobility projects
+
+**Requeriments and install**
