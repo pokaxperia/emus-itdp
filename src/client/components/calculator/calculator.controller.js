@@ -4,15 +4,12 @@
 	*/
 	'use strict';
 
-	var CalculatorController = function($scope,$location, $state, $log, $filter, SendQuote){
+	var CalculatorController = function($timeout, $modal, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){
+		var state = $rootScope.estado;
 
-		$scope.calculator = {};
-		if (!$scope.calc) {
-			$scope.calc = {
-				"bicie": 0
-			};
-		}
-		var typeProyect,
+		var area,
+		valores,
+		typeProyect,
 		pozosValue,
 		parsePozosValue,
 		rejillasValue,
@@ -21,13 +18,94 @@
 		parseCocherasValue,
 		bicieValue,
 		parseBicieValue;
-
+		
 		var getQuote = sessionStorage.getItem('setQuote');
 		var flagPozos = sessionStorage.getItem('flagPozos');
 		var flagRejillas = sessionStorage.getItem('flagRejillas');
 		var flagCocheras = sessionStorage.getItem('flagCocheras');
 		var flagBicie = sessionStorage.getItem('flagBicie');
 		var valorBicie = sessionStorage.getItem('Bicie');
+		var getArea = sessionStorage.getItem('area');
+		console.log(getArea);
+		var getState = sessionStorage.getItem('state');
+		
+		console.log(getState);
+		
+
+		if (state === 'modalidades.calculadora.tipo-de-proyecto') {
+			if (getState === null) {
+				Modal();
+			}
+		}
+
+		function Modal(){
+			return $timeout(function(){
+				$modal.open({
+					templateUrl: './components/calculator/type/modal.html',
+					controller: ModalController
+				});
+			}, 1500);
+		};
+
+		function ModalController($scope, $modalInstance){
+			if(getArea){
+				$scope.area = JSON.parse(getArea);
+			}
+			$scope.estados = [
+				"Aguascalientes",
+				"Baja California",
+				"Baja California Sur",
+				"Campeche",
+				"Chiapas",
+				"Chihuahua",
+				"Coahuila",
+				"Colim",
+				"Distrito Federal",
+				"Durango",
+				"Estado de México",
+				"Guanajuato",
+				"Guerrero",
+				"Hidalgo",
+				"Jalisco",
+				"Michoacán",
+				"Morelos",
+				"Nayarit",
+				"Nuevo León",
+				"Oaxac",
+				"Puebl",
+				"Querétaro",
+				"Quintana Roo",
+				"San Luis Potosí",
+				"Sinaloa",
+				"Sonora",
+				"Tabasco",
+				"Tamaulipas",
+				"Tlaxcala",
+				"Veracruz",
+				"Yucatán",
+				"Zacatecas"
+			];
+			$scope.saveArea = function () {
+				sessionStorage.setItem('state', 'true');
+				area = JSON.stringify($scope.area);
+				sessionStorage.setItem('area', area);
+				$modalInstance.close();
+			};
+			
+			$scope.notYet = function () {
+				sessionStorage.setItem('state', 'false');
+				$modalInstance.dismiss();
+			};
+		}
+
+
+		$scope.calculator = {};
+		if (!$scope.calc) {
+			$scope.calc = {
+				"bicie": 0
+			};
+		}
+
 		$scope.calc.bicie = JSON.parse(valorBicie);
 		console.log(getQuote);
 		if(getQuote  !== null){
@@ -108,7 +186,7 @@
 				}
 			}
 
-			var valores = JSON.stringify($scope.calculator);
+			valores = JSON.stringify($scope.calculator);
 			sessionStorage.setItem('setQuote',valores);
 			$state.go('modalidades.calculadora.formulario');
 		};
@@ -286,7 +364,7 @@
 
 	};
 
-	CalculatorController.$inject = ['$scope','$location', '$state', '$log', '$filter','SendQuote'];
+	CalculatorController.$inject = ['$timeout',  '$modal', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
 
 	angular.module('emus.calculator', []).
 	controller('CalculatorController', CalculatorController);
