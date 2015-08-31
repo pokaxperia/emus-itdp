@@ -8,7 +8,11 @@
 		'emus.modalities',
 		'emus.calculator',
 		'emus.calculator.factory',
-		'duScroll'
+		'duScroll',
+		'ncy-angular-breadcrumb',
+		'ngAnimate',
+		'ui.bootstrap',
+		'nya.bootstrap.select'
 		]
 	)
 	.value('duScrollDuration', 750)
@@ -18,11 +22,14 @@
 		$rootScope.$stateParams = $stateParams;
 		
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-			$rootScope.nombre = toState.name;
+			$rootScope.estado = toState.name;
 		});
 
 		return $rootScope;
 
-	}]);
+	}])
+	.config(function($modalProvider) {
+  	$modalProvider.options.animation = true;
+	});
 
 }());
