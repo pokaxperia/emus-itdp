@@ -1,0 +1,25 @@
+<section class="modal-header">
+	<h3 class="modal-title">Escoge tu Estado y municipio!</h3>
+</section>
+<section class="modal-body">
+	<article class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<ol class="nya-bs-select" data-size="10" title="Estado" ng-model="area.estado">
+				<li nya-bs-option="option in estados" data-value="option" class="nya-bs-option" >
+					<a>{{option}}</a>
+				</li>
+			</ol>
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+			<ol class="nya-bs-select" data-size="10" title="Municipio" ng-model="area.municipio">
+				<li nya-bs-option="option in estados" data-value="option" class="nya-bs-option" >
+					<a>{{option}}</a>
+				</li>
+			</ol>
+		</div>
+	</article>
+</section>
+<section class="modal-footer">
+	<button class="btn btn-ghost2" type="button" ng-click="saveArea()">ACEPTAR</button>
+	<button class="btn btn-ghost1" type="button" ng-click="notYet()">MÁS ADELANTE</button>
+</section>
