@@ -3,7 +3,7 @@
 		<div class="calculator-form-t col-xs-12 col-sm-6 col-md-6 col-lg-6">
 			<section>
 				<p>Tipo de Infraestructura</p>
-				<h1>{{calculator.infraestructura}}</h1>
+				<h1>{{calculator.infraestructura}} </h1>
 			</section>
 		</div>
 		<div class="calculator-form-t col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -16,6 +16,7 @@
 </div>
 <div class="row calculator-form-c">
 	<section class="calculator-question col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
+		<small style="padding: 10px 0;display: block;color:rgba(65, 76, 90, 0.65);">*Todos los campos son requeridos</small>
 		<div class="row calculator-form-row">
 			<div class="form-group">
 				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
@@ -138,7 +139,7 @@
 				<ul>
 					<li class="item-option">
 						<input type="radio" id="PozosProyecto" class="radio" name="PozosProyecto" ng-value="default_pozos" ng-model="calculator.PozosProyecto" ng-click="getPozosAuto(calculator.KmEvaluables)" ng-checked="flagPozos == true">
-						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small></label>
+						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 
 						<input type="number" ng-value="calculator.PozosProyecto" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="calculator.PozosProyecto" disabled ng-if="calculator.PozosProyecto == default_pozos || flagPozos === true" style="top: 15px;position: relative;">
 					</li>
@@ -160,8 +161,8 @@
 				<ul>
 					<li class="item-option">
 						<input type="radio" id="default-rejillas" name="rejillas" class="radio" ng-value="default_rejillas" ng-click="getRejillasAuto(calculator.KmEvaluables)" ng-model="calculator.RejillasProyecto" >
-						<label class="label-field" for="default-rejillas"><small>Rejillas por default</small></label>
-						
+						<label class="label-field" for="default-rejillas"><small>Rejillas por default</small><a href="" title="" class="emus-help" style="color:#414C5A;text-decoration:none;" tooltip="Cada 25 m para pavimento y concreto" tooltip-append-to-body tooltip-enabled="true" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
+
 						<input type="number" ng-value="calculator.RejillasProyecto" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="calculator.RejillasProyecto" disabled ng-focus="calculator.RejillasProyecto == ''" ng-if="calculator.RejillasProyecto == default_rejillas || flagRejillas === true" style="top: 15px;position: relative;">
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
@@ -181,7 +182,7 @@
 				<ul>
 					<li class="item-option">
 						<input type="radio" id="default-cocheras" name="cocheras" class="radio" ng-value="default_cocheras" ng-click="getCocherasAuto(calculator.KmEvaluables)" ng-model="calculator.Cocheras">
-						<label class="label-field" for="default-cocheras"><small>Por default</small></label>
+						<label class="label-field" for="default-cocheras"><small>Por default</small><a href="" title="" class="emus-help" style="color:#414C5A;text-decoration:none;" tooltip="Considerando 5 cocheras por calle" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						<input type="number" ng-value="calculator.Cocheras" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="calculator.Cocheras" disabled ng-focus="calculator.Cocheras == ''" ng-if="calculator.Cocheras == default_cocheras || flagCocheras === true" style="top: 15px;position: relative;">
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
@@ -202,7 +203,7 @@
 					<ul>
 						<li class="item-option">
 							<input type="radio" ng-value="default_bicie" id="default-bicie" name="biciestacionamiento" class="radio" ng-model="calculator.Biciestacionamientos" ng-click="getBicieAuto(calculator.KmEvaluables)" ng-checked="flagBicie == true">
-							<label class="label-field" for="default-bicie"><small>Por default</small></label>
+							<label class="label-field" for="default-bicie"><small>Por default</small><a href="" title="" class="emus-help" style="color:#414C5A;text-decoration:none;" tooltip="Bloque de 4 cada 300m" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						</li>
 						<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
 							<input type="radio" id="custom-bicie" class="radio" name="biciestacionamientos" ng-value="custom_bicie" ng-click="getBicieCustom()" ng-checked="flagBicie === false" ng-model="calc.bicie">

@@ -10,14 +10,30 @@ section.modality-container{
 	>.container{
 		position: relative;
 	}
-	article.modality-breadcrumb{
-		position: absolute;
-		right: 15px;
-		top: 75px;
-		small{
-			color: #ffffff;
-			font-size: 14px;
-			font-weight: 100;
+}
+article.modality-breadcrumb{
+	position: relative;
+	right: 15px;
+	top: 75px;
+	z-index:10;
+	.breadcrumb{
+		list-style: none;
+		color: #ffffff;
+		li {
+			display: inline-block;
+			font-size: 13px;
+			font-weight: 200;
+			padding: 10px 2px;
+			span{
+				color: #35AAB7;
+			}
+			a{
+				color: #ffffff;
+			}
+		}
+		li+li:before {
+			content: "/\00a0";
+			padding: 0 2px;
 		}
 	}
 }
@@ -127,7 +143,8 @@ section.modality-container{
 @media (min-width: 768px) {
 	.breadcrumb{
 		position: absolute;
-		top: 90px;
+		right: 0;
+		top: 0px;
 	}
 	.modality{
 		@include background-size(cover);
