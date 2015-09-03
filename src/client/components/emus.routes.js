@@ -8,15 +8,17 @@
 			.state('inicio', {
 				url: '/',
 				templateUrl: './components/landing/landing.html',
-				controller: 'LandingController'
+				controller: 'LandingController',
+				ncyBreadcrumb: {
+					label: 'Inicio'
+				}
 			})
 			.state('modalidades', {
-				abstract: false,
 				url: '/modalidades',
 				templateUrl: './components/modalities/modalities.html',
 				controller: 'ModalitiesController',
 				ncyBreadcrumb: {
-					label: 'MODALIDADES',
+					label: 'Modalidades',
 					parent: 'inicio'
 				}
 			})
@@ -26,37 +28,38 @@
 					return './components/modalities/type/'+$stateParams.tipo+'.html';
 				},
 				ncyBreadcrumb: {
-					label: "{{ $stateParams.tipo }}",
-					parent: 'modalidades'
+					label: 'Modalidades',
+					parent: 'inicio'
 				}
 			})
 			.state('modalidades.calculadora', {
+				abstract: true,
 				url: '/calculadora',
 				templateUrl: './components/calculator/calculator.html',
-				onEnter: function($rootScope) {
-				  return $rootScope.pruebas;
-				},
 				controller: 'CalculatorController'
 			})
 			.state('modalidades.calculadora.tipo-de-proyecto', {
 				url: '/tipo-de-proyecto',
 				templateUrl: './components/calculator/type/type-of-project.html',
 				ncyBreadcrumb: {
-					label: "PROYECTO",
-					parent: 'modalidades.calculadora'
+					label: 'Tipo de proyecto'
 				}
 			})
 			.state('modalidades.calculadora.formulario', {
 				url: '/formulario',
 				templateUrl: './components/calculator/form.html',
 				ncyBreadcrumb: {
-					label: "FORMULARIO",
+					label: 'Calculadora',
 					parent: 'modalidades.calculadora.tipo-de-proyecto'
 				}
 			})
 			.state('modalidades.calculadora.resumen', {
 				url: '/resumen',
-				templateUrl: './components/calculator/summary.html'
+				templateUrl: './components/calculator/summary.html',
+				ncyBreadcrumb: {
+					label: 'Resumen',
+					parent: 'modalidades.calculadora.formulario'
+				}
 			});
 	}]);
 
