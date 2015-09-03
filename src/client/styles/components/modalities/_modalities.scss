@@ -6,7 +6,6 @@ section.modality-container{
 	background: url("../images/modalities.jpg") no-repeat center;
 	background-position: 50% 100%;
 	background-size:cover;
-	padding-bottom: 25px;
 	>.container{
 		position: relative;
 	}
@@ -24,6 +23,7 @@ article.modality-breadcrumb{
 			font-size: 13px;
 			font-weight: 200;
 			padding: 10px 2px;
+			text-transform: uppercase;
 			span{
 				color: #35AAB7;
 			}
