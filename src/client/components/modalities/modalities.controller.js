@@ -4,8 +4,16 @@
 	*/
 	'use strict';
 
-	var ModalitiesController = function($scope,$window, $rootScope, $stateParams){
-		//$rootScope.modalidad = $stateParams.tipo;
+	var ModalitiesController = function($scope,$window, $state, $rootScope,$stateParams){
+/*		$scope.getBreadcrumbLabel = function(){
+			return $rootScope.tipo;
+		}*/
+
+		$scope.showModalities = function(){
+			if($state.current.name === 'modalidades' || $state.current.name === 'modalidades.tipo'){
+				return true;
+			}
+		}
 
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
@@ -34,7 +42,7 @@
 		});
 	};
 	
-	ModalitiesController.$inject = ['$scope', '$window', '$rootScope', '$stateParams'];
+	ModalitiesController.$inject = ['$scope', '$window', '$state','$rootScope','$stateParams'];
 	
 	angular.module('emus.modalities', []).
 	controller('ModalitiesController', ModalitiesController);
