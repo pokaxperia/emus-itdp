@@ -5,6 +5,55 @@ var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 var args = require('yargs').argv;
 
+/* path files */
+// var bower = '/bower_components';
+// var build = './build';
+// var client = './src/client/';
+// var components = client + 'components/';
+// var iconfonts = client + 'iconfonts/';
+// var images = client + 'images/';
+// var styles = client + 'styles/';
+// 
+// const paths = {
+// 	src: {
+// 		allappjs: '**/app.js'
+// 		allcss: '**/*.css',
+// 		alllibjs: '**/lib.js',
+// 		alltemplates: componentes + '**/*.html'
+// 		css: styles + 'styles.css',
+// 		index: client + 'index.html',
+// 		js: components + '**/*.js'
+// 		module: components + '**/*.module.js'
+// 		sass: styles + '**/*.scss',
+// 		styles: styles',
+// 		templatejs: 'tmp/templates.js',
+// 		images: images + '*.{jpg,png}',
+// 		iconfonts: iconfonts + '*.*'
+// 	},
+// 	build: {
+// 		components: build + 'components/'
+// 		iconfonts: build + 'iconfonts/',
+// 		images: build + '/images/',
+// 		styles: build + '/styles/'
+// 	}
+// 	clean: {
+// 		css: build + '/styles/styles.css',
+// 		components: build + '/components/*.*',
+// 		images: build + '/images/**/*.*',
+// 		iconfonts: build + '/iconfonts/emus.*',
+// 		js: build + '/js/**/*.js'
+// 	},
+// 	files: [
+// 		client + 'components/**/*.*',
+// 		client + 'iconfont/*.*',
+// 		client + 'images',
+// 		client + 'index.html',
+// 		client + 'styles/**/*.scss'
+// 		client + 'styles/styles.css',
+// 	]
+// }
+
+
 /* Task listing */
 gulp.task('tasklisting', function(){
 	log('Loading task');
@@ -34,7 +83,7 @@ gulp.task('bump', function(){
 
 /*** To Dev ***/
 
-/* Inject js and css files to index.html */
+// Inject js and css files to index.html 
 gulp.task('inject', ['templatecache', 'templates'], function(){
 	return gulp.src('./src/client/index.html')
 		.pipe(wiredep({
@@ -51,7 +100,8 @@ gulp.task('inject', ['templatecache', 'templates'], function(){
 		]), {ignorePath: '../../', relative: true}))
 		.pipe(gulp.dest('./src/client/'));
 });
-/* Source files */
+
+// Minify all HTML angular templates
 gulp.task('templatecache', ['clean-templatecache'], function(){
 	log('Angularjs template files!');
 	var options = {
@@ -66,15 +116,7 @@ gulp.task('templatecache', ['clean-templatecache'], function(){
 		))
 		.pipe(gulp.dest('tmp'));
 });
-gulp.task('clean-templatecache', function(done){
-	clean('tmp', done);
-});
-
-gulp.task('templates', ['cleaning-components'], function() {
-	log('Copying html files');
-	return gulp.src('./src/client/components/**/*.html')
-		.pipe(gulp.dest('build/components/'));
-});
+// Jshint to all src components
 gulp.task('js', function(){
 	log('Analizyng components...');
 
@@ -82,6 +124,7 @@ gulp.task('js', function(){
 	.pipe($.jshint())
 	.pipe($.jshint.reporter('jshint-stylish', {verbose: true}))
 });
+// Compile and minify sass stylesheets
 gulp.task('sass', ['clean-styles'], function () {
 	log('Compiling sass to css');
 	return gulp.src('./src/client/styles/**/*.scss')
@@ -90,9 +133,7 @@ gulp.task('sass', ['clean-styles'], function () {
 		.pipe($.concat('styles.css'))
 		.pipe(gulp.dest('src/client/styles/'));
 });
-gulp.task('clean-styles', function(done){
-clean('src/client/styles/styles.css', done);
-});
+
 
 /* To Production */
 gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont'], function(){
@@ -121,17 +162,25 @@ gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cl
 		.pipe($.useref())
 		.pipe(gulp.dest('build'));
 });
-
+// Copy components src -> build
+gulp.task('templates', ['cleaning-components'], function() {
+	log('Copying html files');
+	return gulp.src('./src/client/components/**/*.html')
+		.pipe(gulp.dest('build/components/'));
+});
+// Copy images src -> build
 gulp.task('build-images', ['cleaning-images'], function() {
 	log('Copying images');
 	return gulp.src('./src/client/images/*.{jpg,png}')
 		.pipe(gulp.dest('build/images/'));
 });
+// Copy iconfonts src -> build
 gulp.task('build-iconfont', function() {
 	log('Copying iconfonts');
 	return gulp.src('./src/client/iconfonts/*.*')
 		.pipe(gulp.dest('build/iconfonts/'));
 });
+/* Cleaners */
 gulp.task('cleaning-styles', function(done){
 	clean('build/styles/styles.css', done);
 });
@@ -147,6 +196,13 @@ gulp.task('cleaning-iconfonts', function(done){
 gulp.task('cleaning-js', function(done){
 	clean('build/js/**/*.js', done);
 });
+gulp.task('clean-templatecache', function(done){
+	clean('tmp', done);
+});
+gulp.task('clean-styles', function(done){
+clean('src/client/styles/styles.css', done);
+});
+
 /* Dev Server */
 gulp.task('dev-server', function(){
 	log('Dev server running...');
