@@ -219,8 +219,9 @@ fieldset[disabled] .btn-ghost2:active,
 .btn-ghost2.disabled.active,
 .btn-ghost2[disabled].active,
 fieldset[disabled] .btn-ghost2.active {
-	background-color: $color-mod2;
+	background-color: transparent;
 	border-color: transparent;
+	color: rgba($color-mod2, 0.5);
 }
 .btn-ghost2 .badge {
 	color: $color-mod2;
