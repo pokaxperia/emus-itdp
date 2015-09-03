@@ -4,9 +4,8 @@
 	*/
 	'use strict';
 
-	var CalculatorController = function($timeout, $modal, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){
-		var state = $rootScope.estado;
-
+	var CalculatorController = function($timeout, $modal, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){ 
+		var state = $rootScope.$state.current.name;
 		var area,
 		valores,
 		typeProyect,
@@ -18,7 +17,6 @@
 		parseCocherasValue,
 		bicieValue,
 		parseBicieValue;
-		
 		var getQuote = sessionStorage.getItem('setQuote');
 		var flagPozos = sessionStorage.getItem('flagPozos');
 		var flagRejillas = sessionStorage.getItem('flagRejillas');
@@ -26,14 +24,10 @@
 		var flagBicie = sessionStorage.getItem('flagBicie');
 		var valorBicie = sessionStorage.getItem('Bicie');
 		var getArea = sessionStorage.getItem('area');
-		console.log(getArea);
 		var getState = sessionStorage.getItem('state');
-		
-		console.log(getState);
-		
 
 		if (state === 'modalidades.calculadora.tipo-de-proyecto') {
-			if (getState === null) {
+			if (getState === null && getArea === null || getState === null && getArea === 'false') {
 				Modal();
 			}
 		}
@@ -86,10 +80,11 @@
 				"Zacatecas"
 			];
 			$scope.saveArea = function () {
-				sessionStorage.setItem('state', 'true');
-				area = JSON.stringify($scope.area);
-				sessionStorage.setItem('area', area);
-				$modalInstance.close();
+					sessionStorage.setItem('state', 'true');
+					area = JSON.stringify($scope.area);
+					sessionStorage.setItem('area', area);
+					$modalInstance.close();
+					return enviar();
 			};
 			
 			$scope.notYet = function () {
@@ -97,8 +92,13 @@
 				$modalInstance.dismiss();
 			};
 		}
-
-
+		
+		var enviar = function(){
+			var enviarDatos = JSON.parse(sessionStorage.getItem('setQuote'));
+			console.log(enviarDatos);
+			return enviarFormulario(enviarDatos);
+		}
+		
 		$scope.calculator = {};
 		if (!$scope.calc) {
 			$scope.calc = {
@@ -106,8 +106,9 @@
 			};
 		}
 
-		$scope.calc.bicie = JSON.parse(valorBicie);
-		console.log(getQuote);
+		if (!valorBicie) {
+			$scope.calc.bicie = JSON.parse(valorBicie);
+		};
 		if(getQuote  !== null){
 			$scope.calculator = JSON.parse(getQuote);
 			
@@ -346,22 +347,37 @@
 		/* End Biciestacionamientos field */
 
 		/* Submit Form */
+
 		$scope.saveQuote = function(calculatorForm, calculator){
+			var getState = sessionStorage.getItem('state');
 			if (calculatorForm.$valid === true) {
-				$scope.calculatorForm.submitted = true;
 				var valores = JSON.stringify(calculator);
 				sessionStorage.setItem('setQuote',valores);
-				SendQuote.sendQuote(valores).
-				then(function(data){
-					if(data){
-						$log.info("Ok");
-					}
-				}, function(error){
-					$log.error("Error: " + error);
-				});
+				if (getState === 'false') {
+					$log.info("Lanzar Modal");
+					Modal();
+				}
+				else{
+					$log.info("Modal sin lanzar");
+					enviarFormulario(calculator);
+				}
+			}
+			else{
+				$log.info("False");
 			}
 		};
-
+		
+		var enviarFormulario = function(calculator){
+			$log.info('Enviando formulario');
+			SendQuote.sendQuote(calculator).
+			then(function(data){
+				if(data){
+					$log.info("Ok");
+				}
+			}, function(error){
+				$log.error("Error: " + error);
+			});
+		};
 	};
 
 	CalculatorController.$inject = ['$timeout',  '$modal', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
