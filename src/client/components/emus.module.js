@@ -6,13 +6,15 @@
 		'emus.routes',
 		'emus.landing',
 		'emus.modalities',
+		'emus.modalities.type',
 		'emus.calculator',
 		'emus.calculator.factory',
 		'duScroll',
 		'ncy-angular-breadcrumb',
 		'ngAnimate',
 		'ui.bootstrap',
-		'nya.bootstrap.select'
+		'nya.bootstrap.select',
+		'angularUtils.directives.uiBreadcrumbs'
 		]
 	)
 	.value('duScrollDuration', 750)
@@ -21,10 +23,10 @@
 		$rootScope.$state = $state;
 		$rootScope.$stateParams = $stateParams;
 		
-		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-			$rootScope.estado = toState.name;
+		$rootScope.$on('$stateChangeSuccess', function(toState){
+			return $rootScope.state = toState.targetScope.$state.current;
 		});
-
+		
 		return $rootScope;
 
 	}])
