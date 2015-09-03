@@ -18,13 +18,23 @@
 		</div>
 	</header>
 	<section class="modality-container">
+		
 		<section class="container">
+			
 			<article class="modality-breadcrumb">
+				
+				<!--<ul>
+					<li><a ui-sref ="{{step.link}}" title="">{{step.nombre}}</a></li>
+					<li><a ui-sref ="modalidades.tipo({tipo:step.link1 })" title="">{{step.link1}}</a></li>
+				</ul>
+			-->
+				<!--<ui-breadcrumbs displayname-property="data.displayName" abstract-proxy-property="data.breadcrumbProxy" template-url="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.tpl.html"></ui-breadcrumbs>-->
 				<div ncy-breadcrumb></div>
+				
 			</article>
 			<article class="modality-header">
-				<h1>MODALIDADES DE LOS EMUS</h1>
-				<ul ng-hide>
+				<h1>{{state.ncyBreadcrumbLabel}}</h1>
+				<ul ng-if="showModalities()">
 					<li><button id="calles" class="btn btn-mod1" ui-sref-active="active" ui-sref="modalidades.tipo({tipo:'calles'})" >CALLES</button></li>
 					<li><button class="btn btn-mod2">SISTEMAS INTEGRADOS DE TRANSPORTE</button></li>
 					<li><button class="btn btn-mod3">DESARROLLO ORIENTADO AL TRANSPORTE</button></li>
