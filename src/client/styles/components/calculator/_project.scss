@@ -1,6 +1,7 @@
 .calculator-project{
 	background-color: #fff;
 	overflow: hidden;
+	margin-top:20px;
 	padding-bottom: 10px;
 	>div{
 		margin-bottom: 20px;
@@ -22,15 +23,19 @@
 			top: 0;
 			z-index: 10;
 		}
-		figure img{
-			-webkit-backface-visibility: hidden;
-			@include transform(scale(1));
-			@include transition(all 0.5s linear);
-			cursor: pointer;
-			display: block;
-			height: auto;
-			max-width: 100%;
-			transition: none;
+		figure
+		label{
+			padding: 0;
+			img{
+				-webkit-backface-visibility: hidden;
+				@include transform(scale(1));
+				@include transition(all 0.5s linear);
+				cursor: pointer;
+				display: block;
+				height: auto;
+				max-width: 100%;
+				transition: none;
+			}
 		}
 	}
 }
