@@ -88,17 +88,18 @@ fieldset[disabled] .btn-select.active {
 	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
 .btn-landing1 {
+	@include box-shadow(none);
 	background-color: transparent;
 	border: 1px solid #414C5A;
 	color: #414C5A;
-	@include box-shadow(none);
+	font-weight: 300;
 }
 .btn-landing1:focus,
 .btn-landing1.focus,
 .btn-landing1:hover {
-	color: #414C5A;
-	background-color: transparent;
-	//@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+	background-color: #414C5A;
+	color: #ffffff;
 }
 // Button Ghost 1
 .btn-ghost1 {
