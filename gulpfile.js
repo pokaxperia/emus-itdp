@@ -91,6 +91,9 @@ gulp.task('inject', ['templatecache', 'templates'], function(){
 			directory: 'bower_components',
 			ignorePath: '../../'
 		}))
+		.pipe($.inject(gulp.src(
+			'bower_components/angular-ui-bootstrap/*.js',{read: false}
+		),{starttag: '<!-- inject:own:js -->'}))
 		.pipe($.inject(gulp.src([
 			'./src/client/styles/styles.css'
 		]), {ignorePath: '../../', relative: true}))
