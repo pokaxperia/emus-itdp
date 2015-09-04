@@ -182,6 +182,7 @@ gulp.task('templates', ['cleaning-components'], function() {
 gulp.task('build-images', ['cleaning-images'], function() {
 	log('Copying images');
 	return gulp.src('./src/client/images/*.{jpg,png}')
+		.pipe($.imagemin({optimizationLevel: 4}))
 		.pipe(gulp.dest('build/images/'));
 });
 // Copy iconfonts src -> build
