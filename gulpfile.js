@@ -119,6 +119,13 @@ gulp.task('templatecache', ['clean-templatecache'], function(){
 		))
 		.pipe(gulp.dest('tmp'));
 });
+//
+gulp.task('images', function(){
+	log('Analizyng images...');
+
+	gulp.src(['./src/client/images/*.*'])
+	.pipe(gulp.dest('./src/client/images/'));
+});
 // Jshint to all src components
 gulp.task('js', function(){
 	log('Analizyng components...');
