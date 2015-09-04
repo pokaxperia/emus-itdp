@@ -105,7 +105,7 @@ section.titles{
 		font-size: 25px;
 		font-weight: normal;
 		margin: 0;
-		padding:100px 10px 30px;
+		padding:125px 10px 30px;
 	}
 	h2{
 		font-family: 'Roboto';
@@ -133,9 +133,54 @@ section.titles{
 		}
 	}
 }
+section.platform{
+	padding: 50px 0;
+	position: relative;
+	section.container{
+		h1{
+			color: $color-text;
+			font-weight: normal;
+			margin: 0;
+			font-size: 30px;
+		}
+		p{
+			color: $color-text;
+			font-weight: 100;
+			line-height: 29px;
+		}
+		section.row{
+			-webkit-align-items: center;
+			align-items: center;
+			display: inline-block;
+			flex-direction: row;
+			flex-grow: 1;
+			margin: 40px 0 0 0;
+			div{
+				margin-bottom: 40px;
+				article{
+					h2{
+						color: $color-text;
+						font-weight: normal;
+					}
+				}
+				figure{
+					text-align: center;
+					img{
+						max-width: 100%;
+						text-align: center;
+					}
+				}
+			}
+		}
+		section.row.p-modalities{
+			flex-direction: row-reverse;
+		}
+	}
+}
 section.who{
 	padding: 50px 0;
 	position: relative;
+	background-color: #EFF2F9;
 	.container h1{
 		color: $color-text;
 		font-weight: normal;
@@ -315,10 +360,10 @@ section.about{
 		article:nth-child(1){
 			h1{
 				font-size: 30px;
-				padding: 50px 0 75px 0;
+				padding: 50px 100px;
 			}
 			h2{
-				padding: 0px 5px 0;
+				padding: 0px 125px;
 			}
 		}
 		button{
@@ -333,6 +378,15 @@ section.about{
 		}
 		section.row{
 			padding-top: 100px;
+		}
+	}
+	section.platform{
+		section.container{
+			section.row{
+				display: flex;
+				display: -webkit-flex;
+
+			}
 		}
 	}
 	section.who-header{
@@ -414,7 +468,7 @@ section.about{
 		article:nth-child(1){
 			h1{
 				font-size: 35px;
-				padding: 5px 75px 25px;
+				padding: 5px 150px;
 			}
 			h2{
 				padding: 50px 100px 0;
@@ -493,12 +547,12 @@ section.about{
 }
 @media (min-width: 1200px) {
 	section.titles{
-		padding: 100px 0 50px;
+		padding: 100px ;
 		h1{
 			padding: 0px 100px 25px;
 		}
 		h2{
-			padding: 5px 20px 0;
+			padding: 5px 120px;
 		}
 		section.row{
 			padding-top: 50px;
