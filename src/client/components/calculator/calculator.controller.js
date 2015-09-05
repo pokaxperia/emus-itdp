@@ -26,7 +26,7 @@
 		var getArea = sessionStorage.getItem('area');
 		var getState = sessionStorage.getItem('state');
 
-		if (state === 'modalidades.calculadora.tipo-de-proyecto') {
+		if (state === 'modalidades.calculadora.formulario') {
 			if (getState === null && getArea === null || getState === null && getArea === 'false') {
 				Modal();
 			}
@@ -171,17 +171,19 @@
 
 		/* Type of project options */
 		$scope.getType = function(type){
-			$log.info("sessionStorage not empty");
 			typeProyect = type.infraestructura;
+			toggleFunction(typeProyect);
+			$log.info("sessionStorage not empty");
+			
 			if(type){
-				switch($scope.calculator.infraestructura){
+				switch(typeProyect){
 					case "Ciclovia":
 						$scope.calculator.tipo_calle = "Primaria";
 						break;
 					case "Ciclocarril":
 						$scope.calculator.tipo_calle = "Secundaria";
 						break;
-					case "Bus-bici":
+					case "Busbici":
 						$scope.calculator.tipo_calle = "Primaria";
 						break;
 				}
@@ -190,6 +192,12 @@
 			valores = JSON.stringify($scope.calculator);
 			sessionStorage.setItem('setQuote',valores);
 			$state.go('modalidades.calculadora.formulario');
+			
+			function toggleFunction(typeProyect){
+				var imgProject = angular.element(document.getElementById(typeProyect));
+				console.log(imgProject);
+			}
+			
 		};
 
 		/* Start Pozos field */
