@@ -1,33 +1,51 @@
-<div class="row calculator-form-title">
-	<div class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
-		<div class="calculator-form-t col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<section>
-				<p>Tipo de Infraestructura</p>
-				<h1>{{calculator.infraestructura}} </h1>
-			</section>
-		</div>
-		<div class="calculator-form-t col-xs-12 col-sm-6 col-md-6 col-lg-6">
-			<section>
-				<p>Tipo de calle</p>
-				<h1>{{calculator.tipo_calle}}</h1>
-			</section>
-		</div>
-	</div>
-</div>
 <div class="row calculator-form-c">
 	<section class="calculator-question col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-1 col-lg-10">
 		<small style="padding: 10px 0;display: block;color:rgba(65, 76, 90, 0.65);">*Todos los campos son requeridos</small>
 		<div class="row calculator-form-row">
+			<section class="calculator-project">
+				<p>¿Qué infraestructura quieres cotizar?</p>
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<input type="radio" id="ciclovia" ng-model="calculator.infraestructura" name="ciclovia" value="Ciclovia" class="radio" ng-change="getType(calculator)">
+					<article>
+						<figcaption>Ciclovia</figcaption>
+						<figure>
+							<label for="ciclovia">
+							<img src="./images/ciclovia.jpg" style="width: 100%;" id="Ciclovia">
+							</label>
+						</figure>
+					</article>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
+					<input type="radio" id="ciclocarril" ng-model="calculator.infraestructura" name="ciclocarril" value="Ciclocarril" class="radio" ng-change="getType(calculator)">
+					<article >
+						<figcaption>Ciclocarril</figcaption>
+						<figure>
+							<label for="ciclocarril" >
+							<img src="./images/ciclocarril.jpg" style="width: 100%;" id="Ciclocarril">
+							</label>
+						</figure>
+					</article>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+					<input type="radio" id="busbici" ng-model="calculator.infraestructura" name="busbici" value="Busbici" class="radio" ng-change="getType(calculator)">
+					<article>
+						<figcaption>Bus-bici</figcaption>
+						<figure>
+							<label for="busbici" >
+							<img src="./images/busbici.jpg" style="width: 100%;" id="Busbici">
+							</label>
+						</figure>
+					</article>
+				</div>
+			</section>
+		</div>
+		<div class="row calculator-form-row">
 			<div class="form-group">
 				<div class="col-xs-12 col-sm-5 col-md-5 col-lg-4">
-					<label>Ingresa los kilómetros de infraestructura a cotizar</label>
+					<label>Tipo de calle</label>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-					<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 input">
-							<input type="number" name="kilometros" class="form-control" placeholder="ejemplo: 00.00" step="0.01" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/"  ng-model="calculator.KmEvaluables" required>
-							<label>Km</label>
-							<span class="btn btn-danger" ng-show="calculatorForm.kilometros.$error.pattern ">No es un número válido !</span>
-					</div>
+					<label class="label-field" for="1sentido"><small>{{calculator.tipo_calle}}</small></label>
 				</div>
 			</div>
 		</div>
