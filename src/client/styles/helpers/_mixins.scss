@@ -25,3 +25,10 @@
 	-ms-transform: $trans;
 	transform: $trans;
 }
+@mixin backface-visibility($trans){
+	-webkit-backface-visibility: $trans;
+	-moz-backface-visibility: $trans;
+	-o-backface-visibility: $trans;
+	-ms-backface-visibility: $trans;
+	backface-visibility: $trans;
+}
