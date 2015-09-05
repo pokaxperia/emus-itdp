@@ -1,14 +1,11 @@
 .calculator-project{
-	background-color: #fff;
 	overflow: hidden;
-	margin-top:20px;
-	padding-bottom: 10px;
 	>div{
 		margin-bottom: 20px;
 	}
 	article{
 		position: relative;
-		-webkit-backface-visibility: hidden;
+		@include backface-visibility(hidden);
 		@include transition(all 0.5s linear);
 		overflow: hidden;
 		position: relative;
@@ -25,9 +22,11 @@
 		}
 		figure
 		label{
+			background-color:#000000;
 			padding: 0;
 			img{
-				-webkit-backface-visibility: hidden;
+				opacity: 0.5;
+				@include backface-visibility(hidden);
 				@include transform(scale(1));
 				@include transition(all 0.5s linear);
 				cursor: pointer;
@@ -48,10 +47,10 @@
 			figure{
 				label{
 					background-color:#000000;
-					overflow: hidden;
 					margin: 0;
+					overflow: hidden;
 					img{
-						-webkit-backface-visibility: hidden;
+						@include backface-visibility(hidden);
 						@include transform(scale(1));
 						@include transition(all 0.15s linear);
 					}
@@ -59,7 +58,7 @@
 			}
 			&:hover{
 				figure label img{
-					opacity: 0.5;
+					opacity: 1;
 				}
 				figcaption{
 					visibility: visible;
