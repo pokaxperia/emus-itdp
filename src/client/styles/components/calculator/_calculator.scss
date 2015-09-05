@@ -1,5 +1,5 @@
 .calculator-container{
-	background-color: #ECEFF1;
+	background-color: #EFF2F9;
 }
 .calculator{
 	padding: 0px 0 50px;
@@ -34,6 +34,7 @@
 }
 .calculator-question{
 	background-color: #fff;
+	margin-top: 40px;
 }
 .calculator-form-title{
 	border: 0;
@@ -101,6 +102,9 @@ input.radio{
 		visibility: hidden;
 		position:absolute;
 	}
+}
+.radio_active{
+	opacity:1 !important;
 }
 .breadcrumb-city{
 	position: absolute;
