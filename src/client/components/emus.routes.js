@@ -38,19 +38,19 @@
 				templateUrl: './components/calculator/calculator.html',
 				controller: 'CalculatorController'
 			})
-			.state('modalidades.calculadora.tipo-de-proyecto', {
+/*			.state('modalidades.calculadora.tipo-de-proyecto', {
 				url: '/tipo-de-proyecto',
 				templateUrl: './components/calculator/type/type-of-project.html',
 				ncyBreadcrumb: {
 					label: 'Tipo de proyecto'
 				}
-			})
+			})*/
 			.state('modalidades.calculadora.formulario', {
 				url: '/formulario',
 				templateUrl: './components/calculator/form.html',
 				ncyBreadcrumb: {
 					label: 'Calculadora',
-					parent: 'modalidades.calculadora.tipo-de-proyecto'
+					parent: 'modalidades.calculadora'
 				}
 			})
 			.state('modalidades.calculadora.resumen', {
