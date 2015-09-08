@@ -105,6 +105,8 @@ input.radio{
 }
 .radio_active{
 	opacity:1 !important;
+	@include transform(scale(1.25) !important);
+	@include transition(opacity 0.15s linear);
 }
 .breadcrumb-city{
 	position: absolute;
