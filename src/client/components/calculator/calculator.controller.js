@@ -6,7 +6,10 @@
 
 	var CalculatorController = function($timeout, $modal, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){ 
 		var state = $rootScope.$state.current.name;
-		var area,
+		var actualProject,
+		previousProject,
+		imgProject,
+		area,
 		valores,
 		typeProyect,
 		pozosValue,
@@ -25,12 +28,17 @@
 		var valorBicie = sessionStorage.getItem('Bicie');
 		var getArea = sessionStorage.getItem('area');
 		var getState = sessionStorage.getItem('state');
+		var getProject = sessionStorage.getItem('actualProject');
 
 		if (state === 'modalidades.calculadora.formulario') {
 			if (getState === null && getArea === null || getState === null && getArea === 'false') {
 				Modal();
 			}
 		}
+
+		/*if(getProject){
+			toggleFunction(getProject);
+		}*/
 
 		function Modal(){
 			return $timeout(function(){
@@ -95,7 +103,6 @@
 		
 		var enviar = function(){
 			var enviarDatos = JSON.parse(sessionStorage.getItem('setQuote'));
-			console.log(enviarDatos);
 			return enviarFormulario(enviarDatos);
 		}
 		
@@ -171,10 +178,16 @@
 
 		/* Type of project options */
 		$scope.getType = function(type){
+			actualProject = angular.element(document.getElementById(typeProyect));
+			
+			if(actualProject !==type.infraestructura){
+				actualProject.removeClass('radio_active');
+			}
+
 			typeProyect = type.infraestructura;
 			toggleFunction(typeProyect);
 			$log.info("sessionStorage not empty");
-			
+
 			if(type){
 				switch(typeProyect){
 					case "Ciclovia":
@@ -192,13 +205,16 @@
 			valores = JSON.stringify($scope.calculator);
 			sessionStorage.setItem('setQuote',valores);
 			$state.go('modalidades.calculadora.formulario');
-			
-			function toggleFunction(typeProyect){
-				var imgProject = angular.element(document.getElementById(typeProyect));
-				console.log(imgProject);
-			}
-			
+
 		};
+
+		function toggleFunction(typeProyect){
+			console.log(typeProyect);
+			imgProject = angular.element(document.getElementById(typeProyect));
+			imgProject.addClass('radio_active');
+			console.log(imgProject);
+			sessionStorage.setItem('actualProject',imgProject[0].id);
+		}
 
 		/* Start Pozos field */
 		if (flagPozos == 'true') {
@@ -342,8 +358,8 @@
 			sessionStorage.setItem('flagBicie','false');
 			$scope.flagBicie = false;
 			$scope.$watch('calc.bicie', function(newValue, oldValue){
-				sessionStorage.setItem('flagBicie','false');
 				$scope.flagBicie = false;
+				sessionStorage.setItem('flagBicie','false');
 				sessionStorage.setItem('Bicie',JSON.stringify(newValue));
 				bicieValue = newValue * 479.33;
 				parseBicieValue = Number(bicieValue.toString().match(/^\d+(?:\.\d{0,2})?/));
