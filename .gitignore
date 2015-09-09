@@ -10,3 +10,4 @@ tmp
 build
 tmp
 emus-commits.txt
+deploy.sh
