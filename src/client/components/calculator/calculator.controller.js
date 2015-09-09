@@ -11,7 +11,7 @@
 		imgProject,
 		area,
 		valores,
-		typeProyect,
+		typeProject,
 		pozosValue,
 		parsePozosValue,
 		rejillasValue,
@@ -36,9 +36,21 @@
 			}
 		}
 
-		/*if(getProject){
-			toggleFunction(getProject);
-		}*/
+		var something = (function(){
+			var executed = false;
+			if(getProject){
+				$timeout(function(){
+					if (!executed) {
+						executed = true;
+						imgProject = angular.element(document.getElementById(getProject));
+						imgProject.addClass('radio_active');
+					}
+				}, 1000);
+			}
+			else{
+				executed = false;
+			}
+		})();
 
 		function Modal(){
 			return $timeout(function(){
@@ -178,18 +190,20 @@
 
 		/* Type of project options */
 		$scope.getType = function(type){
-			actualProject = angular.element(document.getElementById(typeProyect));
-			
-			if(actualProject !==type.infraestructura){
-				actualProject.removeClass('radio_active');
+			debugger
+			previousProject = imgProject;
+			actualProject = angular.element(document.getElementById(typeProject));
+
+			if(previousProject){
+				!actualProject ? actualProject.removeClass('radio_active') : previousProject.removeClass('radio_active');
 			}
 
-			typeProyect = type.infraestructura;
-			toggleFunction(typeProyect);
-			$log.info("sessionStorage not empty");
+			typeProject = type.infraestructura;
+			toggleFunction(typeProject);
 
+			$log.info("sessionStorage not empty");
 			if(type){
-				switch(typeProyect){
+				switch(typeProject){
 					case "Ciclovia":
 						$scope.calculator.tipo_calle = "Primaria";
 						break;
@@ -208,13 +222,13 @@
 
 		};
 
-		function toggleFunction(typeProyect){
-			console.log(typeProyect);
-			imgProject = angular.element(document.getElementById(typeProyect));
+		function toggleFunction(typeProject){
+			imgProject = angular.element(document.getElementById(typeProject));
 			imgProject.addClass('radio_active');
-			console.log(imgProject);
 			sessionStorage.setItem('actualProject',imgProject[0].id);
+			
 		}
+		
 
 		/* Start Pozos field */
 		if (flagPozos == 'true') {
