@@ -22,24 +22,33 @@
 .emus-down-arrow:before {
 	content: "\e001";
 }
-.emus-facebook:before {
+.emus-marker2:before {
 	content: "\e002";
 }
-.emus-google:before {
+.emus-facebook:before {
 	content: "\e003";
 }
-.emus-left-arrow:before {
+.emus-google:before {
 	content: "\e004";
 }
-.emus-menu:before {
+.emus-marker1:before {
 	content: "\e005";
 }
-.emus-user:before {
+.emus-left-arrow:before {
 	content: "\e006";
 }
-.emus-right-arrow:before {
+.emus-menu:before {
 	content: "\e007";
 }
-.emus-twitter:before {
+.emus-marker:before {
 	content: "\e008";
+}
+.emus-user:before {
+	content: "\e009";
+}
+.emus-right-arrow:before {
+	content: "\e00a";
+}
+.emus-twitter:before {
+	content: "\e00b";
 }
