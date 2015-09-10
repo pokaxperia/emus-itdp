@@ -79,6 +79,12 @@ article.modality-breadcrumb{
 		padding: 35px 50px 0;
 		font-weight: normal;
 	}
+	.area{
+		bottom: 25px;
+		color: #ffffff;
+		position: initial;
+		right: 0;
+	}
 	ul{
 		-webkit-flex-direction: column;
 		-webkit-justify-content: center;
@@ -153,6 +159,9 @@ article.modality-breadcrumb{
 			font-size: 34px;
 			margin: 0;
 			padding: 35px 50px;
+		}
+		.area{
+			position: absolute;
 		}
 		ul{
 			-webkit-flex-direction: row;
