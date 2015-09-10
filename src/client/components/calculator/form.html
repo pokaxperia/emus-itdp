@@ -171,7 +171,7 @@
 				<ul>
 					<li class="item-option">
 						<input type="radio" id="PozosProyecto" class="radio" name="PozosProyecto" ng-value="default_pozos" ng-model="calculator.PozosProyecto" ng-click="getPozosAuto(calculator.KmEvaluables)" ng-checked="flagPozos == true">
-						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
+						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="click" tooltip-placement="top" tooltip-animation="true"></a></label>
 
 						<input type="number" ng-value="calculator.PozosProyecto" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="calculator.PozosProyecto" disabled ng-if="calculator.PozosProyecto == default_pozos || flagPozos === true" style="top: 15px;position: relative;">
 					</li>
