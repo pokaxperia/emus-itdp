@@ -423,7 +423,7 @@
 			if (calculatorForm.$valid === true) {
 				var valores = JSON.stringify(calculator);
 				sessionStorage.setItem('setQuote',valores);
-				if (getState === 'false') {
+				if (getState === 'false' || getState === null) {
 					$log.info("Lanzando Modal");
 					Modal();
 				}
