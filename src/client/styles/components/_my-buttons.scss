@@ -13,6 +13,60 @@ $color-mod8:#71B095;
 $color-mod9:#EF5350;
 $color-mod10:#78909C;
 
+// Button success
+.btn-g-success {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-success;
+	font-weight: normal;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-g-success:focus,
+.btn-g-success.focus,
+.btn-g-success:hover {
+	background-color: rgba($color-success, 0.9);
+	border-color: transparent;
+	color: #ffffff;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+// Button danger
+.btn-g-danger {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-danger;
+	font-weight: normal;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-g-danger:focus,
+.btn-g-danger.focus,
+.btn-g-danger:hover {
+	background-color: rgba($color-danger, 0.9);
+	border-color: transparent;
+	color: #ffffff;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
+// Button info
+.btn-g-info {
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+	color: $color-info;
+	font-weight: normal;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-g-info:focus,
+.btn-g-info.focus,
+.btn-g-info:hover {
+	background-color: rgba($color-info, 0.9);
+	border-color: transparent;
+	color: #ffffff;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
 // Button select
 .btn.btn-default.dropdown-toggle {
 	background-color: transparent;
