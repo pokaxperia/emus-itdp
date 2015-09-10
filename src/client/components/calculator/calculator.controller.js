@@ -4,35 +4,52 @@
 	*/
 	'use strict';
 
-	var CalculatorController = function($timeout, $modal, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){ 
+	var CalculatorController = function($timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){ 
 		var state = $rootScope.$state.current.name;
 		var actualProject,
-		previousProject,
-		imgProject,
 		area,
-		valores,
-		typeProject,
-		pozosValue,
-		parsePozosValue,
-		rejillasValue,
-		parseRejillasValue,
-		cocherasValue,
-		parseCocherasValue,
+		areaData,
+		areaProject,
 		bicieValue,
-		parseBicieValue;
-		var getQuote = sessionStorage.getItem('setQuote');
-		var flagPozos = sessionStorage.getItem('flagPozos');
-		var flagRejillas = sessionStorage.getItem('flagRejillas');
-		var flagCocheras = sessionStorage.getItem('flagCocheras');
-		var flagBicie = sessionStorage.getItem('flagBicie');
-		var valorBicie = sessionStorage.getItem('Bicie');
-		var getArea = sessionStorage.getItem('area');
-		var getState = sessionStorage.getItem('state');
-		var getProject = sessionStorage.getItem('actualProject');
+		cocherasValue,
+		flagBicie,
+		flagCocheras,
+		flagPozos,
+		flagRejillas,
+		getArea,
+		getProject,
+		getQuote,
+		getState,
+		imgProject,
+		parseBicieValue,
+		parseCocherasValue,
+		parsePozosValue,
+		parseRejillasValue,
+		pozosValue,
+		previousProject,
+		rejillasValue,
+		typeProject,
+		valorBicie,
+		valores;
+
+		getQuote = sessionStorage.getItem('setQuote');
+		flagPozos = sessionStorage.getItem('flagPozos');
+		flagRejillas = sessionStorage.getItem('flagRejillas');
+		flagCocheras = sessionStorage.getItem('flagCocheras');
+		flagBicie = sessionStorage.getItem('flagBicie');
+		valorBicie = sessionStorage.getItem('Bicie');
+		getArea = sessionStorage.getItem('area');
+		getState = sessionStorage.getItem('state');
+		getProject = sessionStorage.getItem('actualProject');
+		$scope.k_u = false;
 
 		if (state === 'modalidades.calculadora.formulario') {
 			if (getState === null && getArea === null || getState === null && getArea === 'false') {
 				Modal();
+				$scope.showArea = true;
+			}
+			else{
+				setArea();
 			}
 		}
 
@@ -52,6 +69,19 @@
 			}
 		})();
 
+		function setArea(){
+			$timeout(function(){
+				getArea = sessionStorage.getItem('area');
+				areaData = JSON.parse(getArea);
+				areaProject = angular.element(document.getElementById('area'));
+				areaProject.bind('click', Modal);
+				var area_estado = areaData.estado ? areaData.estado : "sin estado";
+				var area_municipio = areaData.municipio ? areaData.municipio : "sin municipio";
+
+				areaProject.text(area_estado + " - " + area_municipio);
+			}, 1000);
+		}
+
 		function Modal(){
 			return $timeout(function(){
 				$modal.open({
@@ -64,6 +94,7 @@
 		function ModalController($scope, $modalInstance){
 			if(getArea){
 				$scope.area = JSON.parse(getArea);
+				$scope.k_u = true;
 			}
 			$scope.estados = [
 				"Aguascalientes",
@@ -99,12 +130,31 @@
 				"Yucatán",
 				"Zacatecas"
 			];
+
 			$scope.saveArea = function () {
+				if (getQuote !== null) {
 					sessionStorage.setItem('state', 'true');
 					area = JSON.stringify($scope.area);
 					sessionStorage.setItem('area', area);
 					$modalInstance.close();
-					return enviar();
+					getState = sessionStorage.getItem('state');
+					setArea();
+					enviar();
+				}
+				sessionStorage.setItem('state', 'true');
+				area = JSON.stringify($scope.area);
+				sessionStorage.setItem('area', area);
+				$modalInstance.close();
+				getState = sessionStorage.getItem('state');
+				setArea();
+			};
+			
+			$scope.updateArea = function () {
+					sessionStorage.setItem('state', 'true');
+					area = JSON.stringify($scope.area);
+					sessionStorage.setItem('area', area);
+					$modalStack.dismissAll();
+					setArea();
 			};
 			
 			$scope.notYet = function () {
@@ -128,6 +178,7 @@
 		if (!valorBicie) {
 			$scope.calc.bicie = JSON.parse(valorBicie);
 		};
+
 		if(getQuote  !== null){
 			$scope.calculator = JSON.parse(getQuote);
 			
@@ -170,27 +221,8 @@
 			}
 		}
 
-/*	if(Object.keys($scope.calculator).length === 0){
-			$log.warn("Calculator object value: " +Object.keys($scope.calculator).length);
-			if(getQuote === null){
-				$log.warn("sessionStorage empty");
-				sessionStorage.clear();
-				$log.info("Cleaning sessionStorage");
-			}
-			else{
-				
-				$log.info("sessionStorage not empty");
-				var quotes = JSON.parse(getQuote);
-				$scope.calculator = quotes;
-				if (bandera == 'true') {
-					$scope.bandera = true;
-				}
-			}
-		}*/
-
 		/* Type of project options */
 		$scope.getType = function(type){
-			debugger
 			previousProject = imgProject;
 			actualProject = angular.element(document.getElementById(typeProject));
 
@@ -392,11 +424,11 @@
 				var valores = JSON.stringify(calculator);
 				sessionStorage.setItem('setQuote',valores);
 				if (getState === 'false') {
-					$log.info("Lanzar Modal");
+					$log.info("Lanzando Modal");
 					Modal();
 				}
 				else{
-					$log.info("Modal sin lanzar");
+					$log.info("Sin modal");
 					enviarFormulario(calculator);
 				}
 			}
@@ -418,7 +450,7 @@
 		};
 	};
 
-	CalculatorController.$inject = ['$timeout',  '$modal', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
+	CalculatorController.$inject = ['$timeout',  '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
 
 	angular.module('emus.calculator', []).
 	controller('CalculatorController', CalculatorController);
