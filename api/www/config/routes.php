@@ -7,4 +7,18 @@ if(!defined("_access")) {
 }
 
 $routes = array(
+	0 => array(
+		"pattern"	  => "/^estimate/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "estimate",
+		"params"	  => array()
+	),
+	1 => array(
+		"pattern"	  => "/^cities/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "cities",
+		"params"	  => array()
+	)
 );
