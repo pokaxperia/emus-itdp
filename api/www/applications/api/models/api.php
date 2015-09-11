@@ -37,13 +37,77 @@ class Api_Model extends ZP_Model {
 		$data["areaInfraestructura"] = $this->Area_Infraestructura;
 		$data["bacheo"] = $this->getBacheo();
 		$data["interseccionesSemaforizadas"] = $this->dataCity["interssemafor"]*$this->options["IntersSemaf"];
-		$data["delimitacionInfraestructura"] = $this->getCostoDelimitacionInfraestructura();
+		$data["delimitacionInfraestructura"] = $this->getDelimitacionInfraestructura();
 		$data["senalizacion"] = $this->getSenalizacion();
+		$data["infraestructuraComplementaria"] = $this->getInfresComplementaria();
+		$data["biciestacionamientos"] = $this->getBiciestacionamientos();
 		
-		die(var_dump($data));
 		return $data;
 	}
 	
+	/*Costo de Biciestacionamientos*/
+	public function getBiciestacionamientos() {
+		if($this->options["Biciestacionamientos"] == 127821.33) {
+			/*
+			 * BiciestacionamientosInput = Default 
+			 * ((KmEvaluables*1000)/300)*4*Biciestacionamientos
+			*/ 
+			$result = (($this->options["KmEvaluables"]*100)/300)*4*$this->options["Biciestacionamientos"];
+			return $result;
+		} else {
+			/*
+			* BiciestacionamientosInput = Biciestacionamientos*ImputBiciEst
+			*/
+			$result = $this->options["Biciestacionamientos"]*$this->dataCity["biciestacionamientos"];
+			return $result;
+		}
+		
+		return 0;
+	}
+	
+	/*Costo infraestructura complementaria*/
+	public function getInfresComplementaria() {
+		if($this->options["ObraComp"] == "ObraCompl_Completa") {
+			/*
+			 * ObraComp = ObraCompl_Completa 
+			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4] + 
+			 * [Bolardo*7*4*InputIntersTotales] + 
+			 * [GuiasTactiles*3*20] + 
+			 * [Banqueta*20]
+			 *
+			*/
+			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
+			$result += $this->dataCity["bolardo"]*7*4*$this->options["IntersTotales"];
+			$result += $this->dataCity["guiastactiles"]*3*20;
+			$result += $this->dataCity["banqueta"]*20;
+			
+			return $result;
+		} elseif($this->options["ObraComp"] == "ObraCompl_Semi") {
+			/* 
+			 * ObraComp = ObraCompl_Semi 
+			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4] + 
+			 * [Bolardo*7*4*InputIntersTotales]
+			*/
+			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
+			$result += $this->dataCity["bolardo"]*7*4*$this->options["IntersTotales"];
+			
+			return $result;
+		} elseif($this->options["ObraComp"] == "ObraCompl_Basica") {
+			/* 
+			 * ObraComp = ObraCompl_Basica 
+			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4]
+			*/
+			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
+			
+			return $result;
+		}
+		
+		return 0;
+		
+		
+	}
+	
+	/*Costo de señalización*/
 	public function getSenalizacion() {
 		/*
 		 * Costo de señalización vertical
@@ -66,7 +130,7 @@ class Api_Model extends ZP_Model {
 		$result["vertical"] = $vertical;
 		$result["horizontal"] = $horizontal;
 		
-		if($this->options[""] == "MinSenalHor") {
+		if($this->options["senalizacion"] == "MinSenalHor") {
 			$result["seleccionada"] = $horizontal;
 		} else {
 			$result["seleccionada"] = $horizontal+$vertical;
@@ -75,6 +139,7 @@ class Api_Model extends ZP_Model {
 		return $result;
 	}
 	
+	/*Costo de la delimitación de la infraestructura*/
 	public function getDelimitacionInfraestructura() {
 		if($this->options["infraestructura"] == "Ciclovia") {
 			if($this->options["AnchoCalle"] < 6) {
@@ -112,6 +177,7 @@ class Api_Model extends ZP_Model {
 		return 0;
 	}
 	
+	/*Costo de obras viales de bacheo*/
 	public function getBacheo() {
 		if($this->options["TipoDeBacheo"] == "Slurry") {
 			/*
