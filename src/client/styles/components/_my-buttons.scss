@@ -67,6 +67,24 @@ $color-mod10:#78909C;
 	color: #ffffff;
 	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
 }
+// Button area
+.btn-area {
+	background-color: transparent;
+	border-color: #ffffff;
+	box-shadow: none;
+	color: #ffffff;
+	font-weight: normal;
+	margin: 6px;
+	padding: 6px;
+}
+.btn-area:focus,
+.btn-area.focus,
+.btn-area:hover {
+	background-color: #ffffff;
+	border-color: transparent;
+	color: $color-text;
+	@include box-shadow(0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15));
+}
 // Button select
 .btn.btn-default.dropdown-toggle {
 	background-color: transparent;
