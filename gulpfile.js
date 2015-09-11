@@ -146,7 +146,7 @@ gulp.task('sass', ['clean-styles'], function () {
 
 
 /* To Production */
-gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont'], function(){
+gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont','build-api'], function(){
 	log('Build to Production');
 	var assets = $.useref.assets({searchPath: ['./', './src/client/']});
 	var cssFilter = $.filter('**/*.css', {restore: true});
@@ -190,6 +190,11 @@ gulp.task('build-iconfont', function() {
 	log('Copying iconfonts');
 	return gulp.src('./src/client/iconfonts/*.*')
 		.pipe(gulp.dest('build/iconfonts/'));
+});
+gulp.task('build-api', function() {
+	log('Copying api folder');
+	return gulp.src('./api/**/*.*')
+		.pipe(gulp.dest('build/api'));
 });
 /* Cleaners */
 gulp.task('cleaning-styles', function(done){
