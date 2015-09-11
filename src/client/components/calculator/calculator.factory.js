@@ -9,7 +9,7 @@
 		return {
 			sendQuote: function(quote_values){
 				var deferred = $q.defer();
-				return $http.post('http://itdp.mx/emus/#/', quote_values).
+				return $http.post('/api/index.php/estimate', quote_values).
 				then(function(result){
 					deferred.resolve(result);
 				}, function(error){
