@@ -242,7 +242,7 @@ class ZP_Db extends ZP_Load {
 					}
 				} elseif($this->db["dbDriver"] === "pgsql") {
 					try {
-					    $this->Database = new PDO("pgsql:host=". $this->db["dbHost"] . $port .";dbname=". $this->db["dbName"], $this->db["dbUser"], $this->db["dbPwd"]);
+					    $this->Database = new PDO("pgsql:host=". $this->db["dbHost"] . " port=" . $this->db["dbPort"] . " dbname=". $this->db["dbName"], $this->db["dbUser"], $this->db["dbPwd"]);
 					} catch (PDOException $e) {
 					    getException("Database Error: ". $e->getMessage());
 					}
