@@ -23,10 +23,19 @@ class Api_Controller extends ZP_Controller {
 		$this->render("content", $vars);
 	}
 	
-	//example
-	public function example() {
+	//estimate
+	public function estimate() {
 		$vars["results"] = null;
+
+		if(isset($_POST["AnchoCalle"])) {
+			$vars["results"] = $this->Api_Model->getResults($_POST);
+		}
 		
+		echo json_encode($vars, JSON_NUMERIC_CHECK);
+	}
+	
+	public function cities() {
+		$vars["results"]  = $this->Api_Model->getCities($table);
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
 }
