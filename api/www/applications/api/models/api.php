@@ -41,18 +41,19 @@ class Api_Model extends ZP_Model {
 		$data["senalizacion"] = $this->getSenalizacion();
 		$data["infraestructuraComplementaria"] = $this->getInfresComplementaria();
 		$data["biciestacionamientos"] = $this->getBiciestacionamientos();
+		$data["options"] = $this->options;
 		
 		return $data;
 	}
 	
 	/*Costo de Biciestacionamientos*/
 	public function getBiciestacionamientos() {
-		if($this->options["Biciestacionamientos"] == 127821.33) {
+		if($this->options["Biciestacionamientos"] == "default") {
 			/*
 			 * BiciestacionamientosInput = Default 
 			 * ((KmEvaluables*1000)/300)*4*Biciestacionamientos
 			*/ 
-			$result = (($this->options["KmEvaluables"]*100)/300)*4*$this->options["Biciestacionamientos"];
+			$result = (($this->options["KmEvaluables"]*100)/300)*4*$this->dataCity["biciestacionamientos"];
 			return $result;
 		} else {
 			/*
@@ -132,6 +133,7 @@ class Api_Model extends ZP_Model {
 		
 		if($this->options["senalizacion"] == "MinSenalHor") {
 			$result["seleccionada"] = $horizontal;
+			$result["vertical"]	    = 0;
 		} else {
 			$result["seleccionada"] = $horizontal+$vertical;
 		}
