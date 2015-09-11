@@ -174,9 +174,10 @@
 				"bicie": 0
 			};
 		}
-
-		if (!valorBicie) {
-			$scope.calc.bicie = JSON.parse(valorBicie);
+console.log(valorBicie)
+		if (valorBicie) {
+			console.log(valorBicie)
+			$scope.calc.bicie = Number(valorBicie.toString());
 		};
 
 		if(getQuote  !== null){
@@ -357,6 +358,7 @@
 		};
 
 		// Manual input
+		
 		$scope.getCocherasCustom = function(){
 			sessionStorage.setItem('flagCocheras','false');
 			$scope.flagCocheras = false;
@@ -367,7 +369,7 @@
 		/* End Cocheras field */
 
 		/* Start Biciestacionamientos field */
-		if (flagBicie == 'true') {
+		/*if (flagBicie == 'true') {
 			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
 				sessionStorage.setItem('flagBicie','true');
 				$scope.flagBicie = true; 
@@ -377,10 +379,11 @@
 				$scope.calculator.Biciestacionamientos = parseBicieValue;
 				$scope.default_bicie = $scope.calculator.Biciestacionamientos;
 			});
-		}
+		}*/
 
 		// Automatic calculation
-		$scope.getBicieAuto = function(valor){
+		/*$scope.getBicieAuto = function(valor){
+			
 			if (!$scope.calculator.KmEvaluables) {
 				sessionStorage.setItem('flagBicie','undefined');
 				$log.error("Ingrese los Kilometros primero");
@@ -397,21 +400,38 @@
 					$scope.default_bicie = $scope.calculator.Biciestacionamientos;
 				});
 			}
-		};
-
+		};*/
+		$scope.getBicieAuto = function(valor){
+			sessionStorage.setItem('flagBicie','true');
+			$scope.flagBicie = true;
+			console.log(valor);
+			//$scope.default_bicie = $scope.calculator.Biciestacionamientos;
+		}
 		// Manual input
+		
 		$scope.getBicieCustom = function(){
 			sessionStorage.setItem('flagBicie','false');
 			$scope.flagBicie = false;
+			if (flagBicie == 'false') {
+				$scope.$watch('calc.bicie', function(newValue, oldValue){
+					$scope.flagBicie = false;
+					sessionStorage.setItem('Bicie', newValue);
+					$scope.custom_bicie = newValue;
+					$scope.calc.bicie = newValue;
+				});
+			}
+		}
+
+			/*$scope.flagBicie = false;
+			sessionStorage.setItem('flagBicie','false');
 			$scope.$watch('calc.bicie', function(newValue, oldValue){
-				$scope.flagBicie = false;
-				sessionStorage.setItem('flagBicie','false');
-				sessionStorage.setItem('Bicie',JSON.stringify(newValue));
+				sessionStorage.setItem('Bicie', newValue);
 				bicieValue = newValue * 479.33;
 				parseBicieValue = Number(bicieValue.toString().match(/^\d+(?:\.\d{0,2})?/));
-				$scope.calculator.Biciestacionamientos = parseBicieValue;
+				$scope.calculator.Biciestacionamientos = newValue;
 				$scope.custom_bicie = newValue;
 			});
+			/*
 		};
 		
 		/* End Biciestacionamientos field */
@@ -419,6 +439,7 @@
 		/* Submit Form */
 
 		$scope.saveQuote = function(calculatorForm, calculator){
+			console.log(calculator);
 			var getState = sessionStorage.getItem('state');
 			if (calculatorForm.$valid === true) {
 				var valores = JSON.stringify(calculator);

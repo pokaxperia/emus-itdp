@@ -234,14 +234,14 @@
 				<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 					<ul>
 						<li class="item-option">
-							<input type="radio" ng-value="default_bicie" id="default-bicie" name="biciestacionamiento" class="radio" ng-model="calculator.Biciestacionamientos" ng-click="getBicieAuto(calculator.KmEvaluables)" ng-checked="flagBicie == true">
+							<input type="radio" value="default" id="default-bicie" name="biciestacionamiento" class="radio" ng-model="calculator.Biciestacionamientos" ng-click="getBicieAuto(calculator.Biciestacionamientos)" ng-checked="flagBicie == true">
 							<label class="label-field" for="default-bicie"><small>Por default</small><a href="" title="" class="emus-help" style="color:#414C5A;text-decoration:none;" tooltip="Bloque de 4 cada 300m" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						</li>
 						<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
 							<input type="radio" id="custom-bicie" class="radio" name="biciestacionamientos" ng-value="custom_bicie" ng-click="getBicieCustom()" ng-checked="flagBicie === false" ng-model="calc.bicie">
 							<label class="label-field" for="custom-bicie" ><small>Otro</small></label>
 
-							<input type="number" class="form-control" name="biciestacionamientos" placeholder="eg: 00" ng-change="getBicie(calc.bicie)" ng-model="calc.bicie" ng-if="flagBicie === false" ng-focus="calc.bicie = ''" required>
+							<input type="number" class="form-control" name="biciestacionamientos" placeholder="eg: 00"  ng-model="calc.bicie" ng-if="flagBicie === false"  required>
 							<span class="btn btn-danger" ng-show="calculatorForm.biciestacionamientos.$error.pattern || calculatorForm.biciestacionamientos.$invalid && calculatorForm.biciestacionamientos.$dirty">No es un número válido !</span>
 						</li>
 					</ul>
