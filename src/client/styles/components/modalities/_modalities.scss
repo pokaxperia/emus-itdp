@@ -21,7 +21,7 @@ article.modality-breadcrumb{
 		li {
 			display: inline-block;
 			font-size: 13px;
-			font-weight: 200;
+			font-weight: normal;
 			padding: 10px 2px;
 			text-transform: uppercase;
 			span{
@@ -81,7 +81,6 @@ article.modality-breadcrumb{
 	}
 	.area{
 		bottom: 25px;
-		color: #ffffff;
 		position: initial;
 		right: 0;
 	}
