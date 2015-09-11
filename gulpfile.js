@@ -120,12 +120,12 @@ gulp.task('templatecache', ['clean-templatecache'], function(){
 		.pipe(gulp.dest('tmp'));
 });
 //
-gulp.task('images', function(){
+/*gulp.task('images', function(){
 	log('Analizyng images...');
 
 	gulp.src(['./src/client/images/*.*'])
 	.pipe(gulp.dest('./src/client/images/'));
-});
+});*/
 // Jshint to all src components
 gulp.task('js', function(){
 	log('Analizyng components...');
@@ -288,7 +288,7 @@ gulp.task('watch', function(){
 
 	gulp.watch('src/client/components/**/*.js', ['js']);
 	gulp.watch('src/client/styles/**/*.scss', ['sass']);
-	gulp.watch('src/client/images/*.*', ['images']);
+	//gulp.watch('src/client/images/*.*', ['images']);
 	gulp.watch('src/client/iconfont/*.*', ['iconfont']);
 });
 
