@@ -287,7 +287,13 @@ console.log(valorBicie)
 				$scope.default_pozos = $scope.calculator.PozosProyecto;
 			});
 		};
-
+		if (flagPozos == 'false') {
+			sessionStorage.setItem('flagPozos','false');
+			$scope.flagPozos = false;
+			$scope.$watch( 'calculator.PozosProyecto', function(newValue, oldValue){
+				$scope.custom_pozos = newValue;
+			}, true);
+		}
 		// Manual input
 		$scope.getPozosCustom = function(){
 			sessionStorage.setItem('flagPozos','false');
@@ -418,6 +424,7 @@ console.log(valorBicie)
 					sessionStorage.setItem('Bicie', newValue);
 					$scope.custom_bicie = newValue;
 					$scope.calc.bicie = newValue;
+					$scope.calculator.Biciestacionamientos = newValue;
 				});
 			}
 		}

@@ -146,7 +146,7 @@ gulp.task('sass', ['clean-styles'], function () {
 
 
 /* To Production */
-gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont','build-api'], function(){
+gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont'], function(){
 	log('Build to Production');
 	var assets = $.useref.assets({searchPath: ['./', './src/client/']});
 	var cssFilter = $.filter('**/*.css', {restore: true});

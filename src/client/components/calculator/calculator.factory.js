@@ -8,8 +8,9 @@
 	factory('SendQuote', ['$http', '$q', function($http, $q){
 		return {
 			sendQuote: function(quote_values){
+				console.log(quote_values);
 				var deferred = $q.defer();
-				return $http.post('/api/index.php/estimate', quote_values).
+				$http.post('api/index.php/estimate', quote_values).
 				then(function(result){
 					deferred.resolve(result);
 				}, function(error){
