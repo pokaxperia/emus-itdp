@@ -26,16 +26,19 @@ class Api_Controller extends ZP_Controller {
 	//estimate
 	public function estimate() {
 		$vars["results"] = null;
+		
+        $jsonStr = file_get_contents("php://input");
+		$json = json_decode($jsonStr, TRUE);
 
-		if(isset($_POST["AnchoCalle"])) {
-			$vars["results"] = $this->Api_Model->getResults($_POST);
+		if(isset($json["AnchoCalle"])) {
+			$vars["results"] = $this->Api_Model->getResults($json);
 		}
 		
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
 	
 	public function cities() {
-		$vars["results"]  = $this->Api_Model->getCities($table);
+		$vars["results"]  = $this->Api_Model->getCities();
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
 }
