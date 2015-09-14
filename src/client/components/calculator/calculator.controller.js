@@ -44,7 +44,7 @@
 		$scope.k_u = false;
 
 		if (state === 'modalidades.calculadora.formulario') {
-			if (getState === null && getArea === null || getState === null && getArea === 'false') {
+			if (getState === null && getArea === null || getState === null && getArea === 'false' || getState === false) {
 				Modal();
 				$scope.showArea = true;
 			}
@@ -89,7 +89,7 @@
 					controller: ModalController
 				});
 			}, 1500);
-		};
+		}
 
 		function ModalController($scope, $modalInstance){
 			if(getArea){
@@ -166,7 +166,7 @@
 		var enviar = function(){
 			var enviarDatos = JSON.parse(sessionStorage.getItem('setQuote'));
 			return enviarFormulario(enviarDatos);
-		}
+		};
 		
 		$scope.calculator = {};
 		if (!$scope.calc) {
@@ -174,11 +174,9 @@
 				"bicie": 0
 			};
 		}
-console.log(valorBicie)
 		if (valorBicie) {
-			console.log(valorBicie)
 			$scope.calc.bicie = Number(valorBicie.toString());
-		};
+		}
 
 		if(getQuote  !== null){
 			$scope.calculator = JSON.parse(getQuote);
@@ -412,7 +410,7 @@ console.log(valorBicie)
 			$scope.flagBicie = true;
 			console.log(valor);
 			//$scope.default_bicie = $scope.calculator.Biciestacionamientos;
-		}
+		};
 		// Manual input
 		
 		$scope.getBicieCustom = function(){
@@ -427,7 +425,7 @@ console.log(valorBicie)
 					$scope.calculator.Biciestacionamientos = newValue;
 				});
 			}
-		}
+		};
 
 			/*$scope.flagBicie = false;
 			sessionStorage.setItem('flagBicie','false');
@@ -451,7 +449,7 @@ console.log(valorBicie)
 			if (calculatorForm.$valid === true) {
 				var valores = JSON.stringify(calculator);
 				sessionStorage.setItem('setQuote',valores);
-				if (getState === 'false' || getState === null) {
+				if (getState === false || getState === null) {
 					$log.info("Lanzando Modal");
 					Modal();
 				}
@@ -468,8 +466,11 @@ console.log(valorBicie)
 		var enviarFormulario = function(calculator){
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
-			then(function(data){
+			then(function(result){
 				if(data){
+					$scope.own = result.options;
+					$scope.result = result;
+					$state.go('modalidades.calculadora.resumen');
 					$log.info("Ok");
 				}
 			}, function(error){
@@ -480,6 +481,6 @@ console.log(valorBicie)
 
 	CalculatorController.$inject = ['$timeout',  '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
 
-	angular.module('emus.calculator', []).
-	controller('CalculatorController', CalculatorController);
+	angular.module('emus.calculator', [])
+		.controller('CalculatorController', CalculatorController);
 }());
