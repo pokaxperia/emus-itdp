@@ -144,7 +144,7 @@ class Api_Model extends ZP_Model {
 	/*Costo de la delimitación de la infraestructura*/
 	public function getDelimitacionInfraestructura() {
 		if($this->options["infraestructura"] == "Ciclovia") {
-			if($this->options["AnchoCalle"] < 6) {
+			if($this->options["Anchoefectivo"] < 6) {
 				/*
 				TipoInfraUtilizado = Conf_Chapu 
 				{KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Chapu*250}
@@ -169,7 +169,9 @@ class Api_Model extends ZP_Model {
 			
 			return $result;
 		} elseif($this->options["infraestructura"] == "Busbici") {
-			/*Confinamiento = Carril Bus-Bici {KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Chapu*250}*/
+			/*Confinamiento = Conf_Chapu 
+			 * {KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Chapu*250}
+			 * */
 			$result  = $this->options["KmEvaluables"]*2*$this->options["Sentidos"]*$this->dataCity["pinturadelimitacion"]*1000;
 			$result += $this->options["KmEvaluables"]*$this->options["Sentidos"]*$this->dataCity["conf_chapu"]*250;
 			
@@ -185,6 +187,9 @@ class Api_Model extends ZP_Model {
 			/*
 			BacheoSlurry = Slurry*AreaInfraestructura
 			*/
+			$bacheo = $this->dataCity["ov_sumin"]*$this->Area_Infraestructura;
+			
+			return $bacheo;
 		} elseif($this->options["TipoDeBacheo"] == "BacheoSuperficial") {
 			/*
 			BacheoSuperficial = 

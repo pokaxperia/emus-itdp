@@ -9,7 +9,7 @@ if(!defined("_access")) {
 /**
  * Website
  */
-$ZP["webURL"] 	    = "http://localhost/emus-itdp/api";
+$ZP["webURL"] 	    = "http://itdp.mx/emus/api";
 $ZP["webName"] 	    = "EMUS - ITDP - API";
 $ZP["webTheme"]     = "default";
 $ZP["webSituation"] = "Active";
