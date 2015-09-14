@@ -9,6 +9,7 @@
 		'emus.modalities.type',
 		'emus.calculator',
 		'emus.calculator.factory',
+		'emus.calculator.directives',
 		'duScroll',
 		'ncy-angular-breadcrumb',
 		'ngAnimate',
@@ -24,7 +25,8 @@
 		$rootScope.$stateParams = $stateParams;
 		
 		$rootScope.$on('$stateChangeSuccess', function(toState){
-			return $rootScope.state = toState.targetScope.$state.current;
+			$rootScope.state = toState.targetScope.$state.current;
+			return $rootScope.state;
 		});
 		
 		return $rootScope;
