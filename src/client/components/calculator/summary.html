@@ -1,1 +1,120 @@
-<h2>{{calculator}}</h2>
+<section class="summary row">
+	<section class="col-lg-offset-1 col-lg-10">
+		<article class="s1">
+			<div class="summary-header">
+				<h4>RESUMEN COTIZACIÓN</h4>
+			</div>
+			<div class="s1-body">
+				<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 content">
+					<div class="content-item">
+						<img src="./images/ciclovia.jpg" alt="">
+					</div>
+					<div class="content-item">
+						<h3>$000,000,000.00</h4>
+						<span>TOTAL</span>
+					</div>
+					<div class="content-item">
+						<h4>CALLES</h4>
+						<span>MODALIDAD</span>
+						<h4>Infraestructura ciclista</h4>
+						<span>TIPO</span>
+					</div>
+					<div class="content-item">
+						<h4>Busbici</h4>
+						<span>PROYECTO</span>
+						<h4>Delegación Miguel Hidalgo</h4>
+						<span>LUGAR</span>
+					</div>
+				</div>
+			</div>
+		</article>
+		<article class="s2">
+			<div class="summary-header">
+				<h4>DATOS INGRESADOS</h4>
+			</div>
+			<div class="s2-body">
+				<section class="row">
+					<div class="content-left col-xs-12 col-sm-6">
+						<div class="col-xs-12">
+							<ul>
+								<li>Infraestructura</li>
+								<li>Tipo de calle</li>
+								<li>Kilómetros</li>
+								<li>Ancho efectivo de la infraestructura</li>
+								<li>Sentidos</li>
+								<li>Sección de calle (arroyo vehicular)</li>
+								<li>Intersecciones semaforizadas</li>
+								<li>Intersecciones totales</li>
+							</ul>
+							<ul>
+								<li>{{own.infraestructura}}</li>
+								<li>{{own.tipo_calle}}</li>
+								<li>{{own.KmEvaluables}}</li>
+								<li>{{own.Anchoefectivo}}</li>
+								<li>{{own.Sentidos}}</li>
+								<li>{{own.AnchoCalle}}</li>
+								<li>{{own.IntersSemaf}}</li>
+								<li>{{own.IntersTotales}}</li>
+							</ul>
+						</div>
+					</div>
+					<div class="content-right col-xs-12 col-sm-6">
+						<div class="col-xs-12">
+							<ul>
+								<li>Nivel de bacheo</li>
+								<li>Pozos de drenaje</li>
+								<li>Rejillas</li>
+								<li>Cocheras</li>
+								<li>Biciestacionamientos</li>
+								<li>Señalización</li>
+								<li>Obra complementaria</li>
+								<li>Costo de mantenimiento anual</li>
+							</ul>
+							<ul>
+								<li>{{own.TipoDeBacheo}}</li>
+								<li>{{own.PozosProyecto}}</li>
+								<li>{{own.RejillasProyecto}}</li>
+								<li>{{own.Cocheras}}</li>
+								<li>{{own.Biciestacionamientos}}</li>
+								<li>{{own.senalizacion}}</li>
+								<li>{{own.ObraComp}}</li>
+								<li>{{own.MantenimientoAnual}}</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+		</article>
+		<article class="s3">
+			<div class="summary-header">
+				<h4>COSTOS</h4>
+			</div>
+			<div class="s3-body">
+				<diw class="row">
+					<div class="s3-body-cost col-xs-12 col-lg-offset-1 col-lg-10">
+						<div class="col-xs-12">
+							<ul>
+								<li>Area Infraestructura</li>
+								<li>Obras viales de bacheo</li>
+								<li>Biciestacionamientos</li>
+								<li>Delimitación de la Infraestructura</li>
+								<li>Infraestructura complementaria</li>
+								<li>Intersecciones semaforizadas</li>
+								<li>Señalización</li>
+							</ul>
+							<ul>
+								<li>{{result.areaInfraestructura}}</li>
+								<li>{{result.bacheo}}</li>
+								<li>{{result.biciestacionamientos}}</li>
+								<li>{{result.delimitacionInfraestructura}}</li>
+								<li>{{result.infraestructuraComplementaria}}</li>
+								<li>{{result.interseccionesSemaforizadas}}</li>
+								<li>{{result.senalizacion.seleccionada}}</li>
+							</ul>
+						</div>
+					</div>
+				</diw>
+			</div>
+		</article>
+	</section>
+</section>
