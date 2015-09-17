@@ -58,9 +58,11 @@ article.modality-breadcrumb{
 		color: $color-text;
 	}
 }
-.card-image>img{
-	width:100%;
-	height:auto;
+.card-image{
+	img{
+		width:100%;
+		height:auto;
+	}
 }
 .card-action{
 	border-top:1px solid rgba($color-text,0.15);
@@ -138,7 +140,7 @@ article.modality-breadcrumb{
 		font-size: 18px;
 		font-weight: 300;
 		line-height: 1.5;
-		margin: 18px 0 36px;
+		margin: 38px 0 36px;
 		color: $color-text;
 	}
 }
