@@ -14,7 +14,7 @@
 						<span>TOTAL</span>
 					</div>
 					<div class="content-item">
-						<h4>CALLES</h4>
+						<h4>Calles</h4>
 						<span>MODALIDAD</span>
 						<h4>Infraestructura ciclista</h4>
 						<span>TIPO</span>
@@ -36,50 +36,82 @@
 				<section class="row">
 					<div class="content-left col-xs-12 col-sm-6">
 						<div class="col-xs-12">
-							<ul>
-								<li>Infraestructura</li>
-								<li>Tipo de calle</li>
-								<li>Kilómetros</li>
-								<li>Ancho efectivo de la infraestructura</li>
-								<li>Sentidos</li>
-								<li>Sección de calle (arroyo vehicular)</li>
-								<li>Intersecciones semaforizadas</li>
-								<li>Intersecciones totales</li>
-							</ul>
-							<ul>
-								<li>{{own.infraestructura}}</li>
-								<li>{{own.tipo_calle}}</li>
-								<li>{{own.KmEvaluables}}</li>
-								<li>{{own.Anchoefectivo}}</li>
-								<li>{{own.Sentidos}}</li>
-								<li>{{own.AnchoCalle}}</li>
-								<li>{{own.IntersSemaf}}</li>
-								<li>{{own.IntersTotales}}</li>
-							</ul>
+							<table>
+								<tbody>
+									<tr>
+										<td>Infraestructura</td>
+										<td>{{own.infraestructura}}</td>
+									</tr>
+									<tr>
+										<td>Tipo de calle</td>
+										<td>{{own.tipo_calle}}</td>
+									</tr>
+									<tr>
+										<td>Kilómetros</td>
+										<td>{{own.KmEvaluables}}</td>
+									</tr>
+									<tr>
+										<td>Ancho efectivo de la infraestructura</td>
+										<td>{{own.Anchoefectivo}}</td>
+									</tr>
+									<tr>
+										<td>Sentidos</td>
+										<td>{{own.Sentidos}}</td>
+									</tr>
+									<tr>
+										<td>Sección de calle (arroyo vehicular)</td>
+										<td>{{own.AnchoCalle}}</td>
+									</tr>
+									<tr>
+										<td>Intersecciones semaforizadas</td>
+										<td>{{own.IntersSemaf}}</td>
+									</tr>
+									<tr>
+										<td>Intersecciones totales</td>
+										<td>{{own.IntersTotales}}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 					<div class="content-right col-xs-12 col-sm-6">
 						<div class="col-xs-12">
-							<ul>
-								<li>Nivel de bacheo</li>
-								<li>Pozos de drenaje</li>
-								<li>Rejillas</li>
-								<li>Cocheras</li>
-								<li>Biciestacionamientos</li>
-								<li>Señalización</li>
-								<li>Obra complementaria</li>
-								<li>Costo de mantenimiento anual</li>
-							</ul>
-							<ul>
-								<li>{{own.TipoDeBacheo}}</li>
-								<li>{{own.PozosProyecto}}</li>
-								<li>{{own.RejillasProyecto}}</li>
-								<li>{{own.Cocheras}}</li>
-								<li>{{own.Biciestacionamientos}}</li>
-								<li>{{own.senalizacion}}</li>
-								<li>{{own.ObraComp}}</li>
-								<li>{{own.MantenimientoAnual}}</li>
-							</ul>
+							<table>
+								<tbody>
+									<tr>
+										<td>Nivel de bacheo</td>
+										<td>{{own.TipoDeBacheo}}</td>
+									</tr>
+									<tr>
+										<td>Pozos de drenaje</td>
+										<td>{{own.PozosProyecto}}</td>
+									</tr>
+									<tr>
+										<td>Rejillas</td>
+										<td>{{own.RejillasProyecto}}</td>
+									</tr>
+									<tr>
+										<td>Cocheras</td>
+										<td>{{own.Cocheras}}</td>
+									</tr>
+									<tr>
+										<td>Biciestacionamientos</td>
+										<td>{{own.Biciestacionamientos}}</td>
+									</tr>
+									<tr>
+										<td>Señalización</td>
+										<td>{{own.senalizacion}}</td>
+									</tr>
+									<tr>
+										<td>Obra complementaria</td>
+										<td>{{own.ObraComp}}</td>
+									</tr>
+									<tr>
+										<td>Costo de mantenimiento anual</td>
+										<td>{{own.MantenimientoAnual}}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</section>
@@ -93,24 +125,38 @@
 				<diw class="row">
 					<div class="s3-body-cost col-xs-12 col-lg-offset-1 col-lg-10">
 						<div class="col-xs-12">
-							<ul>
-								<li>Area Infraestructura</li>
-								<li>Obras viales de bacheo</li>
-								<li>Biciestacionamientos</li>
-								<li>Delimitación de la Infraestructura</li>
-								<li>Infraestructura complementaria</li>
-								<li>Intersecciones semaforizadas</li>
-								<li>Señalización</li>
-							</ul>
-							<ul>
-								<li>{{result.areaInfraestructura}}</li>
-								<li>{{result.bacheo}}</li>
-								<li>{{result.biciestacionamientos}}</li>
-								<li>{{result.delimitacionInfraestructura}}</li>
-								<li>{{result.infraestructuraComplementaria}}</li>
-								<li>{{result.interseccionesSemaforizadas}}</li>
-								<li>{{result.senalizacion.seleccionada}}</li>
-							</ul>
+							<table>
+								<tbody>
+									<tr>
+										<td>Area Infraestructura</td>
+										<td>{{result.areaInfraestructura | currency}}</td>
+									</tr>
+									<tr>
+										<td>Obras viales de bacheo</td>
+										<td>{{result.bacheo | currency}}</td>
+									</tr>
+									<tr>
+										<td>Biciestacionamientos</td>
+										<td>{{result.biciestacionamientos | currency}}</td>
+									</tr>
+									<tr>
+										<td>Delimitación de la Infraestructura</td>
+										<td>{{result.delimitacionInfraestructura | currency}}</td>
+									</tr>
+									<tr>
+										<td>Infraestructura complementaria</td>
+										<td>{{result.infraestructuraComplementaria | currency}}</td>
+									</tr>
+									<tr>
+										<td>Intersecciones semaforizadas</td>
+										<td>{{result.interseccionesSemaforizadas | currency}}</td>
+									</tr>
+									<tr>
+										<td>Señalización</td>
+										<td>{{result.senalizacion.seleccionada | currency}}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</diw>
