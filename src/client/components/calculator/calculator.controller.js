@@ -467,7 +467,7 @@
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
-				if(data){
+				if(result){
 					$scope.own = result.options;
 					$scope.result = result;
 					$state.go('modalidades.calculadora.resumen');
