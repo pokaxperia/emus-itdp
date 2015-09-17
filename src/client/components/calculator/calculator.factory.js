@@ -33,7 +33,7 @@
 				});
 
 				response.then(function(result){
-					deferred.resolve(result);
+					deferred.resolve(result.data.results);
 				}, function(error){
 					deferred.reject(error);
 				});
