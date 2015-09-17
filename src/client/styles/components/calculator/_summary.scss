@@ -67,7 +67,7 @@ article.s1{
 	}
 }
 .s2-body{
-	background-color: rgba($color-text, 0.22);
+	background-color: #ffffff;
 	>section.row{
 		margin: 0;
 	}
@@ -75,38 +75,53 @@ article.s1{
 	.content-right{
 		padding: 15px;
 		>div{
-			background-color: #ffffff;
+			background-color: #EFF2F9;
 		}
 	}
-	ul{
-		display: block;
-		padding: 0;
-		width: 50%;
-		float: left;
-		li{
-			list-style: none;
-			padding: 10px;
-			border-bottom: 1px solid $color-text;
-		}
-		li:last-child{
-			border-bottom: none;
+	table{
+		margin: 10px 0;
+		width: 100%;
+		tbody{
+			tr{
+				border-bottom: 1px solid rgba($color-text, 0.125);
+				td{
+					width: 50%;
+					color: $color-text;
+					padding: 10px 5px;
+				}
+				td:last-child{
+					font-weight: 200;
+				}
+			}
+			tr:last-child{
+				border-bottom: none;
+			}
 		}
 	}
 }
 .s3-body{
 	.s3-body-cost{
-		ul{
-			display: block;
-			padding: 0;
-			width: 50%;
-			float: left;
-			li{
-				list-style: none;
-				padding: 10px;
-				border-bottom: 1px solid $color-text;
-			}
-			li:last-child{
-				border-bottom: none;
+		>div{
+			background-color: #EFF2F9;
+		}
+		table{
+			margin: 10px 0;
+			width: 100%;
+			tbody{
+				tr{
+					border-bottom: 1px solid rgba($color-text, 0.125);
+					td{
+						width: 50%;
+						color: $color-text;
+						padding: 10px 5px;
+					}
+					td:last-child{
+						font-weight: 200;
+					}
+				}
+				tr:last-child{
+					border-bottom: none;
+				}
 			}
 		}
 	}
