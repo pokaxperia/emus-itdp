@@ -41,9 +41,52 @@ class Api_Model extends ZP_Model {
 		$data["senalizacion"] = $this->getSenalizacion();
 		$data["infraestructuraComplementaria"] = $this->getInfresComplementaria();
 		$data["biciestacionamientos"] = $this->getBiciestacionamientos();
+		$data["egresos"]["estatales"] = $this->getEgresos();
+		$data["egresos"]["municipales"] = $this->getEgresos("municipales");
+		$data["ingresos"]["estatales"] = $this->getIngresos();
+		$data["ingresos"]["municipales"] = $this->getIngresos("municipales");
 		$data["options"] = $this->options;
-		
 		return $data;
+	}
+	
+	/*obtener egresos*/
+	public function getEgresos($type="estatal") {
+		if($type=="estatal") {
+			$query = "select * from egresos_estatales where cvegeo=".$this->options["estado"];
+			$data  = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		} else {
+			$query  = "select * from egresos_municipales where cveestado=".$this->options["estado"];
+			$query .= " and cvemun="$this->options["municipio"];
+			$data   = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		}
+	}
+	
+	/*obtener ingresos*/
+	public function getIngresos($type="estatal") {
+		if($type=="estatal") {
+			$query = "select * from ingresos_estatales where cvegeo=".$this->options["estado"];
+			$data  = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		} else {
+			$query  = "select * from ingresos_municipales where cveestado=".$this->options["estado"];
+			$query .= " and cvemun="$this->options["municipio"];
+			$data   = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		}
 	}
 	
 	/*Costo de Biciestacionamientos*/
