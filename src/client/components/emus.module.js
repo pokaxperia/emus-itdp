@@ -9,6 +9,7 @@
 		'emus.modalities.type',
 		'emus.calculator',
 		'emus.calculator.factory',
+		'emus.calculator.factory.mun',
 		'emus.calculator.directives',
 		'duScroll',
 		'ncy-angular-breadcrumb',
