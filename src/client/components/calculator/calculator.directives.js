@@ -1,31 +1,36 @@
 (function(){
 	/**
-	*  Calculator Module
+	*  KlDirective Directive
 	*/
 	'use strict';
 
-	function WellsDirectives(){
+	function KlDirective(){
+		
+		var template = '<input type="number" class="form-control" ng-change="getKlValue(calculator.KmEvaluables)" placeholder="ejemplo: 00.00" step="0.01" required>';
 		
 		return {
 			restrict: 'EA',
-			template: '<input type="number" ng-value="calculator.PozosProyecto" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" disabled ng-if="calculator.PozosProyecto == default_pozos || flagPozos === true" style="top: 15px;position: relative;">',
-			link: function(scope, iElement, iAttrs) {
-				console.log(iAttrs);
-			},
-			scope: {
-				ngWell:'@'
-			},
-			controller: WellController
+			template: template,
+			require: 'ngModel',
+			replace: true,
+			link: function(scope, element, attrs, ctrl){
+				console.log(ctrl);
+				ctrl.$viewChangeListeners.push(function() {
+				  scope.$eval(attrs.ngChange);
+				});
+			}
+		};
+	}
+
+/*	KlController.$inject = ['$timeout', '$log', '$scope'];
+
+	function KlController($timeout, $scope, $log){
+		$scope.getklValue = function(data){
+			console.log(data);
 		}
-	}
-
-	WellController.$inject = ['$timeout', '$log', '$scope'];
-
-	function WellController($timeout, $scope, $log){
-		console.log($scope);
-	}
+	}*/
 	
 	
 	angular.module('emus.calculator.directives', [])
-		.directive('wellDirective', WellsDirectives);
+		.directive('kilometerField', KlDirective);
 }());
