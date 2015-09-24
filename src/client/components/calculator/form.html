@@ -5,7 +5,7 @@
 			<section class="calculator-project">
 				<p>¿Qué infraestructura quieres cotizar?</p>
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<input type="radio" id="ciclovia" ng-model="calculator.infraestructura" name="ciclovia" value="Ciclovia" class="radio" ng-change="getType(calculator)">
+					<input type="radio" id="ciclovia" ng-model="calculator.infraestructura" name="ciclovia" value="Ciclovia" class="radio" ng-change="getType(calculator)" required>
 					<article>
 						<figcaption>Ciclovia</figcaption>
 						<figure>
@@ -16,7 +16,7 @@
 					</article>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" >
-					<input type="radio" id="ciclocarril" ng-model="calculator.infraestructura" name="ciclocarril" value="Ciclocarril" class="radio" ng-change="getType(calculator)">
+					<input type="radio" id="ciclocarril" ng-model="calculator.infraestructura" name="ciclocarril" value="Ciclocarril" class="radio" ng-change="getType(calculator)" required>
 					<article >
 						<figcaption>Ciclocarril</figcaption>
 						<figure>
@@ -27,7 +27,7 @@
 					</article>
 				</div>
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-					<input type="radio" id="busbici" ng-model="calculator.infraestructura" name="busbici" value="Busbici" class="radio" ng-change="getType(calculator)">
+					<input type="radio" id="busbici" ng-model="calculator.infraestructura" name="busbici" value="Busbici" class="radio" ng-change="getType(calculator)" required>
 					<article>
 						<figcaption>Bus-bici</figcaption>
 						<figure>
@@ -45,7 +45,7 @@
 					<label>Tipo de calle</label>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-					<label class="label-field" for="1sentido"><small>{{calculator.tipo_calle}}</small></label>
+					<label class="label-field" for="1sentido"><small>{{calculator.tipo_calle ? calculator.tipo_calle : "Seleccione una infraestructura"}}</small></label>
 				</div>
 			</div>
 		</div>
@@ -56,7 +56,8 @@
 						</div>
 						<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 							<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 input">
-									<input type="number" name="kilometros" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-touched" placeholder="ejemplo: 00.00" step="0.01" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" ng-model="calculator.KmEvaluables" required>
+								<kilometer-field name="kilometros" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/"  ng-model="calculator.KmEvaluables"></kilometer-field>
+									<!-- <input type="number" name="kilometros" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-touched" placeholder="ejemplo: 00.00" step="0.01" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" ng-model="calculator.KmEvaluables" required> -->
 									<label>Km</label>
 									<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern ">No es un número válido !</span>
 							</div>
@@ -171,8 +172,7 @@
 				<ul>
 					<li class="item-option">
 						<input type="radio" id="PozosProyecto" class="radio" name="PozosProyecto" ng-value="default_pozos" ng-model="calculator.PozosProyecto" ng-click="getPozosAuto(calculator.KmEvaluables)" ng-checked="flagPozos == true">
-						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="click" tooltip-placement="top" tooltip-animation="true"></a></label>
-						<!--<well-directive ng-well="calculator.PozosProyecto"></well-directive>-->
+						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						<input type="number" ng-value="calculator.PozosProyecto" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="calculator.PozosProyecto" disabled ng-if="calculator.PozosProyecto == default_pozos || flagPozos === true" style="top: 15px;position: relative;">
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
