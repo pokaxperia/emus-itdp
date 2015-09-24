@@ -4,7 +4,8 @@
 	*/
 	'use strict';
 
-	var ModalitiesController = function($scope,$window, $state, $rootScope,$stateParams){
+	var ModalitiesController = function($document,$scope,$window, $state, $rootScope,$stateParams){
+		$document.scrollTop(0,1000);
 		var header, item, itemButton, body;
 		$scope.showModalities = function(){
 			if($state.current.name === 'modalidades' || $state.current.name === 'modalidades.tipo'){
@@ -34,7 +35,7 @@
 		});
 	};
 	
-	ModalitiesController.$inject = ['$scope', '$window', '$state','$rootScope','$stateParams'];
+	ModalitiesController.$inject = ['$document','$scope', '$window', '$state','$rootScope','$stateParams'];
 	
 	angular.module('emus.modalities', []).
 	controller('ModalitiesController', ModalitiesController);
