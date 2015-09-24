@@ -4,16 +4,16 @@
 <section class="modal-body">
 	<article class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<ol class="nya-bs-select" data-size="10" title="Estado" ng-model="area.estado">
-				<li nya-bs-option="option in estados" data-value="option" class="nya-bs-option" >
-					<a>{{option}}</a>
+			<ol class="nya-bs-select" data-size="10" title="Estado" ng-model="area.estado" ng-change="stateChanged(area.estado)">
+				<li nya-bs-option="est in estados" data-value="est.cveestado" class="nya-bs-option" >
+					<a>{{est.estado}}</a>
 				</li>
 			</ol>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<ol class="nya-bs-select" data-size="10" title="Municipio" ng-model="area.municipio">
-				<li nya-bs-option="option in estados" data-value="option" class="nya-bs-option" >
-					<a>{{option}}</a>
+				<li nya-bs-option="mun in municipios" data-value="mun.cvemun" class="nya-bs-option" >
+					<a>{{mun}}</a>
 				</li>
 			</ol>
 		</div>
