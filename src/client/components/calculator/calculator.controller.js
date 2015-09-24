@@ -4,11 +4,16 @@
 	*/
 	'use strict';
 
-	var CalculatorController = function($timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope){ 
+	var CalculatorController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope, Mun){ 
+		$document.scrollTop(0,1000);
+		$scope.calculator = {};
+		
 		var state = $rootScope.$state.current.name;
 		var actualProject,
 		area,
 		areaData,
+		area_estado,
+		area_municipio,
 		areaProject,
 		bicieValue,
 		cocherasValue,
@@ -30,21 +35,26 @@
 		rejillasValue,
 		typeProject,
 		valorBicie,
-		valores;
-
-		getQuote = sessionStorage.getItem('setQuote');
-		flagPozos = sessionStorage.getItem('flagPozos');
-		flagRejillas = sessionStorage.getItem('flagRejillas');
-		flagCocheras = sessionStorage.getItem('flagCocheras');
-		flagBicie = sessionStorage.getItem('flagBicie');
-		valorBicie = sessionStorage.getItem('Bicie');
-		getArea = sessionStorage.getItem('area');
-		getState = sessionStorage.getItem('state');
-		getProject = sessionStorage.getItem('actualProject');
-		$scope.k_u = false;
+		valores,
+		flags = [];
+		init();
+		
+		function init(){
+			getQuote = sessionStorage.getItem('setQuote');
+			flagPozos = sessionStorage.getItem('flagPozos');
+			flagRejillas = sessionStorage.getItem('flagRejillas');
+			flagCocheras = sessionStorage.getItem('flagCocheras');
+			flagBicie = sessionStorage.getItem('flagBicie');
+			valorBicie = sessionStorage.getItem('Bicie');
+			getArea = sessionStorage.getItem('area');
+			getState = sessionStorage.getItem('state');
+			getProject = sessionStorage.getItem('actualProject');
+			$scope.k_u = false;
+			flags.push("flagPozos","flagRejillas","flagCocheras");
+		}
 
 		if (state === 'modalidades.calculadora.formulario') {
-			if (getState === null && getArea === null || getState === null && getArea === 'false' || getState === false) {
+			if (getState === null && getArea === null) {
 				Modal();
 				$scope.showArea = true;
 			}
@@ -53,7 +63,7 @@
 			}
 		}
 
-		var something = (function(){
+		var loadSelectedProject = (function(){
 			var executed = false;
 			if(getProject){
 				$timeout(function(){
@@ -70,25 +80,32 @@
 		})();
 
 		function setArea(){
-			$timeout(function(){
-				getArea = sessionStorage.getItem('area');
-				areaData = JSON.parse(getArea);
-				areaProject = angular.element(document.getElementById('area'));
-				areaProject.bind('click', Modal);
-				var area_estado = areaData.estado ? areaData.estado : "sin estado";
-				var area_municipio = areaData.municipio ? areaData.municipio : "sin municipio";
-
-				areaProject.text(area_estado + " - " + area_municipio);
-			}, 1000);
+			getArea = sessionStorage.getItem('area');
+			if (getArea) {
+				$timeout(function(){
+					getArea = sessionStorage.getItem('area');
+					areaData = JSON.parse(getArea);
+					areaProject = angular.element(document.getElementById('area'));
+					areaProject.bind('click', Modal);
+					area_estado = areaData.estado ? areaData.estado : "sin estado";
+					area_municipio = areaData.municipio ? areaData.municipio : "sin municipio";
+					areaProject.text(area_estado + " - " + area_municipio);
+				}, 1000);
+			}
 		}
 
 		function Modal(){
 			return $timeout(function(){
-				$modal.open({
-					templateUrl: './components/calculator/type/modal.html',
-					controller: ModalController
-				});
-			}, 1500);
+				var openModal = $modal.open({
+						templateUrl: './components/calculator/type/modal.html',
+						controller: ModalController
+					});
+					openModal.result.then(function(reason){
+						// done
+					}, function(error){
+						// error
+					});
+				}, 1500);
 		}
 
 		function ModalController($scope, $modalInstance){
@@ -96,40 +113,52 @@
 				$scope.area = JSON.parse(getArea);
 				$scope.k_u = true;
 			}
+
 			$scope.estados = [
-				"Aguascalientes",
-				"Baja California",
-				"Baja California Sur",
-				"Campeche",
-				"Chiapas",
-				"Chihuahua",
-				"Coahuila",
-				"Colim",
-				"Distrito Federal",
-				"Durango",
-				"Estado de México",
-				"Guanajuato",
-				"Guerrero",
-				"Hidalgo",
-				"Jalisco",
-				"Michoacán",
-				"Morelos",
-				"Nayarit",
-				"Nuevo León",
-				"Oaxac",
-				"Puebl",
-				"Querétaro",
-				"Quintana Roo",
-				"San Luis Potosí",
-				"Sinaloa",
-				"Sonora",
-				"Tabasco",
-				"Tamaulipas",
-				"Tlaxcala",
-				"Veracruz",
-				"Yucatán",
-				"Zacatecas"
+				{"estado":"Aguascalientes","cveestado":1},
+				{"estado":"Baja California","cveestado":2},
+				{"estado":"Baja California Sur","cveestado":3},
+				{"estado":"Campeche","cveestado":4},
+				{"estado":"Chiapas","cveestado":7},
+				{"estado":"Chihuahua","cveestado":8},
+				{"estado":"Coahuila","cveestado":5},
+				{"estado":"Colima","cveestado":6},
+				{"estado":"Distrito Federal","cveestado":9},
+				{"estado":"Durango","cveestado":10},
+				{"estado":"Guanajuato","cveestado":11},
+				{"estado":"Guerrero","cveestado":12},
+				{"estado":"Hidalgo","cveestado":13},
+				{"estado":"Jalisco","cveestado":14},
+				{"estado":"México","cveestado":15},
+				{"estado":"Michoacánde Ocampo","cveestado":16},
+				{"estado":"Morelos","cveestado":17},
+				{"estado":"Nayarit","cveestado":18},
+				{"estado":"Nuevo León","cveestado":19},
+				{"estado":"Oaxaca","cveestado":20},
+				{"estado":"Puebla","cveestado":21},
+				{"estado":"Querétaro","cveestado":22},
+				{"estado":"Quintana Roo","cveestado":23},
+				{"estado":"San Luis Potosí","cveestado":24},
+				{"estado":"Sinaloa","cveestado":25},
+				{"estado":"Sonora","cveestado":26},
+				{"estado":"Tabasco","cveestado":27},
+				{"estado":"Tamaulipas","cveestado":28},
+				{"estado":"Tlaxcala","cveestado":29},
+				{"estado":"Veracruz","cveestado":30},
+				{"estado":"Yucatán","cveestado":31},
+				{"estado":"Zacatecas","cveestado":32}
 			];
+
+			$scope.stateChanged = function(valor){
+				Mun.getMun(valor).
+				then(function(result){
+					if(result){
+						console.log(result)
+					}
+				}, function(error){
+					$log.error("Error: " + error);
+				});
+			}
 
 			$scope.saveArea = function () {
 				if (getQuote !== null) {
@@ -139,7 +168,7 @@
 					$modalInstance.close();
 					getState = sessionStorage.getItem('state');
 					setArea();
-					enviar();
+					sendForm();
 				}
 				sessionStorage.setItem('state', 'true');
 				area = JSON.stringify($scope.area);
@@ -163,12 +192,11 @@
 			};
 		}
 		
-		var enviar = function(){
-			var enviarDatos = JSON.parse(sessionStorage.getItem('setQuote'));
-			return enviarFormulario(enviarDatos);
+		var sendForm = function(){
+			var sendData = JSON.parse(sessionStorage.getItem('setQuote'));
+			return enviarFormulario(sendData);
 		};
-		
-		$scope.calculator = {};
+
 		if (!$scope.calc) {
 			$scope.calc = {
 				"bicie": 0
@@ -257,34 +285,32 @@
 			imgProject = angular.element(document.getElementById(typeProject));
 			imgProject.addClass('radio_active');
 			sessionStorage.setItem('actualProject',imgProject[0].id);
-			
 		}
 		
 
 		/* Start Pozos field */
-		if (flagPozos == 'true') {
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-					sessionStorage.setItem('flagPozos','true');
-					$scope.flagPozos = true; 
-
-					pozosValue = parseInt((newValue * 1000) / 200);
-					parsePozosValue = parseInt($filter('number')(pozosValue, 0));
-					$scope.calculator.PozosProyecto = parsePozosValue;
-					$scope.default_pozos = $scope.calculator.PozosProyecto;
-
-			}, true);
+		$scope.getKlValue = function(valor){
+			init();
+			if (flagPozos == 'true') {
+				updateValue(valor);
+			}
+			
+			
 		}
 		// Automatic calculation
 		$scope.getPozosAuto = function(valor){
 			sessionStorage.setItem('flagPozos','true');
 			$scope.flagPozos = true;
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
+			updateValue(valor);
+		}
+		function updateValue(valor){
+			$timeout(function(){
 				pozosValue = parseInt((valor * 1000) / 200);
 				parsePozosValue = parseInt($filter('number')(pozosValue, 0));
 				$scope.calculator.PozosProyecto = parsePozosValue;
 				$scope.default_pozos = $scope.calculator.PozosProyecto;
-			});
-		};
+			},500);
+		}
 		if (flagPozos == 'false') {
 			sessionStorage.setItem('flagPozos','false');
 			$scope.flagPozos = false;
@@ -303,7 +329,8 @@
 		/* End Pozos field */
 
 		/* Start Rejillas field */
-		if (flagRejillas == 'true') {
+		
+		/*if (flagRejillas == 'true') {
 			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
 				sessionStorage.setItem('flagRejillas','true');
 				$scope.flagRejillas = true; 
@@ -313,19 +340,17 @@
 				$scope.calculator.RejillasProyecto = parseRejillasValue;
 				$scope.default_rejillas = $scope.calculator.RejillasProyecto;
 			}, true);
-		}
+		}*/
 
 		// Automatic calculation
-		$scope.getRejillasAuto = function(valor){
+		/*$scope.getRejillasAuto = function(valor){
 			sessionStorage.setItem('flagRejillas','true');
 			$scope.flagRejillas = true;
-
 			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
 				$scope.calculator.RejillasProyecto = parseInt(newValue * 25);
 				$scope.default_rejillas = $scope.calculator.RejillasProyecto;
 			});
-		};
-
+		};*/
 		// Manual input
 		$scope.getRejillasCustom = function(){
 			sessionStorage.setItem('flagRejillas','false');
@@ -468,6 +493,7 @@
 			SendQuote.sendQuote(calculator).
 			then(function(result){
 				if(result){
+					$document.scrollTop(0,1000);
 					$scope.own = result.options;
 					$scope.result = result;
 					$state.go('modalidades.calculadora.resumen');
@@ -479,7 +505,7 @@
 		};
 	};
 
-	CalculatorController.$inject = ['$timeout',  '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope'];
+	CalculatorController.$inject = ['$document','$timeout',  '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter','SendQuote', '$stateParams', '$rootScope', 'Mun'];
 
 	angular.module('emus.calculator', [])
 		.controller('CalculatorController', CalculatorController);
