@@ -6,6 +6,8 @@
 
 	var LandingController = function($scope,$document,$state){
 
+		$document.scrollTop(0,1000);
+
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
 		
@@ -21,14 +23,9 @@
 			var body = angular.element(document.getElementsByTagName('body'));
 			if($document.scrollTop() >= 65){
 				header.addClass('black');
-				//itemButton.removeClass('btn-landing');
-				//itemButton.addClass('btn-landing1');
-				
 			}
 			else{
 				header.removeClass('black');
-				//itemButton.removeClass('btn-landing1');
-				//itemButton.addClass('btn-landing');
 			}
 		});
 	};
