@@ -1,3 +1,21 @@
+.tooltip.in{
+	@include transition(opacity 0.25s linear);
+}
+.btn-area{
+	left: 42.5px;
+	position: absolute;
+	right: 0;
+	top: 230px;
+	i.emus-marker{
+		float: left;
+		line-height: inherit;
+		margin-right: 0px;
+	}
+	span{
+		display: none;
+		visibility: hidden;
+	}
+}
 .calculator-container{
 	background-color: #EFF2F9;
 }
@@ -186,6 +204,11 @@ input.radio{
 	}
 }
 @media (min-width: 768px) {
+	.btn-area{
+		left: inherit;
+		right: 145px;
+		top: 175px;
+	}
 	.calculator-form-row{
 		ul{
 			-webkit-flex-direction: row;
@@ -205,6 +228,17 @@ input.radio{
 	}
 }
 @media (min-width: 992px) {
+	.btn-area{
+		top: 175px;
+		right: 75.5px;
+		i.emus-marker{
+			margin-right: 10px;
+		}
+		span{
+			display: initial;
+			visibility: visible;
+		}
+	}
 	.item-option{
 		label small{
 			font-size: 16px;
