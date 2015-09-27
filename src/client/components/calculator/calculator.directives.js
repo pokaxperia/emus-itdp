@@ -12,13 +12,12 @@
 			restrict: 'EA',
 			template: template,
 			require: 'ngModel',
-			replace: true,
-			link: function(scope, element, attrs, ctrl){
-				console.log(ctrl);
+			replace: true
+			/*link: function(scope, element, attrs, ctrl){
 				ctrl.$viewChangeListeners.push(function() {
 				  scope.$eval(attrs.ngChange);
 				});
-			}
+			}*/
 		};
 	}
 
