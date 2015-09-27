@@ -6,7 +6,7 @@
 
 	var LandingController = function($scope,$document,$state){
 
-		$document.scrollTop(0,1000);
+		$document.scrollTop(0);
 
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
