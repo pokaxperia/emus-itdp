@@ -8,13 +8,10 @@
 	factory('Mun', ['$http', '$q', function($http, $q){
 		return {
 			getMun: function(valor){
-				console.log(valor)
-				varño = valor.toString();
-				console.log(valor)
 				var deferred = $q.defer();
-				var response = $http.get('./claves/'+valor+'.json');
+				var response = $http.get('./components/calculator/claves/'+valor+'.json');
 				response.then(function(result){
-					deferred.resolve(result.data.results);
+					deferred.resolve(result.data);
 				}, function(error){
 					deferred.reject(error);
 				});
