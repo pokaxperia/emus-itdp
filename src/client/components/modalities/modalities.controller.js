@@ -5,7 +5,7 @@
 	'use strict';
 
 	var ModalitiesController = function($document,$scope,$window, $state, $rootScope,$stateParams){
-		$document.scrollTop(0,1000);
+		$document.scrollTop(0);
 		var header, item, itemButton, body;
 		$scope.showModalities = function(){
 			if($state.current.name === 'modalidades' || $state.current.name === 'modalidades.tipo'){
