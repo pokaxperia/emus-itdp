@@ -4,18 +4,18 @@
 <section class="modal-body">
 	<article class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<ol class="nya-bs-select" data-size="10" title="Estado" ng-model="area.estado" ng-change="stateChanged(area.estado)">
-				<li nya-bs-option="est in estados" data-value="est.cveestado" class="nya-bs-option" >
-					<a>{{est.estado}}</a>
+			<ul class="nya-bs-select" data-size="10" title="Estado" ng-model="area.estado" ng-change="stateChanged(area.estado)">
+				<li nya-bs-option="est in estados" data-value="est.est" class="nya-bs-option">
+					<a>{{est.est}}</a>
 				</li>
-			</ol>
+			</ul>
 		</div>
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			<ol class="nya-bs-select" data-size="10" title="Municipio" ng-model="area.municipio">
-				<li nya-bs-option="mun in municipios" data-value="mun.cvemun" class="nya-bs-option" >
-					<a>{{mun}}</a>
+			<ul class="nya-bs-select" data-size="10" title="Municipio" ng-model="area.municipio" ng-change="munChanged(area.municipio)">
+				<li nya-bs-option="mun in municipios" data-value="mun.mun" class="nya-bs-option">
+					<a>{{mun.mun}}</a>
 				</li>
-			</ol>
+			</ul>
 		</div>
 	</article>
 </section>
@@ -23,4 +23,5 @@
 	<button class="btn btn-g-success" type="button" ng-if="k_u !== true" ng-disabled="!area" ng-click="saveArea()">ACEPTAR</button>
 	<button class="btn btn-g-info" type="button" ng-if="k_u !== true" ng-click="notYet()">MÁS ADELANTE</button>
 	<button class="btn btn-g-success" type="button" ng-if="k_u == true" ng-click="updateArea()">ACTUALIZAR</button>
+	<button class="btn btn-g-danger" type="button" ng-if="k_u == true" ng-click="$close(result)">CANCELAR</button>
 </section>
