@@ -5,24 +5,21 @@
 	'use strict';
 
 	var CalculatorController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope, Mun){ 
-		$document.scrollTop(0,1000);
-		$scope.calculator = {};
-		
+		$document.scrollTop(0);
+
 		var state = $rootScope.$state.current.name;
-		var actualProject,
+		var currentInfrastructure,
 		area,
 		areaData,
-		area_estado,
-		area_municipio,
-		areaProject,
 		bicieValue,
 		cocherasValue,
 		flagBicie,
 		flagCocheras,
 		flagPozos,
 		flagRejillas,
+		getModal,
 		getArea,
-		getProject,
+		getInfrastructure,
 		getQuote,
 		getState,
 		imgProject,
@@ -36,40 +33,43 @@
 		typeProject,
 		valorBicie,
 		valores,
+		loadSelectedProject,
 		flags = [];
+		$scope.resultado = null;
+		$scope.calculator = {};
+		$scope.area = {estado: "",municipio: ""};
 		init();
 		
 		function init(){
-			getQuote = sessionStorage.getItem('setQuote');
 			flagPozos = sessionStorage.getItem('flagPozos');
 			flagRejillas = sessionStorage.getItem('flagRejillas');
 			flagCocheras = sessionStorage.getItem('flagCocheras');
 			flagBicie = sessionStorage.getItem('flagBicie');
 			valorBicie = sessionStorage.getItem('Bicie');
+			getQuote = sessionStorage.getItem('setQuote');
+			getModal = sessionStorage.getItem('modal');
 			getArea = sessionStorage.getItem('area');
 			getState = sessionStorage.getItem('state');
-			getProject = sessionStorage.getItem('actualProject');
+			getInfrastructure = sessionStorage.getItem('currentInfrastructure');
 			$scope.k_u = false;
+			loadSelectedProject;
 			flags.push("flagPozos","flagRejillas","flagCocheras");
-		}
 
-		if (state === 'modalidades.calculadora.formulario') {
-			if (getState === null && getArea === null) {
-				Modal();
-				$scope.showArea = true;
+			if (getModal) {
+				$scope.area = JSON.parse(getModal);
 			}
 			else{
-				setArea();
+				Modal();
 			}
 		}
 
-		var loadSelectedProject = (function(){
+		loadSelectedProject = (function(){
 			var executed = false;
-			if(getProject){
+			if(getInfrastructure){
 				$timeout(function(){
 					if (!executed) {
 						executed = true;
-						imgProject = angular.element(document.getElementById(getProject));
+						imgProject = angular.element(document.getElementById(getInfrastructure));
 						imgProject.addClass('radio_active');
 					}
 				}, 1000);
@@ -79,123 +79,25 @@
 			}
 		})();
 
-		function setArea(){
-			getArea = sessionStorage.getItem('area');
-			if (getArea) {
-				$timeout(function(){
-					getArea = sessionStorage.getItem('area');
-					areaData = JSON.parse(getArea);
-					areaProject = angular.element(document.getElementById('area'));
-					areaProject.bind('click', Modal);
-					area_estado = areaData.estado ? areaData.estado : "sin estado";
-					area_municipio = areaData.municipio ? areaData.municipio : "sin municipio";
-					areaProject.text(area_estado + " - " + area_municipio);
-				}, 1000);
-			}
+		$scope.Modal = function(){
+			Modal();
 		}
 
 		function Modal(){
+			$log.warn("Lanzando Modal");
 			return $timeout(function(){
-				var openModal = $modal.open({
-						templateUrl: './components/calculator/type/modal.html',
-						controller: ModalController
-					});
-					openModal.result.then(function(reason){
-						// done
-					}, function(error){
-						// error
-					});
-				}, 1500);
-		}
-
-		function ModalController($scope, $modalInstance){
-			if(getArea){
-				$scope.area = JSON.parse(getArea);
-				$scope.k_u = true;
-			}
-
-			$scope.estados = [
-				{"estado":"Aguascalientes","cveestado":1},
-				{"estado":"Baja California","cveestado":2},
-				{"estado":"Baja California Sur","cveestado":3},
-				{"estado":"Campeche","cveestado":4},
-				{"estado":"Chiapas","cveestado":7},
-				{"estado":"Chihuahua","cveestado":8},
-				{"estado":"Coahuila","cveestado":5},
-				{"estado":"Colima","cveestado":6},
-				{"estado":"Distrito Federal","cveestado":9},
-				{"estado":"Durango","cveestado":10},
-				{"estado":"Guanajuato","cveestado":11},
-				{"estado":"Guerrero","cveestado":12},
-				{"estado":"Hidalgo","cveestado":13},
-				{"estado":"Jalisco","cveestado":14},
-				{"estado":"México","cveestado":15},
-				{"estado":"Michoacánde Ocampo","cveestado":16},
-				{"estado":"Morelos","cveestado":17},
-				{"estado":"Nayarit","cveestado":18},
-				{"estado":"Nuevo León","cveestado":19},
-				{"estado":"Oaxaca","cveestado":20},
-				{"estado":"Puebla","cveestado":21},
-				{"estado":"Querétaro","cveestado":22},
-				{"estado":"Quintana Roo","cveestado":23},
-				{"estado":"San Luis Potosí","cveestado":24},
-				{"estado":"Sinaloa","cveestado":25},
-				{"estado":"Sonora","cveestado":26},
-				{"estado":"Tabasco","cveestado":27},
-				{"estado":"Tamaulipas","cveestado":28},
-				{"estado":"Tlaxcala","cveestado":29},
-				{"estado":"Veracruz","cveestado":30},
-				{"estado":"Yucatán","cveestado":31},
-				{"estado":"Zacatecas","cveestado":32}
-			];
-
-			$scope.stateChanged = function(valor){
-				Mun.getMun(valor).
-				then(function(result){
-					if(result){
-						console.log(result)
+				$modal.open({
+					controller: 'ModalController',
+					controllerAs: "modalCtrl",
+					templateUrl: './components/calculator/type/modal.html',
+					resolve: {
+						area: function () {
+							return $scope.area;
+						}
 					}
-				}, function(error){
-					$log.error("Error: " + error);
 				});
-			}
-
-			$scope.saveArea = function () {
-				if (getQuote !== null) {
-					sessionStorage.setItem('state', 'true');
-					area = JSON.stringify($scope.area);
-					sessionStorage.setItem('area', area);
-					$modalInstance.close();
-					getState = sessionStorage.getItem('state');
-					setArea();
-					sendForm();
-				}
-				sessionStorage.setItem('state', 'true');
-				area = JSON.stringify($scope.area);
-				sessionStorage.setItem('area', area);
-				$modalInstance.close();
-				getState = sessionStorage.getItem('state');
-				setArea();
-			};
-			
-			$scope.updateArea = function () {
-					sessionStorage.setItem('state', 'true');
-					area = JSON.stringify($scope.area);
-					sessionStorage.setItem('area', area);
-					$modalStack.dismissAll();
-					setArea();
-			};
-			
-			$scope.notYet = function () {
-				sessionStorage.setItem('state', 'false');
-				$modalInstance.dismiss();
-			};
+			}, 1500);
 		}
-		
-		var sendForm = function(){
-			var sendData = JSON.parse(sessionStorage.getItem('setQuote'));
-			return enviarFormulario(sendData);
-		};
 
 		if (!$scope.calc) {
 			$scope.calc = {
@@ -251,10 +153,10 @@
 		/* Type of project options */
 		$scope.getType = function(type){
 			previousProject = imgProject;
-			actualProject = angular.element(document.getElementById(typeProject));
+			currentInfrastructure = angular.element(document.getElementById(typeProject));
 
 			if(previousProject){
-				!actualProject ? actualProject.removeClass('radio_active') : previousProject.removeClass('radio_active');
+				!currentInfrastructure ? currentInfrastructure.removeClass('radio_active') : previousProject.removeClass('radio_active');
 			}
 
 			typeProject = type.infraestructura;
@@ -284,13 +186,12 @@
 		function toggleFunction(typeProject){
 			imgProject = angular.element(document.getElementById(typeProject));
 			imgProject.addClass('radio_active');
-			sessionStorage.setItem('actualProject',imgProject[0].id);
+			sessionStorage.setItem('currentInfrastructure',imgProject[0].id);
 		}
 		
 
 		/* Start Pozos field */
 		$scope.getKlValue = function(valor){
-			init();
 			if (flagPozos == 'true') {
 				updateValue(valor);
 			}
@@ -452,7 +353,7 @@
 			}
 		};
 
-			/*$scope.flagBicie = false;
+		/*$scope.flagBicie = false;
 			sessionStorage.setItem('flagBicie','false');
 			$scope.$watch('calc.bicie', function(newValue, oldValue){
 				sessionStorage.setItem('Bicie', newValue);
@@ -469,13 +370,12 @@
 		/* Submit Form */
 
 		$scope.saveQuote = function(calculatorForm, calculator){
-			console.log(calculator);
-			var getState = sessionStorage.getItem('state');
+			var getModal = sessionStorage.getItem('modal');
 			if (calculatorForm.$valid === true) {
 				var valores = JSON.stringify(calculator);
 				sessionStorage.setItem('setQuote',valores);
-				if (getState === false || getState === null) {
-					$log.info("Lanzando Modal");
+				if (!getModal) {
+					$log.warn("Lanzando Modal");
 					Modal();
 				}
 				else{
@@ -488,12 +388,17 @@
 			}
 		};
 		
+		var sendForm = function(){
+			var sendData = JSON.parse(sessionStorage.getItem('setQuote'));
+			return enviarFormulario(sendData);
+		};
+		
 		var enviarFormulario = function(calculator){
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
 				if(result){
-					$document.scrollTop(0,1000);
+					$document.scrollTop(0);
 					$scope.own = result.options;
 					$scope.result = result;
 					$state.go('modalidades.calculadora.resumen');
