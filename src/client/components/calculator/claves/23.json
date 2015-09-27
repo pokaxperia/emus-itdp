@@ -1,4 +1,5 @@
-[{"cvemun": 1, "mun": "Cozumel"},
+[{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Cozumel"},
 {"cvemun": 2, "mun": "Felipe Carrillo Puerto"},
 {"cvemun": 3, "mun": "Isla Mujeres"},
 {"cvemun": 4, "mun": "Othón P. Blanco"},

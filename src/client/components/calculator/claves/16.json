@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Acuitzio"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Acuitzio"},
 {"cvemun": 2, "mun": "Aguililla"},
 {"cvemun": 3, "mun": "Álvaro Obregón"},
 {"cvemun": 4, "mun": "Angamacutiro"},

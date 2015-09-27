@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Acajete"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Acajete"},
 {"cvemun": 2, "mun": "Acateno"},
 {"cvemun": 3, "mun": "Acatlán"},
 {"cvemun": 4, "mun": "Acatzingo"},

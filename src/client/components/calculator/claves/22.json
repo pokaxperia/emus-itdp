@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Amealco de Bonfil"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Amealco de Bonfil"},
 {"cvemun": 2, "mun": "Pinal de Amoles"},
 {"cvemun": 3, "mun": "Arroyo Seco"},
 {"cvemun": 4, "mun": "Cadereyta de Montes"},

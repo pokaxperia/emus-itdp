@@ -1,4 +1,5 @@
-[{"cvemun": 1, "mun": "Abalá"},
+[{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Abalá"},
 {"cvemun": 2, "mun": "Acanceh"},
 {"cvemun": 3, "mun": "Akil"},
 {"cvemun": 4, "mun": "Baca"},

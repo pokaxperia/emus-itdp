@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Ahome"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Ahome"},
 {"cvemun": 2, "mun": "Angostura"},
 {"cvemun": 3, "mun": "Badiraguato"},
 {"cvemun": 4, "mun": "Concordia"},

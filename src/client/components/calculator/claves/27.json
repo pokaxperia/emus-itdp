@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Balancán"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Balancán"},
 {"cvemun": 2, "mun": "Cárdenas"},
 {"cvemun": 3, "mun": "Centla"},
 {"cvemun": 4, "mun": "Centro"},

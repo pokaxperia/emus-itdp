@@ -1,4 +1,5 @@
 [
+	{"cvemun": 0, "mun": "Sin municipio"},
 	{"cvemun": 1, "mun": "Aguascalientes"},
 	{"cvemun": 2, "mun": "Asientos"},
 	{"cvemun": 3, "mun": "Calvillo"},
@@ -10,4 +11,4 @@
 	{"cvemun": 9, "mun": "Tepezalá"},
 	{"cvemun": 10, "mun": "El Llano"},
 	{"cvemun": 11, "mun": "San Francisco de los Romo"}
-];
+]

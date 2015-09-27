@@ -1,4 +1,5 @@
-[{"cvemun": 1, "mun": "Aconchi"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},{"cvemun": 1, "mun": "Aconchi"},
 {"cvemun": 2, "mun": "Agua Prieta"},
 {"cvemun": 3, "mun": "Alamos"},
 {"cvemun": 4, "mun": "Altar"},

@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Abejones"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Abejones"},
 {"cvemun": 2, "mun": "Acatlán de Pérez Figueroa"},
 {"cvemun": 3, "mun": "Asunción Cacalotepec"},
 {"cvemun": 4, "mun": "Asunción Cuyotepeji"},

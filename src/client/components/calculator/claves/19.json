@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Abasolo"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Abasolo"},
 {"cvemun": 2, "mun": "Agualeguas"},
 {"cvemun": 3, "mun": "Los Aldamas"},
 {"cvemun": 4, "mun": "Allende"},

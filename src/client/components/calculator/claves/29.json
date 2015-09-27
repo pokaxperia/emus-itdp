@@ -1,4 +1,6 @@
-[{"cvemun": 1, "mun": "Amaxac de Guerrero"},
+[
+{"cvemun": 0, "mun": "Sin municipio"},
+{"cvemun": 1, "mun": "Amaxac de Guerrero"},
 {"cvemun": 2, "mun": "Apetatitlán de Antonio Carvajal"},
 {"cvemun": 3, "mun": "Atlangatepec"},
 {"cvemun": 4, "mun": "Atltzayanca"},
