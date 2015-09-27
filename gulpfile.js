@@ -84,7 +84,7 @@ gulp.task('bump', function(){
 /*** To Dev ***/
 
 // Inject js and css files to index.html 
-gulp.task('inject', ['templatecache', 'templates'], function(){
+gulp.task('inject', function(){
 	return gulp.src('./src/client/index.html')
 		.pipe(wiredep({
 			bowerJson: require('./bower.json'),
@@ -104,21 +104,6 @@ gulp.task('inject', ['templatecache', 'templates'], function(){
 		.pipe(gulp.dest('./src/client/'));
 });
 
-// Minify all HTML angular templates
-gulp.task('templatecache', ['clean-templatecache'], function(){
-	log('Angularjs template files!');
-	var options = {
-		module: 'emus',
-		root: 'components/'
-	}
-	return gulp.src('./src/client/components/**/*.html')
-		.pipe($.minifyHtml({empty: true}))
-		.pipe($.angularTemplatecache(
-			'templates.js',
-			options
-		))
-		.pipe(gulp.dest('tmp'));
-});
 //
 /*gulp.task('images', function(){
 	log('Analizyng images...');
@@ -146,8 +131,9 @@ gulp.task('sass', ['clean-styles'], function () {
 
 
 /* To Production */
-gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'inject', 'build-images', 'build-iconfont'], function(){
-	log('Build to Production');
+gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'build-js', 'inject', 'templates', 'templatecache', 'json-files','build-images', 'build-iconfont']);
+gulp.task('build-js', function(){
+	log('Build js files');
 	var assets = $.useref.assets({searchPath: ['./', './src/client/']});
 	var cssFilter = $.filter('**/*.css', {restore: true});
 	var jsLibFilter = $.filter('**/lib.js', {restore: true});
@@ -177,6 +163,27 @@ gulp.task('templates', ['cleaning-components'], function() {
 	log('Copying html files');
 	return gulp.src('./src/client/components/**/*.html')
 		.pipe(gulp.dest('build/components/'));
+});
+gulp.task('json-files', function() {
+	log('Copying json files');
+	return gulp.src('./src/client/components/**/*.json')
+		.pipe(gulp.dest('build/components/'));
+});
+
+// Minify all HTML angular templates
+gulp.task('templatecache', ['clean-templatecache'], function(){
+	log('Angularjs template files!');
+	var options = {
+		module: 'emus',
+		root: 'components/'
+	}
+	return gulp.src('./src/client/components/**/*.html')
+		.pipe($.minifyHtml({empty: true}))
+		.pipe($.angularTemplatecache(
+			'templates.js',
+			options
+		))
+		.pipe(gulp.dest('tmp'));
 });
 // Copy images src -> build
 gulp.task('build-images', ['cleaning-images'], function() {
