@@ -8,6 +8,7 @@
 		'emus.modalities',
 		'emus.modalities.type',
 		'emus.calculator',
+		'emus.modal.controller',
 		'emus.calculator.factory',
 		'emus.calculator.factory.mun',
 		'emus.calculator.directives',
