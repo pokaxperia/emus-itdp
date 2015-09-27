@@ -1,4 +1,14 @@
 @import "helpers/_mixins";
+.modal-backdrop.fade,
+.modal-backdrop.in,
+.fade.in{
+	@include transition(opacity 0.25s linear);
+}
+.modal-open,
+.modal.fade .modal-dialog,
+.modal.in .modal-dialog{
+	@include transition(transform 0.25s linear);
+}
 .dropdown-menu{
 	margin: 6px;
 	padding: 0px;
