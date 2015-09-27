@@ -4,7 +4,7 @@
 	*/
 	'use strict';
 
-	var CalculatorController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope, Mun){ 
+	var CalculatorController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, SendQuote, $stateParams, $rootScope, Mun){
 		$document.scrollTop(0);
 
 		var state = $rootScope.$state.current.name;
@@ -80,7 +80,7 @@
 		})();
 
 		$scope.Modal = function(){
-			Modal();
+			return Modal();
 		}
 
 		function Modal(){
@@ -204,6 +204,7 @@
 			$scope.flagPozos = true;
 			updateValue(valor);
 		}
+
 		function updateValue(valor){
 			$timeout(function(){
 				pozosValue = parseInt((valor * 1000) / 200);
