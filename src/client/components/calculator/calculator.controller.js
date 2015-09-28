@@ -8,21 +8,24 @@
 		$document.scrollTop(0);
 
 		var state = $rootScope.$state.current.name;
-		var currentInfrastructure,
-		area,
+		var area,
 		areaData,
 		bicieValue,
 		cocherasValue,
+		currentInfrastructure,
+		finalMerge,
 		flagBicie,
 		flagCocheras,
 		flagPozos,
 		flagRejillas,
-		getModal,
 		getArea,
 		getInfrastructure,
+		getModal,
 		getQuote,
 		getState,
 		imgProject,
+		loadSelectedProject,
+		merg_final,
 		parseBicieValue,
 		parseCocherasValue,
 		parsePozosValue,
@@ -33,7 +36,6 @@
 		typeProject,
 		valorBicie,
 		valores,
-		loadSelectedProject,
 		flags = [];
 		$scope.resultado = null;
 		$scope.calculator = {};
@@ -41,16 +43,16 @@
 		init();
 		
 		function init(){
+			flagBicie = sessionStorage.getItem('flagBicie');
+			flagCocheras = sessionStorage.getItem('flagCocheras');
 			flagPozos = sessionStorage.getItem('flagPozos');
 			flagRejillas = sessionStorage.getItem('flagRejillas');
-			flagCocheras = sessionStorage.getItem('flagCocheras');
-			flagBicie = sessionStorage.getItem('flagBicie');
-			valorBicie = sessionStorage.getItem('Bicie');
-			getQuote = sessionStorage.getItem('setQuote');
-			getModal = sessionStorage.getItem('modal');
 			getArea = sessionStorage.getItem('area');
-			getState = sessionStorage.getItem('state');
 			getInfrastructure = sessionStorage.getItem('currentInfrastructure');
+			getModal = sessionStorage.getItem('modal');
+			getQuote = sessionStorage.getItem('setQuote');
+			getState = sessionStorage.getItem('state');
+			valorBicie = sessionStorage.getItem('Bicie');
 			$scope.k_u = false;
 			loadSelectedProject;
 			flags.push("flagPozos","flagRejillas","flagCocheras");
@@ -381,7 +383,7 @@
 				}
 				else{
 					$log.info("Sin modal");
-					enviarFormulario(calculator);
+					sendForm();
 				}
 			}
 			else{
@@ -389,9 +391,19 @@
 			}
 		};
 		
-		var sendForm = function(){
-			var sendData = JSON.parse(sessionStorage.getItem('setQuote'));
-			return enviarFormulario(sendData);
+		function sendForm(){
+			var joinArea = JSON.parse(sessionStorage.getItem('area'));
+			var joinData = JSON.parse(sessionStorage.getItem('setQuote'));
+
+			function merge_cve(obj1,obj2){
+				merg_final = {};
+				for (var attrname in obj1) { merg_final[attrname] = obj1[attrname]; }
+				for (var attrname in obj2) { merg_final[attrname] = obj2[attrname]; }
+				return merg_final;
+			}
+			finalMerge = merge_cve(joinArea, joinData);
+
+			return enviarFormulario(finalMerge);
 		};
 		
 		var enviarFormulario = function(calculator){
