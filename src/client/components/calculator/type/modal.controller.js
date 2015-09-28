@@ -21,13 +21,13 @@
 		function init(){
 			getArea = sessionStorage.getItem('area');
 			getQuote = sessionStorage.getItem('setQuote');
-			estArea = JSON.parse(sessionStorage.getItem('cveest'));
-			munArea = JSON.parse(sessionStorage.getItem('cvemun'));
+			estArea = JSON.parse(sessionStorage.getItem('estado'));
+			munArea = JSON.parse(sessionStorage.getItem('municipio'));
 
 			if(getArea){
 				valueArea = JSON.parse(getArea);
 				$scope.k_u = true;
-				setMun(valueArea.cveest);
+				setMun(valueArea.estado);
 			}
 		}
 
@@ -71,9 +71,9 @@
 				if (states.est === stateValue){
 					setMun(states.cveestado);
 					estArea = {
-						"cveest": states.cveestado
+						"estado": states.cveestado
 					};
-					sessionStorage.setItem('cveest', JSON.stringify(estArea));
+					sessionStorage.setItem('estado', JSON.stringify(estArea));
 				}
 			});
 		}
@@ -82,9 +82,9 @@
 			var getCveMun = $scope.municipios.some(function(mun){
 				if (mun.mun === munValue){
 					munArea = {
-						"cvemun": mun.cvemun
+						"municipio": mun.cvemun
 					};
-					sessionStorage.setItem('cvemun', JSON.stringify(munArea));
+					sessionStorage.setItem('municipio', JSON.stringify(munArea));
 				}
 			})
 		}
