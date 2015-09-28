@@ -5,54 +5,6 @@ var del = require('del');
 var $ = require('gulp-load-plugins')({lazy: true});
 var args = require('yargs').argv;
 
-/* path files */
-// var bower = '/bower_components';
-// var build = './build';
-// var client = './src/client/';
-// var components = client + 'components/';
-// var iconfonts = client + 'iconfonts/';
-// var images = client + 'images/';
-// var styles = client + 'styles/';
-// 
-// const paths = {
-// 	src: {
-// 		allappjs: '**/app.js'
-// 		allcss: '**/*.css',
-// 		alllibjs: '**/lib.js',
-// 		alltemplates: componentes + '**/*.html'
-// 		css: styles + 'styles.css',
-// 		index: client + 'index.html',
-// 		js: components + '**/*.js'
-// 		module: components + '**/*.module.js'
-// 		sass: styles + '**/*.scss',
-// 		styles: styles',
-// 		templatejs: 'tmp/templates.js',
-// 		images: images + '*.{jpg,png}',
-// 		iconfonts: iconfonts + '*.*'
-// 	},
-// 	build: {
-// 		components: build + 'components/'
-// 		iconfonts: build + 'iconfonts/',
-// 		images: build + '/images/',
-// 		styles: build + '/styles/'
-// 	}
-// 	clean: {
-// 		css: build + '/styles/styles.css',
-// 		components: build + '/components/*.*',
-// 		images: build + '/images/**/*.*',
-// 		iconfonts: build + '/iconfonts/emus.*',
-// 		js: build + '/js/**/*.js'
-// 	},
-// 	files: [
-// 		client + 'components/**/*.*',
-// 		client + 'iconfont/*.*',
-// 		client + 'images',
-// 		client + 'index.html',
-// 		client + 'styles/**/*.scss'
-// 		client + 'styles/styles.css',
-// 	]
-// }
-
 
 /* Task listing */
 gulp.task('tasklisting', function(){
@@ -104,13 +56,6 @@ gulp.task('inject', function(){
 		.pipe(gulp.dest('./src/client/'));
 });
 
-//
-/*gulp.task('images', function(){
-	log('Analizyng images...');
-
-	gulp.src(['./src/client/images/*.*'])
-	.pipe(gulp.dest('./src/client/images/'));
-});*/
 // Jshint to all src components
 gulp.task('js', function(){
 	log('Analizyng components...');
@@ -131,9 +76,9 @@ gulp.task('sass', ['clean-styles'], function () {
 
 
 /* To Production */
-gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'build-js', 'inject', 'templates', 'templatecache', 'json-files','build-images', 'build-iconfont']);
-gulp.task('build-js', function(){
-	log('Build js files');
+//gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'build-js', 'inject', 'templates', 'templatecache', 'json-files','build-images', 'build-iconfont']);
+gulp.task('join', function(){
+	log('Join all js/css files');
 	var assets = $.useref.assets({searchPath: ['./', './src/client/']});
 	var cssFilter = $.filter('**/*.css', {restore: true});
 	var jsLibFilter = $.filter('**/lib.js', {restore: true});
@@ -158,17 +103,6 @@ gulp.task('build-js', function(){
 		.pipe($.useref())
 		.pipe(gulp.dest('build'));
 });
-// Copy components src -> build
-gulp.task('templates', ['cleaning-components'], function() {
-	log('Copying html files');
-	return gulp.src('./src/client/components/**/*.html')
-		.pipe(gulp.dest('build/components/'));
-});
-gulp.task('json-files', function() {
-	log('Copying json files');
-	return gulp.src('./src/client/components/**/*.json')
-		.pipe(gulp.dest('build/components/'));
-});
 
 // Minify all HTML angular templates
 gulp.task('templatecache', ['clean-templatecache'], function(){
@@ -185,20 +119,32 @@ gulp.task('templatecache', ['clean-templatecache'], function(){
 		))
 		.pipe(gulp.dest('tmp'));
 });
-// Copy images src -> build
-gulp.task('build-images', ['cleaning-images'], function() {
+// Copy html files src -> build
+gulp.task('html', ['cleaning-components'], function() {
+	log('Copying html files');
+	return gulp.src('./src/client/components/**/*.html')
+		.pipe(gulp.dest('build/components/'));
+});
+// Copy json files src -> build
+gulp.task('json', function() {
+	log('Copying json files');
+	return gulp.src('./src/client/components/**/*.json')
+		.pipe(gulp.dest('build/components/'));
+});
+// Copy images files src -> build
+gulp.task('copy-images', ['cleaning-images'], function() {
 	log('Copying images');
 	return gulp.src('./src/client/images/*.{jpg,png}')
 		.pipe($.imagemin({optimizationLevel: 4}))
 		.pipe(gulp.dest('build/images/'));
 });
-// Copy iconfonts src -> build
-gulp.task('build-iconfont', function() {
+// Copy iconfonts files src -> build
+gulp.task('copy-iconfont', function() {
 	log('Copying iconfonts');
 	return gulp.src('./src/client/iconfonts/*.*')
 		.pipe(gulp.dest('build/iconfonts/'));
 });
-gulp.task('build-api', function() {
+gulp.task('copy-api', function() {
 	log('Copying api folder');
 	return gulp.src('./api/**/*.*')
 		.pipe(gulp.dest('build/api'));
