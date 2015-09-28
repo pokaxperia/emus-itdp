@@ -1,13 +1,10 @@
-# Ignore Node & Bower
-###################
-node_modules
+# Ignore Directories
+api
 bower_components
 build
+node_modules
 tmp
 
-# Ignore Build and Temp folders
-###################
-build
-tmp
-emus-commits.txt
+# Ignore files
+commits.txt
 deploy.sh

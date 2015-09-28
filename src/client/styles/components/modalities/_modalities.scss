@@ -6,6 +6,7 @@ section.modality-container{
 	background: url("../images/modalities.jpg") no-repeat center;
 	background-position: 50% 100%;
 	background-size:cover;
+	height: 320px;
 	>.container{
 		position: relative;
 	}
@@ -145,6 +146,9 @@ article.modality-breadcrumb{
 	}
 }
 @media (min-width: 768px) {
+	section.modality-container{
+		height: initial;
+	}
 	.breadcrumb{
 		position: absolute;
 		right: 0;
@@ -197,6 +201,9 @@ article.modality-breadcrumb{
 	}
 }
 @media (min-width: 992px) {
+	section.modality-container{
+		height: initial;
+	}
 	.card-description{
 		h1{
 			font-size: 36px;

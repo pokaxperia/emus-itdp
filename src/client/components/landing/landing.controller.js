@@ -4,7 +4,8 @@
 	*/
 	'use strict';
 
-	var LandingController = function($scope,$document,$state){
+	var LandingController = function($scope,$document){
+		$document.scrollTop(0);
 
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
@@ -16,24 +17,16 @@
 		
 		$document.on("scroll", function() {
 			var header = angular.element(document.getElementById('header'));
-			var item = angular.element(document.getElementsByClassName('item'));
-			var itemButton = angular.element(document.getElementById('item-button'));
-			var body = angular.element(document.getElementsByTagName('body'));
 			if($document.scrollTop() >= 65){
 				header.addClass('black');
-				//itemButton.removeClass('btn-landing');
-				//itemButton.addClass('btn-landing1');
-				
 			}
 			else{
 				header.removeClass('black');
-				//itemButton.removeClass('btn-landing1');
-				//itemButton.addClass('btn-landing');
 			}
 		});
 	};
 	
-	LandingController.$inject = ['$scope', '$document','$state'];
+	LandingController.$inject = ['$scope', '$document'];
 	
 	angular.module('emus.landing', []).
 	controller('LandingController', LandingController);

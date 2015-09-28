@@ -7,16 +7,16 @@
 		$stateProvider
 			.state('inicio', {
 				url: '/',
-				templateUrl: './components/landing/landing.html',
 				controller: 'LandingController',
+				templateUrl: './components/landing/landing.html',
 				ncyBreadcrumb: {
 					label: 'Inicio'
 				}
 			})
 			.state('modalidades', {
 				url: '/modalidades',
-				templateUrl: './components/modalities/modalities.html',
 				controller: 'ModalitiesController',
+				templateUrl: './components/modalities/modalities.html',
 				ncyBreadcrumb: {
 					label: 'Modalidades',
 					parent: 'inicio'
@@ -35,16 +35,9 @@
 			.state('modalidades.calculadora', {
 				abstract: true,
 				url: '/calculadora',
-				templateUrl: './components/calculator/calculator.html',
-				controller: 'CalculatorController'
+				controller: 'CalculatorController',
+				templateUrl: './components/calculator/calculator.html'
 			})
-/*			.state('modalidades.calculadora.tipo-de-proyecto', {
-				url: '/tipo-de-proyecto',
-				templateUrl: './components/calculator/type/type-of-project.html',
-				ncyBreadcrumb: {
-					label: 'Tipo de proyecto'
-				}
-			})*/
 			.state('modalidades.calculadora.formulario', {
 				url: '/formulario',
 				templateUrl: './components/calculator/form.html',
