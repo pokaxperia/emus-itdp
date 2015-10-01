@@ -60,7 +60,7 @@ class Api_Model extends ZP_Model {
 			return $data[0];
 		} else {
 			$query  = "select * from egresos_municipales where cveestado=".$this->options["estado"];
-			$query .= " and cvemun="$this->options["municipio"];
+			$query .= " and cvemun=".$this->options["municipio"];
 			$data   = $this->Db->query($query);
 		
 			if(!$data and !is_array($data)) return false;
@@ -80,7 +80,7 @@ class Api_Model extends ZP_Model {
 			return $data[0];
 		} else {
 			$query  = "select * from ingresos_municipales where cveestado=".$this->options["estado"];
-			$query .= " and cvemun="$this->options["municipio"];
+			$query .= " and cvemun=".$this->options["municipio"];
 			$data   = $this->Db->query($query);
 		
 			if(!$data and !is_array($data)) return false;

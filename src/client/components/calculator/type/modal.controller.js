@@ -7,28 +7,27 @@
 	var ModalController = function(area, $modalInstance, $modal, $modalStack, $scope, $state, $log, SendQuote, Mun){
 
 		var estArea,
-		getArea,
-		getQuote,
-		munArea,
-		merg_final,
 		finalMerge,
+		getArea,
+		getModal,
+		getQuote,
+		merg_final,
+		munArea,
 		stringArea,
-		valueArea,
-		getModal;
+		valueArea;
 		$scope.area = area;
 		init();
 
 		function init(){
 			getArea = sessionStorage.getItem('area');
 			getQuote = sessionStorage.getItem('setQuote');
-			estArea = JSON.parse(sessionStorage.getItem('cveest'));
-			munArea = JSON.parse(sessionStorage.getItem('cvemun'));
-
+			estArea = JSON.parse(sessionStorage.getItem('estado'));
+			munArea = JSON.parse(sessionStorage.getItem('municipio'));
 
 			if(getArea){
 				valueArea = JSON.parse(getArea);
 				$scope.k_u = true;
-				setMun(valueArea.cveest);
+				setMun(valueArea.estado);
 			}
 		}
 
@@ -72,9 +71,9 @@
 				if (states.est === stateValue){
 					setMun(states.cveestado);
 					estArea = {
-						"cveest": states.cveestado
+						"estado": states.cveestado
 					};
-					sessionStorage.setItem('cveest', JSON.stringify(estArea));
+					sessionStorage.setItem('estado', JSON.stringify(estArea));
 				}
 			});
 		}
@@ -83,9 +82,9 @@
 			var getCveMun = $scope.municipios.some(function(mun){
 				if (mun.mun === munValue){
 					munArea = {
-						"cvemun": mun.cvemun
+						"municipio": mun.cvemun
 					};
-					sessionStorage.setItem('cvemun', JSON.stringify(munArea));
+					sessionStorage.setItem('municipio', JSON.stringify(munArea));
 				}
 			})
 		}
@@ -153,7 +152,6 @@
 			sessionStorage.setItem('state', 'true');
 
 			$modalInstance.close();
-
 		};
 
 		$scope.notYet = function () {
@@ -174,11 +172,22 @@
 		}
 
 		function sendForm(){
-			var sendData = JSON.parse(sessionStorage.getItem('setQuote'));
-			return enviarFormulario(sendData);
+			var joinArea = JSON.parse(sessionStorage.getItem('area'));
+			var joinData = JSON.parse(sessionStorage.getItem('setQuote'));
+
+			function merge_cve(obj1,obj2){
+				merg_final = {};
+				for (var attrname in obj1) { merg_final[attrname] = obj1[attrname]; }
+				for (var attrname in obj2) { merg_final[attrname] = obj2[attrname]; }
+				return merg_final;
+			}
+			finalMerge = merge_cve(joinArea, joinData);
+
+			return enviarFormulario(finalMerge);
 		};
 
 		function enviarFormulario(calculator){
+			console.log(calculator)
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
