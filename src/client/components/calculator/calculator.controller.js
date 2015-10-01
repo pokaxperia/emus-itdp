@@ -24,6 +24,7 @@
 		getQuote,
 		getState,
 		imgProject,
+		listener,
 		loadSelectedProject,
 		merg_final,
 		parseBicieValue,
@@ -40,22 +41,54 @@
 		$scope.resultado = null;
 		$scope.calculator = {};
 		$scope.area = {estado: "",municipio: ""};
-		init();
+		$scope.form = {};
+		$scope.submitted = "";
+		$scope.form.PozosProyecto1 = "";
+		$scope.form.PozosProyecto2 = "";
 		
+		flagBicie = sessionStorage.getItem('flagBicie');
+		flagCocheras = sessionStorage.getItem('flagCocheras');
+		flagPozos = sessionStorage.getItem('flagPozos');
+		flagRejillas = sessionStorage.getItem('flagRejillas');
+		getArea = sessionStorage.getItem('area');
+		getInfrastructure = sessionStorage.getItem('currentInfrastructure');
+		getModal = sessionStorage.getItem('modal');
+		getQuote = sessionStorage.getItem('setQuote');
+		getState = sessionStorage.getItem('state');
+		valorBicie = sessionStorage.getItem('Bicie');
+		$scope.k_u = false;
+		loadSelectedProject;
+		flags.push("flagPozos","flagRejillas","flagCocheras");
+
+		init();
+
 		function init(){
-			flagBicie = sessionStorage.getItem('flagBicie');
-			flagCocheras = sessionStorage.getItem('flagCocheras');
-			flagPozos = sessionStorage.getItem('flagPozos');
-			flagRejillas = sessionStorage.getItem('flagRejillas');
-			getArea = sessionStorage.getItem('area');
-			getInfrastructure = sessionStorage.getItem('currentInfrastructure');
-			getModal = sessionStorage.getItem('modal');
-			getQuote = sessionStorage.getItem('setQuote');
-			getState = sessionStorage.getItem('state');
-			valorBicie = sessionStorage.getItem('Bicie');
-			$scope.k_u = false;
-			loadSelectedProject;
-			flags.push("flagPozos","flagRejillas","flagCocheras");
+			$log.info('Iniciando...');
+			
+			if(getQuote  !== null){
+				$scope.calculator = JSON.parse(getQuote);
+				if (flagPozos == 'true') {
+					$scope.flagPozos = true;
+					$scope.form.PozosProyecto1 = $scope.calculator.PozosProyecto;
+					$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
+					$scope.submitted = true;
+					$scope.pozos = "d";
+				}
+				if (flagPozos == 'false') {
+					$scope.flagPozos = false;
+					$scope.form.PozosProyecto2 = $scope.calculator.PozosProyecto;
+					$scope.calculator.PozosProyecto = $scope.form.PozosProyecto2;
+					$scope.submitted = true;
+					$scope.pozos= "c";
+					$scope.firstPozo = function(firstValue){
+						//setCustPozo(firstValue);
+						$scope.form.PozosProyecto2 = firstValue;
+						$scope.calculator.PozosProyecto = firstValue;
+						$scope.tmVar = $scope.form.PozosProyecto1;
+						$scope.form.PozosProyecto1 = null;
+					}
+				}
+			}
 
 			if (getModal) {
 				$scope.area = JSON.parse(getModal);
@@ -110,47 +143,7 @@
 			$scope.calc.bicie = Number(valorBicie.toString());
 		}
 
-		if(getQuote  !== null){
-			$scope.calculator = JSON.parse(getQuote);
-			
-			$log.info("sessionStorage not empty");
-			if (flagPozos == 'true') {
-				$scope.flagPozos = true;
-			}
-			else if (flagPozos == 'false') {
-				$scope.flagPozos = false;
-			}
-			else{
-				$scope.flagPozos = '';
-			}
-			if (flagRejillas == 'true') {
-				$scope.flagRejillas = true;
-			}
-			else if (flagRejillas == 'false') {
-				$scope.flagRejillas = false;
-			}
-			else{
-				$scope.flagRejillas = '';
-			}
-			if (flagCocheras == 'true') {
-				$scope.flagCocheras = true;
-			}
-			else if (flagCocheras == 'false') {
-				$scope.flagCocheras = false;
-			}
-			else{
-				$scope.flagCocheras = '';
-			}
-			if (flagBicie == 'true') {
-				$scope.flagBicie = true;
-			}
-			else if (flagBicie == 'false') {
-				$scope.flagBicie = false;
-			}
-			else{
-				$scope.flagBicie = '';
-			}
-		}
+
 
 		/* Type of project options */
 		$scope.getType = function(type){
@@ -191,149 +184,199 @@
 			sessionStorage.setItem('currentInfrastructure',imgProject[0].id);
 		}
 		
-
-		/* Start Pozos field */
-		$scope.getKlValue = function(valor){
-			if (flagPozos == 'true') {
-				updateValue(valor);
-			}
-			
-			
-		}
-		// Automatic calculation
-		$scope.getPozosAuto = function(valor){
-			sessionStorage.setItem('flagPozos','true');
-			$scope.flagPozos = true;
-			updateValue(valor);
-		}
-
-		function updateValue(valor){
-			$timeout(function(){
-				pozosValue = parseInt((valor * 1000) / 200);
-				parsePozosValue = parseInt($filter('number')(pozosValue, 0));
-				$scope.calculator.PozosProyecto = parsePozosValue;
-				$scope.default_pozos = $scope.calculator.PozosProyecto;
-			},500);
-		}
-		if (flagPozos == 'false') {
-			sessionStorage.setItem('flagPozos','false');
-			$scope.flagPozos = false;
-			$scope.$watch( 'calculator.PozosProyecto', function(newValue, oldValue){
-				$scope.custom_pozos = newValue;
-			}, true);
-		}
-		// Manual input
-		$scope.getPozosCustom = function(){
-			sessionStorage.setItem('flagPozos','false');
-			$scope.flagPozos = false;
-			$scope.$watch( 'calculator.PozosProyecto', function(newValue, oldValue){
-				$scope.custom_pozos = newValue;
-			}, true);
-		};
-		/* End Pozos field */
-
-		/* Start Rejillas field */
 		
-		/*if (flagRejillas == 'true') {
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-				sessionStorage.setItem('flagRejillas','true');
-				$scope.flagRejillas = true; 
+			if(getQuote  !== null){
+				$scope.calculator = JSON.parse(getQuote);
 
-				rejillasValue = parseInt(newValue * 25);
+				$log.info("sessionStorage not empty");
+				if (flagRejillas == 'true') {
+					$scope.flagRejillas = true;
+				}
+				else if (flagRejillas == 'false') {
+					$scope.flagRejillas = false;
+				}
+				else{
+					$scope.flagRejillas = '';
+				}
+				if (flagCocheras == 'true') {
+					$scope.flagCocheras = true;
+				}
+				else if (flagCocheras == 'false') {
+					$scope.flagCocheras = false;
+				}
+				else{
+					$scope.flagCocheras = '';
+				}
+				if (flagBicie == 'true') {
+					$scope.flagBicie = true;
+				}
+				else if (flagBicie == 'false') {
+					$scope.flagBicie = false;
+				}
+				else{
+					$scope.flagBicie = '';
+				}
+			}
+		
+		$scope.getKlValue = function(valor){
+			if (flagPozos == 'true' && $scope.pozos === 'd') {
+				if (valor || $scope.tmVar === undefined) {
+					setAutoPozo();
+				}
+				else{
+					$scope.submitted = false;
+					pozosValue = 0;
+					$scope.form.PozosProyecto1 = pozosValue;
+					$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
+					sessionStorage.setItem('flagPozos', true);
+					$scope.flagPozos = true;
+				}
+			}
+			if (flagPozos == 'false' && $scope.pozos === 'd') {
+				setAutoPozo();
+			}
+			if (flagPozos == null && $scope.pozos === 'd') {
+				setAutoPozo();
+			}
+		}
+		
+		/* Start Pozos field */
+		$scope.getPozos = function(valor){
+			if (valor === "d") {
+				$scope.pozos = valor;
+				$scope.calculator.PozosProyecto = "";
+				if ($scope.tmVar) {
+					setAutoPozo();
+				}
+				else{
+					setAutoPozo();
+				}
+				pozosValue = parseInt(($scope.calculator.KmEvaluables * 1000) / 200);
+				$scope.form.PozosProyecto1 = pozosValue;
+				$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
+			}
+			if (valor === "c") {
+				$scope.pozos = valor;
+				$scope.calculator.PozosProyecto = "";
+				if ($scope.tmVar) {
+					//setCustPozo($scope.tmVar);
+					$scope.form.PozosProyecto2 = $scope.tmVar;
+					$scope.calculator.PozosProyecto = $scope.form.PozosProyecto2;
+					$scope.tmVar = $scope.form.PozosProyecto1;
+					$scope.form.PozosProyecto1 = null;
+					sessionStorage.setItem('flagPozos',false);
+					$scope.flagPozos = false;
+				}
+				else{
+					$scope.tmVar = $scope.form.PozosProyecto1;
+					$scope.form.PozosProyecto1 = null;
+				}
+				$scope.firstPozo = function(firstValue){
+					//setCustPozo(firstValue);
+					$scope.form.PozosProyecto2 = firstValue;
+					$scope.calculator.PozosProyecto = firstValue;
+					$scope.tmVar = $scope.form.PozosProyecto1;
+					$scope.form.PozosProyecto1 = null;
+					sessionStorage.setItem('flagPozos',false);
+					$scope.flagPozos = false;
+				}
+			}
+		}
+		
+		function setAutoPozo(newValue){
+			/*console.log(newValue)
+			if (newValue) {
+				pozosValue = parseInt((newValue * 1000) / 200);
+				$scope.form.PozosProyecto1 = pozosValue;
+				$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
+				$scope.tmVar = $scope.form.PozosProyecto2;
+				$scope.form.PozosProyecto2 = null;
+			}*/
+			pozosValue = parseInt(($scope.calculator.KmEvaluables * 1000) / 200);
+			$scope.form.PozosProyecto1 = pozosValue;
+			$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
+			$scope.tmVar = $scope.form.PozosProyecto2;
+			$scope.form.PozosProyecto2 = null;
+			sessionStorage.setItem('flagPozos', true);
+			$scope.flagPozos = true;
+		}
+
+		function setCustPozo(newValue){
+			$scope.form.PozosProyecto2 = newValue;
+			$scope.calculator.PozosProyecto = $scope.form.PozosProyecto2;
+			$scope.tmVar = $scope.form.PozosProyecto1;
+			$scope.form.PozosProyecto1 = null;
+			sessionStorage.setItem('flagPozos',false);
+			$scope.flagPozos = false;
+		}
+		
+		/* Start Rejillas field */
+
+		/* End Pozos field */
+		$scope.getRejillas = function(valor){
+			if (valor === "d") {
+				rejillasValue = parseInt($scope.calculator.KmEvaluables * 25);
 				parseRejillasValue = parseInt($filter('number')(rejillasValue, 0));
-				$scope.calculator.RejillasProyecto = parseRejillasValue;
-				$scope.default_rejillas = $scope.calculator.RejillasProyecto;
-			}, true);
-		}*/
-
-		// Automatic calculation
-		/*$scope.getRejillasAuto = function(valor){
-			sessionStorage.setItem('flagRejillas','true');
-			$scope.flagRejillas = true;
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-				$scope.calculator.RejillasProyecto = parseInt(newValue * 25);
-				$scope.default_rejillas = $scope.calculator.RejillasProyecto;
-			});
-		};*/
-		// Manual input
-		$scope.getRejillasCustom = function(){
-			sessionStorage.setItem('flagRejillas','false');
-			$scope.flagRejillas = false;
-			$scope.$watch( 'calculator.RejillasProyecto', function(newValue, oldValue){
-				$scope.custom_rejillas = newValue;
-			});
-		};
+				$scope.form.RejillasProyecto1 = parseRejillasValue;
+				$scope.calculator.RejillasProyecto = $scope.form.RejillasProyecto1;
+				$scope.tmVar = $scope.form.RejillasProyecto2;
+				$scope.form.RejillasProyecto2 = null;
+				sessionStorage.setItem('flagRejillas','true');
+				$scope.flagRejillas = true;
+			}
+			if (valor === "c") {
+				if ($scope.tmVar) {
+					$scope.form.RejillasProyecto2 = $scope.tmVar;
+				}
+				else{
+					$scope.form.RejillasProyecto1 = null;
+					$scope.firstRejilla = function(first){
+						$scope.calculator.RejillasProyecto = first;
+					}
+				}
+				$scope.tmVar = $scope.form.RejillasProyecto1;
+				$scope.calculator.RejillasProyecto = $scope.form.RejillasProyecto2;
+				$scope.form.RejillasProyecto1 = null;
+				sessionStorage.setItem('flagRejillas','false');
+				$scope.flagRejillas = false;
+			}
+		}
 		/* End Rejillas field */
 
+
 		/* Start Cocheras field */
-		if (flagCocheras == 'true') {
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-					sessionStorage.setItem('flagCocheras','true');
-					$scope.flagCocheras = true; 
-
-					cocherasValue = parseInt(newValue * 25);
-					parseCocherasValue = parseInt($filter('number')(cocherasValue, 0));
-					$scope.calculator.Cocheras = parseCocherasValue;
-					$scope.default_cocheras = $scope.calculator.Cocheras;
-					
-			});
+		/* End Pozos field */
+		$scope.getCocheras = function(valor){
+			if (valor === "d") {
+				cocherasValue = parseInt($scope.calculator.KmEvaluables * 25);
+				parseCocherasValue = parseInt($filter('number')(cocherasValue, 0));
+				$scope.form.CocherasProyecto1 = parseCocherasValue;
+				$scope.calculator.Cocheras = $scope.form.CocherasProyecto1;
+				$scope.tmVar = $scope.form.CocherasProyecto2;
+				$scope.form.CocherasProyecto2 = null;
+				sessionStorage.setItem('flagCocheras','true');
+				$scope.flagCocheras = true;
+			}
+			if (valor === "c") {
+				if ($scope.tmVar) {
+					$scope.form.CocherasProyecto2 = $scope.tmVar;
+				}
+				else{
+					$scope.form.CocherasProyecto1 = null;
+					$scope.firstCochera = function(first){
+						$scope.calculator.Cocheras = first;
+					}
+				}
+				$scope.tmVar = $scope.form.CocherasProyecto1;
+				$scope.calculator.CocherasProyecto = $scope.form.CocherasProyecto2;
+				$scope.form.CocherasProyecto1 = null;
+				sessionStorage.setItem('flagCocheras','false');
+				$scope.flagCocheras = false;
+			}
 		}
-
-		// Automatic calculation
-		$scope.getCocherasAuto = function(valor){
-			sessionStorage.setItem('flagCocheras','true');
-			$scope.flagCocheras = true;
-
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-				$scope.calculator.Cocheras = parseInt(newValue * 25);
-				$scope.default_cocheras = $scope.calculator.Cocheras;
-			});
-		};
-
-		// Manual input
-		
-		$scope.getCocherasCustom = function(){
-			sessionStorage.setItem('flagCocheras','false');
-			$scope.flagCocheras = false;
-			$scope.$watch( 'calculator.Cocheras', function(newValue, oldValue){
-				$scope.custom_cocheras = newValue;
-			});
-		};
 		/* End Cocheras field */
 
 		/* Start Biciestacionamientos field */
-		/*if (flagBicie == 'true') {
-			$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-				sessionStorage.setItem('flagBicie','true');
-				$scope.flagBicie = true; 
-
-				bicieValue = ((newValue * 1000) / 300) * 4 * 479.33 ;
-				parseBicieValue = Number(bicieValue.toString().match(/^\d+(?:\.\d{0,2})?/));
-				$scope.calculator.Biciestacionamientos = parseBicieValue;
-				$scope.default_bicie = $scope.calculator.Biciestacionamientos;
-			});
-		}*/
-
-		// Automatic calculation
-		/*$scope.getBicieAuto = function(valor){
-			
-			if (!$scope.calculator.KmEvaluables) {
-				sessionStorage.setItem('flagBicie','undefined');
-				$log.error("Ingrese los Kilometros primero");
-			}
-			else{
-				sessionStorage.setItem('flagBicie','true');
-				$scope.flagBicie = true;
-
-				$scope.$watch('calculator.KmEvaluables', function(newValue, oldValue){
-					bicieValue = ((newValue * 1000) / 300) * 4 * 479.33 ;
-					parseBicieValue = Number(bicieValue.toString().match(/^\d+(?:\.\d{0,2})?/));
-					console.log(parseBicieValue);
-					$scope.calculator.Biciestacionamientos = parseBicieValue;
-					$scope.default_bicie = $scope.calculator.Biciestacionamientos;
-				});
-			}
-		};*/
 		$scope.getBicieAuto = function(valor){
 			sessionStorage.setItem('flagBicie','true');
 			$scope.flagBicie = true;
@@ -387,7 +430,7 @@
 				}
 			}
 			else{
-				$log.info("False");
+				$log.info("Formulario no válido");
 			}
 		};
 		
@@ -407,6 +450,7 @@
 		};
 		
 		var enviarFormulario = function(calculator){
+			console.log(calculator);
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
