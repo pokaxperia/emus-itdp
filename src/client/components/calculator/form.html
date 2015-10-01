@@ -60,7 +60,7 @@
 								<kilometer-field name="kilometros" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/"  ng-model="calculator.KmEvaluables"></kilometer-field>
 									<!-- <input type="number" name="kilometros" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-touched" placeholder="ejemplo: 00.00" step="0.01" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" ng-model="calculator.KmEvaluables" required> -->
 									<label>Km</label>
-									<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern ">No es un número válido !</span>
+									<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calculatorForm.kilometros.$invalid && calculatorForm.kilometros.$dirty">No es un número válido !</span>
 							</div>
 						</div>
 					</div>
@@ -72,7 +72,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 					<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 input">
-							<input type="number" class="form-control" name="ancho" placeholder="ejemplo: 00.0" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" step="0.01" ng-model="calculator.Anchoefectivo" required>
+							<input type="number" class="form-control" name="ancho" placeholder="ejemplo: 00.00" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" step="0.01" ng-model="calculator.Anchoefectivo" required>
 							<label>mts.</label>
 							<span class="btn btn-danger" ng-show="calculatorForm.ancho.$error.pattern || calculatorForm.ancho.$invalid && calculatorForm.ancho.$dirty">No es un número válido !</span>
 					</div>
@@ -105,7 +105,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 					<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 input">
-							<input type="number" class="form-control" name="seccion_arroyo" placeholder="eg: 00.0" ng-model="calculator.AnchoCalle" ng-pattern="/^[0-9]{1,4}[.][0-9]{1,1}$/" step="0.1" required>
+							<input type="number" class="form-control" name="seccion_arroyo" placeholder="ejemplo: 00.00" ng-model="calculator.AnchoCalle" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" step="0.01" required>
 							<label>mts.</label>
 							<span class="btn btn-danger" ng-show="calculatorForm.seccion_arroyo.$error.pattern || calculatorForm.seccion_arroyo.$invalid && calculatorForm.seccion_arroyo.$dirty">No es un número válido !</span>
 					</div>
@@ -119,7 +119,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 					<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-							<input type="number" class="form-control" name="IntersSemaf" placeholder="eg: 00" ng-pattern="/^[0-9]{1,3}$/" ng-model="calculator.IntersSemaf" required>
+							<input type="number" class="form-control" name="IntersSemaf" placeholder="eg: 00" ng-pattern="/^[0-9]{1,2}$/" ng-model="calculator.IntersSemaf" required>
 							<span class="btn btn-danger" ng-show="calculatorForm.IntersSemaf.$error.pattern || calculatorForm.IntersSemaf.$invalid && calculatorForm.IntersSemaf.$dirty">No es un número válido !</span>
 					</div>
 				</div>
@@ -132,7 +132,7 @@
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 					<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
-							<input type="number" class="form-control" name="IntersTotales" placeholder="eg: 00" ng-pattern="/^[0-9]{1,3}$/" ng-model="calculator.IntersTotales" required>
+							<input type="number" class="form-control" name="IntersTotales" placeholder="eg: 00" ng-pattern="/^[0-9]{1,2}$/" ng-model="calculator.IntersTotales" required>
 							<span class="btn btn-danger" ng-show="calculatorForm.IntersTotales.$error.pattern || calculatorForm.IntersTotales.$invalid && calculatorForm.IntersTotales.$dirty">No es un número válido !</span>
 					</div>
 				</div>
@@ -174,38 +174,45 @@
 					<li class="item-option">
 						<input type="radio" id="PozosProyecto" class="radio" name="PozosProyecto" value="d" ng-model="pozos" ng-change="getPozos(pozos)" ng-checked="flagPozos == true" required>
 						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
-						<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.PozosProyecto1" disabled  style="top: 15px;position: relative;" >
+						<div>
+							<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.PozosProyecto1" disabled  style="top: 15px;position: relative;" >
+							<!-- <span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calc ulatorForm.kilometros.$invalid && calculatorForm.kilometros.$dirty">"Ingresa los kilómetros de infraestructura a cotizar"!</span>-->
+						</div>
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
 						<input type="radio" id="otro-pozo" class="radio" name="PozosProyecto" value="c" ng-model="pozos" ng-change="getPozos(pozos)" ng-checked="flagPozos == false" required>
 						<label class="label-field" for="otro-pozo"><small>Otro</small></label>
-						
-						<input type="number" id="otro-pozo" class="form-control" name="Pozos" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.PozosProyecto2" ng-change="firstPozo(form.PozosProyecto2)">
+						<div>
+							<input type="number" id="otro" class="form-control" name="Pozos" placeholder="número" ng-pattern="/^\d{0,2}?\d?$/" ng-model="form.PozosProyecto2" ng-change="firstPozo(form.PozosProyecto2)" ng-disabled="pozos === 'd'">
+							<span class="btn btn-danger" ng-show="calculatorForm.Pozos.$error.pattern || calculatorForm.Pozos.$invalid && calculatorForm.Pozos.$dirty">No es un número válido !</span>
+						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
-		<!--<div class="row calculator-form-row">
+		<div class="row calculator-form-row">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<label>Número de rejillas</label>
 			</div>
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 				<ul>
 					<li class="item-option">
-						<input type="radio" id="RejillasProyecto" class="radio" name="RejillasProyecto" value="d" ng-model="rejilla" ng-click="getRejillas(rejilla)"ng-checked="flagRejillas == true" required >
+						<input type="radio" id="RejillasProyecto" class="radio" name="RejillasProyecto" value="d" ng-model="rejillas" ng-change="getRejillas(rejillas)" ng-checked="flagRejillas == true" required>
 						<label class="label-field" for="RejillasProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.RejillasProyecto1" disabled  style="top: 15px;position: relative;" >
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
-						<input type="radio" id="otro-rejilla" class="radio" name="RejillasProyecto" value="c" ng-model="rejilla" ng-click="getRejillas(rejilla)" ng-checked="flagRejillas == false" required>
-						<label class="label-field" for="otro-rejilla"><small>Otro</small></label>
-						
-						<input type="number" id="otro-rejilla" class="form-control" name="Rejillas" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.RejillasProyecto2" ng-change="firstRejilla(form.RejillasProyecto2)" ng-disabled ="rejilla !== 'c'">
-						<span class="btn btn-danger" ng-show="calculatorForm.Rejillas.$error.pattern || calculatorForm.Rejillas.$invalid && calculatorForm.Rejillas.$dirty">No es un número válido !</span>
+						<input type="radio" id="otra-rejilla" class="radio" name="RejillasProyecto" value="c" ng-model="rejillas" ng-change="getRejillas(rejillas)" ng-checked="flagRejillas == false" required>
+						<label class="label-field" for="otra-rejilla"><small>Otro</small></label>
+						<div>
+							<input type="number" id="otra" class="form-control" name="Rejillas" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.RejillasProyecto2" ng-change="firstRejilla(form.RejillasProyecto2)" ng-disabled="rejillas === 'd'">
+							<span class="btn btn-danger" ng-show="calculatorForm.Rejillas.$error.pattern || calculatorForm.Rejillas.$invalid && calculatorForm.Rejillas.$dirty">No es un número válido !</span>
+						</div>
 					</li>
 				</ul>
 			</div>
 		</div>
+
 		<div class="row calculator-form-row">
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<label>Cocheras a lo largo del trayecto</label>
@@ -213,21 +220,22 @@
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 				<ul>
 					<li class="item-option">
-							<input type="radio" id="CocherasProyecto" class="radio" name="CocherasProyecto" value="d" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == true" required >
+							<input type="radio" id="CocherasProyecto" class="radio" name="CocherasProyecto" value="d" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == true" required>
 							<label class="label-field" for="CocherasProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 							
-							<input type="number" class="form-control" name="Cocherasd" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.CocherasProyecto1" disabled  style="top: 15px;position: relative;" >
+							<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.CocherasProyecto1" disabled  style="top: 15px;position: relative;" >
 						</li>
 						<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
-							<input type="radio" id="otro-cochera" class="radio" name="CocherasProyecto" value="c" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == false" required>
-							<label class="label-field" for="otro-cochera"><small>Otro</small></label>
-							
-							<input type="number" id="otro-cochera" class="form-control" name="Cocherasc" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.CocherasProyecto2" ng-change="firstCochera(form.CocherasProyecto2)" ng-disabled ="cocheras !== 'c'">
-							<span class="btn btn-danger" ng-show="calculatorForm.Cocheras.$error.pattern || calculatorForm.Cocheras.$invalid && calculatorForm.Cocheras.$dirty">No es un número válido !</span>
+							<input type="radio" id="otra-cochera" class="radio" name="CocherasProyecto" value="c" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == false" required>
+							<label class="label-field" for="otra-cochera"><small>Otro</small></label>
+							<div>
+								<input type="number" id="otra" class="form-control" name="Cocheras" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.CocherasProyecto2" ng-change="firstCochera(form.CocherasProyecto2)" ng-disabled="cocheras === 'd'">
+								<span class="btn btn-danger" ng-show="calculatorForm.Cocheras.$error.pattern || calculatorForm.Cocheras.$invalid && calculatorForm.Cocheras.$dirty">No es un número válido !</span>
+							</div>
 					</li>
 				</ul>
 			</div>
-		</div>-->
+		</div>
 		<div class="row calculator-form-row">
 			<div class="form-group">
 				<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
