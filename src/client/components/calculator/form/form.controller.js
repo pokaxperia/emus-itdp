@@ -544,6 +544,7 @@
 			}
 			else{
 				$log.info("Formulario no válido");
+				$scope.calculatorForm.submitted = true;
 			}
 		};
 		
