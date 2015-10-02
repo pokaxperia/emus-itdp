@@ -4,7 +4,7 @@
 	*/
 	'use strict';
 
-	var ModalController = function(area, $modalInstance, $modal, $modalStack, $scope, $state, $log, SendQuote, Mun){
+	var ModalController = function($document, area, $modalInstance, $modal, $modalStack, $scope, $state, $log, SendQuote, Mun){
 
 		var estArea,
 		finalMerge,
@@ -205,7 +205,7 @@
 
 	};
 
-	ModalController.$inject = ['area','$modalInstance','$modal', '$modalStack','$scope', '$state', '$log','SendQuote', 'Mun'];
+	ModalController.$inject = ['$document','area','$modalInstance','$modal', '$modalStack','$scope', '$state', '$log','SendQuote', 'Mun'];
 
 	angular.module('emus.modal.controller', [])
 		.controller('ModalController', ModalController);
