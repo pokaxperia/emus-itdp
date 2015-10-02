@@ -25,7 +25,7 @@
 		getState,
 		imgProject,
 		listener,
-		loadSelectedProject,
+		//loadSelectedProject,
 		merg_final,
 		parseBicieValue,
 		parseCocherasValue,
@@ -64,12 +64,13 @@
 		getQuote = sessionStorage.getItem('setQuote');
 		getState = sessionStorage.getItem('state');
 		valorBicie = sessionStorage.getItem('Bicie');
-		loadSelectedProject;
+		//loadSelectedProject;
 		flags.push("flagPozos","flagRejillas","flagCocheras");
 
 		init();
 
 		function init(){
+			loadSelectedProject();
 			$log.info('Iniciando...');
 			
 			if(getQuote  !== null){
@@ -153,13 +154,14 @@
 			}
 		}
 
-		loadSelectedProject = (function(){
+		 function loadSelectedProject(){
 			var executed = false;
 			if(getInfrastructure){
 				$timeout(function(){
 					if (!executed) {
 						executed = true;
 						imgProject = angular.element(document.getElementById(getInfrastructure));
+						console.log(imgProject)
 						imgProject.addClass('radio_active');
 					}
 				}, 1000);
@@ -167,7 +169,7 @@
 			else{
 				executed = false;
 			}
-		})();
+		};
 
 		$scope.Modal = function(){
 			return Modal();
@@ -479,6 +481,7 @@
 
 		$scope.getBiciE = function(valor){
 			if (valor === "default") {
+				$scope.biciestacionamiento = valor;
 				if ($scope.tmBicie) {
 					setAutoBicie();
 				}
@@ -489,6 +492,7 @@
 				$scope.flagBicie = true;
 			}
 			if (valor === "c") {
+				$scope.biciestacionamiento = valor;
 				if ($scope.tmBicie) {
 					setCustBiciE($scope.tmBicie);
 					sessionStorage.setItem('flagBicie',false);
