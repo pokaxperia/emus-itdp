@@ -2,18 +2,24 @@
 	@include transition(opacity 0.25s linear);
 }
 .btn-area{
+	background-color: #35AAB7;
+	color: #ffffff;
+	border-color: #35AAB7;
 	left: 42.5px;
 	position: absolute;
 	right: 0;
 	top: 230px;
 	i.emus-marker{
-		float: left;
 		line-height: inherit;
+		vertical-align: sub;
 		margin-right: 0px;
+		display: inline-flex;
+		display: -webkit-inline-flex;
 	}
 	span{
 		display: none;
 		visibility: hidden;
+		vertical-align: middle;
 	}
 }
 .calculator-container{
@@ -237,6 +243,7 @@ input.radio{
 	.btn-area{
 		top: 175px;
 		right: 75.5px;
+		padding-right: 10px;
 		i.emus-marker{
 			margin-right: 10px;
 		}
