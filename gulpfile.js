@@ -78,7 +78,7 @@ gulp.task('sass', ['clean-styles'], function () {
 /* To Production */
 //gulp.task('build', ['cleaning-styles','cleaning-images','cleaning-iconfonts','cleaning-js', 'build-js', 'inject', 'templates', 'templatecache', 'json-files','build-images', 'build-iconfont']);
 gulp.task('join', function(){
-	log('Join all js/css files');
+	log('Joining all js/css files');
 	var assets = $.useref.assets({searchPath: ['./', './src/client/']});
 	var cssFilter = $.filter('**/*.css', {restore: true});
 	var jsLibFilter = $.filter('**/lib.js', {restore: true});
