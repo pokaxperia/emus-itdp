@@ -187,7 +187,6 @@
 		};
 
 		function enviarFormulario(calculator){
-			console.log(calculator)
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
