@@ -49,6 +49,12 @@
 		display: block;
 		margin: 20px auto 20px;
 	}
+	.novalid{
+		cursor: not-allowed;
+		display: block;
+		margin: 20px auto;
+		width: 300px;
+	}
 }
 .calculator-question{
 	background-color: #fff;
