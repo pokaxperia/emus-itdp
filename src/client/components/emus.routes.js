@@ -35,12 +35,13 @@
 			.state('modalidades.calculadora', {
 				abstract: true,
 				url: '/calculadora',
-				controller: 'CalculatorController',
+				//controller: 'CalculatorController',
 				templateUrl: './components/calculator/calculator.html'
 			})
 			.state('modalidades.calculadora.formulario', {
 				url: '/formulario',
-				templateUrl: './components/calculator/form.html',
+				templateUrl: './components/calculator/form/form.html',
+				controller: 'FormController',
 				ncyBreadcrumb: {
 					label: 'Calculadora',
 					parent: 'modalidades.calculadora'
@@ -48,7 +49,8 @@
 			})
 			.state('modalidades.calculadora.resumen', {
 				url: '/resumen',
-				templateUrl: './components/calculator/summary.html',
+				templateUrl: './components/calculator/summary/summary.html',
+				controller: 'SummaryController',
 				ncyBreadcrumb: {
 					label: 'Resumen',
 					parent: 'modalidades.calculadora.formulario'
