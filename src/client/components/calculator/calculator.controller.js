@@ -47,6 +47,9 @@
 		$scope.form.RejillasProyecto2 = "";
 		$scope.form.CocherasProyecto1 = "";
 		$scope.form.CocherasProyecto2 = "";
+		$scope.biciestacionamiento = "";
+		$scope.calc = {};
+		$scope.calc.bicie = "";
 		$scope.k_u = false;
 		$scope.resultado = null;
 		$scope.submitted = "";
@@ -124,6 +127,22 @@
 						setCustCochera(thirdValue);
 					}
 				}
+				
+				if (flagBicie == 'true') {
+					$scope.flagBicie = true;
+					$scope.submitted = true;
+					$scope.biciestacionamiento = "default";
+				}
+				if (flagBicie == 'false') {
+					$scope.flagBicie = false;
+					$scope.calc.bicie = $scope.calculator.Biciestacionamientos;
+					$scope.calculator.Biciestacionamientos = $scope.calc.bicie;
+					$scope.submitted = true;
+					$scope.biciestacionamiento = "c";
+					$scope.firstBiciE = function(fourthValue){
+						setCustBiciE(fourthValue);
+					}
+				}
 			}
 
 			if (getModal) {
@@ -170,15 +189,6 @@
 			}, 1500);
 		}
 
-		if (!$scope.calc) {
-			$scope.calc = {
-				"bicie": 0
-			};
-		}
-		if (valorBicie) {
-			$scope.calc.bicie = Number(valorBicie.toString());
-		}
-
 
 
 		/* Type of project options */
@@ -221,20 +231,11 @@
 		}
 		
 		
-			if(getQuote  !== null){
-				$scope.calculator = JSON.parse(getQuote);
+		if(getQuote  !== null){
+			$scope.calculator = JSON.parse(getQuote);
 
-				$log.info("sessionStorage not empty");
-				if (flagBicie == 'true') {
-					$scope.flagBicie = true;
-				}
-				else if (flagBicie == 'false') {
-					$scope.flagBicie = false;
-				}
-				else{
-					$scope.flagBicie = '';
-				}
-			}
+			$log.info("sessionStorage not empty");
+		}
 		
 		$scope.getKlValue = function(valor){
 			if (flagPozos == 'true' && $scope.pozos === 'd') {
@@ -246,7 +247,7 @@
 					$scope.form.PozosProyecto1 = "";
 				}
 				else{
-					$scope.submitted = false;
+					$scope.submitted = true;
 					pozosValue = "";
 					$scope.form.PozosProyecto1 = pozosValue;
 					$scope.calculator.PozosProyecto = $scope.form.PozosProyecto1;
@@ -270,7 +271,7 @@
 					$scope.form.RejillasProyecto1 = "";
 				}
 				else{
-					$scope.submitted = false;
+					$scope.submitted = true;
 					rejillasValue = "";
 					$scope.form.RejillasProyecto1 = rejillasValue;
 					$scope.calculator.RejillasProyecto = $scope.form.RejillasProyecto1;
@@ -294,7 +295,7 @@
 					$scope.form.CocherasProyecto1 = "";
 				}
 				else{
-					$scope.submitted = false;
+					$scope.submitted = true;
 					cocherasValue = "";
 					$scope.form.CocherasProyecto1 = cocherasValue;
 					$scope.calculator.Cocheras = $scope.form.CocherasProyecto1;
@@ -476,77 +477,53 @@
 		}
 		/* End Cocheras field */
 
-		/* Start Cocheras field */
-		/* End Pozos field */
-		/*$scope.getCocheras = function(valor){
-			if (valor === "d") {
-				cocherasValue = parseInt($scope.calculator.KmEvaluables * 25);
-				parseCocherasValue = parseInt($filter('number')(cocherasValue, 0));
-				$scope.form.CocherasProyecto1 = parseCocherasValue;
-				$scope.calculator.Cocheras = $scope.form.CocherasProyecto1;
-				$scope.tmVar = $scope.form.CocherasProyecto2;
-				$scope.form.CocherasProyecto2 = null;
-				sessionStorage.setItem('flagCocheras','true');
-				$scope.flagCocheras = true;
-			}
-			if (valor === "c") {
-				if ($scope.tmVar) {
-					$scope.form.CocherasProyecto2 = $scope.tmVar;
+		$scope.getBiciE = function(valor){
+			if (valor === "default") {
+				if ($scope.tmBicie) {
+					setAutoBicie();
 				}
 				else{
-					$scope.form.CocherasProyecto1 = null;
-					$scope.firstCochera = function(first){
-						$scope.calculator.Cocheras = first;
-					}
+					setAutoBicie();
 				}
-				$scope.tmVar = $scope.form.CocherasProyecto1;
-				$scope.calculator.CocherasProyecto = $scope.form.CocherasProyecto2;
-				$scope.form.CocherasProyecto1 = null;
-				sessionStorage.setItem('flagCocheras','false');
-				$scope.flagCocheras = false;
+				sessionStorage.setItem('flagBicie',true);
+				$scope.flagBicie = true;
 			}
-		}*/
-		/* End Cocheras field */
-
-		/* Start Biciestacionamientos field */
-		$scope.getBicieAuto = function(valor){
-			sessionStorage.setItem('flagBicie','true');
-			$scope.flagBicie = true;
-			console.log(valor);
-			//$scope.default_bicie = $scope.calculator.Biciestacionamientos;
-		};
-		// Manual input
-		
-		$scope.getBicieCustom = function(){
-			sessionStorage.setItem('flagBicie','false');
-			$scope.flagBicie = false;
-			if (flagBicie == 'false') {
-				$scope.$watch('calc.bicie', function(newValue, oldValue){
+			if (valor === "c") {
+				if ($scope.tmBicie) {
+					setCustBiciE($scope.tmBicie);
+					sessionStorage.setItem('flagBicie',false);
 					$scope.flagBicie = false;
-					sessionStorage.setItem('Bicie', newValue);
-					$scope.custom_bicie = newValue;
-					$scope.calc.bicie = newValue;
-					$scope.calculator.Biciestacionamientos = newValue;
-				});
+				}
+				else{
+					$scope.tmBicie = $scope.biciestacionamiento;
+					$scope.biciestacionamiento = null;
+				}
+				$scope.firstBiciE = function(fourthValue){
+					setCustBiciE(fourthValue);
+					sessionStorage.setItem('flagBicie',false);
+					$scope.flagBicie = false;
+				}
 			}
-		};
+		}
+		/* Start Biciestacionamientos field */
+		function setAutoBicie(){
+			$scope.calculator.Biciestacionamientos = "default";
+			$scope.tmBicie = $scope.calc.bicie;
+			$scope.calc.bicie = null;
+			sessionStorage.setItem('flagBicie', true);
+			$scope.flagBicie = true;
+		}
 
-		/*$scope.flagBicie = false;
-			sessionStorage.setItem('flagBicie','false');
-			$scope.$watch('calc.bicie', function(newValue, oldValue){
-				sessionStorage.setItem('Bicie', newValue);
-				bicieValue = newValue * 479.33;
-				parseBicieValue = Number(bicieValue.toString().match(/^\d+(?:\.\d{0,2})?/));
-				$scope.calculator.Biciestacionamientos = newValue;
-				$scope.custom_bicie = newValue;
-			});
-			/*
-		};
-		
+		function setCustBiciE(newValue){
+			$scope.calc.bicie = newValue;
+			$scope.calculator.Biciestacionamientos = newValue;
+			sessionStorage.setItem('flagBicie',false);
+			$scope.flagBicie = false;
+		}
 		/* End Biciestacionamientos field */
 
-		/* Submit Form */
 
+		/* Submit Form */
 		$scope.saveQuote = function(calculatorForm, calculator){
 			var getModal = sessionStorage.getItem('modal');
 			if (calculatorForm.$valid === true) {
@@ -582,7 +559,6 @@
 		};
 		
 		var enviarFormulario = function(calculator){
-			console.log(calculator);
 			$log.info('Enviando formulario');
 			SendQuote.sendQuote(calculator).
 			then(function(result){
