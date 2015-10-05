@@ -90,7 +90,7 @@
 					$scope.pozos= "c";
 					$scope.firstPozo = function(firstValue){
 						setCustPozo(firstValue);
-					}
+					};
 				}
 
 				if (flagRejillas == 'true') {
@@ -108,7 +108,7 @@
 					$scope.rejillas= "c";
 					$scope.firstRejilla = function(secondValue){
 						setCustRejilla(secondValue);
-					}
+					};
 				}
 				
 				if (flagCocheras == 'true') {
@@ -126,7 +126,7 @@
 					$scope.cocheras= "c";
 					$scope.firstCochera = function(thirdValue){
 						setCustCochera(thirdValue);
-					}
+					};
 				}
 				
 				if (flagBicie == 'true') {
@@ -142,7 +142,7 @@
 					$scope.biciestacionamiento = "c";
 					$scope.firstBiciE = function(fourthValue){
 						setCustBiciE(fourthValue);
-					}
+					};
 				}
 			}
 
@@ -161,7 +161,6 @@
 					if (!executed) {
 						executed = true;
 						imgProject = angular.element(document.getElementById(getInfrastructure));
-						console.log(imgProject)
 						imgProject.addClass('radio_active');
 					}
 				}, 1000);
@@ -169,11 +168,11 @@
 			else{
 				executed = false;
 			}
-		};
+		}
 
 		$scope.Modal = function(){
 			return Modal();
-		}
+		};
 
 		function Modal(){
 			$log.warn("Lanzando Modal");
@@ -257,14 +256,14 @@
 					$scope.flagPozos = true;
 				}
 			}
-			if (flagPozos == 'false' && $scope.pozos === 'd') {
+			if (flagPozos === 'false' && $scope.pozos === 'd') {
 				setAutoPozo();
 			}
-			if (flagPozos == null && $scope.pozos === 'd') {
+			if (flagPozos === null && $scope.pozos === 'd') {
 				setAutoPozo();
 			}
 			
-			if (flagRejillas == 'true' && $scope.rejillas === 'd') {
+			if (flagRejillas === 'true' && $scope.rejillas === 'd') {
 				if (valor || $scope.tmRejillas === undefined) {
 					setAutoRejilla();
 				}
@@ -281,14 +280,14 @@
 					$scope.flagRejillas = true;
 				}
 			}
-			if (flagRejillas == 'false' && $scope.rejillas === 'd') {
+			if (flagRejillas === 'false' && $scope.rejillas === 'd') {
 				setAutoRejilla();
 			}
-			if (flagRejillas == null && $scope.rejillas === 'd') {
+			if (flagRejillas === null && $scope.rejillas === 'd') {
 				setAutoRejilla();
 			}
 			
-			if (flagCocheras == 'true' && $scope.cocheras === 'd') {
+			if (flagCocheras === 'true' && $scope.cocheras === 'd') {
 				if (valor || $scope.tmCocheras === undefined) {
 					setAutoCochera();
 				}
@@ -305,13 +304,13 @@
 					$scope.flagCocheras = true;
 				}
 			}
-			if (flagCocheras == 'false' && $scope.cocheras === 'd') {
+			if (flagCocheras === 'false' && $scope.cocheras === 'd') {
 				setAutoCochera();
 			}
-			if (flagCocheras == null && $scope.cocheras === 'd') {
+			if (flagCocheras === null && $scope.cocheras === 'd') {
 				setAutoCochera();
 			}
-		}
+		};
 		
 		
 		/* Start Pozos field */
@@ -345,9 +344,9 @@
 					setCustPozo(firstValue);
 					sessionStorage.setItem('flagPozos',false);
 					$scope.flagPozos = false;
-				}
+				};
 			}
-		}
+		};
 		
 		function setAutoPozo(newValue){
 			pozosValue = parseInt(($scope.calculator.KmEvaluables * 1000) / 200);
@@ -400,9 +399,9 @@
 					setCustRejilla(secondValue);
 					sessionStorage.setItem('flagRejillas',false);
 					$scope.flagRejillas = false;
-				}
+				};
 			}
-		}
+		};
 		
 		function setAutoRejilla(newValue){
 			rejillasValue = parseInt(($scope.calculator.KmEvaluables * 1000) / 200);
@@ -455,9 +454,9 @@
 					setCustCochera(thirdValue);
 					sessionStorage.setItem('flagCocheras',false);
 					$scope.flagCocheras = false;
-				}
+				};
 			}
-		}
+		};
 		
 		function setAutoCochera(newValue){
 			cocherasValue = parseInt($scope.calculator.KmEvaluables * 25);
@@ -506,9 +505,9 @@
 					setCustBiciE(fourthValue);
 					sessionStorage.setItem('flagBicie',false);
 					$scope.flagBicie = false;
-				}
+				};
 			}
-		}
+		};
 		/* Start Biciestacionamientos field */
 		function setAutoBicie(){
 			$scope.calculator.Biciestacionamientos = "default";
@@ -561,7 +560,7 @@
 			finalMerge = merge_cve(joinArea, joinData);
 
 			return enviarFormulario(finalMerge);
-		};
+		}
 		
 		var enviarFormulario = function(calculator){
 			$log.info('Enviando formulario');
@@ -569,8 +568,9 @@
 			then(function(result){
 				if(result){
 					$document.scrollTop(0);
-					$scope.own = result.options;
-					$scope.result = result;
+					//var datas = result.options;
+					//var results = result;
+					sessionStorage.setItem('results', results)
 					$state.go('modalidades.calculadora.resumen');
 					$log.info("Ok");
 				}
