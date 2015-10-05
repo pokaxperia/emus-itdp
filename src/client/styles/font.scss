@@ -19,36 +19,45 @@
 .emus-help:before {
 	content: "\e000";
 }
-.emus-down-arrow:before {
+.emus-download:before {
 	content: "\e001";
 }
-.emus-marker2:before {
+.emus-down-arrow:before {
 	content: "\e002";
 }
-.emus-facebook:before {
+.emus-download1:before {
 	content: "\e003";
 }
-.emus-google:before {
+.emus-facebook:before {
 	content: "\e004";
 }
-.emus-marker1:before {
+.emus-modality:before {
 	content: "\e005";
 }
-.emus-left-arrow:before {
+.emus-google:before {
 	content: "\e006";
 }
-.emus-menu:before {
+.emus-left-arrow:before {
 	content: "\e007";
 }
-.emus-marker:before {
+.emus-menu:before {
 	content: "\e008";
 }
-.emus-user:before {
+.emus-minus:before {
 	content: "\e009";
 }
-.emus-right-arrow:before {
+.emus-marker:before {
 	content: "\e00a";
 }
-.emus-twitter:before {
+.emus-plus:before {
 	content: "\e00b";
+}
+.emus-user:before {
+	content: "\e00c";
+}
+.emus-right-arrow:before {
+	content: "\e00d";
+}
+.emus-twitter:before {
+	content: "\e00e";
 }
