@@ -1,7 +1,6 @@
 .summary{
 	margin-top: 40px;
 	> section{
-		background-color: #ffffff;
 		padding: 0;
 	}
 }
@@ -12,6 +11,36 @@
 		font-weight: normal;
 		margin: 0;
 		padding: 15px;
+	}
+}
+.content-left,
+.content-right{
+	padding: 15px;
+}
+table{
+	margin: 10px 0;
+	width: 100%;
+	tbody{
+		tr{
+			border-bottom: 1px solid rgba($color-text, 0.125);
+			height: 50px;
+			td{
+				color: $color-text;
+				padding: 10px 5px;
+			}
+			td:nth-child(1){
+				width: 70%;
+			}
+			td:nth-child(2){
+				width: 30%;
+			}
+			td:last-child{
+				font-weight: 200;
+			}
+		}
+		tr:last-child{
+			border-bottom: none;
+		}
 	}
 }
 article.s1{
@@ -66,75 +95,10 @@ article.s1{
 					}
 				}
 			}
-			.content-tabs{
-				ul{
-					-webkit-align-items: center;
-					-webkit-flex-direction: row;
-					-webkit-justify-content: center;
-					align-items: center;
-					background-color: #ffffff;
-					display: -webkit-flex;
-					display: flex;
-					flex-direction: row;
-					justify-content: center;
-					list-style: none;
-					margin: 0;
-					padding: 0;
-					text-align: center;
-					li{
-						border-bottom: 3px solid transparent;
-						color: rgba($color-text, 0.75);
-						padding: 15px 15px 5px;
-						margin: 0 1px;
-						font-weight: normal;
-						@include transition(all 0.25s ease);
-						&:hover{
-							border-color: #35AAB7;
-							color: #414C5A;
-						}
-						&.tabActiveHeader{
-							border-color: #35AAB7;
-							color: #414C5A;
-						}
-					}
-				}
-			}
 		}
 	}
 }
-.s2-body{
-	background-color: #ffffff;
-	>section.row{
-		margin: 0;
-	}
-	.content-left,
-	.content-right{
-		padding: 15px;
-		>div{
-			background-color: #EFF2F9;
-		}
-	}
-	table{
-		margin: 10px 0;
-		width: 100%;
-		tbody{
-			tr{
-				border-bottom: 1px solid rgba($color-text, 0.125);
-				td{
-					width: 50%;
-					color: $color-text;
-					padding: 10px 5px;
-				}
-				td:last-child{
-					font-weight: 200;
-				}
-			}
-			tr:last-child{
-				border-bottom: none;
-			}
-		}
-	}
-}
+
 .s3-body{
 	background-color: #F0F4F8;
 	.s3-body-cost{
@@ -164,6 +128,23 @@ article.s1{
 	}
 }
 @media (min-width: 768px) {
+	table{
+		tbody{
+			tr{
+				td:nth-child(1){
+					width: 50%;
+				}
+				td:nth-child(2){
+					width: 50%;
+				}
+				&:hover{
+					background-color: rgba($color-text, 0.25);
+					@include transition(background 0.25s linear);
+				}
+			}
+		}
+	}
+		
 	article.s1{
 		.s1-body{
 			.content{
@@ -210,6 +191,18 @@ article.s1{
 	}
 }
 @media (min-width: 992px) {
+	table{
+		tbody{
+			tr{
+				td:nth-child(1){
+					width: 70%;
+				}
+				td:nth-child(2){
+					width: 30%;
+				}
+			}
+		}
+	}
 	article.s1{
 		.s1-body{
 			.content{
