@@ -76,7 +76,7 @@
 					sessionStorage.setItem('estado', JSON.stringify(estArea));
 				}
 			});
-		}
+		};
 
 		$scope.munChanged = function(munValue){
 			var getCveMun = $scope.municipios.some(function(mun){
@@ -86,8 +86,8 @@
 					};
 					sessionStorage.setItem('municipio', JSON.stringify(munArea));
 				}
-			})
-		}
+			});
+		};
 
 		$scope.saveArea = function () {
 			
@@ -184,7 +184,7 @@
 			finalMerge = merge_cve(joinArea, joinData);
 
 			return enviarFormulario(finalMerge);
-		};
+		}
 
 		function enviarFormulario(calculator){
 			$log.info('Enviando formulario');
@@ -200,7 +200,7 @@
 			}, function(error){
 				$log.error("Error: " + error);
 			});
-		};
+		}
 
 	};
 
