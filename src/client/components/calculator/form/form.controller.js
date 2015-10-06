@@ -568,9 +568,7 @@
 			then(function(result){
 				if(result){
 					$document.scrollTop(0);
-					//var datas = result.options;
-					//var results = result;
-					sessionStorage.setItem('results', results)
+					sessionStorage.setItem('results', JSON.stringify(result));
 					$state.go('modalidades.calculadora.resumen');
 					$log.info("Ok");
 				}
