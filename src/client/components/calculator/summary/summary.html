@@ -30,53 +30,65 @@
 				</div>
 			</div>
 		</article>
-		<article class="s3">
+		<article class="s3" style="margin-top: 5px;">
+			<div class="summary-header" style="background-color:rgba(65,76,90,0.75);color:#ffffff;">
+				<h4 style="color:#ffffff;">Costos</h4>
+			</div>
+			<div class="row" style="margin:0;background-color:#ffffff;">
+				<div class="col-xs-12 col-sm-offset-2 col-sm-8">
+					<table>
+						<tbody>
+							<tr>
+								<td>Area de Infraestructura</td>
+								<td>{{result.areaInfraestructura | currency}}</td>
+							</tr>
+							<tr>
+								<td>Obras viales de bacheo</td>
+								<td>{{result.bacheo | currency}}</td>
+							</tr>
+							<tr>
+								<td>Biciestacionamientos</td>
+								<td>{{result.biciestacionamientos | currency}}</td>
+							</tr>
+							<tr>
+								<td>Delimitación de la Infraestructura</td>
+								<td>{{result.delimitacionInfraestructura | currency}}</td>
+							</tr>
+							<tr>
+								<td>Infraestructura complementaria</td>
+								<td>{{result.infraestructuraComplementaria | currency}}</td>
+							</tr>
+							<tr>
+								<td>Intersecciones semaforizadas</td>
+								<td>{{result.interseccionesSemaforizadas | currency}}</td>
+							</tr>
+							<tr>
+								<td>Señalización</td>
+								<td>{{result.senalizacion.seleccionada | currency}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</article>
+		<article class="s2" style="margin-top: 5px;">
+			<div class="summary-header" style="background-color:rgba(65,76,90,0.75);color:#ffffff;">
+				<h4 style="color:#ffffff;">Comparativa</h4>
+			</div>
+			<div class="s2-body">
+				<section class="row">
+					<article class="col-xs-12">
+						<div id="firstdiv" style="	width		: 100%;height		: 500px;font-size	: 11px;"></div>
+						<div id="legenddiv" style="border: 2px solid #828282; margin: 5px 0 20px 0;position: relative;"></div>
+					</article>
+				</section>
+			</div>
+		</article>
 			<accordion>
-				<accordion-group is-open="first.open">
-					<accordion-heading >Costos<i class="pull-right" ng-class="{'emus-plus': first.open, 'emus-minus': !first.open}"></i></accordion-heading>
-					<div class="row">
-						<div class="col-xs-12 col-sm-offset-2 col-sm-8">
-							<table>
-								<tbody>
-									<tr>
-										<td>Area de Infraestructura</td>
-										<td>{{result.areaInfraestructura | currency}}</td>
-									</tr>
-									<tr>
-										<td>Obras viales de bacheo</td>
-										<td>{{result.bacheo | currency}}</td>
-									</tr>
-									<tr>
-										<td>Biciestacionamientos</td>
-										<td>{{result.biciestacionamientos | currency}}</td>
-									</tr>
-									<tr>
-										<td>Delimitación de la Infraestructura</td>
-										<td>{{result.delimitacionInfraestructura | currency}}</td>
-									</tr>
-									<tr>
-										<td>Infraestructura complementaria</td>
-										<td>{{result.infraestructuraComplementaria | currency}}</td>
-									</tr>
-									<tr>
-										<td>Intersecciones semaforizadas</td>
-										<td>{{result.interseccionesSemaforizadas | currency}}</td>
-									</tr>
-									<tr>
-										<td>Señalización</td>
-										<td>{{result.senalizacion.seleccionada | currency}}</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</accordion-group>
-				<accordion-group is-open="second.open">
-					<accordion-heading>Comparativa<i class="pull-right" ng-class="{'emus-plus': second.open, 'emus-minus': !second.open}"></i></accordion-heading>
-					This is just some content to illustrate fancy headings.
 				</accordion-group>
 				<accordion-group is-open="third.open">
-					<accordion-heading>Datos ingresados<i class="pull-right" ng-class="{'emus-plus': third.open, 'emus-minus': !third.open}"></i></accordion-heading>
+					<accordion-heading>Datos ingresados<i class="pull-right" ng-class="{'emus-plus': third.open, 'emus-minus': 
+					!third.open}"></i></accordion-heading>
 					<section class="row">
 						<div class="content-left col-xs-12 col-sm-6">
 							<div class="col-xs-12">
@@ -161,8 +173,7 @@
 					</section>
 				</accordion-group>
 			</accordion>
-
-		</article>
+		
 		<!--<article class="s2">
 			<div class="summary-header">
 				<h4>DATOS INGRESADOS</h4>
