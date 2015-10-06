@@ -1,3 +1,8 @@
+.amcharts-chart-div{
+	svg:root{
+		padding: 10px;
+	}
+}
 .summary{
 	margin-top: 40px;
 	> section{
@@ -10,7 +15,7 @@
 		color: $color-text;
 		font-weight: normal;
 		margin: 0;
-		padding: 15px;
+		padding: 10px;
 	}
 }
 .content-left,
@@ -98,7 +103,18 @@ article.s1{
 		}
 	}
 }
-
+article.s2{
+	.s2-body{
+		background-color: #ffffff;
+		>.row{
+			margin: 0;
+			#firstdiv{
+				width: 100%;
+				height: 500px;
+			}
+		}
+	}
+}
 .s3-body{
 	background-color: #F0F4F8;
 	.s3-body-cost{
