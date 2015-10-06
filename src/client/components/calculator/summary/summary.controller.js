@@ -17,16 +17,20 @@
 			setResults = JSON.parse(sessionStorage.getItem('results'));
 			
 			if(setResults){
-				setCharts(setResults);
+				setResults(setResults);
 			}
 			
 		}
-		setCharts();
-		function setCharts(data){
+
+		function setResults(data){
 			var first = data.ingresos.estatales;
 			var second = data.ingresos.municipales;
 			var third = data.egresos.estatales;
 			var fourth = data.egresos.municipales;
+			$scope.own = data.options;
+			$scope.result = data;
+			
+			
 			function firstChart(){
 				
 			}
