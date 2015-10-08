@@ -131,7 +131,7 @@ article.modality-breadcrumb{
 	}
 }
 .card-description{
-	h1{
+	h2{
 		color: $color-text;
 		font-size: 25px;
 		text-align: center;
@@ -161,9 +161,9 @@ article.modality-breadcrumb{
 	.modality-header{
 		padding:25px 0;
 		h1{
-			font-size: 34px;
+			font-size: 28px;
 			margin: 0;
-			padding: 35px 50px;
+			padding: 35px 100px;
 		}
 		.area{
 			position: absolute;
@@ -194,19 +194,13 @@ article.modality-breadcrumb{
 			}
 		}
 	}
-	.card-description{
-		h1{
-			font-size: 30px;
-		}
-	}
 }
 @media (min-width: 992px) {
 	section.modality-container{
 		height: initial;
 	}
 	.card-description{
-		h1{
-			font-size: 36px;
+		h2{
 			margin: 30px 0 20px;
 		}
 	}
