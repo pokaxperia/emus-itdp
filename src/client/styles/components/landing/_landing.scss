@@ -161,12 +161,6 @@ section.platform{
 			margin: 40px 0 0 0;
 			div{
 				margin-bottom: 40px;
-				article{
-					h2{
-						color: $color-text;
-						font-weight: normal;
-					}
-				}
 				figure{
 					text-align: center;
 					img{
@@ -176,8 +170,22 @@ section.platform{
 				}
 			}
 		}
+		section.row.p-matrix{
+			article{
+				h2{
+					color: $color-text;
+					font-weight: normal;
+				}
+			}
+		}
 		section.row.p-modalities{
 			flex-direction: row-reverse;
+			article{
+				h2{
+					color: $color-text;
+					font-weight: normal;
+				}
+			}
 		}
 	}
 }
