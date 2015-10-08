@@ -44,7 +44,10 @@ gulp.task('inject', function(){
 			ignorePath: '../../'
 		}))
 		.pipe($.inject(gulp.src(
-			'bower_components/angular-ui-bootstrap/*.js',{read: false}
+			[
+				'bower_components/angular-ui-bootstrap/*.js',
+				'bower_components/amcharts3/amcharts/amcharts.js',
+				'bower_components/amcharts3/amcharts/pie.js'],{read: false}
 		),{starttag: '<!-- inject:own:js -->'}))
 		.pipe($.inject(gulp.src([
 			'./src/client/styles/styles.css'
@@ -143,11 +146,6 @@ gulp.task('copy-iconfont', function() {
 	log('Copying iconfonts');
 	return gulp.src('./src/client/iconfonts/*.*')
 		.pipe(gulp.dest('build/iconfonts/'));
-});
-gulp.task('copy-api', function() {
-	log('Copying api folder');
-	return gulp.src('./api/**/*.*')
-		.pipe(gulp.dest('build/api'));
 });
 /* Cleaners */
 gulp.task('cleaning-styles', function(done){
