@@ -9,6 +9,9 @@
 				url: '/',
 				controller: 'LandingController',
 				templateUrl: './components/landing/landing.html',
+				data: {
+					title: ""
+				},
 				ncyBreadcrumb: {
 					label: 'Inicio'
 				}
@@ -16,6 +19,9 @@
 			.state('modalidades', {
 				url: '/modalidades',
 				controller: 'ModalitiesController',
+				data: {
+					title: "Modalidades de la Estrategia de Movilidad Urbana Sustentable (EMUS)"
+				},
 				templateUrl: './components/modalities/modalities.html',
 				ncyBreadcrumb: {
 					label: 'Modalidades',
@@ -35,13 +41,15 @@
 			.state('modalidades.calculadora', {
 				abstract: true,
 				url: '/calculadora',
-				//controller: 'CalculatorController',
 				templateUrl: './components/calculator/calculator.html'
 			})
 			.state('modalidades.calculadora.formulario', {
 				url: '/formulario',
 				templateUrl: './components/calculator/form/form.html',
 				controller: 'FormController',
+				data: {
+					title: "Calculadora"
+				},
 				ncyBreadcrumb: {
 					label: 'Calculadora',
 					parent: 'modalidades.calculadora'
@@ -51,6 +59,9 @@
 				url: '/resumen',
 				templateUrl: './components/calculator/summary/summary.html',
 				controller: 'SummaryController',
+				data: {
+					title: "Resumen"
+				},
 				ncyBreadcrumb: {
 					label: 'Resumen',
 					parent: 'modalidades.calculadora.formulario'
