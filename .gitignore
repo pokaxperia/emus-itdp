@@ -4,6 +4,7 @@ bower_components
 build
 node_modules
 tmp
+src/client/.DS_Store
 
 # Ignore files
 commits.txt
