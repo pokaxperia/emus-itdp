@@ -31,7 +31,7 @@
 		$rootScope.$on('$stateChangeStart', function(event, toState){ 
 			$rootScope.title = toState.data.title;
 			return $rootScope.title;
-		})
+		});
 
 		$rootScope.$on('$stateChangeSuccess', function(toState){
 			$rootScope.state = toState.targetScope.$state.current;
