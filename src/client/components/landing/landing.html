@@ -4,15 +4,13 @@
 			<div class="landing-icon" id="menu"><i class="emus-menu"></i></div>
 			<div class="langind-logo">
 				<a href="#/">
-					<img src="./images/logo_itdp_30.png">
+					<img ng-src="./images/logo_itdp_30.png">
 				</a>
 			</div>
 			<nav class="landing-menu">
 				<ul>
 					<li><a class="item" href="#start">Inicio</a></li>
-					<!-- <li><a class="item" href="#who">Matriz</a></li>
-					<li><a class="item" href="#about">Modalidades</a></li> -->
-					<li><a class="item" href="#about">Acerca de</a></li>
+					<li><a class="item" ui-sref="acerca">Acerca de</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -24,24 +22,17 @@
 				<h2>La Hoja de Ruta es una plataforma en línea desarrollada por la Secretaría de Desarrollo Agrario, Territorial y Urbano (SEDATU) en colaboración con ITDP México para apoyar la planeación, diseño, implementación y evaluación de proyectos de movilidad urbana sustentable.</h2>
 				<hr>
 			</article>
-<!-- 			<article class="col-xs-12 col-sm-6 col-md-5 col-lg-5">
-				<h2>Mediante la matriz de capacitación/aprendizaje, podrás saber qué tipo de procedimientos hay que realizar antes de implementar un proyecto.</h2>
-				<button class="btn btn-lg btn-landing">MATRIZ</button>
-				<br>
-				<h2>Escoge un proyecto en una modalidad y calcula el costo del mismo.</h2>
-				<button class="btn btn-lg btn-landing text-left" ui-sref="modalidades" >MODALIDADES</button>
-			</article> -->
 		</section>
 		<div href="#platform" du-smooth-scroll="" du-scrollspy="" offset="65" style="display: inline-block;cursor: pointer;"><i class="emus-down-arrow"></i>
 			</div>
 	</section>
 	<section class="platform" id="platform">
 		<section class="container">
-			<h1 class="text-center">Estructura de la Hoja de Ruta</h1>
 			<section class="row p-matrix">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<article>
-						<h2>Matriz de procedimientos</h2>
+						<h1>Estructura de la Hoja de Ruta</h1>
+						<h4>Matriz de procedimientos</h4>
 						<p>La plataforma está organizada de acuerdo a las distintas modalidades de la Estrategia de Movilidad Urbana Sustentable y los diferentes pasos que se requieren para el desarrollo de proyectos. Da click para comenzar a explorar la Hoja de Ruta.</p>
 						<button class="btn btn-lg btn-landing1">EXPLORAR</button>
 					</article>
@@ -52,18 +43,18 @@
 					</figure>
 				</div>
 			</section>
-			<h1 class="text-center">Calculadora de Costos</h1>
 			<section class="row p-modalities">
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<article>
-						<h2>Modalidades de la Estrategia de Movilidad Urbana Sustentable</h2>
+						<h1>Calculadora de Costos</h1>
+						<h4>Modalidades de la Estrategia de Movilidad Urbana Sustentable</h4>
 						<p>Selecciona la modalidad de la EMUS que te interese y descubre el tipo de proyecto que se puede desarrollar, así como su costo estimado.</p>
 						<button class="btn btn-lg btn-landing1" ui-sref="modalidades">EXPLORAR</button>
 					</article>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 					<figure>
-						<img src="./images/modalidades.png" alt="Modalidades">
+						<img ng-src="./images/modalidades.png" alt="Modalidades">
 					</figure>
 				</div>
 			</section>
@@ -103,21 +94,8 @@
 				</article>
 			</section>
 		</section>
-		<!-- <section class="container">
-			<h2 class="text-center">¿Para quiénes?</h2>
-			<section class="row">
-				<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-					<i class="emus-user"></i>
-					<p>Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness.</p>
-				</article>
-				<article class="col-xs-12 col-sm-6 col-md-6 col-lg-6 text-center">
-					<i class="emus-users"></i>
-					<p>Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness.</p>
-				</article>
-			</section>
-		</section> -->
 	</section>
-<!-- 	<section class="matrix">
+		<!-- 	<section class="matrix">
 		<div class="container">
 			<h1 class="text-center">¿Quiénes pueden usar la plataforma?</h1>
 			<section class="matrix-body">
