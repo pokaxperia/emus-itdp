@@ -58,7 +58,6 @@
 						<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
 							<div class="col-xs-12 col-sm-10 col-md-8 col-lg-6 input">
 								<input type="number" class="form-control" ng-change="getKlValue(calculator.KmEvaluables)" placeholder="ejemplo: 00.00" step="0.01" required name="kilometros" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" ng-model="calculator.KmEvaluables"/>
-									<!-- <input type="number" name="kilometros" class="form-control ng-pristine ng-invalid ng-invalid-required ng-valid-pattern ng-touched" placeholder="ejemplo: 00.00" step="0.01" ng-pattern="/^\d{0,1}(\d\.\d)?\d?$/" ng-model="calculator.KmEvaluables" required> -->
 									<label>Km</label>
 									<span class="btn btn-danger" ng-if="calculatorForm.kilometros.$error.pattern || calculatorForm.submitted" style="display:block;">No es un número válido !</span>
 							</div>
@@ -176,7 +175,7 @@
 						<label class="label-field" for="PozosProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						<div>
 							<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.PozosProyecto1" disabled  style="top: 15px;position: relative;">
-							<!-- <span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calc ulatorForm.kilometros.$invalid && calculatorForm.kilometros.$dirty">"Ingresa los kilómetros de infraestructura a cotizar"!</span>-->
+							<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calculatorForm.kilometros.$error.required && emptyWKl && pozos === 'd'" style="position: relative;top: 15px;white-space: normal;">El campo "kilómetros de infraestructura a cotizar" esta vacío o no es válido</span>
 						</div>
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
@@ -200,6 +199,7 @@
 						<input type="radio" id="RejillasProyecto" class="radio" name="RejillasProyecto" value="d" ng-model="rejillas" ng-change="getRejillas(rejillas)" ng-checked="flagRejillas == true" required>
 						<label class="label-field" for="RejillasProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
 						<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.RejillasProyecto1" disabled  style="top: 15px;position: relative;" >
+						<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calculatorForm.kilometros.$error.required && emptyRKl && rejillas === 'd'" style="position: relative;top: 15px;white-space: normal;">El campo "kilómetros de infraestructura a cotizar" esta vacío o no es válido</span>
 					</li>
 					<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
 						<input type="radio" id="otra-rejilla" class="radio" name="RejillasProyecto" value="c" ng-model="rejillas" ng-change="getRejillas(rejillas)" ng-checked="flagRejillas == false" required>
@@ -219,13 +219,13 @@
 			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 <ul>
 					<li class="item-option">
-							<input type="radio" id="CocherasProyecto" class="radio" name="CocherasProyecto" value="d" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == true" required>
+							<input type="radio" id="CocherasProyecto" class="radio" name="CocherasProyecto" value="d" ng-model="cocheras" ng-change="getCocheras(cocheras)" ng-checked="flagCocheras == true" required>
 							<label class="label-field" for="CocherasProyecto"><small>Cálculo predeterminado</small><a href="" class="emus-help" style="color:#414C5A;text-decoration:none;" class="tooltip-icon" tooltip="Cada 4 calles" tooltip-trigger="focus" tooltip-placement="top" tooltip-animation="true"></a></label>
-							
 							<input type="number" class="form-control" placeholder="número" ng-pattern="/^[0-9]{1,7}$/" ng-model="form.CocherasProyecto1" disabled  style="top: 15px;position: relative;" >
+							<span class="btn btn-danger ng-hide" ng-show="calculatorForm.kilometros.$error.pattern || calculatorForm.kilometros.$error.required && emptyCKl && cocheras === 'd'" style="position: relative;top: 15px;white-space: normal;">El campo "kilómetros de infraestructura a cotizar" esta vacío o no es válido</span>
 						</li>
 						<li class="item-option" style="display: inline-flex;display: -webkit-inline-flex;">
-							<input type="radio" id="otra-cochera" class="radio" name="CocherasProyecto" value="c" ng-model="cocheras" ng-click="getCocheras(cocheras)" ng-checked="flagCocheras == false" required>
+							<input type="radio" id="otra-cochera" class="radio" name="CocherasProyecto" value="c" ng-model="cocheras" ng-change="getCocheras(cocheras)" ng-checked="flagCocheras == false" required>
 							<label class="label-field" for="otra-cochera"><small>Otro</small></label>
 							<div>
 								<input type="number" id="otra" class="form-control" name="Cocheras" placeholder="número" ng-pattern="/^[0-9]{1,2}$/" ng-model="form.CocherasProyecto2" ng-change="firstCochera(form.CocherasProyecto2)" ng-disabled="cocheras === 'd'" ng-required="cocheras === 'c'" >
@@ -314,7 +314,7 @@
 				</ul>
 			</div>
 		</div>
-		<button class="btn btn-lg btn-success" ng-disabled="calculatorForm.$invalid && calculatorForm.submitted" ng-click="saveQuote(calculatorForm, calculator)">COTIZAR</button>
+		<button class="btn btn-lg btn-success" ng-disabled="calculatorForm.$invalid || calculatorForm.submitted" ng-click="saveQuote(calculatorForm, calculator)">COTIZAR</button>
 		<span class="btn btn-danger novalid" ng-if="calculatorForm.$invalid && calculatorForm.submitted">Hay campos no válidos o sin llenar</span>
 	</section>
 </div>
