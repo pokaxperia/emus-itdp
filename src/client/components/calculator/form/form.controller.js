@@ -25,7 +25,6 @@
 		getState,
 		imgProject,
 		listener,
-		//loadSelectedProject,
 		merg_final,
 		parseBicieValue,
 		parseCocherasValue,
@@ -38,9 +37,10 @@
 		valorBicie,
 		valores,
 		flags = [];
-		$scope.area = {estado: "",municipio: ""};
 		$scope.calculator = {};
 		$scope.form = {};
+		$scope.calc = {};
+		$scope.area = {estado: "",municipio: ""};
 		$scope.form.PozosProyecto1 = "";
 		$scope.form.PozosProyecto2 = "";
 		$scope.form.RejillasProyecto1 = "";
@@ -48,11 +48,10 @@
 		$scope.form.CocherasProyecto1 = "";
 		$scope.form.CocherasProyecto2 = "";
 		$scope.biciestacionamiento = "";
-		$scope.calc = {};
 		$scope.calc.bicie = "";
+		$scope.submitted = "";
 		$scope.k_u = false;
 		$scope.resultado = null;
-		$scope.submitted = "";
 		
 		flagBicie = sessionStorage.getItem('flagBicie');
 		flagCocheras = sessionStorage.getItem('flagCocheras');
@@ -64,7 +63,6 @@
 		getQuote = sessionStorage.getItem('setQuote');
 		getState = sessionStorage.getItem('state');
 		valorBicie = sessionStorage.getItem('Bicie');
-		//loadSelectedProject;
 		flags.push("flagPozos","flagRejillas","flagCocheras");
 
 		init();
@@ -146,10 +144,10 @@
 				}
 			}
 
-			if (getModal) {
+			if (getModal && getState === 'true') {
 				$scope.area = JSON.parse(getModal);
 			}
-			else{
+			else if(getState !== 'false'){
 				Modal();
 			}
 		}
@@ -244,6 +242,7 @@
 					setAutoPozo();
 				}
 				else if(!valor){
+					$scope.emptyWKl = true;
 					$scope.submitted = false;
 					$scope.form.PozosProyecto1 = "";
 				}
@@ -268,6 +267,7 @@
 					setAutoRejilla();
 				}
 				else if(!valor){
+					$scope.emptyRKl = true;
 					$scope.submitted = false;
 					$scope.form.RejillasProyecto1 = "";
 				}
@@ -292,6 +292,7 @@
 					setAutoCochera();
 				}
 				else if(!valor){
+					$scope.emptyCKl = true;
 					$scope.submitted = false;
 					$scope.form.CocherasProyecto1 = "";
 				}
@@ -315,6 +316,12 @@
 		
 		/* Start Pozos field */
 		$scope.getPozos = function(valor){
+			if ($scope.calculator.KmEvaluables === undefined) {
+				$scope.emptyWKl = true;
+			}
+			else{
+				$scope.emptyWKl = false;
+			}
 			if (valor === "d") {
 				$scope.pozos = valor;
 				$scope.calculator.PozosProyecto = "";
@@ -370,6 +377,12 @@
 		
 		/* Start Rejillas field */
 		$scope.getRejillas = function(valor){
+			if ($scope.calculator.KmEvaluables === undefined) {
+				$scope.emptyRKl = true;
+			}
+			else{
+				$scope.emptyRKl = false;
+			}
 			if (valor === "d") {
 				$scope.rejillas = valor;
 				$scope.calculator.RejillasProyecto = "";
@@ -425,6 +438,12 @@
 
 		/* Start Cocheras field */
 		$scope.getCocheras = function(valor){
+			if ($scope.calculator.KmEvaluables === undefined) {
+				$scope.emptyCKl = true;
+			}
+			else{
+				$scope.emptyCKl = false;
+			}
 			if (valor === "d") {
 				$scope.cocheras = valor;
 				$scope.calculator.Cocheras = "";
@@ -478,6 +497,7 @@
 		}
 		/* End Cocheras field */
 
+		/* Start Biciestacionamientos field */
 		$scope.getBiciE = function(valor){
 			if (valor === "default") {
 				$scope.biciestacionamiento = valor;
@@ -508,7 +528,6 @@
 				};
 			}
 		};
-		/* Start Biciestacionamientos field */
 		function setAutoBicie(){
 			$scope.calculator.Biciestacionamientos = "default";
 			$scope.tmBicie = $scope.calc.bicie;
