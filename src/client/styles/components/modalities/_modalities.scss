@@ -11,6 +11,10 @@ section.modality-container{
 		position: relative;
 	}
 }
+.modalities-streets{
+	background-color: #EFF2F9;
+	padding-bottom:40px;
+}
 
 .card{
 	@include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12));
@@ -154,12 +158,6 @@ section.modality-container{
 			align-items: flex-start;
 			-webkit-align-items: flex-start;
 			li{
-/* 				flex-basis: auto;
-				-webkit-flex-basis: auto;
-				align-self: center;
-				-webkit-align-self: center;
-				-webkit-flex-grow: 1;
-				flex-grow: 1; */
 				button{
 					white-space: normal;
 					height: 60px;
