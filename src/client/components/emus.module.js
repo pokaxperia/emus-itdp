@@ -5,6 +5,7 @@
 	angular.module('emus',[
 		'emus.routes',
 		'emus.landing',
+		'emus.about',
 		'emus.modalities',
 		'emus.modalities.type',
 		'emus.form',

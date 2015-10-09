@@ -66,6 +66,18 @@
 					label: 'Resumen',
 					parent: 'modalidades.calculadora.formulario'
 				}
+			})
+			.state('acerca', {
+				url: '/acerca',
+				templateUrl: './components/about/about.html',
+				controller: 'AboutController',
+				data: {
+					title: "Acerca de EMUS"
+				},
+				ncyBreadcrumb: {
+					label: 'Acerca de EMUS',
+					parent: 'inicio'
+				}
 			});
 	}]);
 
