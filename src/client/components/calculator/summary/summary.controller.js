@@ -229,7 +229,8 @@
 			"legend":{
 				"position":"bottom",
 				"marginRight":100,
-				"autoMargins":true
+				"autoMargins":true,
+				divId: "legenddiv"
 			},
 			"innerRadius": "5%",
 			"defs": {
@@ -281,29 +282,26 @@
 					"text": "Egresos Estatales",
 					"size": 15
 				}
-			],
-			legend: {
-				divId: "legenddiv"
-			}
+			]
 		});
-		var legend = new AmCharts.AmLegend();
-		chartEgrEst.addLegend(legend, "legenddiv");
+		var externalLegend = new AmCharts.AmLegend();
+		chartEgrEst.addLegend(externalLegend, "legenddiv");
 		
 		// Input data
 		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual"
+			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
 		}
 		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual"
+			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
 		}
 		if (inputData.ObraComp == "ObraCompl_Completa") {
-			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles."
+			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles.";
 		}
 		if (inputData.ObraComp == "ObraCompl_Semi" ) {
-			$scope.ObraComp = "Sólo pintura en cruces peatonales y bolardos."
+			$scope.ObraComp = "Sólo pintura en cruces peatonales y bolardos.";
 		}
 		if (inputData.ObraComp == "ObraCompl_Basica") {
-			$scope.ObraComp = "Sólo pintura en cruces peatonales."
+			$scope.ObraComp = "Sólo pintura en cruces peatonales.";
 		}
 
 		if (inputData.TipoDeBacheo === "BacheoSuperficial") {
@@ -342,13 +340,13 @@
 		delete sumTotal.senalizacion;
 
 		function sum( obj ) {
-			var sum = 0;
+			var sumAdd = 0;
 			for( var el in obj ) {
 				if( obj.hasOwnProperty(el) ) {
-					sum += parseFloat(obj[el]);
+					sumAdd += parseFloat(obj[el]);
 				}
 			}
-			return sum;
+			return sumAdd;
 		}
 
 		$scope.total = sum(sumTotal);
