@@ -291,9 +291,6 @@
 		if (inputData.MantenimientoAnual) {
 			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
 		}
-		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
-		}
 		if (inputData.ObraComp == "ObraCompl_Completa") {
 			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles.";
 		}
