@@ -8,6 +8,7 @@
 		'emus.about',
 		'emus.modalities',
 		'emus.modalities.type',
+		'emus.modality.factory',
 		'emus.form',
 		'emus.summary',
 		'emus.modal.controller',
