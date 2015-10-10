@@ -1,0 +1,12 @@
+{
+	"modality": "Sistemas Integrados de Transporte",
+	"modality_description": "Es el espacio urbano por el cual las personas se desplazan. Es también, un espacio con gran relevancia social al ser un medio de intercambio e interacción.",
+	"image": "card",
+	"class": "ghost2",
+	"submodalities": [
+		{
+			"submodality": "",
+			"submodality_description": ""
+		}
+	]
+}

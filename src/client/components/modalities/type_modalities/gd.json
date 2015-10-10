@@ -1,0 +1,32 @@
+{
+	"modality": "Gestión de la demanda",
+	"modality_description": "La gestión del estacionamiento es el conjunto de estrategias orientadas a la administración eficiente del espacio destinado al estacionamiento de vehículos motorizados en una ciudad.",
+	"image": "card",
+	"class": "ghost4",
+	"submodalities": [
+		{
+			"submodality": "Restricción por placas",
+			"submodality_description": "Sin descripción."
+		},
+		{
+			"submodality": "Cobros por congestión",
+			"submodality_description": "Consiste en pagar una cantidad de dinero por la utilización de ciertas vías, sobre todo en la zona centro y en las áreas más congestionadas de la ciudad. Con esta estrategia se logra disminuir el flujo del tránsito y con ello tener recorridos más rápidos."
+		},
+		{
+			"submodality": "Día sin automóvil",
+			"submodality_description": "Sin descripción."
+		},
+		{
+			"submodality": "Estacionamiento en vía",
+			"submodality_description": "Sin descripción."
+		},
+		{
+			"submodality": "Estacionamiento informal",
+			"submodality_description": "En este tipo de estacionamiento no hay una tarificación establecida de manera oficial, se define por una persona que presta el servicio de manera informal."
+		},
+		{
+			"submodality": "Estacionamiento fuera de vía",
+			"submodality_description": "Sin descripción."
+		}
+	]
+}
