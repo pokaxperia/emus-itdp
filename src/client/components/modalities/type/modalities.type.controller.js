@@ -4,18 +4,22 @@
 	*/
 	'use strict';
 
-	var ModalitiesTypeController = function($scope, $rootScope, $stateParams, $state){
-/*		$rootScope.$on('$stateChangeStart', function(toState){
-			console.log(toState.$state)
-			$scope.step.link1 = $rootScope.$stateParams.tipo;
-		});*/
-		
+	var ModalityTypeController = function($log, $scope, $rootScope, $stateParams, $state, ModalityFactory){
+		var type_modality = $stateParams.tipo;
+		console.warn(type_modality);
+
+		ModalityFactory.getModality(type_modality).
+		then(function(result){
+			$scope.set_m = result;
+		}, function(error){
+			$log.error(error);
+		});
 
 	};
 	
-	ModalitiesTypeController.$inject = ['$scope', '$rootScope', '$stateParams', '$state'];
+	ModalityTypeController.$inject = ['$log', '$scope', '$rootScope', '$stateParams', '$state','ModalityFactory'];
 	
 	angular.module('emus.modalities.type', []).
-	controller('ModalitiesTypeController', ModalitiesTypeController);
+	controller('ModalityTypeController', ModalityTypeController);
 
 }());
