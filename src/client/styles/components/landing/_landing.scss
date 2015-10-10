@@ -93,9 +93,9 @@ nav.landing-menu{
 				&:hover{
 					color: #35AAB7;
 				}
-			}
-			a.active{
-				color: #35AAB7 !important;
+				&.active{
+					color: #35AAB7 !important;
+				}
 			}
 			button{
 				background: #35AAB7;
