@@ -30,9 +30,8 @@
 			})
 			.state('modalidades.tipo', {
 				url: '/:tipo',
-				templateUrl: function($stateParams){
-					return './components/modalities/type/'+$stateParams.tipo+'.html';
-				},
+				controller: 'ModalityTypeController',
+				templateUrl: './components/modalities/type/template.html',
 				ncyBreadcrumb: {
 					label: 'Modalidades',
 					parent: 'inicio'
