@@ -25,11 +25,11 @@
 			<article class="modality-header">
 				<h1>{{title}}</h1>
 				<ul ng-if="showModalities()">
-					<li><button id="calles" class="btn btn-mod1" ui-sref-active="active" ui-sref="modalidades.tipo({tipo:'calles'})" >CALLES</button></li>
-					<li><button class="btn btn-mod2">SISTEMAS INTEGRADOS DE TRANSPORTE</button></li>
-					<li><button class="btn btn-mod3">DESARROLLO ORIENTADO AL TRANSPORTE</button></li>
-					<li><button class="btn btn-mod4">GESTIÓN DE LA DEMANDA</button></li>
-					<li><button class="btn btn-mod5">CARGA URBANA</button></li>
+					<li><button class="btn btn-mod1" ui-sref-active="active" ui-sref="modalidades.tipo({tipo:'calles'})" >CALLES</button></li>
+					<li><button class="btn btn-mod2" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: 'sit'})">SISTEMAS INTEGRADOS DE TRANSPORTE</button></li>
+					<li><button class="btn btn-mod3" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: 'dot'})">DESARROLLO ORIENTADO AL TRANSPORTE</button></li>
+					<li><button class="btn btn-mod4" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: 'gd'})">GESTIÓN DE LA DEMANDA</button></li>
+					<li><button class="btn btn-mod5" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: 'cu'})">CARGA URBANA</button></li>
 				</ul>
 			</article>
 		</section>
