@@ -20,7 +20,8 @@
 		'ngAnimate',
 		'ui.bootstrap',
 		'nya.bootstrap.select',
-		'angularUtils.directives.uiBreadcrumbs'
+		'angularUtils.directives.uiBreadcrumbs',
+		'akoenig.deckgrid'
 		]
 	)
 	.value('duScrollDuration', 750)
