@@ -4,12 +4,12 @@
 	-ms-box-shadow: $args;
 	box-shadow: $args;
 }
-@mixin transition($transition){
-	-webkit-transition: $transition;
-	-moz-transition: $transition;
-	-o-transition: $transition;
-	-ms-transition: $transition;
-	transition: $transition;
+@mixin transition($args...){
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-o-transition: $args;
+	-ms-transition: $args;
+	transition: $args;
 }
 @mixin background-size($bsize){
 	-webkit-background-size: $bsize;
