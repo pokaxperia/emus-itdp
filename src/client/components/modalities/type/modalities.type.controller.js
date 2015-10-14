@@ -1,6 +1,6 @@
 (function(){
 	/*
-	* Langind Module
+	* Modality Type Controller
 	*/
 	'use strict';
 
