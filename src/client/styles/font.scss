@@ -16,48 +16,63 @@
 	font-size: 20px;
 	font-style: normal;
 }
-.emus-help:before {
+.emus-user:before {
 	content: "\e000";
 }
-.emus-download:before {
+.emus-info:before {
 	content: "\e001";
 }
-.emus-down-arrow:before {
+.emus-help:before {
 	content: "\e002";
 }
-.emus-download1:before {
+.emus-close:before {
 	content: "\e003";
 }
-.emus-facebook:before {
+.emus-show:before {
 	content: "\e004";
 }
-.emus-modality:before {
+.emus-hide:before {
 	content: "\e005";
 }
-.emus-google:before {
+.emus-download:before {
 	content: "\e006";
 }
-.emus-left-arrow:before {
+.emus-down-arrow:before {
 	content: "\e007";
 }
-.emus-menu:before {
+.emus-download1:before {
 	content: "\e008";
 }
-.emus-minus:before {
+.emus-facebook:before {
 	content: "\e009";
 }
-.emus-marker:before {
+.emus-modality:before {
 	content: "\e00a";
 }
-.emus-plus:before {
+.emus-google:before {
 	content: "\e00b";
 }
-.emus-user:before {
+.emus-left-arrow:before {
 	content: "\e00c";
 }
-.emus-right-arrow:before {
+.emus-menu:before {
 	content: "\e00d";
 }
-.emus-twitter:before {
+.emus-minus:before {
 	content: "\e00e";
+}
+.emus-marker:before {
+	content: "\e00f";
+}
+.emus-plus:before {
+	content: "\e010";
+}
+.emus-right-arrow:before {
+	content: "\e011";
+}
+.emus-more:before {
+	content: "\e012";
+}
+.emus-twitter:before {
+	content: "\e013";
 }
