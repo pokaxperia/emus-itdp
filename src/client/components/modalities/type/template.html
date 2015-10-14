@@ -5,17 +5,22 @@
 			<p>{{set_m.modality_description}}</p>
 		</section>
 		<section class="row">
-			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" ng-repeat="sub in set_m.submodalities">
+			<div deckgrid class="deckgrid column-1-3 col-xs-12" source="set_m.submodalities">
 				<article class="card">
 					<div class="card-image">
-						<img ng-src="./images/{{set_m.image}}.jpg">
+						<img ng-src="./images/{{mother.set_m.image}}.jpg">
 					</div>
 					<div class="card-body" >
-						<h3>{{sub.submodality}}</h3>
-						<p>{{sub.submodality_description}}</p>
+						<h3>{{card.submodality}}</h3>
+						<i class="emus-more" ng-click="mother.showDescription(card.id)"></i>
+					</div>
+					<div id="{{card.id}}" class="card-sdescription">
+						<h3>{{card.submodality}}</h3>
+						<p>{{card.submodality_description}}</p>
+						<i class="emus-close"></i>
 					</div>
 					<div class="card-action">
-						<button class="btn btn-{{set_m.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
+						<button class="btn btn-{{mother.set_m.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
 					</div>
 				</article>
 			</div>
