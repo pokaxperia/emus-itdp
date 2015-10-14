@@ -14,6 +14,7 @@
 				return true;
 			}
 		};
+		
 
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
