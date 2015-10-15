@@ -9,6 +9,8 @@
 		'emus.modalities',
 		'emus.modalities.type',
 		'emus.modality.factory',
+		'emus.modality.more.directive',
+		'emus.modality.hide.directive',
 		'emus.form',
 		'emus.summary',
 		'emus.modal.controller',

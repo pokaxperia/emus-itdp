@@ -11,12 +11,12 @@
 					</div>
 					<div class="card-body" >
 						<h3>{{card.submodality}}</h3>
-						<i class="emus-more" ng-click="mother.showDescription(card.id)"></i>
+						<i class="emus-more" more-description="card.id"></i>
 					</div>
 					<div id="{{card.id}}" class="card-sdescription">
 						<h3>{{card.submodality}}</h3>
 						<p>{{card.submodality_description}}</p>
-						<i class="emus-close"></i>
+						<i class="emus-close" hide-description="card.id"></i>
 					</div>
 					<div class="card-action">
 						<button class="btn btn-{{mother.set_m.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
