@@ -32,7 +32,7 @@ class Api_Model extends ZP_Model {
 	public function getResults($options) {
 		$this->options = $options;
 		$this->dataCity = $this->getDataCity();
-		$this->Area_Infraestructura = $this->options["KmEvaluables"]*$this->options["Sentidos"]*1000;
+		$this->Area_Infraestructura = $this->options["KmEvaluables"]*$this->options["Sentidos"]*1000*$this->options["Anchoefectivo"];
 		
 		$data["areaInfraestructura"] = $this->Area_Infraestructura;
 		$data["bacheo"] = $this->getBacheo();
