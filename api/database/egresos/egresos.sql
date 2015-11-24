@@ -77,5 +77,37 @@ CREATE TABLE egresos_municipales (
 	em32 double precision
 );
 
+CREATE TABLE egresos_porcentajes (
+	CveEstado integer,
+	NomEstado varchar(255),
+	em4 double precision,
+	em7 double precision,
+	em10 double precision,
+	em13 double precision,
+	em16 double precision,
+	em19 double precision,
+	em22 double precision,
+	em25 double precision,
+	em28 double precision,
+	em31 double precision
+);
+
+CREATE TABLE egresos_porcentajes_1000 (
+	CveEstado integer,
+	NomEstado varchar(255),
+	em5 double precision,
+	em8 double precision,
+	em11 double precision,
+	em14 double precision,
+	em17 double precision,
+	em20 double precision,
+	em23 double precision,
+	em26 double precision,
+	em29 double precision,
+	em32 double precision
+);
+
 copy egresos_estatales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Estatales-Limpio_V2.csv' DELIMITER ',' CSV;
 copy egresos_municipales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Municipales-Limpio_V2.csv' DELIMITER ',' CSV;
+copy egresos_porcentajes FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Porcentajes.csv' DELIMITER ',' CSV;
+copy egresos_porcentajes_1000 FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Porcentajes-1000.csv' DELIMITER ',' CSV;
