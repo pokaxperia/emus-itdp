@@ -17,26 +17,26 @@ CREATE TABLE ingresos_estatales (
 	ie14 double precision,
 	ie15 double precision,
 	ie16 double precision,
-	ie18 double precision,
 	ie17 double precision,
+	ie18 double precision,
 	ie19 double precision,
-	ie21 double precision,
 	ie20 double precision,
+	ie21 double precision,
 	ie22 double precision,
-	ie24 double precision,
 	ie23 double precision,
+	ie24 double precision,
 	ie25 double precision,
-	ie27 double precision,
 	ie26 double precision,
+	ie27 double precision,
 	ie28 double precision,
-	ie30 double precision,
 	ie29 double precision,
+	ie30 double precision,
 	ie31 double precision,
-	ie33 double precision,
 	ie32 double precision,
+	ie33 double precision,
 	ie34 double precision,
-	ie36 double precision,
-	ie35 double precision
+	ie35 double precision,
+	ie36 double precision
 );
 
 CREATE TABLE ingresos_municipales (
@@ -82,5 +82,39 @@ CREATE TABLE ingresos_municipales (
 	im36 double precision
 );
 
-copy ingresos_estatales FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Estatales-Limpio.csv' DELIMITER ',' CSV;
-copy ingresos_municipales FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Municipales-Limpio.csv' DELIMITER ',' CSV;
+CREATE TABLE ingresos_porcentajes (
+	CveEstado integer,
+	NomEstado varchar(255),
+	im5 double precision,
+	im8 double precision,
+	im11 double precision,
+	im14 double precision,
+	im17 double precision,
+	im20 double precision,
+	im23 double precision,
+	im26 double precision,
+	im29 double precision,
+	im32 double precision,
+	im35 double precision
+);
+
+CREATE TABLE ingresos_porcentajes_1000 (
+	CveEstado integer,
+	NomEstado varchar(255),
+	im6 double precision,
+	im9 double precision,
+	im12 double precision,
+	im15 double precision,
+	im18 double precision,
+	im21 double precision,
+	im24 double precision,
+	im27 double precision,
+	im30 double precision,
+	im33 double precision,
+	im36 double precision
+);
+
+copy ingresos_estatales FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Estatales-Limpio_V2.csv' DELIMITER ',' CSV;
+copy ingresos_municipales FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Municipales-Limpio_V2.csv' DELIMITER ',' CSV;
+copy ingresos_porcentajes FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Porcentajes.csv' DELIMITER ',' CSV;
+copy ingresos_porcentajes_1000 FROM '/var/www/emus-itdp/api/database/ingresos/Ingresos-Porcentajes-1000.csv' DELIMITER ',' CSV;

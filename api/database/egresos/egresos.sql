@@ -7,35 +7,35 @@ CREATE TABLE egresos_estatales (
 	ee4 double precision,
 	ee5 double precision,
 	ee6 double precision,
-	ee8 double precision,
 	ee7 double precision,
+	ee8 double precision,
 	ee9 double precision,
-	ee11 double precision,
 	ee10 double precision,
+	ee11 double precision,
 	ee12 double precision,
-	ee14 double precision,
 	ee13 double precision,
+	ee14 double precision,
 	ee15 double precision,
-	ee17 double precision,
 	ee16 double precision,
+	ee17 double precision,
 	ee18 double precision,
-	ee20 double precision,
 	ee19 double precision,
+	ee20 double precision,
 	ee21 double precision,
-	ee23 double precision,
 	ee22 double precision,
+	ee23 double precision,
 	ee24 double precision,
-	ee26 double precision,
 	ee25 double precision,
+	ee26 double precision,
 	ee27 double precision,
-	ee29 double precision,
 	ee28 double precision,
+	ee29 double precision,
 	ee30 double precision,
-	ee32 double precision,
 	ee31 double precision,
+	ee32 double precision,
 	ee33 double precision,
+	ee34 double precision,
 	ee35 double precision,
-	ee34 double precision
 );
 
 CREATE TABLE egresos_municipales (
@@ -77,5 +77,5 @@ CREATE TABLE egresos_municipales (
 	em32 double precision
 );
 
-copy egresos_estatales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Estatales-Limpio.csv' DELIMITER ',' CSV;
-copy egresos_municipales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Municipales-Limpio.csv' DELIMITER ',' CSV;
+copy egresos_estatales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Estatales-Limpio_V2.csv' DELIMITER ',' CSV;
+copy egresos_municipales FROM '/var/www/emus-itdp/api/database/egresos/Egresos-Municipales-Limpio_V2.csv' DELIMITER ',' CSV;
