@@ -6,7 +6,7 @@
 
 	var SummaryController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, $stateParams, $rootScope){
 		var area, sumTotal, subTotal, inputData, inputResult, setResults, itemResult, itemsValues, finalEE = {}, finalEM = {}, finalIE = {}, finalIM = {}, itemsEgrEst, itemsEgrMun, itemsIngEst, itemsIngMun, itemsEE, itemsEM, itemsIE, itemsIM, sortEE, sortEM, sortIE, sortIM;
-		itemsEE = {
+		/*itemsEE = {
 			ee1:"Egresos",
 			ee2:"Egresos por cada 1000 habitantes",
 			ee3:"Servicios personales",
@@ -152,7 +152,8 @@
 			im34: "Disponibilidad inicial",
 			im35: "Porcentaje de Disponibilidad inicial",
 			im36: "Disponibilidad inicial por cada 1000 habitantes"
-		};
+		};*/
+		/*
 		init();
 		
 		function init(){
@@ -219,6 +220,7 @@
 				open: false
 			};
 		}
+		*/
 
 		// Charts
 		var chartEgrEst = AmCharts.makeChart("EgrEst", {
@@ -288,16 +290,13 @@
 		chartEgrEst.addLegend(externalLegend, "legenddiv");
 		
 		// Input data
-		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
-		}
-		if (inputData.ObraComp == "ObraCompl_Completa") {
+		if (inputData.ObraComp === "ObraCompl_Completa") {
 			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles.";
 		}
-		if (inputData.ObraComp == "ObraCompl_Semi" ) {
+		if (inputData.ObraComp === "ObraCompl_Semi" ) {
 			$scope.ObraComp = "Sólo pintura en cruces peatonales y bolardos.";
 		}
-		if (inputData.ObraComp == "ObraCompl_Basica") {
+		if (inputData.ObraComp === "ObraCompl_Basica") {
 			$scope.ObraComp = "Sólo pintura en cruces peatonales.";
 		}
 
@@ -312,6 +311,12 @@
 		}
 		if (inputData.TipoDeBacheo === "BacheoPromedio") {
 			$scope.TipoDeBacheo = "Bacheo promedio";
+		}
+		if (inputData.MantenimientoAnual) {
+			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
+		}
+		if (inputData.senalizacion) {
+			$scope.senalizacion === "MinSenalHor" ? "Los mínimos requeridos (señalización horizontal)" : "Señalización completa (señalización horizontal, señalización vertical)";
 		}
 
 		$scope.infraestructura = inputData.infraestructura;
@@ -331,6 +336,7 @@
 		$scope.area =  area.municipio ? area.estado +" - "+ area.municipio : area.estado ;
 
 		// Total
+		/*
 		delete sumTotal.egresos;
 		delete sumTotal.ingresos;
 		delete sumTotal.options;
@@ -347,7 +353,7 @@
 		}
 
 		$scope.total = sum(sumTotal);
-
+		*/
 	};
 
 	SummaryController.$inject = ['$document','$timeout', '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter', '$stateParams', '$rootScope'];
