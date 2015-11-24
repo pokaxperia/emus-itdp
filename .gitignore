@@ -1,5 +1,4 @@
 # Ignore Directories
-api
 bower_components
 build
 node_modules
