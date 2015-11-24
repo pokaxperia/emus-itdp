@@ -45,6 +45,9 @@ class Api_Model extends ZP_Model {
 		$data["egresos"]["municipales"] = $this->getEgresos("municipales");
 		$data["ingresos"]["estatales"] = $this->getIngresos();
 		$data["ingresos"]["municipales"] = $this->getIngresos("municipales");
+		$data["ingresos"]["porcentajes"] = $this->getIngresosPorcentajes();
+		$data["ingresos"]["porcentajes1000"] = $this->getIngresosPorcentajes("1000");
+		
 		$data["options"] = $this->options;
 		return $data;
 	}
@@ -81,6 +84,25 @@ class Api_Model extends ZP_Model {
 		} else {
 			$query  = "select * from ingresos_municipales where cveestado=".$this->options["estado"];
 			$query .= " and cvemun=".$this->options["municipio"];
+			$data   = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		}
+	}
+	
+	/*obtener ingresos*/
+	public function getIngresosPorcentajes($type="1000") {
+		if($type=="1000") {
+			$query = "select * from ingresos_porcentajes_1000 where cveestado=".$this->options["estado"];
+			$data  = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		} else {
+			$query  = "select * from ingresos_porcentajes where cveestado=".$this->options["estado"];
 			$data   = $this->Db->query($query);
 		
 			if(!$data and !is_array($data)) return false;
