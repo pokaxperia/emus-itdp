@@ -35,7 +35,7 @@ CREATE TABLE egresos_estatales (
 	ee32 double precision,
 	ee33 double precision,
 	ee34 double precision,
-	ee35 double precision,
+	ee35 double precision
 );
 
 CREATE TABLE egresos_municipales (
