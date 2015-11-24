@@ -288,16 +288,13 @@
 		chartEgrEst.addLegend(externalLegend, "legenddiv");
 		
 		// Input data
-		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
-		}
-		if (inputData.ObraComp == "ObraCompl_Completa") {
+		if (inputData.ObraComp === "ObraCompl_Completa") {
 			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles.";
 		}
-		if (inputData.ObraComp == "ObraCompl_Semi" ) {
+		if (inputData.ObraComp === "ObraCompl_Semi" ) {
 			$scope.ObraComp = "Sólo pintura en cruces peatonales y bolardos.";
 		}
-		if (inputData.ObraComp == "ObraCompl_Basica") {
+		if (inputData.ObraComp === "ObraCompl_Basica") {
 			$scope.ObraComp = "Sólo pintura en cruces peatonales.";
 		}
 
@@ -312,6 +309,12 @@
 		}
 		if (inputData.TipoDeBacheo === "BacheoPromedio") {
 			$scope.TipoDeBacheo = "Bacheo promedio";
+		}
+		if (inputData.MantenimientoAnual) {
+			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
+		}
+		if (inputData.senalizacion) {
+			$scope.senalizacion === "MinSenalHor" ? "Los mínimos requeridos (señalización horizontal)" : "Señalización completa (señalización horizontal, señalización vertical)";
 		}
 
 		$scope.infraestructura = inputData.infraestructura;
