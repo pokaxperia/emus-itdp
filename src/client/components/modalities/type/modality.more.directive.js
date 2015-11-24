@@ -14,14 +14,22 @@
 			},
 			link: function(scope, element, attrib){
 				element.bind('click', function(){
-					previousDescription = currentDescription;
 
+					previousDescription = currentDescription;
 					currentDescription = angular.element(document.getElementById(scope.id));
-					currentDescription.addClass('more');
-					
-					if(previousDescription){
-						!currentDescription ? currentDescription.removeClass('more') : previousDescription.removeClass('more');
+
+					/*if (angular.equals(previousDescription,currentDescription) ){
+						previousDescription = "";
+						currentDescription.addClass('more');
 					}
+					else{
+						console.log('no');
+					}*/
+					angular.equals(previousDescription,currentDescription) ? [previousDescription = "", currentDescription.addClass('more')] : currentDescription.addClass('more');
+				
+					if(previousDescription){
+						!currentDescription ? [currentDescription.removeClass('more'), currentDescription = ""] : previousDescription.removeClass('more');
+					};
 				});
 			}
 		};
