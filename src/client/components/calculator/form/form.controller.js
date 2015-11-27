@@ -586,6 +586,7 @@
 			SendQuote.sendQuote(calculator).
 			then(function(result){
 				if(result){
+					console.log(result);
 					$document.scrollTop(0);
 					sessionStorage.setItem('results', JSON.stringify(result));
 					$state.go('modalidades.calculadora.resumen');
