@@ -6,7 +6,7 @@
 
 	var SummaryController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, $stateParams, $rootScope){
 		var area, sumTotal, subTotal, inputData, inputResult, setResults, itemResult, itemsValues, finalEE = {}, finalEM = {}, finalIE = {}, finalIM = {}, itemsEgrEst, itemsEgrMun, itemsIngEst, itemsIngMun, itemsEE, itemsEM, itemsIE, itemsIM, sortEE, sortEM, sortIE, sortIM;
-		/*itemsEE = {
+		itemsEE = {
 			ee1:"Egresos",
 			ee2:"Egresos por cada 1000 habitantes",
 			ee3:"Servicios personales",
@@ -152,8 +152,8 @@
 			im34: "Disponibilidad inicial",
 			im35: "Porcentaje de Disponibilidad inicial",
 			im36: "Disponibilidad inicial por cada 1000 habitantes"
-		};*/
-		/*
+		};
+		
 		init();
 		
 		function init(){
@@ -220,11 +220,139 @@
 				open: false
 			};
 		}
-		*/
+		
 
 		// Charts
+		
 		var chartEgrEst = AmCharts.makeChart("EgrEst", {
-			"type": "pie",
+			"type": "serial",
+			"theme": "light",
+			'rotate': true,
+			"legend": {
+					"autoMargins": false,
+					"borderAlpha": 0.2,
+					"equalWidths": false,
+					"horizontalGap": 10,
+					"markerSize": 10,
+					"useGraphSettings": true,
+					"valueAlign": "left",
+					"valueWidth": 0
+			},
+			"dataProvider": [{
+					"title": "",
+					"year": "2003",
+					"europe": 2.5,
+					"namerica": 2.5,
+					"asia": 2.1,
+					"lamerica": 0.3,
+					"meast": 0.2,
+					"africa": 0.1
+			}, {
+					"title": "Municipio c/1000 h.",
+					"year": "2004",
+					"europe": 2.6,
+					"namerica": 2.7,
+					"asia": 2.2,
+					"lamerica": 0.3,
+					"meast": 0.3,
+					"africa": 0.1
+			}, {
+					"title": "",
+					"year": "2005",
+					"europe": 2.8,
+					"namerica": 2.9,
+					"asia": 2.4,
+					"lamerica": 0.3,
+					"meast": 0.3,
+					"africa": 0.1
+			}, {
+					"title": "",
+					"year": "2006",
+					"europe": 2.8,
+					"namerica": 2.9,
+					"asia": 2.4,
+					"lamerica": 0.3,
+					"meast": 0.3,
+					"africa": 0.1
+			}],
+			"valueAxes": [{
+					"stackType": "100%",
+					"axisAlpha": 0,
+					"gridAlpha": 0,
+					"labelsEnabled": false,
+					"position": "left"
+			}],
+			"graphs": [{
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Europe",
+					"type": "column",
+					"valueField": "europe"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "North America",
+					"type": "column",
+					"valueField": "namerica"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Asia-Pacific",
+					"type": "column",
+					"valueField": "asia"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Latin America",
+					"type": "column",
+					"valueField": "lamerica"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Middle-East",
+					"type": "column",
+					"valueField": "meast"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Africa",
+					"type": "column",
+					"valueField": "africa"
+			}],
+			"marginTop": 30,
+			"marginRight": 0,
+			"marginLeft": 100,
+			"marginBottom": 40,
+			"autoMargins": false,
+			"categoryField": "title",
+			"categoryAxis": {
+					"gridPosition": "start",
+					"axisAlpha": 0,
+					"gridAlpha": 0
+			},
+			"export": {
+				"enabled": true
+			 }
+
+/*			"type": "pie",
 			"startDuration": 0,
 			 "theme": "light",
 			"addClassNames": true,
@@ -259,17 +387,17 @@
 				}]
 			},
 			"dataProvider": [
-				{ "title": sortEE[0],"percentage": finalEE[sortEE[0]] },
-				{ "title": sortEE[1],"percentage": finalEE[sortEE[1]] },
-				{ "title": sortEE[2],"percentage": finalEE[sortEE[2]] },
-				{ "title": sortEE[3],"percentage": finalEE[sortEE[3]] },
-				{ "title": sortEE[4],"percentage": finalEE[sortEE[4]] },
-				{ "title": sortEE[5],"percentage": finalEE[sortEE[5]] },
-				{ "title": sortEE[6],"percentage": finalEE[sortEE[6]] },
-				{ "title": sortEE[7],"percentage": finalEE[sortEE[7]] },
-				{ "title": sortEE[8],"percentage": finalEE[sortEE[8]] },
-				{ "title": sortEE[9],"percentage": finalEE[sortEE[9]] },
-				{ "title": sortEE[10],"percentage": finalEE[sortEE[10]] }
+				{ "title": sortIE[0],"percentage": finalIE[sortIE[0]] },
+				{ "title": sortIE[1],"percentage": finalIE[sortIE[1]] },
+				{ "title": sortIE[2],"percentage": finalIE[sortIE[2]] },
+				{ "title": sortIE[3],"percentage": finalIE[sortIE[3]] },
+				{ "title": sortIE[4],"percentage": finalIE[sortIE[4]] },
+				{ "title": sortIE[5],"percentage": finalIE[sortIE[5]] },
+				{ "title": sortIE[6],"percentage": finalIE[sortIE[6]] },
+				{ "title": sortIE[7],"percentage": finalIE[sortIE[7]] },
+				{ "title": sortIE[8],"percentage": finalIE[sortIE[8]] },
+				{ "title": sortIE[9],"percentage": finalIE[sortIE[9]] },
+				{ "title": sortIE[10],"percentage": finalIE[sortIE[10]] }
 			],
 			"valueField": "percentage",
 			"titleField": "title",
@@ -281,10 +409,10 @@
 			},
 			"titles": [
 				{
-					"text": "Egresos Estatales",
+					"text": "Ingresos Estatales",
 					"size": 15
 				}
-			]
+			]*/
 		});
 		var externalLegend = new AmCharts.AmLegend();
 		chartEgrEst.addLegend(externalLegend, "legenddiv");
