@@ -95,7 +95,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	/*obtener ingresos*/
-	public function getIngresosPorcentajes($type="1000") {
+	public function getIngresosPorcentajes($type=false) {
 		if($type=="1000") {
 			$query = "select * from ingresos_porcentajes_1000 where cveestado=".$this->options["estado"];
 			$data  = $this->Db->query($query);
@@ -114,7 +114,7 @@ class Api_Model extends ZP_Model {
 	}
 	
 	/*obtener egresos*/
-	public function getEgresosPorcentajes($type="1000") {
+	public function getEgresosPorcentajes($type=false) {
 		if($type=="1000") {
 			$query = "select * from egresos_porcentajes_1000 where cveestado=".$this->options["estado"];
 			$data  = $this->Db->query($query);
