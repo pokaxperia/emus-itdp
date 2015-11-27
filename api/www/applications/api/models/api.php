@@ -368,4 +368,24 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
+	
+	/*Modalidades*/
+	public function modalidades() {
+		$query = "SELECT * from modalidades";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		return $data;
+	}
+	
+	/*Proyectos*/
+	public function proyectos($id_modalidad = 0) {
+		$query = "SELECT * from proyectos where id_modalidad=".$id_modalidad;
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		return $data;
+	}
 }

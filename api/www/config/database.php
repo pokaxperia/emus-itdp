@@ -12,10 +12,10 @@ if(!defined("_access")) {
  */
 $ZP["db"]["dbPDO"]    = TRUE;
 $ZP["db"]["dbDriver"] = "pgsql";
-$ZP["db"]["dbHost"]   = "127.0.0.1";
-$ZP["db"]["dbUser"]   = "transeun_carlos_colima";
-$ZP["db"]["dbPwd"]    = "yi7Vqt3RIOpQrtA6j1";
-$ZP["db"]["dbName"]   = "transeun_emus_itp";
+$ZP["db"]["dbHost"]   = "localhost";
+$ZP["db"]["dbUser"]   = "postgres";
+$ZP["db"]["dbPwd"]    = "postgres";
+$ZP["db"]["dbName"]   = "emus_itdp";
 $ZP["db"]["dbPort"]   = 5432;
 $ZP["db"]["dbPfx"]    = "";
 $ZP["db"]["dbSocket"] = NULL;
