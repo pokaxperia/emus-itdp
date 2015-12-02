@@ -5,7 +5,32 @@
 	'use strict';
 
 	var SummaryController = function($document,$timeout, $modal, $modalStack, $window, $scope,$location, $state, $log, $filter, $stateParams, $rootScope){
-		var area, sumTotal, subTotal, inputData, inputResult, setResults, itemResult, itemsValues, finalEE = {}, finalEM = {}, finalIE = {}, finalIM = {}, itemsEgrEst, itemsEgrMun, itemsIngEst, itemsIngMun, itemsEE, itemsEM, itemsIE, itemsIM, sortEE, sortEM, sortIE, sortIM;
+		var area,
+		sumTotal,
+		subTotal,
+		inputData,
+		inputResult,
+		setResults,
+		itemResult,
+		itemsValues,
+		finalEE = {},
+		finalEM = {},
+		finalIE = {},
+		finalIM = {},
+		itemsEgrEst,
+		itemsEgrMun,
+		itemsIngEst,
+		itemsIngMun,
+		itemsEE,
+		itemsEM,
+		itemsIE,
+		itemsIM,
+		sortEE,
+		sortEM,
+		sortIE,
+		sortIM,
+		porcentajeIngresos,
+		porcentajeIngresos1000;
 		itemsEE = {
 			ee1:"Egresos",
 			ee2:"Egresos por cada 1000 habitantes",
@@ -159,79 +184,39 @@
 		function init(){
 
 			setResults = sessionStorage.getItem('results');
+			area = JSON.parse(sessionStorage.getItem('modal'));
 			itemResult = JSON.parse(setResults);
+			inputData = itemResult.options;
+			sumTotal = itemResult
+			$scope.inputResult = itemResult;
 			
 			if(setResults){
-				itemsEgrEst = itemResult.egresos.estatales;
-				itemsEgrMun = itemResult.egresos.municipales;
-				itemsIngEst = itemResult.ingresos.estatales;
-				itemsIngMun = itemResult.ingresos.municipales;
-				area = JSON.parse(sessionStorage.getItem('modal'));
-
-				delete itemsEgrEst.cvegeo;
-				delete itemsEgrEst.nomestado;
-
-				delete itemsEgrMun.cveestado;
-				delete itemsEgrMun.cvemun;
-				delete itemsEgrMun.nomestado;
-				delete itemsEgrMun.nommun;
-
-				delete itemsIngEst.cvegeo;
-				delete itemsIngEst.nomestado;
-
-				delete itemsIngMun.cveestado;
-				delete itemsIngMun.cvemun;
-				delete itemsIngMun.nomestado;
-				delete itemsIngMun.nommun;
-
-				// Match Egresos estatales
-				for(var itemEE in itemsEgrEst){
-					finalEE[itemsEE[itemEE]] = itemsEgrEst[itemEE];
-				}
-				sortEE = Object.keys(finalEE).sort();
-				$log.info(finalEE);
-				// Match Egresos municipales
-				for(var itemEM in itemsEgrMun){
-					finalEM[itemsEM[itemEM]] = itemsEgrMun[itemEM];
-				}
-				sortEM = Object.keys(finalEM).sort();
-				$log.info(finalEM);
-
-				// Match Egresos estatales
-				for(var itemIE in itemsIngEst){
-					finalIE[itemsIE[itemIE]] = itemsIngEst[itemIE];
-				}
-				sortIE = Object.keys(finalIE).sort();
-				$log.info(finalIE);
-				// Match Egresos municipales
-				for(var itemIM in itemsIngMun){
-					finalIM[itemsIM[itemIM]] = itemsIngMun[itemIM];
-				}
-				sortIM = Object.keys(finalIM).sort();
-				$log.info(finalIM);
-
-				inputData = itemResult.options;
-				$scope.inputResult = itemResult;
-				sumTotal = itemResult;
+				porcentajeIngresos = itemResult.ingresos.porcentajes;
+				porcentajeIngresos1000 = itemResult.ingresos.porcentajes1000;
+				delete porcentajeIngresos.cveestado;
+				delete porcentajeIngresos.nomestado;
 				
+				delete porcentajeIngresos1000.cveestado;
+				delete porcentajeIngresos1000.nomestado;
 			}
 
 			$scope.first = {
 				open: false
 			};
+			
 		}
 		
 
 		// Charts
 		
-		var chartEgrEst = AmCharts.makeChart("EgrEst", {
+		var chartEgrEst = AmCharts.makeChart("Ingresos", {
 			"type": "serial",
 			"theme": "light",
 			'rotate': true,
 			"legend": {
 					"autoMargins": false,
 					"borderAlpha": 0.2,
-					"equalWidths": false,
+					"equalWidths": true,
 					"horizontalGap": 10,
 					"markerSize": 10,
 					"useGraphSettings": true,
@@ -239,41 +224,31 @@
 					"valueWidth": 0
 			},
 			"dataProvider": [{
-					"title": "",
-					"year": "2003",
-					"europe": 2.5,
-					"namerica": 2.5,
-					"asia": 2.1,
-					"lamerica": 0.3,
-					"meast": 0.2,
-					"africa": 0.1
+					"titulo": "Promedio",
+					"im5": porcentajeIngresos.im5,
+					"im8": porcentajeIngresos.im8,
+					"im11": porcentajeIngresos.im11,
+					"im14": porcentajeIngresos.im14,
+					"im17": porcentajeIngresos.im17,
+					"im20": porcentajeIngresos.im20,
+					"im23": porcentajeIngresos.im23,
+					"im26": porcentajeIngresos.im26,
+					"im29": porcentajeIngresos.im29,
+					"im32": porcentajeIngresos.im32,
+					"im35": porcentajeIngresos.im35
 			}, {
-					"title": "Municipio c/1000 h.",
-					"year": "2004",
-					"europe": 2.6,
-					"namerica": 2.7,
-					"asia": 2.2,
-					"lamerica": 0.3,
-					"meast": 0.3,
-					"africa": 0.1
-			}, {
-					"title": "",
-					"year": "2005",
-					"europe": 2.8,
-					"namerica": 2.9,
-					"asia": 2.4,
-					"lamerica": 0.3,
-					"meast": 0.3,
-					"africa": 0.1
-			}, {
-					"title": "",
-					"year": "2006",
-					"europe": 2.8,
-					"namerica": 2.9,
-					"asia": 2.4,
-					"lamerica": 0.3,
-					"meast": 0.3,
-					"africa": 0.1
+					"titulo": "Cada 1000 hab.",
+					"im5": porcentajeIngresos1000.im6,
+					"im8": porcentajeIngresos1000.im9,
+					"im11": porcentajeIngresos1000.im12,
+					"im14": porcentajeIngresos1000.im15,
+					"im17": porcentajeIngresos1000.im18,
+					"im20": porcentajeIngresos1000.im21,
+					"im23": porcentajeIngresos1000.im24,
+					"im26": porcentajeIngresos1000.im27,
+					"im29": porcentajeIngresos1000.im30,
+					"im32": porcentajeIngresos1000.im33,
+					"im35": porcentajeIngresos1000.im36
 			}],
 			"valueAxes": [{
 					"stackType": "100%",
@@ -285,66 +260,122 @@
 			"graphs": [{
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "Europe",
+					"title": "Impuestos",
 					"type": "column",
-					"valueField": "europe"
+					"valueField": "im5"
 			}, {
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "North America",
+					"title": "Cuotas y Aportaciones de Seguridad Social",
 					"type": "column",
-					"valueField": "namerica"
+					"valueField": "im8"
 			}, {
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "Asia-Pacific",
+					"title": "Contribuciones de Mejoras",
 					"type": "column",
-					"valueField": "asia"
+					"valueField": "im11"
 			}, {
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "Latin America",
+					"title": "Derechos",
 					"type": "column",
-					"valueField": "lamerica"
+					"valueField": "im14"
 			}, {
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "Middle-East",
+					"title": "Productos",
 					"type": "column",
-					"valueField": "meast"
+					"valueField": "im17"
 			}, {
 					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
 					"fillAlphas": 0.9,
+					"fillColorsField": "color",
 					"fontSize": 11,
 					"labelText": "[[percents]]%",
 					"lineAlpha": 0.5,
-					"title": "Africa",
+					"title": "Aprovechamientos",
 					"type": "column",
-					"valueField": "africa"
+					"valueField": "im20"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fillColorsField": "color",
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Participaciones federales",
+					"type": "column",
+					"valueField": "im23"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fillColorsField": "color",
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Aportaciones federales y estatales",
+					"type": "column",
+					"valueField": "im26"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fillColorsField": "color",
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Otros ingresos",
+					"type": "column",
+					"valueField": "im29"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fillColorsField": "color",
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Financiamiento",
+					"type": "column",
+					"valueField": "im32"
+			}, {
+					"balloonText": "[[title]], [[category]]<br><span style='font-size:14px;'><b>[[value]]</b> ([[percents]]%)</span>",
+					"fillAlphas": 0.9,
+					"fillColorsField": "color",
+					"fontSize": 11,
+					"labelText": "[[percents]]%",
+					"lineAlpha": 0.5,
+					"title": "Disponibilidad inicial",
+					"type": "column",
+					"valueField": "im35"
 			}],
 			"marginTop": 30,
 			"marginRight": 0,
 			"marginLeft": 100,
 			"marginBottom": 40,
 			"autoMargins": false,
-			"categoryField": "title",
+			"categoryField": "titulo",
 			"categoryAxis": {
-					"gridPosition": "start",
+					"gridPosition": "middle",
 					"axisAlpha": 0,
 					"gridAlpha": 0
 			},
@@ -415,7 +446,7 @@
 			]*/
 		});
 		var externalLegend = new AmCharts.AmLegend();
-		chartEgrEst.addLegend(externalLegend, "legenddiv");
+		//chartEgrEst.addLegend(externalLegend, "legenddiv");
 		
 		// Input data
 		if (inputData.ObraComp === "ObraCompl_Completa") {
@@ -440,12 +471,13 @@
 		if (inputData.TipoDeBacheo === "BacheoPromedio") {
 			$scope.TipoDeBacheo = "Bacheo promedio";
 		}
-		if (inputData.MantenimientoAnual) {
-			$scope.MantenimientoAnual === "SinMantAnual" ? "Sin mantenimiento anual" : "Con mantenimiento anual";
+		if (inputData.senalizacion === "MinSenalHor") {
+			$scope.senalizacion = "Los mínimos requeridos (señalización horizontal)";
 		}
-		if (inputData.senalizacion) {
-			$scope.senalizacion === "MinSenalHor" ? "Los mínimos requeridos (señalización horizontal)" : "Señalización completa (señalización horizontal, señalización vertical)";
+		if (inputData.senalizacion === "MaxSenalHor") {
+			$scope.senalizacion = "Señalización completa (señalización horizontal, señalización vertical)";
 		}
+		inputData.MantenimientoAnual === "SinMantAnual" ? $scope.MantenimientoAnual = "Sin mantenimiento anual" : $scope.MantenimientoAnual = "Con mantenimiento anual";
 
 		$scope.infraestructura = inputData.infraestructura;
 		$scope.tipo_calle = inputData.tipo_calle;
@@ -459,17 +491,18 @@
 		$scope.RejillasProyecto = inputData.RejillasProyecto;
 		$scope.Cocheras = inputData.Cocheras;
 		$scope.Biciestacionamientos = inputData.Biciestacionamientos;
-		$scope.senalizacion = inputData.senalizacion;
 		$scope.modalidad = "Calles";
 		$scope.area =  area.municipio ? area.estado +" - "+ area.municipio : area.estado ;
 
 		// Total
-		/*
+		
 		delete sumTotal.egresos;
 		delete sumTotal.ingresos;
 		delete sumTotal.options;
+		sumTotal.horizontal = sumTotal.senalizacion.horizontal;
+		sumTotal.vertical = sumTotal.senalizacion.vertical;
+		sumTotal.seleccionada = sumTotal.senalizacion.seleccionada;
 		delete sumTotal.senalizacion;
-
 		function sum( obj ) {
 			var sumAdd = 0;
 			for( var el in obj ) {
@@ -481,7 +514,6 @@
 		}
 
 		$scope.total = sum(sumTotal);
-		*/
 	};
 
 	SummaryController.$inject = ['$document','$timeout', '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter', '$stateParams', '$rootScope'];

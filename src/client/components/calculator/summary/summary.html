@@ -63,8 +63,14 @@
 								<td>{{inputResult.interseccionesSemaforizadas | currency}}</td>
 							</tr>
 							<tr>
-								<td>Señalización</td>
-								<td>{{inputResult.senalizacion.seleccionada | currency}}</td>
+								<td>Señalización
+									<small style="margin-left: 15px;display: block;font-size: 15px;" ng-if="inputResult.horizontal && inputResult.vertical ">Señalización horizontal</small>
+									<small style="margin-left: 15px;display: block;font-size: 15px;" ng-if="inputResult.horizontal && inputResult.vertical">Señalización vertical</small>
+								</td>
+								<td>{{inputResult.seleccionada | currency}}
+									<small style="margin-left: 15px;display: block;font-size: 15px;" ng-if="inputResult.horizontal && inputResult.vertical">{{inputResult.horizontal | currency}}</small>
+									<small style="margin-left: 15px;display: block;font-size: 15px;" ng-if="inputResult.horizontal && inputResult.vertical">{{inputResult.vertical | currency}}</small>
+								</td>
 							</tr>
 						</tbody>
 					</table>
@@ -78,8 +84,8 @@
 			<div class="s2-body">
 				<section class="row">
 					<article class="col-xs-12">
-						<div id="EgrEst" style="width:100%;height: 500px;font-size:11px;"></div>
-						<div id="legenddiv" style="border: 2px solid #828282; margin: 5px 0 20px 0;position: relative;"></div>
+						<h4 style="color:#414C5A;font-weight: 400;">Ingresos</h4>
+						<div id="Ingresos" style="width:100%;height: 500px;font-size:11px;"></div>
 					</article>
 				</section>
 			</div>
@@ -163,12 +169,16 @@
 											<td>{{ObraComp}}</td>
 										</tr>
 										<tr>
-											<td>Costo de mantenimiento anual</td>
+											<td>Mantenimiento anual</td>
 											<td>{{MantenimientoAnual}}</td>
 										</tr>
 									</tbody>
 								</table>
 							</div>
+						</div>
+						<div class="summary-action">
+							<button class="btn btn-success">Cambiar Datos</button>
+							<button class="btn btn-success">Descargar PDF</button>
 						</div>
 					</section>
 				</accordion-group>
