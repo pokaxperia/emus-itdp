@@ -136,6 +136,28 @@ class Admin extends CI_Controller {
 		$this->_example_output($output);
 	}
 	
+	
+	/*Modalidades*/
+	public function modalidades() {
+		$user  = $this->isUser();
+		$crud  = $this->new_crud();
+		$state = $crud->getState();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('modalidades');
+		$crud->set_subject('Modalidades');
+		$crud->set_primary_key('id_modalidad');
+		$crud->unset_fields('id_modalidad', 'created_at', 'updated_at', 'status');
+		//$crud->unset_delete();
+		
+		$crud->fields('nombre', 'descripcion');
+		$crud->columns('id_modalidad',  'nombre', 'descripcion');
+        
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
 	/*Metodo para cerrar session*/
 	public function logout() {
 		session_unset(); 

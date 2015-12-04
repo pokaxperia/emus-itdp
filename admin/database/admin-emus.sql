@@ -4,6 +4,8 @@ CREATE TABLE modalidades (
     nombre varchar(255),
     descripcion text,
     clase varchar(50),
+    created_at timestamp NOT NULL DEFAULT now(),
+	updated_at timestamp NOT NULL DEFAULT now(),
     status boolean DEFAULT true
 );
 

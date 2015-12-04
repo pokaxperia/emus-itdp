@@ -38,6 +38,9 @@ foreach($css_files as $file): ?>
 		<a href="<?php echo site_url('admin/proyectos')?>">
 			<?php if($this->uri->segment(2) == "proyectos") { ?><strong>Proyectos</strong><?php } else { ?>Proyectos<?php } ?>
 		</a> |
+		<a href="<?php echo site_url('admin/modalidades')?>">
+			<?php if($this->uri->segment(2) == "modalidades") { ?><strong>Modalidades</strong><?php } else { ?>Modalidades<?php } ?>
+		</a> |
 		<?php if(isset($_SESSION['user_id'])) { ?>
 			<a href="<?php echo site_url('admin/logout')?>">Cerrar sesión</a>
 		<?php } ?>
