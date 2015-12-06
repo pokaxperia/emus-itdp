@@ -47,9 +47,9 @@ gulp.task('inject', function(){
 			[
 				'bower_components/angular-ui-bootstrap/*.js',
 				'bower_components/amcharts3/amcharts/amcharts.js',
-				'bower_components/amcharts3/amcharts/pie.js',
-				'bower_components/amcharts3/amcharts/plugins/responsive/responsive.min.js',
-				'bower_components/amcharts3/amcharts/themes/light.js'],{read: false}
+				'bower_components/amcharts3/amcharts/serial.js',
+				'bower_components/amcharts3/amcharts/themes/light.js',
+				'bower_components/amcharts3/amcharts/plugins/responsive/responsive.min.js'],{read: false}
 		),{starttag: '<!-- inject:own:js -->'}))
 		.pipe($.inject(gulp.src([
 			'./src/client/styles/styles.css'
