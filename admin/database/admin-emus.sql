@@ -1,8 +1,8 @@
 -- Name: modalidades;
 CREATE TABLE modalidades (
     id_modalidad serial,
-    nombre varchar(255),
-    descripcion text,
+    nombre varchar(255) not null,
+    descripcion varchar(255),
     clase varchar(50),
     created_at timestamp NOT NULL DEFAULT now(),
 	updated_at timestamp NOT NULL DEFAULT now(),

@@ -26,7 +26,7 @@ $routes = array(
 		"application" => "api",
 		"controller"  => "api",
 		"method"	  => "modalidades",
-		"params"	  => array()
+		"params"	  => array(segment(1))
 	),
 	3 => array(
 		"pattern"	  => "/^proyectos/",
