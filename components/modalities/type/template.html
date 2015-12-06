@@ -1,25 +1,25 @@
 <section class="modalities-type">
 	<section class="container">
 		<section class="card-description">
-			<h2>{{modalidad.nombre}}</h2>
+			<h2>{{proyecto.nombre}}</h2>
 		</section>
 		<section class="row">
 			<div deckgrid class="deckgrid column-1-3 col-xs-12">
 				<article class="card">
 					<div class="card-image">
-						<img ng-src="./images/{{modalidad.imagen_url}}.jpg">
+						<img ng-src="./images/{{proyecto.imagen_url}}.jpg">
 					</div>
 					<div class="card-body" >
 						<h3>{{modalidad.nombre}}</h3>
 						<i class="emus-more" more-description="modalidad.id_modalidad"></i>
 					</div>
 					<div id="{{modalidad.id}}" class="card-sdescription">
-						<h3>{{modalidad.nombre}}</h3>
-						<p>{{modalidad.descripcion}}</p>
+						<h3>{{proyecto.nombre}}</h3>
+						<p>{{proyecto.descripcion}}</p>
 						<i class="emus-close" hide-description="modalidad.id_modalidad"></i>
 					</div>
-					<div class="card-action" ng-if="modalidad.calculadora === Activo">
-						<button class="btn btn-{{modalidad.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
+					<div class="card-action" ng-if="proyecto.calculadora === Activo">
+						<button class="btn btn-{{modalidad.clase}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
 					</div>
 				</article>
 			</div>
