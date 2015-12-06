@@ -41,8 +41,6 @@ CREATE TABLE cities (
 );
 
 
-ALTER TABLE public.cities OWNER TO postgres;
-
 --
 -- Name: cities_id_city_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
@@ -55,7 +53,6 @@ CREATE SEQUENCE cities_id_city_seq
     CACHE 1;
 
 
-ALTER TABLE public.cities_id_city_seq OWNER TO postgres;
 
 --
 -- Name: cities_id_city_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -104,8 +101,6 @@ CREATE TABLE dataset (
     status boolean DEFAULT true
 );
 
-
-ALTER TABLE public.dataset OWNER TO postgres;
 
 --
 -- Name: COLUMN dataset.interssemafor; Type: COMMENT; Schema: public; Owner: postgres
@@ -315,8 +310,6 @@ CREATE SEQUENCE dataset_id_record_seq
     CACHE 1;
 
 
-ALTER TABLE public.dataset_id_record_seq OWNER TO postgres;
-
 --
 -- Name: dataset_id_record_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
@@ -369,8 +362,6 @@ CREATE TABLE egresos_estatales (
 );
 
 
-ALTER TABLE public.egresos_estatales OWNER TO postgres;
-
 --
 -- Name: egresos_municipales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
@@ -415,7 +406,6 @@ CREATE TABLE egresos_municipales (
 );
 
 
-ALTER TABLE public.egresos_municipales OWNER TO postgres;
 
 --
 -- Name: ingresos_estatales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -462,8 +452,6 @@ CREATE TABLE ingresos_estatales (
     ie35 double precision
 );
 
-
-ALTER TABLE public.ingresos_estatales OWNER TO postgres;
 
 --
 -- Name: ingresos_municipales; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
@@ -512,8 +500,6 @@ CREATE TABLE ingresos_municipales (
     im36 double precision
 );
 
-
-ALTER TABLE public.ingresos_municipales OWNER TO postgres;
 
 --
 -- Name: id_city; Type: DEFAULT; Schema: public; Owner: postgres

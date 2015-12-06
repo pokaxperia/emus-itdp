@@ -1,11 +1,12 @@
 # Ignore Directories
-api
 bower_components
 build
 node_modules
 tmp
 src/client/.DS_Store
 src/client/components/modalities/.DS_Store
+api/www/config/database.php
+api/www/config/config.php
 
 # Ignore files
 commits.txt

@@ -20,5 +20,19 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "cities",
 		"params"	  => array()
+	),
+	2 => array(
+		"pattern"	  => "/^modalidades/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "modalidades",
+		"params"	  => array(segment(1))
+	),
+	3 => array(
+		"pattern"	  => "/^proyectos/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "proyectos",
+		"params"	  => array(segment(1))
 	)
 );

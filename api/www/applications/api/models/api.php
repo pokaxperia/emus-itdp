@@ -32,7 +32,7 @@ class Api_Model extends ZP_Model {
 	public function getResults($options) {
 		$this->options = $options;
 		$this->dataCity = $this->getDataCity();
-		$this->Area_Infraestructura = $this->options["KmEvaluables"]*$this->options["Sentidos"]*1000;
+		$this->Area_Infraestructura = $this->options["KmEvaluables"]*$this->options["Sentidos"]*1000*$this->options["Anchoefectivo"];
 		
 		$data["areaInfraestructura"] = $this->Area_Infraestructura;
 		$data["bacheo"] = $this->getBacheo();
@@ -45,6 +45,11 @@ class Api_Model extends ZP_Model {
 		$data["egresos"]["municipales"] = $this->getEgresos("municipales");
 		$data["ingresos"]["estatales"] = $this->getIngresos();
 		$data["ingresos"]["municipales"] = $this->getIngresos("municipales");
+		$data["ingresos"]["porcentajes"] = $this->getIngresosPorcentajes();
+		$data["ingresos"]["porcentajes1000"] = $this->getIngresosPorcentajes("1000");
+		$data["egresos"]["porcentajes"] = $this->getEgresosPorcentajes();
+		$data["egresos"]["porcentajes1000"] = $this->getEgresosPorcentajes("1000");
+		
 		$data["options"] = $this->options;
 		return $data;
 	}
@@ -81,6 +86,44 @@ class Api_Model extends ZP_Model {
 		} else {
 			$query  = "select * from ingresos_municipales where cveestado=".$this->options["estado"];
 			$query .= " and cvemun=".$this->options["municipio"];
+			$data   = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		}
+	}
+	
+	/*obtener ingresos*/
+	public function getIngresosPorcentajes($type=false) {
+		if($type=="1000") {
+			$query = "select * from ingresos_porcentajes_1000 where cveestado=".$this->options["estado"];
+			$data  = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		} else {
+			$query  = "select * from ingresos_porcentajes where cveestado=".$this->options["estado"];
+			$data   = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		}
+	}
+	
+	/*obtener egresos*/
+	public function getEgresosPorcentajes($type=false) {
+		if($type=="1000") {
+			$query = "select * from egresos_porcentajes_1000 where cveestado=".$this->options["estado"];
+			$data  = $this->Db->query($query);
+		
+			if(!$data and !is_array($data)) return false;
+			
+			return $data[0];
+		} else {
+			$query  = "select * from egresos_porcentajes where cveestado=".$this->options["estado"];
 			$data   = $this->Db->query($query);
 		
 			if(!$data and !is_array($data)) return false;
@@ -319,6 +362,38 @@ class Api_Model extends ZP_Model {
 	
 	public function getCities() {
 		$query = "SELECT * from cities";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		return $data;
+	}
+	
+	/*Modalidades*/
+	public function modalidades($id_modalidad = false) {
+		$where = "";
+		if($id_modalidad != false) {
+			$where = " where id_modalidad=".$id_modalidad;
+		}
+		
+		$query = "SELECT * from modalidades" . $where;
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key => $value) {
+			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"];
+			$proyectos  = $this->Db->query($query);
+			$data[$key]["proyectos"] = $proyectos;
+		}
+		
+		
+		return $data;
+	}
+	
+	/*Proyectos*/
+	public function proyectos($id_modalidad = 0) {
+		$query = "SELECT * from proyectos where id_modalidad=".$id_modalidad;
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
