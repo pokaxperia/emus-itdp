@@ -12,12 +12,12 @@
 					</div>
 					<div class="card-body" >
 						<h3>{{card.nombre}}</h3>
-						<i class="emus-more" more-description="card.id_modalidad"></i>
+						<i class="emus-more" more-description="card.id_proyecto"></i>
 					</div>
-					<div id="{{card.id_modalidad}}" class="card-sdescription">
+					<div id="{{card.id_proyecto}}" class="card-sdescription">
 						<h3>{{card.nombre}}</h3>
 						<p>{{card.descripcion}}</p>
-						<i class="emus-close" hide-description="card.id_modalidad"></i>
+						<i class="emus-close" hide-description="card.id_proyecto"></i>
 					</div>
 					<div class="card-action" ng-if="card.calculadora === Activo">
 						<button class="btn btn-{{mother.set_m.clase}}" ui-sref="modalidades.calculadora.formulario" >Escoger</button>
