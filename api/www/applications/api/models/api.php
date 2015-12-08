@@ -382,7 +382,7 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key => $value) {
-			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"];
+			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"]. " order by id_proyecto asc";
 			$proyectos  = $this->Db->query($query);
 			
 			if($proyectos) {
