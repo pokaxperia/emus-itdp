@@ -387,8 +387,8 @@ class Api_Model extends ZP_Model {
 			
 			if($proyectos) {
 				foreach($proyectos as $key2 => $value2) {
-					$proyectos[$key2]["descripcion"] = utf8_decode($key2["descripcion"]);
-					$proyectos[$key2]["nombre"] = utf8_decode($key2["nombre"]);
+					$proyectos[$key2]["descripcion"] = utf8_decode($value2["descripcion"]);
+					$proyectos[$key2]["nombre"] = utf8_decode($value2["nombre"]);
 				}
 			}
 			
@@ -407,8 +407,8 @@ class Api_Model extends ZP_Model {
 		
 		if($proyectos) {
 			foreach($data as $key2 => $value2) {
-				$data[$key2]["descripcion"] = utf8_decode($key2["descripcion"]);
-				$data[$key2]["nombre"] = utf8_decode($key2["nombre"]);
+				$data[$key2]["descripcion"] = utf8_decode($value2["descripcion"]);
+				$data[$key2]["nombre"] = utf8_decode($value2["nombre"]);
 			}
 		}
 			
