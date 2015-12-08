@@ -20,7 +20,7 @@
 						<i class="emus-close" hide-description="card.id_proyecto"></i>
 					</div>
 					<div class="card-action">
-						<button  class="btn btn-{{mother.set_m.clase}}" ui-sref="modalidades.calculadora.formulario" >{{card.calculadora}}</button>
+						<button ng-if="card.calculadora === Activo" class="btn btn-{{mother.set_m.clase}}" ui-sref="modalidades.calculadora.formulario" >{{card.calculadora}}</button>
 					</div>
 				</article>
 			</div>
