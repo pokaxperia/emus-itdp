@@ -1,26 +1,25 @@
 <section class="modalities-type">
 	<section class="container">
 		<section class="card-description">
-			<h2>{{modalidad.nombre}}</h2>
-			<p>{{modalidad.descripcion}}</p>
+			<h2>{{set_m.modality}}</h2>
 		</section>
 		<section class="row">
-			<div deckgrid class="deckgrid column-1-3 col-xs-12" source="modalidad.proyectos">
+			<div deckgrid class="deckgrid column-1-3 col-xs-12" source="set_m.submodalities">
 				<article class="card">
 					<div class="card-image">
-						<img ng-src="./images/{{mother.modalidad.imagen_url}}.jpg">
+						<img ng-src="./images/{{mother.set_m.image}}.jpg">
 					</div>
 					<div class="card-body" >
-						<h3>{{mother.modalidad.nombre}}</h3>
-						<i class="emus-more" more-description="mother.modalidad.id_modalidad"></i>
+						<h3>{{card.submodality}}</h3>
+						<i class="emus-more" more-description="card.id"></i>
 					</div>
-					<div id="{{modalidad.id}}" class="card-sdescription">
-						<h3>{{mother.modalidad.nombre}}</h3>
-						<p>{{mother.modalidad.descripcion}}</p>
-						<i class="emus-close" hide-description="mother.modalidad.id_modalidad"></i>
+					<div id="{{card.id}}" class="card-sdescription">
+						<h3>{{card.submodality}}</h3>
+						<p>{{card.submodality_description}}</p>
+						<i class="emus-close" hide-description="card.id"></i>
 					</div>
-					<div class="card-action" ng-if="mother.modalidad.calculadora === Activo">
-						<button class="btn btn-{{mother.modalidad.clase}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
+					<div class="card-action">
+						<button class="btn btn-{{mother.set_m.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
 					</div>
 				</article>
 			</div>
