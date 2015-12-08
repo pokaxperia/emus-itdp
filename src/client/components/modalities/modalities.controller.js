@@ -14,16 +14,7 @@
 				return true;
 			}
 		};
-		
 
-		var menuClick = angular.element(document.getElementById('menu'));
-		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));
-		
-		menuClick.on('click', function(event){
-			event.preventDefault();
-			menuLanding.toggleClass('show_menu');
-		});
-		
 		angular.element($window).bind("scroll", function() {
 			header = angular.element(document.getElementById('header'));
 			body = angular.element(document.getElementsByTagName('body'));
