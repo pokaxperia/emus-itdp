@@ -384,9 +384,18 @@ class Api_Model extends ZP_Model {
 		foreach($data as $key => $value) {
 			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"];
 			$proyectos  = $this->Db->query($query);
+			
+			if($proyectos) {
+				foreach($proyectos as $key2 => $value2) {
+					$proyectos[$key2]["descripcion"] = utf8_decode($key2["descripcion"]);
+					$proyectos[$key2]["nombre"] = utf8_decode($key2["nombre"]);
+				}
+			}
+			
 			$data[$key]["proyectos"] = $proyectos;
+			$data[$key]["descripcion"] = utf8_decode($value["descripcion"]);
+			$data[$key]["nombre"] = utf8_decode($value["nombre"]);
 		}
-		
 		
 		return $data;
 	}
@@ -396,6 +405,13 @@ class Api_Model extends ZP_Model {
 		$query = "SELECT * from proyectos where id_modalidad=".$id_modalidad;
 		$data  = $this->Db->query($query);
 		
+		if($proyectos) {
+			foreach($data as $key2 => $value2) {
+				$data[$key2]["descripcion"] = utf8_decode($key2["descripcion"]);
+				$data[$key2]["nombre"] = utf8_decode($key2["nombre"]);
+			}
+		}
+			
 		if(!$data) return false;
 		
 		return $data;
