@@ -154,6 +154,8 @@ class Admin extends CI_Controller {
 		$crud->fields('nombre', 'descripcion');
 		$crud->columns('id_modalidad',  'nombre', 'descripcion');
         
+        $crud->field_type('descripcion', 'varchar');
+        
 		$output = $crud->render();
 		
 		$this->_example_output($output);
