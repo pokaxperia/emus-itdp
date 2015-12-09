@@ -1,8 +1,8 @@
-<section class="modalities-type">
-	<div style="position:absolute;top:0;left:50%;display: block;top:30px;">
-		<div ng-activity-indicator="CircledDark" class="center"></div>
-	</div>
-	<section class="container" ng-if="!AILoading">
+<div style="position:absolute;top:0;left:50%;display: block;top:30px;">
+	<div ng-activity-indicator="CircledDark" class="center"></div>
+</div>
+<section class="modalities-type" ng-if="!AILoading">
+	<section class="container" >
 		<section class="card-description">
 			<h2>{{set_m.nombre}}</h2>
 			<p>{{set_m.descripcion}}</p>
