@@ -8,7 +8,6 @@
 			<p>{{set_m.descripcion}}</p>
 		</section>
 		<section class="row" ng-if="!AILoading">
-			<h3 ng-if="mensaje === false">Aún no hay proyectos para esta modalidad</h3>
 			<div deckgrid class="deckgrid column-1-3 col-xs-12" source="set_m.proyectos">
 				<article class="card" ng-show="card.estatus === 'Activo'">
 					<div class="card-image">
