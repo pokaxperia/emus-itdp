@@ -23,7 +23,8 @@
 		'ui.bootstrap',
 		'nya.bootstrap.select',
 		'angularUtils.directives.uiBreadcrumbs',
-		'akoenig.deckgrid'
+		'akoenig.deckgrid',
+		'ngActivityIndicator'
 		]
 	)
 	.value('duScrollDuration', 750)
