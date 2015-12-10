@@ -1,4 +1,4 @@
-<section class="summary row">
+<section class="summary row" id="summaryPdf">
 	<section class="col-lg-offset-1 col-lg-10">
 		<article class="s1">
 			<div class="summary-header">
@@ -8,10 +8,10 @@
 				<div class="col-xs-12 content">
 					<div class="content-summary">
 						<div class="content-item">
-							<img src="./images/{{infraestructura | lowercase}}.jpg" alt="">
+							<img ng-src="./images/{{infraestructura | lowercase}}.jpg" alt="">
 						</div>
 						<div class="content-item">
-							<h3>{{total | currency}}</h4>
+							<h4>{{total | currency}}</h4>
 							<span>TOTAL</span>
 						</div>
 						<div class="content-item">
@@ -38,10 +38,6 @@
 				<div class="col-xs-12 col-sm-offset-2 col-sm-8">
 					<table>
 						<tbody>
-							<tr>
-								<td>Area de Infraestructura</td>
-								<td>{{inputResult.areaInfraestructura | currency}}</td>
-							</tr>
 							<tr>
 								<td>Obras viales de bacheo</td>
 								<td>{{inputResult.bacheo | currency}}</td>
@@ -72,31 +68,13 @@
 									<small style="margin-left: 15px;display: block;font-size: 15px;" ng-if="inputResult.horizontal && inputResult.vertical">{{inputResult.vertical | currency}}</small>
 								</td>
 							</tr>
+							<tr>
+								<td>Area de Infraestructura</td>
+								<td>{{inputResult.areaInfraestructura | number}} m2.</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
-			</div>
-		</article>
-		<article class="s2" style="margin-top: 5px;">
-			<div class="summary-header" style="background-color:rgba(65,76,90,0.75);color:#ffffff;">
-				<h4 style="color:#ffffff;">Comparativa</h4>
-			</div>
-			<div class="s2-body">
-				<section class="row">
-					<article class="col-xs-12">
-						<div class="summary-header">
-							<h4 style="color:#414C5A;font-weight: 400;">Ingresos</h4>
-						</div>
-						<div id="Ingresos" style="width:100%;height: 500px;font-size:11px;"></div>
-					</article>
-					<br>
-					<article class="col-xs-12">
-						<div class="summary-header">
-							<h4 style="color:#414C5A;font-weight: 400;">Egresos</h4>
-						</div>
-						<div id="Egresos" style="width:100%;height: 500px;font-size:11px;"></div>
-					</article>
-				</section>
 			</div>
 		</article>
 		<article class="s3" style="margin-top: 5px;">
@@ -185,10 +163,36 @@
 							</table>
 						</div>
 					</div>
-					<div class="summary-action">
-						<button class="btn btn-success" ui-sref="modalidades.calculadora.formulario">Cambiar Datos</button>
-						<button class="btn btn-success" ng-click="createPdf()">Descargar PDF</button>
-					</div>
+				</section>
+			</div>
+		</article>
+	</section>
+</section>
+<section class="summary row">
+	<section class="col-lg-offset-1 col-lg-10">
+		<article class="s2" style="margin-top: 5px;">
+			<div class="summary-header" style="background-color:rgba(65,76,90,0.75);color:#ffffff;">
+				<h4 style="color:#ffffff;">Comparativa</h4>
+			</div>
+			<div class="s2-body">
+				<section class="row">
+					<article class="col-xs-12">
+						<div class="summary-header">
+							<h4 style="color:#414C5A;font-weight: 400;">Ingresos</h4>
+						</div>
+						<div id="Ingresos" style="width:100%;height: 500px;font-size:11px;"></div>
+					</article>
+					<br>
+					<article class="col-xs-12">
+						<div class="summary-header">
+							<h4 style="color:#414C5A;font-weight: 400;">Egresos</h4>
+						</div>
+						<div id="Egresos" style="width:100%;height: 500px;font-size:11px;"></div>
+					</article>
+						<div class="summary-action">
+							<button class="btn btn-success" ui-sref="modalidades.calculadora.formulario">Cambiar Datos</button>
+							<button class="btn btn-success" ng-click="createPdf()">Descargar PDF</button>
+						</div>
 				</section>
 			</div>
 		</article>
