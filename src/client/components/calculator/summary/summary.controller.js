@@ -12,27 +12,16 @@
 		inputResult,
 		setResults,
 		itemResult,
-		itemsValues,
-		finalEE = {},
-		finalEM = {},
-		finalIE = {},
-		finalIM = {},
-		itemsEgrEst,
-		itemsEgrMun,
-		itemsIngEst,
-		itemsIngMun,
-		itemsEE,
-		itemsEM,
-		itemsIE,
-		itemsIM,
-		sortEE,
-		sortEM,
-		sortIE,
-		sortIM,
 		porcentajeIngresos,
 		porcentajeIngresos1000,
 		porcentajeEgresos,
-		porcentajeEgresos1000;
+		porcentajeEgresos1000,
+		chartIngrEst,
+		chartEgrEst,
+		firstChart,
+		secondChart,
+		first,
+		second;
 		init();
 		
 		function init(){
@@ -71,7 +60,7 @@
 			delete porcentajeEgresos1000.nomestado;
 			
 			// Charts Ingreos
-			var chartEgrEst = AmCharts.makeChart("Ingresos", {
+			chartIngrEst = AmCharts.makeChart("Ingresos", {
 				"type": "serial",
 				"theme": "light",
 				'rotate': true,
@@ -249,7 +238,7 @@
 			});
 
 			// Chart Egresos
-			var chartEgrEst = AmCharts.makeChart("Egresos", {
+			chartEgrEst = AmCharts.makeChart("Egresos", {
 				"type": "serial",
 				"theme": "light",
 				'rotate': true,
@@ -486,27 +475,33 @@
 		
 		
 		$scope.createPdf = function(){
-			var pdf = new jsPDF('p','pt','a4');
-
-			pdf.addHTML(document.body,function() {
-				pdf.save('demo.pdf');
+			var pdf = new jsPDF('p','pt','letter');
+			pdf.setFont("courier", "italic");
+			var summaryPdf = document.getElementById('summaryPdf');
+			
+			// Export first chart and save image base64
+			first = new AmCharts.AmExport(chartIngrEst);
+			first.init();
+			first.output({output: 'datastring',format: 'jpg'},function(blob) {
+				var image = new Image();
+				image.src = blob;
+				firstChart = image.src;
 			});
-			/*
-			var summaryPdf = new jsPDF();
-			summaryPdf.setFont("helvetica", "normal");
-			var specialElementHandlers = {
-				'.spdf': function(element, renderer){
-					return true;
-				}
-			};
-			var elements = angular.element(document.getElementsByClassName('spdf'));
-			angular.forEach(elements, function(value, key) {
-				summaryPdf.fromHTML(value,10, 10, {
-					'elementHandlers': specialElementHandlers
-				});
+			// Export second chart and save image base64
+			second = new AmCharts.AmExport(chartEgrEst);
+			second.init();
+			second.output({output: 'datastring',format: 'jpg'},function(blob) {
+				var image = new Image();
+				image.src = blob;
+				secondChart = image.src;
 			});
-			summaryPdf.save('test.pdf');
-			*/
+			// Create pdf
+			pdf.addHTML(summaryPdf, 0, 0, function(){
+				pdf.addPage();
+				pdf.addImage(firstChart, 'JPEG', 65, 10, 479.164, 250);
+				pdf.addImage(secondChart, 'JPEG', 65, 310, 479.164, 250);
+				pdf.save('test.pdf');
+			});
 		}
 	};
 
