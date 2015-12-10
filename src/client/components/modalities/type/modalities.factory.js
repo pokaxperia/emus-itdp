@@ -9,9 +9,7 @@
 		return {
 			getModality: function(modality){
 				var deferred = $q.defer();
-
-				//var response = $http.get('./components/modalities/type_modalities/'+modality+'.json');
-				var response = $http.get('http://54.200.40.169/emus-itdp/api/index.php/modalidades/' + modality);
+				var response = $http.get('http://52.8.65.73/emus-itdp/api/index.php/modalidades/' + modality);
 
 				response.then(function(result){
 					deferred.resolve(result.data.results[0]);
