@@ -139,7 +139,7 @@ class Api_Model extends ZP_Model {
 			 * BiciestacionamientosInput = Default 
 			 * ((KmEvaluables*1000)/300)*4*Biciestacionamientos
 			*/ 
-			$result = (($this->options["KmEvaluables"]*100)/300)*4*$this->dataCity["biciestacionamientos"];
+			$result = (($this->options["KmEvaluables"]*1000)/300)*4*$this->dataCity["biciestacionamientos"];
 			return $result;
 		} else {
 			/*
