@@ -202,7 +202,7 @@
 			typeProject = type.infraestructura;
 			toggleFunction(typeProject);
 
-			$log.info("sessionStorage not empty");
+			$log.warn("sessionStorage not empty");
 			if(type){
 				switch(typeProject){
 					case "Ciclovia":
@@ -222,6 +222,7 @@
 			$state.go('modalidades.calculadora.formulario');
 
 		};
+		$log.info(valores);
 
 		function toggleFunction(typeProject){
 			imgProject = angular.element(document.getElementById(typeProject));
@@ -363,6 +364,7 @@
 			$scope.form.PozosProyecto2 = null;
 			sessionStorage.setItem('flagPozos', true);
 			$scope.flagPozos = true;
+			$log.info("Número de pozos = "+$scope.calculator.KmEvaluables+" kilometros * 1000 / 200 = " + $scope.form.PozosProyecto1)
 		}
 
 		function setCustPozo(newValue){
@@ -372,6 +374,7 @@
 			$scope.form.PozosProyecto1 = null;
 			sessionStorage.setItem('flagPozos',false);
 			$scope.flagPozos = false;
+			$log.info("Número de pozos:" + $scope.form.PozosProyecto2);
 		}
 		/* End Pozos field */
 		
@@ -424,6 +427,7 @@
 			$scope.form.RejillasProyecto2 = null;
 			sessionStorage.setItem('flagRejillas', true);
 			$scope.flagRejillas = true;
+			$log.info("Número de rejillas = "+$scope.calculator.KmEvaluables+" kilometros * 1000 / 200 = " + $scope.form.RejillasProyecto1)
 		}
 
 		function setCustRejilla(newValue){
@@ -433,6 +437,7 @@
 			$scope.form.RejillasProyecto1 = null;
 			sessionStorage.setItem('flagRejillas',false);
 			$scope.flagRejillas = false;
+			$log.info("Número de rejillas:" + $scope.form.RejillasProyecto2);
 		}
 		/* End Rejillas field */
 
@@ -485,6 +490,7 @@
 			$scope.form.CocherasProyecto2 = null;
 			sessionStorage.setItem('flagCocheras', true);
 			$scope.flagCocheras = true;
+			$log.info("Número de cocheras = "+$scope.calculator.KmEvaluables+" kilometros * 25 = " + $scope.form.CocherasProyecto1);
 		}
 
 		function setCustCochera(newValue){
@@ -494,6 +500,7 @@
 			$scope.form.CocherasProyecto1 = null;
 			sessionStorage.setItem('flagCocheras',false);
 			$scope.flagCocheras = false;
+			$log.info("Número de cocheras:" + $scope.form.CocherasProyecto2);
 		}
 		/* End Cocheras field */
 
@@ -534,6 +541,7 @@
 			$scope.calc.bicie = null;
 			sessionStorage.setItem('flagBicie', true);
 			$scope.flagBicie = true;
+			$log.info("Número de biciestacionamientos (default) = ( ("+$scope.calculator.KmEvaluables+" kilometros * 1000)/300) * 4 * 479.33");
 		}
 
 		function setCustBiciE(newValue){
@@ -541,6 +549,7 @@
 			$scope.calculator.Biciestacionamientos = newValue;
 			sessionStorage.setItem('flagBicie',false);
 			$scope.flagBicie = false;
+			$log.info("Número de cocheras:" + $scope.calc.bicie);
 		}
 		/* End Biciestacionamientos field */
 
@@ -557,6 +566,7 @@
 				}
 				else{
 					$log.info("Sin modal");
+					$log.warn("Valores enviados: " + valores);
 					sendForm();
 				}
 			}
