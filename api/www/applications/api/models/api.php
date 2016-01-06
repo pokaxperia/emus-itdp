@@ -295,10 +295,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheosuperficial"]*$this->dataCity["preciounitariobacheosuperficial"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
@@ -321,10 +321,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheoprofundo"]*$this->dataCity["preciounitariobacheoprofundo"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
@@ -347,10 +347,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheopromedio"]*$this->dataCity["preciounitariobacheopromedio"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
+			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
