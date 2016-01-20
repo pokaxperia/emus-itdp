@@ -295,10 +295,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheosuperficial"]*$this->dataCity["preciounitariobacheosuperficial"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
@@ -321,10 +321,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheoprofundo"]*$this->dataCity["preciounitariobacheoprofundo"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
@@ -347,10 +347,10 @@ class Api_Model extends ZP_Model {
 			$bacheo += ($this->dataCity["factorunitariobacheopromedio"]*$this->dataCity["preciounitariobacheopromedio"]*$this->Area_Infraestructura);
 			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
 			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
 			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += (($this->options["RejillasProyecto"]*$this->options["KmEvaluables"])*$this->dataCity["renivcoladera"]);
+			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
 			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
 			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
 			
@@ -382,20 +382,11 @@ class Api_Model extends ZP_Model {
 		if(!$data) return false;
 		
 		foreach($data as $key => $value) {
-			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"]. " order by id_proyecto asc";
+			$query = "SELECT * from proyectos where id_modalidad=".$value["id_modalidad"];
 			$proyectos  = $this->Db->query($query);
-			
-			if($proyectos) {
-				foreach($proyectos as $key2 => $value2) {
-					$proyectos[$key2]["descripcion"] = utf8_decode($value2["descripcion"]);
-					$proyectos[$key2]["nombre"] = utf8_decode($value2["nombre"]);
-				}
-			}
-			
 			$data[$key]["proyectos"] = $proyectos;
-			$data[$key]["descripcion"] = utf8_decode($value["descripcion"]);
-			$data[$key]["nombre"] = utf8_decode($value["nombre"]);
 		}
+		
 		
 		return $data;
 	}
@@ -405,14 +396,22 @@ class Api_Model extends ZP_Model {
 		$query = "SELECT * from proyectos where id_modalidad=".$id_modalidad;
 		$data  = $this->Db->query($query);
 		
-		if($proyectos) {
-			foreach($data as $key2 => $value2) {
-				$data[$key2]["descripcion"] = utf8_decode($value2["descripcion"]);
-				$data[$key2]["nombre"] = utf8_decode($value2["nombre"]);
-			}
-		}
-			
 		if(!$data) return false;
+		
+		return $data;
+	}
+	
+	/*Fases*/
+	public function fases() {
+		$query = "SELECT * from fases";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key => $value) {
+			$data[$key]["nombre"] = utf8_decode($data[$key]["nombre"]);
+			$data[$key]["descripcion"] = utf8_decode($data[$key]["descripcion"]);
+		}
 		
 		return $data;
 	}

@@ -51,4 +51,9 @@ class Api_Controller extends ZP_Controller {
 		$vars["results"]  = $this->Api_Model->proyectos($id_modalidad);
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
+	
+	public function fases() {
+		$vars["results"]  = $this->Api_Model->fases();
+		echo json_encode($vars, JSON_NUMERIC_CHECK);
+	}
 }
