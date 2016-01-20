@@ -34,5 +34,12 @@ $routes = array(
 		"controller"  => "api",
 		"method"	  => "proyectos",
 		"params"	  => array(segment(1))
+	),
+	4 => array(
+		"pattern"	  => "/^fases/",
+		"application" => "api",
+		"controller"  => "api",
+		"method"	  => "fases",
+		"params"	  => array()
 	)
 );

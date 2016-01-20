@@ -45,3 +45,37 @@ CREATE TABLE users (
 insert into users (username, email, name, lastname, pwd) values ('caarloshugo', 'carlos@appdata.mx', 'Carlos Hugo', 'Gonzalez', md5('caarloshugo'));
 
 
+-- Name: fases;
+CREATE TABLE fases (
+    id_fase serial,
+    id_modalidad integer,
+    nombre varchar(255),
+    descripcion text,
+    created_at timestamp NOT NULL DEFAULT now(),
+	updated_at timestamp NOT NULL DEFAULT now(),
+    status boolean DEFAULT true
+);
+insert into fases (id_modalidad, nombre, descripcion) values (1, 'Planeación', 'uno');
+insert into fases (id_modalidad, nombre, descripcion) values (1, 'Diseño', 'dos');
+insert into fases (id_modalidad, nombre, descripcion) values (1, 'Implementación', 'tres');
+insert into fases (id_modalidad, nombre, descripcion) values (1, 'Evaluación y monitoreo', 'cuatro');
+
+insert into fases (id_modalidad, nombre, descripcion) values (2,'Planeación', 'uno');
+insert into fases (id_modalidad, nombre, descripcion) values (2, 'Diseño', 'dos');
+insert into fases (id_modalidad, nombre, descripcion) values (2, 'Implementación', 'tres');
+insert into fases (id_modalidad, nombre, descripcion) values (2, 'Evaluación y monitoreo', 'cuatro');
+
+insert into fases (id_modalidad, nombre, descripcion) values (3, 'Planeación', 'uno');
+insert into fases (id_modalidad, nombre, descripcion) values (3, 'Diseño', 'dos');
+insert into fases (id_modalidad, nombre, descripcion) values (3, 'Implementación', 'tres');
+insert into fases (id_modalidad, nombre, descripcion) values (3, 'Evaluación y monitoreo', 'cuatro');
+
+insert into fases (id_modalidad, nombre, descripcion) values (4, 'Planeación', 'uno');
+insert into fases (id_modalidad, nombre, descripcion) values (4, 'Diseño', 'dos');
+insert into fases (id_modalidad, nombre, descripcion) values (4, 'Implementación', 'tres');
+insert into fases (id_modalidad, nombre, descripcion) values (4, 'Evaluación y monitoreo', 'cuatro');
+
+insert into fases (id_modalidad, nombre, descripcion) values (5, 'Planeación', 'uno');
+insert into fases (id_modalidad, nombre, descripcion) values (5, 'Diseño', 'dos');
+insert into fases (id_modalidad, nombre, descripcion) values (5, 'Implementación', 'tres');
+insert into fases (id_modalidad, nombre, descripcion) values (5, 'Evaluación y monitoreo', 'cuatro');

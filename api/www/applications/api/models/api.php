@@ -400,4 +400,19 @@ class Api_Model extends ZP_Model {
 		
 		return $data;
 	}
+	
+	/*Fases*/
+	public function fases() {
+		$query = "SELECT * from fases";
+		$data  = $this->Db->query($query);
+		
+		if(!$data) return false;
+		
+		foreach($data as $key => $value) {
+			$data[$key]["nombre"] = utf8_decode($data[$key]["nombre"]);
+			$data[$key]["descripcion"] = utf8_decode($data[$key]["descripcion"]);
+		}
+		
+		return $data;
+	}
 }
