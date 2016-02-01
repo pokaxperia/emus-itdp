@@ -1,0 +1,16 @@
+<div class="m-matrix-navigation js-matrix-navigation">
+	<ul class="m-navigation-list">
+		<li class="m-navigation-list__item"><a ui-sref="matriz"><i class="fa fa-th btn-floating--icon"></i></a></li>
+		<li class="m-navigation-list__item"><a >{{modalityName}}</a></li>
+		<li class="m-navigation-list__item"><a >{{phaseName}}</a></li>
+	</ul>
+	<div class="m-matrix-navigation__list-center">
+		<ul class="m-center-list">
+			<li class="m-center-list__item js-planeacion" ui-sref-active="current_item"><a ng-click="changePhase(modalityUrl, 'planeacion', 'Planeación')" class="fa fa-calendar"></a></li>
+			<li class="m-center-list__item js-desarrollo" ui-sref-active="current_item"><a ng-click="changePhase(modalityUrl, 'desarrollo', 'Desarrollo')" class="fa fa-pencil-square-o"></a></li>
+			<li class="m-center-list__item js-implementacion" ui-sref-active="current_item"><a ng-click="changePhase(modalityUrl, 'implementacion', 'Implementación')" class="fa fa-cogs"></a></li>
+			<li class="m-center-list__item js-evaluacion-y-monitoreo" ui-sref-active="current_item"><a ng-click="changePhase(modalityUrl, 'evaluacion-y-monitoreo', 'Evaluación y monitoreo')" class="fa fa-eye"></a></li>
+		</ul>
+	</div>
+
+</div>

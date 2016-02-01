@@ -1,0 +1,26 @@
+a{
+	text-decoration:none;
+}
+.title-section{
+	color: #ffffff;
+	font-size: 26px;
+	font-weight: normal;
+	text-align: center;
+}
+.big-title{
+	color: #414C5A;
+	font-size: 25px;
+	font-weight: 400;
+	text-align: center;
+}
+.small-title{
+	color: #414C5A;
+	display: block;
+	font-weight: 400;
+	line-height: 28px;
+	margin: 18px 45px 12px 15px;
+}
+@media (min-width: 768px) {
+	font-size: 28px;
+	margin: 0;
+}

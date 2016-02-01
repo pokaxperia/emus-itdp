@@ -1,3 +1,13 @@
+$break-sm: 48em; // >= 768px @ 16px
+$break-md: 62em; // >= 992px @ 16px
+$break-lg: 75em; // >= 1200px @ 16px
+
+// @include respond-to( );
+@mixin respond-to( $condition ) {
+	@if $condition == 'sm' { @media ( min-width: $break-sm ) { @content; } }
+	@if $condition == 'md' { @media ( min-width: $break-md ) { @content; } }
+	@if $condition == 'lg' { @media ( min-width: $break-lg ) { @content; } }
+}
 @mixin box-shadow($args...){
 	-webkit-box-shadow: $args;
 	-moz-box-shadow: $args;
@@ -24,6 +34,22 @@
 	-o-transform: $trans;
 	-ms-transform: $trans;
 	transform: $trans;
+}
+@mixin transform-translate($x, $y){
+		@if($x != null){
+				-webkit-transform: translateX($x);
+				-moz-transform   : translateX($x);
+				-o-transform     : translateX($x);
+				-ms-transform    : translateX($x);
+				transform        : translateX($x);
+		}
+		@if($y != null){
+				-webkit-transform: translateY($y);
+				-moz-transform   : translateY($y);
+				-o-transform     : translateY($y);
+				-ms-transform    : translateY($y);
+				transform        : translateY($y);
+		}
 }
 @mixin backface-visibility($trans){
 	-webkit-backface-visibility: $trans;

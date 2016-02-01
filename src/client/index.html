@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 	<head>
+		
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>EMUS</title>
@@ -14,10 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,500' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 		<!-- build:css css/styles.css -->
 		<!-- bower:css -->
 		<link rel="stylesheet" href="bower_components/nya-bootstrap-select/dist/css/nya-bs-select.css" />
-		<link rel="stylesheet" href="bower_components/ngActivityIndicator/css/ngActivityIndicator.css" />
 		<!-- endbower -->
 		<!-- inject:css -->
 		<link rel="stylesheet" href="styles/styles.css">
@@ -31,7 +32,41 @@
 		<![endif]-->
 
 		<!-- Add your site or application content here -->
+		<header id="header">
+			<div class="container">
+				<div class="landing-icon" id="menu"><i class="emus-menu"></i></div>
+				<div class="langind-logo">
+					<a href="#/">
+						<img src="./images/logo_itdp_30.png">
+					</a>
+				</div>
+				<nav class="landing-menu">
+					<ul>
+						<li><a class="item" href="#start">Inicio</a></li>
+						<!-- <li><a class="item" href="#who">Matriz</a></li>
+						<li><a class="item" href="#about">Modalidades</a></li> -->
+						<li><a class="item" href="#about">Acerca de</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
 		<div ui-view></div>
+		<section class="logos">
+			<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"><img src="./images/logo_itdp_30.png"></article>
+			<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"><img src="./images/logo_embajada_britanica.png"></article>
+			<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"	><img src="./images/logo_sedatu.png"></article>
+		</section>
+		<matrix-navigation></matrix-navigation>
+		<footer class="footer">
+			<section class="footer-left">
+				<ul>
+					<li><a href="https://twitter.com/ITDPmx" target="_blank"><i class="emus-twitter"></i></a></li>
+					<li><a href="https://www.facebook.com/itdpmx" target="_blank"><i class="emus-facebook"></i></a></li>
+					<li><a href="" target="_blank"><i class="emus-google"></i></a></li>
+				</ul>
+			</section>
+			<section class="footer-right"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a></p></section>
+		</footer>
 
 
 		<!-- build:js js/lib.js -->
@@ -44,7 +79,7 @@
 		<script src="bower_components/angular-utils-ui-breadcrumbs/uiBreadcrumbs.js"></script>
 		<script src="bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js"></script>
 		<script src="bower_components/angular-deckgrid/angular-deckgrid.js"></script>
-		<script src="bower_components/ngActivityIndicator/ngActivityIndicator.js"></script>
+		<script src="bower_components/jspdf/dist/jspdf.min.js"></script>
 		<!-- endbower -->
 		<!-- inject:own:js -->
 		<script src="/bower_components/angular-ui-bootstrap/ui-bootstrap-custom-0.13.4.js"></script>
@@ -54,7 +89,6 @@
 		<script src="/bower_components/amcharts3/amcharts/serial.js"></script>
 		<script src="/bower_components/amcharts3/amcharts/themes/light.js"></script>
 		<script src="/bower_components/amcharts3/amcharts/plugins/responsive/responsive.min.js"></script>
-		<script src="/bower_components/jspdf/dist/jspdf.min.js"></script>
 		<script src="/bower_components/html2canvas/html2canvas.js"></script>
 		<!-- endinject -->
 		<!-- endbuild -->
@@ -64,6 +98,11 @@
 		<script src="components/emus.routes.js"></script>
 		<script src="components/about/about.controller.js"></script>
 		<script src="components/landing/landing.controller.js"></script>
+		<script src="components/matrix/matrix.button.directive.js"></script>
+		<script src="components/matrix/matrix.controller.js"></script>
+		<script src="components/matrix/matrix.grid.directive.js"></script>
+		<script src="components/matrix/matrix.step.directive.js"></script>
+		<script src="components/matrix-navigation/matrix.navigation.directive.js"></script>
 		<script src="components/modalities/modalities.controller.js"></script>
 		<script src="components/calculator/form/form.controller.js"></script>
 		<script src="components/calculator/form/form.directives.js"></script>
@@ -71,6 +110,8 @@
 		<script src="components/calculator/form/form.factory.mun.js"></script>
 		<script src="components/calculator/modal/modal.controller.js"></script>
 		<script src="components/calculator/summary/summary.controller.js"></script>
+		<script src="components/matrix/step/matrix.factory.js"></script>
+		<script src="components/matrix/step/matrix.step.controller.js"></script>
 		<script src="components/modalities/type/modalities.factory.js"></script>
 		<script src="components/modalities/type/modalities.type.controller.js"></script>
 		<script src="components/modalities/type/modality.hide.directive.js"></script>

@@ -59,7 +59,6 @@
 			delete porcentajeEgresos1000.cveestado;
 			delete porcentajeEgresos1000.nomestado;
 			
-			// Charts Ingreos
 			chartIngrEst = AmCharts.makeChart("Ingresos", {
 				"type": "serial",
 				"theme": "light",
@@ -237,7 +236,7 @@
 				 }
 			});
 
-			// Chart Egresos
+
 			chartEgrEst = AmCharts.makeChart("Egresos", {
 				"type": "serial",
 				"theme": "light",
@@ -401,12 +400,8 @@
 						"autoWrap": true
 				}
 			});
-			//var externalLegend = new AmCharts.AmLegend();
 		}
 		
-		//chartEgrEst.addLegend(externalLegend, "legenddiv");
-		
-		// Input data
 		if (inputData.ObraComp === "ObraCompl_Completa") {
 			$scope.ObraComp = "Pintura en cruces peatonales, bolardos, banqueta y guías táctiles.";
 		}
@@ -452,7 +447,7 @@
 		$scope.modalidad = "Calles";
 		$scope.area =  area.municipio ? area.estado +" - "+ area.municipio : area.estado ;
 
-		// Total
+
 		
 		delete sumTotal.egresos;
 		delete sumTotal.ingresos;
@@ -479,7 +474,7 @@
 			pdf.setFont("courier", "italic");
 			var summaryPdf = document.getElementById('summaryPdf');
 			
-			// Export first chart and save image base64
+
 			first = new AmCharts.AmExport(chartIngrEst);
 			first.init();
 			first.output({output: 'datastring',format: 'jpg'},function(blob) {
@@ -487,7 +482,7 @@
 				image.src = blob;
 				firstChart = image.src;
 			});
-			// Export second chart and save image base64
+			
 			second = new AmCharts.AmExport(chartEgrEst);
 			second.init();
 			second.output({output: 'datastring',format: 'jpg'},function(blob) {
@@ -495,14 +490,14 @@
 				image.src = blob;
 				secondChart = image.src;
 			});
-			// Create pdf
+
 			pdf.addHTML(summaryPdf, 0, 0, function(){
 				pdf.addPage();
 				pdf.addImage(firstChart, 'JPEG', 65, 10, 479.164, 250);
 				pdf.addImage(secondChart, 'JPEG', 65, 310, 479.164, 250);
 				pdf.save('test.pdf');
 			});
-		}
+		};
 	};
 
 	SummaryController.$inject = ['$document','$timeout', '$modal', '$modalStack', '$window','$scope','$location', '$state', '$log', '$filter', '$stateParams', '$rootScope'];

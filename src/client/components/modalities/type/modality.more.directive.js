@@ -5,7 +5,7 @@
 	'use strict';
 
 	function MoreDescription($log){
-		var currentDescription, previousDescription, closeDescription;
+		var currentDescription, previousDescription;
 
 		return {
 			restrict: 'A',
@@ -18,18 +18,11 @@
 					previousDescription = currentDescription;
 					currentDescription = angular.element(document.getElementById(scope.id));
 
-					/*if (angular.equals(previousDescription,currentDescription) ){
-						previousDescription = "";
-						currentDescription.addClass('more');
-					}
-					else{
-						console.log('no');
-					}*/
 					angular.equals(previousDescription,currentDescription) ? [previousDescription = "", currentDescription.addClass('more')] : currentDescription.addClass('more');
 				
 					if(previousDescription){
 						!currentDescription ? [currentDescription.removeClass('more'), currentDescription = ""] : previousDescription.removeClass('more');
-					};
+					}
 				});
 			}
 		};

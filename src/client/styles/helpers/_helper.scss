@@ -1,0 +1,28 @@
+.small-hidden{
+	display: none;
+	@media (min-width: 768px) {
+		display: block ;
+	}
+	@media (min-width: 992px) {
+		display: block ;
+	}
+}
+.no-padding-left{
+	padding-left: 0 !important;
+}
+.no-padding-right{
+	padding-right: 0 !important;
+}
+.vertical-align{
+	position:absolute;
+	top:50%;
+	left:0;
+	right:0;
+	@include transform(translateY(-50%));
+}
+.centered{
+	text-align:center;
+}
+.margin-centered{
+	margin:0 auto;
+}

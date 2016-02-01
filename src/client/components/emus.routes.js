@@ -66,6 +66,30 @@
 					parent: 'modalidades.calculadora.formulario'
 				}
 			})
+			.state('matriz', {
+				url: '/matriz',
+				templateUrl: './components/matrix/matrix.html',
+				controller: 'MatrixController',
+				data: {
+					title: "Resumen"
+				},
+				ncyBreadcrumb: {
+					label: 'Matriz',
+					parent: 'inicio'
+				}
+			})
+			.state('matriz.paso', {
+				url: '/:modalidad/:paso',
+				templateUrl: './components/matrix/step/step.html',
+				controller: 'StepController',
+				data: {
+					title: "Paso"
+				},
+				ncyBreadcrumb: {
+					label: 'Paso',
+					parent: 'matriz'
+				}
+			})
 			.state('acerca', {
 				url: '/acerca',
 				templateUrl: './components/about/about.html',

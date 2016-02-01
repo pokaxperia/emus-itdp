@@ -1,31 +1,13 @@
 <section class="modality">
-	<header id="header">
-		<div class="container">
-			<div class="landing-icon" id="menu"><i class="emus-menu"></i></div>
-			<div class="langind-logo">
-				<a href="#/">
-					<img src="./images/logo_itdp_30.png">
-				</a>
-			</div>
-			<nav class="landing-menu">
-				<ul>
-					<li><a class="item" href="#start">Inicio</a></li>
-					<!-- <li><a class="item" href="#who">Matriz</a></li>
-					<li><a class="item" href="#about">Modalidades</a></li> -->
-					<li><a class="item" href="#about">Acerca de</a></li>
-				</ul>
-			</nav>
-		</div>
-	</header>
 	<section class="modality-container">
 		<section class="container">
 			<article class="breadcrumb">
 				<div ncy-breadcrumb></div>
 			</article>
 			<article class="modality-header">
-				<h1>{{title}}</h1>
+				<h1 class="title-section">{{title}}</h1>
 				<ul ng-if="showModalities()">
-					<li><button class="btn btn-mod1" ui-sref-active="active" ui-sref="modalidades.tipo({tipo:'1'})" >CALLES</button></li>
+					<li><button class="btn btn-mod1" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: '1'})" >CALLES</button></li>
 					<li><button class="btn btn-mod2" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: '2'})">SISTEMAS INTEGRADOS DE TRANSPORTE</button></li>
 					<li><button class="btn btn-mod3" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: '3'})">DESARROLLO ORIENTADO AL TRANSPORTE</button></li>
 					<li><button class="btn btn-mod4" ui-sref-active="active" ui-sref="modalidades.tipo({tipo: '4'})">GESTIÓN DE LA DEMANDA</button></li>
@@ -41,19 +23,4 @@
 			</section>
 		</section>
 	</section>
-	<section class="logos">
-		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"><img src="./images/logo_itdp_30.png"></article>
-		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"><img src="./images/logo_embajada_britanica.png"></article>
-		<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center"	><img src="./images/logo_sedatu.png"></article>
-	</section>
-	<footer class="footer">
-		<section class="footer-left">
-			<ul>
-				<li><a href="https://twitter.com/ITDPmx" target="_blank"><i class="emus-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/itdpmx" target="_blank"><i class="emus-facebook"></i></a></li>
-				<li><a href="" target="_blank"><i class="emus-google"></i></a></li>
-			</ul>
-		</section>
-		<section class="footer-right"><p><a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a></p></section>
-	</footer>
 </section>

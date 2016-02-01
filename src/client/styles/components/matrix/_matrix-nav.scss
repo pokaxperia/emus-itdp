@@ -1,0 +1,124 @@
+.m-matrix-navigation {
+	display:none;
+	overflow: auto;
+	line-height: 62px;
+	background: #35AAB7;
+	background: #414C5A;
+	//color: #35AAB7;
+	color: #99a0af;
+	position:fixed;
+	bottom:0;
+	z-index:10;
+	left:0;
+	right:0;
+	font-weight: 300;
+	@include box-shadow(0 0 4px 0px #000);
+}
+
+.m-navigation-list,
+.m-center-list,
+.m-share-list {
+	padding:0;
+	margin:0;
+	list-style:none; 
+}
+
+.m-navigation-list__item,
+.m-center-list__item,
+.m-share-list__item {
+	display:inline-block;
+	float:left;
+}
+
+.m-navigation-list__item:first-child {
+	padding:0 15px;
+	text-align:center;
+	i{
+		color:#35AAB7;
+		font-size: 30px;
+	}
+}
+
+.m-navigation-list__item:not(:first-child) {
+	max-width: 150px;
+	display:none;
+	::before{
+		color: #99a0af;
+		content: "\f054";
+		display: inline-block;
+		font-size: inherit;
+		font-weight: 100;
+		font: normal normal normal 14px/1 FontAwesome;
+		margin-right: 10px;
+		text-rendering: auto;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+	}
+	@media (min-width:768px){
+		display:block;
+	}
+}
+
+.m-navigation-list__item {
+	padding-right: 10px;
+	float:left;
+	i{
+		margin: 0 auto;
+		vertical-align: middle;
+	}
+	a{
+		color: #99a0af;
+		display: block;
+		font-size: 14px;
+		overflow: hidden;
+		text-decoration: none !important;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+}
+
+.m-navigation-list {
+	float:left;
+}
+
+.m-matrix-navigation__list-center {
+	left: 50%;
+	position: absolute;
+	right: 0;
+	display:inline-table;
+	@include transform(translateX(-50%));
+}
+
+.m-center-list {
+	display:table;
+	margin: 0 auto;
+}
+
+.m-center-list__item{
+	a{
+		border-top: 3px solid #414C5A;
+		text-decoration: none !important;
+    color: #99a0af;
+    cursor:pointer;
+    display: block;
+    font-size: 25px;
+    height: 62px;
+    line-height: 26px;
+    padding: 12px;
+    vertical-align: sub;
+    @include transition(all linear 0.25s);
+    &::before{
+    	vertical-align: sub;
+    }
+	}
+	&.current_item {
+		a{
+			border-color:#35AAB7;
+			color:#35AAB7;
+		}
+	}
+}
+
+.m-share-list {
+	float:right;
+}
