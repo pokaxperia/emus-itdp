@@ -12,6 +12,8 @@
 		modalityUrl = null,
 		phaseName = null,
 		modalityName = null,
+		currentCell = null,
+		currentId = null,
 		_body = null,
 		_this = null,
 		_activo = null,
@@ -41,8 +43,15 @@
 					}
 				});
 				
-				$scope.changePhase = function(modality, phase, phaseName){
+				$scope.changePhase = function(modality, phase, phaseName, id){
 					_this = angular.element(event.target);
+					currentCell = JSON.parse(sessionStorage.getItem('id'));
+					currentId = currentCell.modalityId;
+					currentCell = {"phaseId": id, "modalityId": currentId};
+					sessionStorage.setItem('id', JSON.stringify(currentCell));
+					/*currentCell.push({
+						phaseId: id
+					})*/
 
 					$location.url('matriz/'+ modality + '/' + phase);
 

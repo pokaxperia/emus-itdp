@@ -9,7 +9,7 @@
 		var header, item, itemButton, body, matrixButton, currentCell;
 		currentCell = sessionStorage.getItem('id');
 		if (!currentCell) {
-			$document.scrollTop(250,800);
+			$document.duScrollTo(top, 250, 800);
 		};
 		matrixButton = angular.element(document.getElementsByClassName('matrix-grid--item'));
 		
