@@ -49,9 +49,6 @@
 					currentId = currentCell.modalityId;
 					currentCell = {"phaseId": id, "modalityId": currentId};
 					sessionStorage.setItem('id', JSON.stringify(currentCell));
-					/*currentCell.push({
-						phaseId: id
-					})*/
 
 					$location.url('matriz/'+ modality + '/' + phase);
 

@@ -5,7 +5,7 @@
 	'use strict';
 
 	var LandingController = function($scope,$document, $window){
-		$document.scrollTop(0);
+		$document.duScrollTo(top, 0);
 		var header, item, itemButton, body;
 		var menuClick = angular.element(document.getElementById('menu'));
 		var menuLanding = angular.element(document.getElementsByClassName('landing-menu'));

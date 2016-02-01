@@ -96,9 +96,11 @@ nav.landing-menu{
 		}
 	}
 }
+
+
 .show_menu{
 	-webkit-transform: translateY(0%) !important;
-	height: 130px !important;
+	height: 100% !important;
 	display:block !important;
 	@include transition(all 0.25s linear);
 }

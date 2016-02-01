@@ -1,5 +1,6 @@
 header{
-	background-color: transparent;
+	background-color: #414C5A;
+	@include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12));
 	left: 0;
 	padding:0;
 	position: fixed;
@@ -9,6 +10,7 @@ header{
 }
 @media (min-width: 768px) {
 	header{
+		background-color:transparent;
 		@include box-shadow(0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12));
 	}
 }

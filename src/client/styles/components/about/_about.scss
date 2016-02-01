@@ -76,12 +76,7 @@ nav.about-menu{
 		}
 	}
 }
-.show_menu{
-	-webkit-transform: translateY(0%) !important;
-	height: 130px !important;
-	display:block !important;
-	@include transition(all 0.25s linear);
-}
+
 .about{
 	@include background-size(cover);
 	background: url("../images/about.jpg") no-repeat center;

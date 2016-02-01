@@ -61,7 +61,7 @@
 									executed = true;
 									currentCell = angular.element(document.getElementsByClassName('js-id-' + existsId.modalityId + existsId.phaseId));
 									currentCell.addClass('active');
-									$document.duScrollTo(currentCell, 90, 800);
+									$document.duScrollTo(currentCell, 90, 500);
 								}
 								else{
 									executed = false;
