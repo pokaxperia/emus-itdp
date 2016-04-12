@@ -30,7 +30,7 @@ class Api_Controller extends ZP_Controller {
         $jsonStr = file_get_contents("php://input");
 		$json = json_decode($jsonStr, TRUE);
 
-		if(isset($json["AnchoCalle"])) {
+		if(isset($json["infraestructura"])) {
 			$vars["results"] = $this->Api_Model->getResults($json);
 		}
 		
