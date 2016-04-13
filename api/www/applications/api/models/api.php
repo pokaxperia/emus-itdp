@@ -242,14 +242,9 @@ class Api_Model extends ZP_Model {
 		$data[59]["precio_unitario"] = 3000;
 		$data[59]["cantidad"] = $this->options["K"];
 		
-		/*
-		$data[59]["precio_unitario"] = holaaaaaaaaaa;
-		$data[59]["cantidad"] = holaaaaaaaa;
-		*/
+		$result = $this->getImporte($data);
 		
-		die(var_dump($data));
-		
-		return $data;
+		return $result;
 	}
 	
 	/*Ciclovía por cordón de estacionamiento*/
@@ -265,6 +260,40 @@ class Api_Model extends ZP_Model {
 	/*Ciclocarril*/
 	public function getCICA() {
 		
+	}
+	
+	public function getImporte($data) {
+		$sum = 0;
+		foreach($data as $key => $value) {
+			$data[$key]["importe"] = $value["cantidad"]*$value["precio_unitario"];
+			$sum += $data[$key]["importe"];
+		}
+		
+		$data["subtotal_acomulado"] = $sum;
+		
+		if($this->options["L"] == "SI") {
+			$data["proyecto_ejecutivo"] = $sum*0.05;
+		} else {
+			$data["proyecto_ejecutivo"] = 0;
+		}
+		
+		if($this->options["M"] == "SI") {
+			$data["costo_supervicion"] = $sum*0.02;
+		} else {
+			$data["costo_supervicion"] = 0;
+		}
+		
+		if($this->options["N"] == "SI") {
+			$data["impuesto_al_millar"] = $sum*0.002;
+		} else {
+			$data["impuesto_al_millar"] = 0;
+		}
+
+		$data["iva"] = $sum*0.16;
+		
+		$data["total"] = $data["subtotal_acomulado"]+$data["proyecto_ejecutivo"]+$data["costo_supervicion"]+$data["impuesto_al_millar"]+$data["iva"];
+		
+		return $data;
 	}
 	
 	/*obtener egresos*/
