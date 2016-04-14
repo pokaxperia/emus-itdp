@@ -621,7 +621,7 @@ class Api_Model extends ZP_Model {
 		return $result;
 	}
 	
-	//{"estado":6,"municipio":2,"infraestructura":"BB","A":1,"B":6,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
+	//{"estado":6,"municipio":2,"infraestructura":"CICA","A":1,"B":6,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
 	/*Ciclocarril*/
 	public function getCICA() {
 		$data = null;
@@ -749,21 +749,20 @@ class Api_Model extends ZP_Model {
 		$data[41]["precio_unitario"] = 90;
 		$data[41]["cantidad"] = ($this->options["A"]*1000)-(24*$this->options["F"]);
 		
-		// Aqui voy
 		$data[42]["precio_unitario"] = 60;
-		$data[42]["cantidad"] = $this->options["D"]*$this->options["F"];
+		$data[42]["cantidad"] = ($this->options["A"]*1000)-(24*$this->options["F"]);
 		
-		$data[43]["precio_unitario"] = 256.63;
-		$data[43]["cantidad"] = 100*$this->options["F"];
+		$data[43]["precio_unitario"] = 700;
+		$data[43]["cantidad"] = $this->options["D"]*$this->options["F"];
 		
-		$data[44]["precio_unitario"] = 322.68;
-		$data[44]["cantidad"] = $this->options["F"];
+		$data[44]["precio_unitario"] = 256.63;
+		$data[44]["cantidad"] = 100*$this->options["F"];
 		
-		$data[45]["precio_unitario"] = 47.55;
-		$data[45]["cantidad"] = 60*$this->options["F"];
+		$data[45]["precio_unitario"] = 322.68;
+		$data[45]["cantidad"] = $this->options["F"];
 		
-		$data[46]["precio_unitario"] = 22.5;
-		$data[46]["cantidad"] = 150*$this->options["F"];
+		$data[46]["precio_unitario"] = 47.55;
+		$data[46]["cantidad"] = 60*$this->options["F"];
 		
 		$data[47]["precio_unitario"] = 1797.23;
 		$data[47]["cantidad"] = $this->options["F"];
@@ -789,23 +788,20 @@ class Api_Model extends ZP_Model {
 		$data[54]["precio_unitario"] = 1696.17;
 		$data[54]["cantidad"] = $this->options["F"];
 		
-		$data[55]["precio_unitario"] = 417*1.25;
-		$data[55]["cantidad"] = 166*$this->options["A"];
+		$data[55]["precio_unitario"] = 1296.73;
+		$data[55]["cantidad"] = 12*$this->options["F"];
 		
-		$data[56]["precio_unitario"] = 1296.73;
-		$data[56]["cantidad"] = 12*$this->options["F"];
+		$data[56]["precio_unitario"] = 4800+52600;
+		$data[56]["cantidad"] = $this->options["J"];
 		
-		$data[57]["precio_unitario"] = 4800+52600;
-		$data[57]["cantidad"] = $this->options["J"];
+		$data[57]["precio_unitario"] = 9600+52600;
+		$data[57]["cantidad"] = 4*$this->options["J"];
 		
-		$data[58]["precio_unitario"] = 9600+52600;
-		$data[58]["cantidad"] = 4*$this->options["J"];
-		
-		$data[59]["precio_unitario"] = 3000;
-		$data[59]["cantidad"] = $this->options["K"];
+		$data[58]["precio_unitario"] = 3000;
+		$data[58]["cantidad"] = $this->options["K"];
 		
 		$result = $this->getImporte($data);
-		die(var_dump($result));
+	
 		return $result;
 	}
 	
