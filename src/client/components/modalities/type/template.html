@@ -1,0 +1,28 @@
+<section class="modalities-type">
+	<section class="container">
+		<section class="card-description">
+			<h2>{{set_m.modality}}</h2>
+		</section>
+		<section class="row">
+			<div deckgrid class="deckgrid column-1-3 col-xs-12" source="set_m.submodalities">
+				<article class="card">
+					<div class="card-image">
+						<img ng-src="./images/{{mother.set_m.image}}.jpg">
+					</div>
+					<div class="card-body" >
+						<h3>{{card.submodality}}</h3>
+						<i class="emus-more" more-description="card.id"></i>
+					</div>
+					<div id="{{card.id}}" class="card-sdescription">
+						<h3>{{card.submodality}}</h3>
+						<p>{{card.submodality_description}}</p>
+						<i class="emus-close" hide-description="card.id"></i>
+					</div>
+					<div class="card-action">
+						<button class="btn btn-{{mother.set_m.class}}" ui-sref="modalidades.calculadora.formulario">Escoger</button>
+					</div>
+				</article>
+			</div>
+		</section>
+	</section>
+</section>

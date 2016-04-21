@@ -158,36 +158,6 @@ class Admin extends CI_Controller {
 		
 		$this->_example_output($output);
 	}
-	
-	/*Proyectos*/
-	public function fases() {
-		$user  = $this->isUser();
-		$crud  = $this->new_crud();
-		$state = $crud->getState();
-		
-		/*Tabla y título*/
-		$crud->set_theme('datatables');
-		$crud->set_table('fases');
-		$crud->set_subject('Fases');
-		$crud->set_primary_key('id_fase');
-		$crud->unset_fields('id_fase', 'created_at', 'updated_at', 'status');
-		
-		$crud->unset_add();
-		$crud->unset_delete();
-		
-		$crud->fields('id_modalidad', 'nombre', 'descripcion');
-		$crud->columns('id_modalidad',  'nombre');
-		
-		/*Modalidad*/
-		$crud->set_primary_key('id_modalidad', 'modalidades');
-		$crud->display_as('id_modalidad', 'Modalidad');
-		$crud->set_relation('id_modalidad', 'modalidades', 'nombre');
-		
-		$output = $crud->render();
-		
-		$this->_example_output($output);
-	}
-	
 	/*Metodo para cerrar session*/
 	public function logout() {
 		session_unset(); 

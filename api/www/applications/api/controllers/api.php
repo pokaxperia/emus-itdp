@@ -30,7 +30,7 @@ class Api_Controller extends ZP_Controller {
         $jsonStr = file_get_contents("php://input");
 		$json = json_decode($jsonStr, TRUE);
 
-		if(isset($json["AnchoCalle"])) {
+		if(isset($json["infraestructura"])) {
 			$vars["results"] = $this->Api_Model->getResults($json);
 		}
 		
@@ -49,11 +49,6 @@ class Api_Controller extends ZP_Controller {
 	
 	public function proyectos($id_modalidad = 0) {
 		$vars["results"]  = $this->Api_Model->proyectos($id_modalidad);
-		echo json_encode($vars, JSON_NUMERIC_CHECK);
-	}
-	
-	public function fases() {
-		$vars["results"]  = $this->Api_Model->fases();
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
 }

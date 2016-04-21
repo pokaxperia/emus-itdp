@@ -32,15 +32,19 @@ class Api_Model extends ZP_Model {
 	public function getResults($options) {
 		$this->options = $options;
 		$this->dataCity = $this->getDataCity();
-		$this->Area_Infraestructura = $this->options["KmEvaluables"]*$this->options["Sentidos"]*1000*$this->options["Anchoefectivo"];
 		
-		$data["areaInfraestructura"] = $this->Area_Infraestructura;
-		$data["bacheo"] = $this->getBacheo();
-		$data["interseccionesSemaforizadas"] = $this->dataCity["interssemafor"]*$this->options["IntersSemaf"];
-		$data["delimitacionInfraestructura"] = $this->getDelimitacionInfraestructura();
-		$data["senalizacion"] = $this->getSenalizacion();
-		$data["infraestructuraComplementaria"] = $this->getInfresComplementaria();
-		$data["biciestacionamientos"] = $this->getBiciestacionamientos();
+		if($this->options["infraestructura"] == "CC") {
+			$data["calculadora"] = $this->getCC();
+		} elseif($this->options["infraestructura"] == "CCE") {
+			$data["calculadora"] = $this->getCCE();
+		} elseif($this->options["infraestructura"] == "BB") {
+			$data["calculadora"] = $this->getBB();
+		} elseif($this->options["infraestructura"] == "CICA") {	
+			$data["calculadora"] = $this->getCICA();
+		} else {
+			return null;
+		}
+		
 		$data["egresos"]["estatales"] = $this->getEgresos();
 		$data["egresos"]["municipales"] = $this->getEgresos("municipales");
 		$data["ingresos"]["estatales"] = $this->getIngresos();
@@ -51,6 +55,786 @@ class Api_Model extends ZP_Model {
 		$data["egresos"]["porcentajes1000"] = $this->getEgresosPorcentajes("1000");
 		
 		$data["options"] = $this->options;
+		return $data;
+	}
+	
+	//{"estado":6,"municipio":2,"infraestructura":"CC","A":1,"B":20,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
+	/*Ciclovía por elemento de confinamiento*/
+	public function getCC() {
+		$data = null;
+		
+		$data[1]["precio_unitario"] = 2.24;
+		$data[1]["cantidad"] = 1000*$this->options["A"]*$this->options["B"];
+		
+		$data[2]["precio_unitario"] = 336.65;
+		$data[2]["cantidad"] = (1.3*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[3]["precio_unitario"] = 328.24;
+		$data[3]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[4]["precio_unitario"] = 63.12;
+		$data[4]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+
+		$data[5]["precio_unitario"] = 22.31;
+		$data[5]["cantidad"] = 2*$data[4]["cantidad"];
+		
+		$data[6]["precio_unitario"] = 107.01;
+		$data[6]["cantidad"] = (1.3*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[7]["precio_unitario"] = 10.16;
+		$data[7]["cantidad"] = 20*$data[6]["cantidad"];
+		
+		$data[8]["precio_unitario"] = 99.93;
+		$data[8]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[9]["precio_unitario"] = 9.15;
+		$data[9]["cantidad"] = 20*$data[8]["cantidad"];
+		
+		$data[10]["precio_unitario"] = 53.3;
+		$data[10]["cantidad"] = $this->options["E"]*$this->options["A"];
+		
+		$data[11]["precio_unitario"] = 12.49;
+		$data[11]["cantidad"] = 72.5*$this->options["G"];
+		
+		$data[12]["precio_unitario"] = 30.75;
+		$data[12]["cantidad"] = (1000*$this->options["H"]*$this->options["I"]);
+		
+		$data[13]["precio_unitario"] = 396.27;
+		$data[13]["cantidad"] = $data[11]["cantidad"]+$data[12]["cantidad"];
+		
+		$data[14]["precio_unitario"] = 11.97;
+		$data[14]["cantidad"] = (92.4*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[15]["precio_unitario"] = 11.97;
+		$data[15]["cantidad"] = ((1000*$this->options["H"])/3)*$this->options["I"];
+		
+		$data[16]["precio_unitario"] = 176.78;
+		$data[16]["cantidad"] = (48.16*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[17]["precio_unitario"] = 1.71;
+		$data[17]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[18]["precio_unitario"] = 8.42;
+		$data[18]["cantidad"] = ((0.20*$data[17]["cantidad"])/12.5)*15;
+		
+		$data[19]["precio_unitario"] = 286.259999705783;
+		$data[19]["cantidad"] = (1000*($this->options["A"]*$this->options["B"]))*0.2;
+		
+		$data[20]["precio_unitario"] = 16.3000019614381;
+		$data[20]["cantidad"] = (((0.2*$data[17]["cantidad"])/12.5)*(0.9375))*20;
+		
+		$data[21]["precio_unitario"] = 55.23;
+		$data[21]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[22]["precio_unitario"] = 374.84;
+		$data[22]["cantidad"] = $this->options["A"]*15;
+		
+		$data[23]["precio_unitario"] = 524.6;
+		$data[23]["cantidad"] = $this->options["A"]*20;
+		
+		$data[24]["precio_unitario"] = 313.08;
+		$data[24]["cantidad"] = $this->options["A"]*4;
+		
+		$data[25]["precio_unitario"] = 269.82;
+		$data[25]["cantidad"] = $this->options["A"]*5;
+		
+		$data[26]["precio_unitario"] = 1988.66;
+		$data[26]["cantidad"] = $this->options["A"]*1;
+		
+		$data[27]["precio_unitario"] = 3693.42;
+		$data[27]["cantidad"] = $this->options["A"]*2;
+		
+		$data[28]["precio_unitario"] = 2027.44;
+		$data[28]["cantidad"] = $this->options["A"]*3;
+		
+		$data[29]["precio_unitario"] = 2805.9;
+		$data[29]["cantidad"] = $this->options["A"]*3;
+		
+		$data[30]["precio_unitario"] = 215.82;
+		$data[30]["cantidad"] = $this->options["A"]*15;
+		
+		$data[31]["precio_unitario"] = 3232.01;
+		$data[31]["cantidad"] = $this->options["A"]*50;
+		
+		$data[32]["precio_unitario"] = 718.62;
+		$data[32]["cantidad"] = $this->options["A"]*50;
+		
+		$data[33]["precio_unitario"] = 80;
+		$data[33]["cantidad"] = (7+$this->options["B"])*12;
+		
+		$data[34]["precio_unitario"] = 120;
+		$data[34]["cantidad"] = (7+$this->options["B"])*$this->options["F"]*2;
+		
+		$data[35]["precio_unitario"] = 2*384.25;
+		$data[35]["cantidad"] = 2*$this->options["F"];
+		
+		$data[36]["precio_unitario"] = 20;
+		$data[36]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[37]["precio_unitario"] = 20;
+		$data[37]["cantidad"] = ($this->options["D"]-1)*(300*$this->options["A"])+(30*$this->options["F"]);
+		
+		$data[38]["precio_unitario"] = 1968.93;
+		$data[38]["cantidad"] = 2*$this->options["F"];
+		
+		$data[39]["precio_unitario"] = 430;
+		$data[39]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[40]["precio_unitario"] = 1377.52;
+		$data[40]["cantidad"] = $this->options["F"]/3;
+		
+		$data[41]["precio_unitario"] = 60;
+		$data[41]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[42]["precio_unitario"] = 700;
+		$data[42]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[43]["precio_unitario"] = 256.63;
+		$data[43]["cantidad"] = 100*$this->options["F"];
+		
+		$data[44]["precio_unitario"] = 322.68;
+		$data[44]["cantidad"] = $this->options["F"];
+		
+		$data[45]["precio_unitario"] = 47.55;
+		$data[45]["cantidad"] = 60*$this->options["F"];
+		
+		$data[46]["precio_unitario"] = 1797.23;
+		$data[46]["cantidad"] = $this->options["F"];
+		
+		$data[47]["precio_unitario"] = 1797.23;
+		$data[47]["cantidad"] = $this->options["F"]/3;
+		
+		$data[48]["precio_unitario"] = 1834.81;
+		$data[48]["cantidad"] = 2*$this->options["F"];
+		
+		$data[49]["precio_unitario"] = 1834.81;
+		$data[49]["cantidad"] = $this->options["F"];
+		
+		$data[50]["precio_unitario"] = 1696.17;
+		$data[50]["cantidad"] = $this->options["F"];
+		
+		$data[51]["precio_unitario"] = 1834.81;
+		$data[51]["cantidad"] = $this->options["F"];
+		
+		$data[52]["precio_unitario"] = 739.63;
+		$data[52]["cantidad"] = $this->options["A"]/3;
+		
+		$data[53]["precio_unitario"] = 4583.01;
+		$data[53]["cantidad"] = 215*$this->options["A"];
+		
+		$data[54]["precio_unitario"] = 417*1.25;
+		$data[54]["cantidad"] = 12*$this->options["F"];
+		
+		$data[55]["precio_unitario"] = 62.41;
+		$data[55]["cantidad"] = ((133*$this->options["A"])*($this->options["D"]-1))+(20*$this->options["F"]);
+		
+		$data[56]["precio_unitario"] = 1296.73;
+		$data[56]["cantidad"] = 8*$this->options["F"];
+		
+		$data[57]["precio_unitario"] = 4800+52600;
+		$data[57]["cantidad"] = $this->options["J"];
+		
+		$data[58]["precio_unitario"] = 9600+52600;
+		$data[58]["cantidad"] = 4*$this->options["J"];
+		
+		$data[59]["precio_unitario"] = 3000;
+		$data[59]["cantidad"] = $this->options["K"];
+		
+		$result = $this->getImporte($data);
+		
+		return $result;
+	}
+	
+	//{"estado":6,"municipio":2,"infraestructura":"CCE","A":1,"B":15,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
+	/*Ciclovía por cordón de estacionamiento*/
+	public function getCCE() {
+		$data = null;
+		
+		$data[1]["precio_unitario"] = 2.24;
+		$data[1]["cantidad"] = 1000*$this->options["A"]*$this->options["B"];
+		
+		$data[2]["precio_unitario"] = 336.65;
+		$data[2]["cantidad"] = (2.6*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[3]["precio_unitario"] = 328.24;
+		$data[3]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[4]["precio_unitario"] = 63.12;
+		$data[4]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+
+		$data[5]["precio_unitario"] = 22.31;
+		$data[5]["cantidad"] = 2*$data[4]["cantidad"];
+		
+		$data[6]["precio_unitario"] = 107.01;
+		$data[6]["cantidad"] = (2.6*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[7]["precio_unitario"] = 10.16;
+		$data[7]["cantidad"] = 20*$data[6]["cantidad"];
+		
+		$data[8]["precio_unitario"] = 99.93;
+		$data[8]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[9]["precio_unitario"] = 9.15;
+		$data[9]["cantidad"] = 20*$data[8]["cantidad"];
+		
+		$data[10]["precio_unitario"] = 53.3;
+		$data[10]["cantidad"] = $this->options["E"]*$this->options["A"];
+		
+		$data[11]["precio_unitario"] = 12.49;
+		$data[11]["cantidad"] = 145*$this->options["G"];
+		
+		$data[12]["precio_unitario"] = 30.75;
+		$data[12]["cantidad"] = (1000*$this->options["H"]*$this->options["I"]);
+		
+		$data[13]["precio_unitario"] = 396.27;
+		$data[13]["cantidad"] = $data[11]["cantidad"]+$data[12]["cantidad"];
+		
+		$data[14]["precio_unitario"] = 11.97;
+		$data[14]["cantidad"] = (184.8*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[15]["precio_unitario"] = 11.97;
+		$data[15]["cantidad"] = ((1000*$this->options["H"])/3)*$this->options["I"];
+		
+		$data[16]["precio_unitario"] = 176.78;
+		$data[16]["cantidad"] = (96.32*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[17]["precio_unitario"] = 1.71;
+		$data[17]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[18]["precio_unitario"] = 8.42;
+		$data[18]["cantidad"] = ((0.20*$data[17]["cantidad"])/12.5)*15;
+		
+		$data[19]["precio_unitario"] = 286.259999705783;
+		$data[19]["cantidad"] = (1000*($this->options["A"]*$this->options["B"]))*0.2;
+		
+		$data[20]["precio_unitario"] = 16.3000019614381;
+		$data[20]["cantidad"] = (((0.2*$data[17]["cantidad"])/12.5)*(0.9375))*20;
+		
+		$data[21]["precio_unitario"] = 55.23;
+		$data[21]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[22]["precio_unitario"] = 374.84;
+		$data[22]["cantidad"] = $this->options["A"]*15;
+		
+		$data[23]["precio_unitario"] = 524.6;
+		$data[23]["cantidad"] = $this->options["A"]*20;
+		
+		$data[24]["precio_unitario"] = 313.08;
+		$data[24]["cantidad"] = $this->options["A"]*4;
+		
+		$data[25]["precio_unitario"] = 269.82;
+		$data[25]["cantidad"] = $this->options["A"]*5;
+		
+		$data[26]["precio_unitario"] = 1988.66;
+		$data[26]["cantidad"] = $this->options["A"]*1;
+		
+		$data[27]["precio_unitario"] = 3693.42;
+		$data[27]["cantidad"] = $this->options["A"]*2;
+		
+		$data[28]["precio_unitario"] = 2027.44;
+		$data[28]["cantidad"] = $this->options["A"]*3;
+		
+		$data[29]["precio_unitario"] = 2805.9;
+		$data[29]["cantidad"] = $this->options["A"]*3;
+		
+		$data[30]["precio_unitario"] = 215.82;
+		$data[30]["cantidad"] = $this->options["A"]*15;
+		
+		$data[31]["precio_unitario"] = 3232.01;
+		$data[31]["cantidad"] = $this->options["A"]*50;
+		
+		$data[32]["precio_unitario"] = 718.62;
+		$data[32]["cantidad"] = $this->options["A"]*50;
+		
+		$data[33]["precio_unitario"] = 80;
+		$data[33]["cantidad"] = (7+$this->options["B"]-2.5)*12;
+		
+		$data[34]["precio_unitario"] = 120;
+		$data[34]["cantidad"] = (7+$this->options["B"]-2.5)*$this->options["F"]*2;
+		
+		$data[35]["precio_unitario"] = 2*384.25;
+		$data[35]["cantidad"] = 2*$this->options["F"];
+		
+		$data[36]["precio_unitario"] = 20;
+		$data[36]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[37]["precio_unitario"] = 20;
+		$data[37]["cantidad"] = ($this->options["D"]-1)*(300*$this->options["A"])+(30*$this->options["F"]);
+		
+		$data[38]["precio_unitario"] = 1968.93;
+		$data[38]["cantidad"] = 2*$this->options["F"];
+		
+		$data[39]["precio_unitario"] = 430;
+		$data[39]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[40]["precio_unitario"] = 1377.52;
+		$data[40]["cantidad"] = $this->options["F"]/3;
+		
+		$data[41]["precio_unitario"] = 90;
+		$data[41]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[42]["precio_unitario"] = 700;
+		$data[42]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[43]["precio_unitario"] = 256.63;
+		$data[43]["cantidad"] = 100*$this->options["F"];
+		
+		$data[44]["precio_unitario"] = 322.68;
+		$data[44]["cantidad"] = $this->options["F"];
+		
+		$data[45]["precio_unitario"] = 47.55;
+		$data[45]["cantidad"] = 60*$this->options["F"];
+		
+		$data[46]["precio_unitario"] = 22.5;
+		$data[46]["cantidad"] = 150*$this->options["F"];
+		
+		$data[47]["precio_unitario"] = 1797.23;
+		$data[47]["cantidad"] = $this->options["F"];
+		
+		$data[48]["precio_unitario"] = 1797.23;
+		$data[48]["cantidad"] = $this->options["F"]/3;
+		
+		$data[49]["precio_unitario"] = 1834.81;
+		$data[49]["cantidad"] = 2*$this->options["F"];
+		
+		$data[50]["precio_unitario"] = 1834.81;
+		$data[50]["cantidad"] = $this->options["F"];
+		
+		$data[51]["precio_unitario"] = 1696.17;
+		$data[51]["cantidad"] = $this->options["F"];
+		
+		$data[52]["precio_unitario"] = 1834.81;
+		$data[52]["cantidad"] = $this->options["F"];
+		
+		$data[53]["precio_unitario"] = 739.63;
+		$data[53]["cantidad"] = $this->options["A"]/3;
+		
+		$data[54]["precio_unitario"] = 1696.17;
+		$data[54]["cantidad"] = $this->options["F"];
+		
+		$data[55]["precio_unitario"] = 417*1.25;
+		$data[55]["cantidad"] = 166*$this->options["A"];
+		
+		$data[56]["precio_unitario"] = 1296.73;
+		$data[56]["cantidad"] = 12*$this->options["F"];
+		
+		$data[57]["precio_unitario"] = 4800+52600;
+		$data[57]["cantidad"] = $this->options["J"];
+		
+		$data[58]["precio_unitario"] = 9600+52600;
+		$data[58]["cantidad"] = 4*$this->options["J"];
+		
+		$data[59]["precio_unitario"] = 3000;
+		$data[59]["cantidad"] = $this->options["K"];
+		
+		$result = $this->getImporte($data);
+		return $result;
+	}
+	
+	//{"estado":6,"municipio":2,"infraestructura":"BB","A":1,"B":15,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
+	/*Carril compartido ciclista con transporte público (BusBici)*/
+	public function getBB() {
+		$data = null;
+		
+		$data[1]["precio_unitario"] = 2.24;
+		$data[1]["cantidad"] = 1000*$this->options["A"]*$this->options["B"];
+		
+		$data[2]["precio_unitario"] = 336.65;
+		$data[2]["cantidad"] = (1.3*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[3]["precio_unitario"] = 328.24;
+		$data[3]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[4]["precio_unitario"] = 63.12;
+		$data[4]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+
+		$data[5]["precio_unitario"] = 22.31;
+		$data[5]["cantidad"] = 2*$data[4]["cantidad"];
+		
+		$data[6]["precio_unitario"] = 107.01;
+		$data[6]["cantidad"] = (1.3*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[7]["precio_unitario"] = 10.16;
+		$data[7]["cantidad"] = 20*$data[6]["cantidad"];
+		
+		$data[8]["precio_unitario"] = 99.93;
+		$data[8]["cantidad"] = (3.85*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[9]["precio_unitario"] = 9.15;
+		$data[9]["cantidad"] = 20*$data[8]["cantidad"];
+		
+		$data[10]["precio_unitario"] = 53.3;
+		$data[10]["cantidad"] = $this->options["E"]*$this->options["A"];
+		
+		$data[11]["precio_unitario"] = 12.49;
+		$data[11]["cantidad"] = 72.5*$this->options["G"];
+		
+		$data[12]["precio_unitario"] = 30.75;
+		$data[12]["cantidad"] = (1000*$this->options["H"]*$this->options["I"]);
+		
+		$data[13]["precio_unitario"] = 396.27;
+		$data[13]["cantidad"] = $data[11]["cantidad"]+$data[12]["cantidad"];
+		
+		$data[14]["precio_unitario"] = 11.97;
+		$data[14]["cantidad"] = (92.4*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[15]["precio_unitario"] = 11.97;
+		$data[15]["cantidad"] = ((1000*$this->options["H"])/3)*$this->options["I"];
+		
+		$data[16]["precio_unitario"] = 176.78;
+		$data[16]["cantidad"] = (48.16*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[17]["precio_unitario"] = 1.71;
+		$data[17]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[18]["precio_unitario"] = 8.42;
+		$data[18]["cantidad"] = ((0.20*$data[17]["cantidad"])/12.5)*15;
+		
+		$data[19]["precio_unitario"] = 286.259999705783;
+		$data[19]["cantidad"] = (1000*($this->options["A"]*$this->options["B"]))*0.2;
+		
+		$data[20]["precio_unitario"] = 16.3000019614381;
+		$data[20]["cantidad"] = (((0.2*$data[17]["cantidad"])/12.5)*(0.9375))*20;
+		
+		$data[21]["precio_unitario"] = 55.23;
+		$data[21]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[22]["precio_unitario"] = 374.84;
+		$data[22]["cantidad"] = $this->options["A"]*15;
+		
+		$data[23]["precio_unitario"] = 524.6;
+		$data[23]["cantidad"] = $this->options["A"]*20;
+		
+		$data[24]["precio_unitario"] = 313.08;
+		$data[24]["cantidad"] = $this->options["A"]*4;
+		
+		$data[25]["precio_unitario"] = 269.82;
+		$data[25]["cantidad"] = $this->options["A"]*5;
+		
+		$data[26]["precio_unitario"] = 1988.66;
+		$data[26]["cantidad"] = $this->options["A"]*1;
+		
+		$data[27]["precio_unitario"] = 3693.42;
+		$data[27]["cantidad"] = $this->options["A"]*2;
+		
+		$data[28]["precio_unitario"] = 2027.44;
+		$data[28]["cantidad"] = $this->options["A"]*3;
+		
+		$data[29]["precio_unitario"] = 2805.9;
+		$data[29]["cantidad"] = $this->options["A"]*3;
+		
+		$data[30]["precio_unitario"] = 215.82;
+		$data[30]["cantidad"] = $this->options["A"]*15;
+		
+		$data[31]["precio_unitario"] = 3232.01;
+		$data[31]["cantidad"] = $this->options["A"]*50;
+		
+		$data[32]["precio_unitario"] = 718.62;
+		$data[32]["cantidad"] = $this->options["A"]*50;
+		
+		$data[33]["precio_unitario"] = 80;
+		$data[33]["cantidad"] = (7+$this->options["B"])*12;
+		
+		$data[34]["precio_unitario"] = 120;
+		$data[34]["cantidad"] = (7+$this->options["B"])*$this->options["F"]*2;
+		
+		$data[35]["precio_unitario"] = 2*384.25;
+		$data[35]["cantidad"] = 2*$this->options["F"];
+		
+		$data[36]["precio_unitario"] = 20;
+		$data[36]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[37]["precio_unitario"] = 20;
+		$data[37]["cantidad"] = ($this->options["D"]-1)*(300*$this->options["A"])+(30*$this->options["F"]);
+		
+		$data[38]["precio_unitario"] = 1968.93;
+		$data[38]["cantidad"] = 2*$this->options["F"];
+		
+		$data[39]["precio_unitario"] = 430;
+		$data[39]["cantidad"] = ($this->options["D"]-1)*$this->options["F"];
+		
+		$data[40]["precio_unitario"] = 1377.52;
+		$data[40]["cantidad"] = $this->options["F"]/3;
+		
+		$data[41]["precio_unitario"] = 60;
+		$data[41]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[42]["precio_unitario"] = 700;
+		$data[42]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[43]["precio_unitario"] = 256.63;
+		$data[43]["cantidad"] = 100*$this->options["F"];
+		
+		$data[44]["precio_unitario"] = 322.68;
+		$data[44]["cantidad"] = $this->options["F"];
+		
+		$data[45]["precio_unitario"] = 47.55;
+		$data[45]["cantidad"] = 60*$this->options["F"];
+		
+		$data[46]["precio_unitario"] = 1797.23;
+		$data[46]["cantidad"] = $this->options["F"];
+		
+		$data[47]["precio_unitario"] = 1797.23;
+		$data[47]["cantidad"] = $this->options["F"]/3;
+		
+		$data[48]["precio_unitario"] = 1834.81;
+		$data[48]["cantidad"] = 2*$this->options["F"];
+		
+		$data[49]["precio_unitario"] = 1834.81;
+		$data[49]["cantidad"] = $this->options["F"];
+		
+		$data[50]["precio_unitario"] = 1696.17;
+		$data[50]["cantidad"] = $this->options["F"];
+		
+		$data[51]["precio_unitario"] = 1834.81;
+		$data[51]["cantidad"] = $this->options["F"];
+		
+		$data[52]["precio_unitario"] = 739.63;
+		$data[52]["cantidad"] = $this->options["A"]/3;
+		
+		$data[53]["precio_unitario"] = 1850;
+		$data[53]["cantidad"] = 215*$this->options["A"];
+		
+		$data[54]["precio_unitario"] = 417*1.25;
+		$data[54]["cantidad"] = 12*$this->options["F"];
+		
+		$data[55]["precio_unitario"] = 62.41;
+		$data[55]["cantidad"] = ((133*$this->options["A"])*($this->options["D"]-1))+(20*$this->options["F"]);
+		
+		$data[56]["precio_unitario"] = 1296.73;
+		$data[56]["cantidad"] = 8*$this->options["F"];
+		
+		$data[57]["precio_unitario"] = 149.75;
+		$data[57]["cantidad"] = 114*$this->options["A"];
+		
+		$data[58]["precio_unitario"] = 4800+52600;
+		$data[58]["cantidad"] = $this->options["J"];
+		
+		$data[59]["precio_unitario"] = 9600+52600;
+		$data[59]["cantidad"] = 4*$this->options["J"];
+		
+		$data[60]["precio_unitario"] = 3000;
+		$data[60]["cantidad"] = $this->options["K"];
+		
+		$result = $this->getImporte($data);
+
+		return $result;
+	}
+	
+	//{"estado":6,"municipio":2,"infraestructura":"CICA","A":1,"B":6,"C":1,"D":3,"E":4,"F":8,"G":8,"H":0,"I":0,"J":2,"K":15,"L":"SI","M":"SI","N":"SI"}
+	/*Ciclocarril*/
+	public function getCICA() {
+		$data = null;
+		
+		$data[1]["precio_unitario"] = 2.24;
+		$data[1]["cantidad"] = 1000*$this->options["A"]*$this->options["B"];
+		
+		$data[2]["precio_unitario"] = 336.65;
+		$data[2]["cantidad"] = (2.6*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[3]["precio_unitario"] = 328.24;
+		$data[3]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[4]["precio_unitario"] = 63.12;
+		$data[4]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+
+		$data[5]["precio_unitario"] = 22.31;
+		$data[5]["cantidad"] = 2*$data[4]["cantidad"];
+		
+		$data[6]["precio_unitario"] = 107.01;
+		$data[6]["cantidad"] = (2.6*$this->options["G"])+(37.5*$this->options["H"]);
+		
+		$data[7]["precio_unitario"] = 10.16;
+		$data[7]["cantidad"] = 20*$data[6]["cantidad"];
+		
+		$data[8]["precio_unitario"] = 99.93;
+		$data[8]["cantidad"] = (7.7*$this->options["G"])+(((1000*$this->options["H"])+($this->options["F"]*$this->options["I"]))*0.875);
+		
+		$data[9]["precio_unitario"] = 9.15;
+		$data[9]["cantidad"] = 20*$data[8]["cantidad"];
+		
+		$data[10]["precio_unitario"] = 53.3;
+		$data[10]["cantidad"] = $this->options["E"]*$this->options["A"];
+		
+		$data[11]["precio_unitario"] = 12.49;
+		$data[11]["cantidad"] = 145*$this->options["G"];
+		
+		$data[12]["precio_unitario"] = 30.75;
+		$data[12]["cantidad"] = (1000*$this->options["H"]*$this->options["I"]);
+		
+		$data[13]["precio_unitario"] = 396.27;
+		$data[13]["cantidad"] = $data[11]["cantidad"]+$data[12]["cantidad"];
+		
+		$data[14]["precio_unitario"] = 11.97;
+		$data[14]["cantidad"] = (184.8*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[15]["precio_unitario"] = 11.97;
+		$data[15]["cantidad"] = ((1000*$this->options["H"])/3)*$this->options["I"];
+		
+		$data[16]["precio_unitario"] = 176.78;
+		$data[16]["cantidad"] = (96.32*$this->options["G"])+(1000*$this->options["H"])+($this->options["F"]*$this->options["I"]);
+		
+		$data[17]["precio_unitario"] = 1.71;
+		$data[17]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[18]["precio_unitario"] = 8.42;
+		$data[18]["cantidad"] = ((0.20*$data[17]["cantidad"])/12.5)*15;
+		
+		$data[19]["precio_unitario"] = 286.259999705783;
+		$data[19]["cantidad"] = (1000*($this->options["A"]*$this->options["B"]))*0.2;
+		
+		$data[20]["precio_unitario"] = 16.3000019614381;
+		$data[20]["cantidad"] = (((0.2*$data[17]["cantidad"])/12.5)*(0.9375))*20;
+		
+		$data[21]["precio_unitario"] = 55.23;
+		$data[21]["cantidad"] = 1000*($this->options["A"]*$this->options["B"]);
+		
+		$data[22]["precio_unitario"] = 374.84;
+		$data[22]["cantidad"] = $this->options["A"]*15;
+		
+		$data[23]["precio_unitario"] = 524.6;
+		$data[23]["cantidad"] = $this->options["A"]*20;
+		
+		$data[24]["precio_unitario"] = 313.08;
+		$data[24]["cantidad"] = $this->options["A"]*4;
+		
+		$data[25]["precio_unitario"] = 269.82;
+		$data[25]["cantidad"] = $this->options["A"]*5;
+		
+		$data[26]["precio_unitario"] = 1988.66;
+		$data[26]["cantidad"] = $this->options["A"]*1;
+		
+		$data[27]["precio_unitario"] = 3693.42;
+		$data[27]["cantidad"] = $this->options["A"]*2;
+		
+		$data[28]["precio_unitario"] = 2027.44;
+		$data[28]["cantidad"] = $this->options["A"]*3;
+		
+		$data[29]["precio_unitario"] = 2805.9;
+		$data[29]["cantidad"] = $this->options["A"]*3;
+		
+		$data[30]["precio_unitario"] = 215.82;
+		$data[30]["cantidad"] = $this->options["A"]*15;
+		
+		$data[31]["precio_unitario"] = 3232.01;
+		$data[31]["cantidad"] = $this->options["A"]*50;
+		
+		$data[32]["precio_unitario"] = 718.62;
+		$data[32]["cantidad"] = $this->options["A"]*50;
+		
+		$data[33]["precio_unitario"] = 80;
+		$data[33]["cantidad"] = (7+$this->options["B"]-2.5)*12;
+		
+		$data[34]["precio_unitario"] = 120;
+		$data[34]["cantidad"] = (7+$this->options["B"]-2.5)*$this->options["F"]*2;
+		
+		$data[35]["precio_unitario"] = 2*384.25;
+		$data[35]["cantidad"] = 2*$this->options["F"];
+		
+		$data[36]["precio_unitario"] = 20;
+		$data[36]["cantidad"] = ($this->options["A"]*1000)-(12*$this->options["F"]);
+		
+		$data[37]["precio_unitario"] = 20;
+		$data[37]["cantidad"] = ($this->options["D"]-1)*(300*$this->options["A"])+(30*$this->options["F"]);
+		
+		$data[38]["precio_unitario"] = 1968.93;
+		$data[38]["cantidad"] = 2*$this->options["F"];
+		
+		$data[39]["precio_unitario"] = 430;
+		$data[39]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[40]["precio_unitario"] = 1377.52;
+		$data[40]["cantidad"] = $this->options["F"]/3;
+		
+		$data[41]["precio_unitario"] = 90;
+		$data[41]["cantidad"] = ($this->options["A"]*1000)-(24*$this->options["F"]);
+		
+		$data[42]["precio_unitario"] = 60;
+		$data[42]["cantidad"] = ($this->options["A"]*1000)-(24*$this->options["F"]);
+		
+		$data[43]["precio_unitario"] = 700;
+		$data[43]["cantidad"] = $this->options["D"]*$this->options["F"];
+		
+		$data[44]["precio_unitario"] = 256.63;
+		$data[44]["cantidad"] = 100*$this->options["F"];
+		
+		$data[45]["precio_unitario"] = 322.68;
+		$data[45]["cantidad"] = $this->options["F"];
+		
+		$data[46]["precio_unitario"] = 47.55;
+		$data[46]["cantidad"] = 60*$this->options["F"];
+		
+		$data[47]["precio_unitario"] = 1797.23;
+		$data[47]["cantidad"] = $this->options["F"];
+		
+		$data[48]["precio_unitario"] = 1797.23;
+		$data[48]["cantidad"] = $this->options["F"]/3;
+		
+		$data[49]["precio_unitario"] = 1834.81;
+		$data[49]["cantidad"] = 2*$this->options["F"];
+		
+		$data[50]["precio_unitario"] = 1834.81;
+		$data[50]["cantidad"] = $this->options["F"];
+		
+		$data[51]["precio_unitario"] = 1696.17;
+		$data[51]["cantidad"] = $this->options["F"];
+		
+		$data[52]["precio_unitario"] = 1834.81;
+		$data[52]["cantidad"] = $this->options["F"];
+		
+		$data[53]["precio_unitario"] = 739.63;
+		$data[53]["cantidad"] = $this->options["A"]/3;
+		
+		$data[54]["precio_unitario"] = 1696.17;
+		$data[54]["cantidad"] = $this->options["F"];
+		
+		$data[55]["precio_unitario"] = 1296.73;
+		$data[55]["cantidad"] = 12*$this->options["F"];
+		
+		$data[56]["precio_unitario"] = 4800+52600;
+		$data[56]["cantidad"] = $this->options["J"];
+		
+		$data[57]["precio_unitario"] = 9600+52600;
+		$data[57]["cantidad"] = 4*$this->options["J"];
+		
+		$data[58]["precio_unitario"] = 3000;
+		$data[58]["cantidad"] = $this->options["K"];
+		
+		$result = $this->getImporte($data);
+	
+		return $result;
+	}
+	
+	public function getImporte($data) {
+		$sum = 0;
+		foreach($data as $key => $value) {
+			$data[$key]["importe"] = $value["cantidad"]*$value["precio_unitario"];
+			$sum += $data[$key]["importe"];
+		}
+		
+		$data["subtotal_acomulado"] = $sum;
+		
+		if($this->options["L"] == "SI") {
+			$data["proyecto_ejecutivo"] = $sum*0.05;
+		} else {
+			$data["proyecto_ejecutivo"] = 0;
+		}
+		
+		if($this->options["M"] == "SI") {
+			$data["costo_supervicion"] = $sum*0.02;
+		} else {
+			$data["costo_supervicion"] = 0;
+		}
+		
+		if($this->options["N"] == "SI") {
+			$data["impuesto_al_millar"] = $sum*0.002;
+		} else {
+			$data["impuesto_al_millar"] = 0;
+		}
+
+		$data["iva"] = ($data["subtotal_acomulado"]+$data["proyecto_ejecutivo"]+$data["costo_supervicion"]+$data["impuesto_al_millar"])*0.16;
+		$data["total"] = $data["subtotal_acomulado"]+$data["proyecto_ejecutivo"]+$data["costo_supervicion"]+$data["impuesto_al_millar"]+$data["iva"];
+		
 		return $data;
 	}
 	
@@ -132,234 +916,6 @@ class Api_Model extends ZP_Model {
 		}
 	}
 	
-	/*Costo de Biciestacionamientos*/
-	public function getBiciestacionamientos() {
-		if($this->options["Biciestacionamientos"] == "default") {
-			/*
-			 * BiciestacionamientosInput = Default 
-			 * ((KmEvaluables*1000)/300)*4*Biciestacionamientos
-			*/ 
-			$result = (($this->options["KmEvaluables"]*1000)/300)*4*$this->dataCity["biciestacionamientos"];
-			return $result;
-		} else {
-			/*
-			* BiciestacionamientosInput = Biciestacionamientos*ImputBiciEst
-			*/
-			$result = $this->options["Biciestacionamientos"]*$this->dataCity["biciestacionamientos"];
-			return $result;
-		}
-		
-		return 0;
-	}
-	
-	/*Costo infraestructura complementaria*/
-	public function getInfresComplementaria() {
-		if($this->options["ObraComp"] == "ObraCompl_Completa") {
-			/*
-			 * ObraComp = ObraCompl_Completa 
-			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4] + 
-			 * [Bolardo*7*4*InputIntersTotales] + 
-			 * [GuiasTactiles*3*20] + 
-			 * [Banqueta*20]
-			 *
-			*/
-			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
-			$result += $this->dataCity["bolardo"]*7*4*$this->options["IntersTotales"];
-			$result += $this->dataCity["guiastactiles"]*3*20;
-			$result += $this->dataCity["banqueta"]*20;
-			
-			return $result;
-		} elseif($this->options["ObraComp"] == "ObraCompl_Semi") {
-			/* 
-			 * ObraComp = ObraCompl_Semi 
-			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4] + 
-			 * [Bolardo*7*4*InputIntersTotales]
-			*/
-			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
-			$result += $this->dataCity["bolardo"]*7*4*$this->options["IntersTotales"];
-			
-			return $result;
-		} elseif($this->options["ObraComp"] == "ObraCompl_Basica") {
-			/* 
-			 * ObraComp = ObraCompl_Basica 
-			 * [InputIntersTotales*SeñalHorizComplement*(AnchoCalle/Sentidos)*3*4]
-			*/
-			$result  = $this->options["IntersTotales"]*$this->dataCity["senalhorizcomplement"]*($this->options["AnchoCalle"]/$this->options["Sentidos"])*3*4;
-			
-			return $result;
-		}
-		
-		return 0;
-		
-		
-	}
-	
-	/*Costo de señalización*/
-	public function getSenalizacion() {
-		/*
-		 * Costo de señalización vertical
-		 * (InputIntersSamaf * IntersSemafor) + 
-		 * [ (InputIntersTotales*SeñalVertPreventiva) + 
-		 * (InputIntersTotales*SeñalVertRestrictiva) ] 
-		*/
-		
-		/*
-		 * Costo de señalización horizontal
-		 * (InputIntersTotales*SeñalHorizSOLO*Sentidos) + (SeñalHorizPintVerde*Sentidos*KmEvaluables*100)
-		*/
-		$vertical  = $this->options["IntersSemaf"]*$this->dataCity["interssemafor"];
-		$vertical += $this->options["IntersTotales"]*$this->dataCity["senalvertpreventiva"];
-		$vertical += $this->options["IntersTotales"]*$this->dataCity["senalvertrestrictiva"];
-		
-		$horizontal  = $this->options["IntersTotales"]*$this->dataCity["senalhorizsolo"]*$this->options["Sentidos"];
-		$horizontal += $this->dataCity["senalhorizpintverde"]*$this->options["Sentidos"]*$this->options["KmEvaluables"]*100;
-		
-		$result["vertical"] = $vertical;
-		$result["horizontal"] = $horizontal;
-		
-		if($this->options["senalizacion"] == "MinSenalHor") {
-			$result["seleccionada"] = $horizontal;
-			$result["vertical"]	    = 0;
-		} else {
-			$result["seleccionada"] = $horizontal+$vertical;
-		}
-		
-		return $result;
-	}
-	
-	/*Costo de la delimitación de la infraestructura*/
-	public function getDelimitacionInfraestructura() {
-		if($this->options["infraestructura"] == "Ciclovia") {
-			if($this->options["Anchoefectivo"] < 6) {
-				/*
-				TipoInfraUtilizado = Conf_Chapu 
-				{KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Chapu*250}
-				 */
-				$result  = $this->options["KmEvaluables"]*2*$this->options["Sentidos"]*$this->dataCity["pinturadelimitacion"]*1000;
-				$result += $this->options["KmEvaluables"]*$this->options["Sentidos"]*$this->dataCity["conf_chapu"]*250;
-				
-				return $result;
-			} else {
-				/*
-				TipoInfraUtilizado = Conf_Reforma 
-				* {KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Reforma*250}
-				*/
-				$result  = $this->options["KmEvaluables"]*2*$this->options["Sentidos"]*$this->dataCity["pinturadelimitacion"]*1000;
-				$result += $this->options["KmEvaluables"]*$this->options["Sentidos"]*$this->dataCity["conf_reforma"]*250;
-				
-				return $result;
-			}
-		} elseif($this->options["infraestructura"] == "Ciclocarril") {
-			/*Confinamiento = Ciclocarril {KmEvaluables*2*Sentidos*PinturaDelimitacion*1000}*/
-			$result  = $this->options["KmEvaluables"]*2*$this->options["Sentidos"]*$this->dataCity["pinturadelimitacion"]*1000;
-			
-			return $result;
-		} elseif($this->options["infraestructura"] == "Busbici") {
-			/*Confinamiento = Conf_Chapu 
-			 * {KmEvaluables*2*Sentidos*PinturaDelimitacion*1000} + {KmEvaluables*Sentidos*Conf_Chapu*250}
-			 * */
-			$result  = $this->options["KmEvaluables"]*2*$this->options["Sentidos"]*$this->dataCity["pinturadelimitacion"]*1000;
-			$result += $this->options["KmEvaluables"]*$this->options["Sentidos"]*$this->dataCity["conf_chapu"]*250;
-			
-			return $result;
-		}
-		
-		return 0;
-	}
-	
-	/*Costo de obras viales de bacheo*/
-	public function getBacheo() {
-		if($this->options["TipoDeBacheo"] == "Slurry") {
-			/*
-			BacheoSlurry = Slurry*AreaInfraestructura
-			*/
-			$bacheo = $this->dataCity["ov_sumin"]*$this->Area_Infraestructura;
-			
-			return $bacheo;
-		} elseif($this->options["TipoDeBacheo"] == "BacheoSuperficial") {
-			/*
-			BacheoSuperficial = 
-			* [OV_Tra_Niv*Area_Infraestructura] + 
-			* [FUBS*PUBS*Area_Infraestructura] + 
-			* [OV_Acarreo*KmEvaluables] + 
-			* [OV_Sumin*Area_Infraestructura] + 
-			* [RejillasProyecto*SumInstalRejilla*KmEvaluables*Sentidos] + 
-			* [DemolManua*KmEvaluables*Sentidos] + 
-			* [CargaM3*56]+
-			* [RejillasProyecto*RenivColadera] + 
-			* [PozosProyecto*RenivBrocPozo] + 
-			* [LevantPoligonal*Area_Infraestructura]
-			*/
-			
-			$bacheo  = ($this->dataCity["ov_tra_niv"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["factorunitariobacheosuperficial"]*$this->dataCity["preciounitariobacheosuperficial"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
-			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
-			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
-			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
-			
-			return $bacheo;
-		} elseif($this->options["TipoDeBacheo"] == "BacheoProfundo") {
-			/*
-			BacheoProfundo = 
-			[OV_Tra_Niv*Area_Infraestructura] + 
-			[FUBP*PUBP*Area_Infraestructura] + 
-			[OV_Acarreo*KmEvaluables] + 
-			[OV_Sumin*Area_Infraestructura] +
-			[RejillasProyecto*SumInstalRejilla*KmEvaluables*Sentidos] + 
-			[DemolManua*KmEvaluables*Sentidos] + 
-			[CargaM3*56]+
-			[RejillasProyecto*RenivColadera] + 
-			[PozosProyecto*RenivBrocPozo] + 
-			[LevantPoligonal*Area_Infraestructura]
-			*/
-			$bacheo  = ($this->dataCity["ov_tra_niv"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["factorunitariobacheoprofundo"]*$this->dataCity["preciounitariobacheoprofundo"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
-			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
-			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
-			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
-			
-			return $bacheo;
-		} elseif($this->options["TipoDeBacheo"] == "BacheoPromedio") {
-			/*
-			BacheoPromedio = 
-			* [OV_Tra_Niv*Area_Infraestructura] + 
-			* [FUBPr*PUBPr*Area_Infraestructura] + 
-			* [OV_Acarreo*KmEvaluables] + 
-			* [OV_Sumin*Area_Infraestructura] + 
-			* [RejillasProyecto*SumInstalRejilla*KmEvaluables*Sentidos] + 
-			* [DemolManua*KmEvaluables*Sentidos] + 
-			* [CargaM3*56]+
-			* [RejillasProyecto*RenivColadera] + 
-			* [PozosProyecto*RenivBrocPozo] + 
-			* [LevantPoligonal*Area_Infraestructura] 
-			*/
-			$bacheo  = ($this->dataCity["ov_tra_niv"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["factorunitariobacheopromedio"]*$this->dataCity["preciounitariobacheopromedio"]*$this->Area_Infraestructura);
-			$bacheo += ($this->dataCity["ov_acarreo"]*$this->options["KmEvaluables"]);
-			$bacheo += ($this->dataCity["ov_sumin"]*$this->Area_Infraestructura);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["suminstalrejilla"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["demolmanual"]*$this->options["KmEvaluables"]*$this->options["Sentidos"]);
-			$bacheo += ($this->dataCity["cargam3"]*56);
-			$bacheo += ($this->options["RejillasProyecto"]*$this->dataCity["renivcoladera"]);
-			$bacheo += ($this->options["PozosProyecto"]*$this->dataCity["renivbrocpozo"]);
-			$bacheo += ($this->dataCity["levantpoligonal"]*$this->Area_Infraestructura);
-			
-			return $bacheo;
-		}
-		
-		return 0;
-	}
-	
 	public function getCities() {
 		$query = "SELECT * from cities";
 		$data  = $this->Db->query($query);
@@ -397,21 +953,6 @@ class Api_Model extends ZP_Model {
 		$data  = $this->Db->query($query);
 		
 		if(!$data) return false;
-		
-		return $data;
-	}
-	
-	/*Fases*/
-	public function fases() {
-		$query = "SELECT * from fases";
-		$data  = $this->Db->query($query);
-		
-		if(!$data) return false;
-		
-		foreach($data as $key => $value) {
-			$data[$key]["nombre"] = utf8_decode($data[$key]["nombre"]);
-			$data[$key]["descripcion"] = utf8_decode($data[$key]["descripcion"]);
-		}
 		
 		return $data;
 	}
