@@ -246,51 +246,51 @@ class Api_Model extends ZP_Model {
 		for($i = 1; $i <= 10; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_1-10"] = $subtotal;
+		$result["subtotal-preliminares"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 11; $i <= 16; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_11-16"] = $subtotal;
+		$result["subtotal-banquetas-guarniciones"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 17; $i <= 21; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_17-21"] = $subtotal;
+		$result["subtotal-pavimentos"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 22; $i <= 30; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_22-30"] = $subtotal;
+		$result["subtotal-alcantarillado"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 31; $i <= 32; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_31-32"] = $subtotal;
+		$result["subtotal-senalizacion-obra"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 33; $i <= 45; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_33-45"] = $subtotal;
+		$result["subtotal-senalizacion-horizontal"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 46; $i <= 52; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_46-52"] = $subtotal;
+		$result["subtotal-senalizacion-vertical"] = $subtotal;
 		
 		$subtotal = 0;
 		for($i = 53; $i <= 58; $i++) {
 			$subtotal += $result[$i]["importe"];
 		}
-		$result["subtotal_53-58"] = $subtotal;
+		$result["subtotal-dispositivos-transito"] = $subtotal;
 		
-		$result["subtotal_59"] = $result[59]["importe"];
+		$result["subtotal-biciestacionamientos"] = $result[59]["importe"];
 		
 		return $result;
 	}
@@ -478,6 +478,57 @@ class Api_Model extends ZP_Model {
 		$data[59]["cantidad"] = $this->options["K"];
 		
 		$result = $this->getImporte($data);
+		
+		$subtotal = 0;
+		for($i = 1; $i <= 10; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-preliminares"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 11; $i <= 16; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-banquetas-guarniciones"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 17; $i <= 21; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-pavimentos"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 22; $i <= 30; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-alcantarillado"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 31; $i <= 32; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-obra"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 33; $i <= 46; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-horizontal"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 47; $i <= 54; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-vertical"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 55; $i <= 58; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-dispositivos-transito"] = $subtotal;
+		
+		$result["subtotal-biciestacionamientos"] = $result[59]["importe"];
+		
 		return $result;
 	}
 	
@@ -667,7 +718,57 @@ class Api_Model extends ZP_Model {
 		$data[60]["cantidad"] = $this->options["K"];
 		
 		$result = $this->getImporte($data);
-
+		
+		$subtotal = 0;
+		for($i = 1; $i <= 10; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-preliminares"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 11; $i <= 16; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-banquetas-guarniciones"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 17; $i <= 21; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-pavimentos"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 22; $i <= 30; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-alcantarillado"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 31; $i <= 32; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-obra"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 33; $i <= 45; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-horizontal"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 46; $i <= 52; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-vertical"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 53; $i <= 59; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-dispositivos-transito"] = $subtotal;
+		
+		$result["subtotal-mobiliario"] = $result[60]["importe"];
+		
 		return $result;
 	}
 	
@@ -851,7 +952,57 @@ class Api_Model extends ZP_Model {
 		$data[58]["cantidad"] = $this->options["K"];
 		
 		$result = $this->getImporte($data);
-	
+		
+		$subtotal = 0;
+		for($i = 1; $i <= 10; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-preliminares"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 11; $i <= 16; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-banquetas-guarniciones"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 17; $i <= 21; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-pavimentos"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 22; $i <= 30; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-alcantarillado"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 31; $i <= 32; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-obra"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 33; $i <= 46; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-horizontal"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 47; $i <= 54; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-senalizacion-vertical"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 55; $i <= 57; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal-dispositivos-transito"] = $subtotal;
+		
+		$result["subtotal-mobiliario"] = $result[58]["importe"];
+		
 		return $result;
 	}
 	
