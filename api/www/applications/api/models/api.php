@@ -236,11 +236,61 @@ class Api_Model extends ZP_Model {
 		
 		$data[58]["precio_unitario"] = 9600+52600;
 		$data[58]["cantidad"] = 4*$this->options["J"];
-		
+
 		$data[59]["precio_unitario"] = 3000;
 		$data[59]["cantidad"] = $this->options["K"];
 		
 		$result = $this->getImporte($data);
+		
+		$subtotal = 0;
+		for($i = 1; $i <= 10; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_1-10"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 11; $i <= 16; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_11-16"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 17; $i <= 21; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_17-21"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 22; $i <= 30; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_22-30"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 31; $i <= 32; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_31-32"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 33; $i <= 45; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_33-45"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 46; $i <= 52; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_46-52"] = $subtotal;
+		
+		$subtotal = 0;
+		for($i = 53; $i <= 58; $i++) {
+			$subtotal += $result[$i]["importe"];
+		}
+		$result["subtotal_53-58"] = $subtotal;
+		
+		$result["subtotal_59"] = $result[59]["importe"];
 		
 		return $result;
 	}
