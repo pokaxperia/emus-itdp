@@ -25,6 +25,8 @@ class Api_Controller extends ZP_Controller {
 	
 	//estimate
 	public function estimate() {
+		header("Access-Control-Allow-Origin: *");
+		
 		$vars["results"] = null;
 		
         $jsonStr = file_get_contents("php://input");
@@ -34,6 +36,7 @@ class Api_Controller extends ZP_Controller {
 			$vars["results"] = $this->Api_Model->getResults($json);
 		}
 		
+		header('Content-Type: application/json; charset=UTF-8');
 		echo json_encode($vars, JSON_NUMERIC_CHECK);
 	}
 	
