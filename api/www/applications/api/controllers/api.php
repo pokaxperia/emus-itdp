@@ -25,7 +25,8 @@ class Api_Controller extends ZP_Controller {
 	
 	//estimate
 	public function estimate() {
-		header("Access-Control-Allow-Origin: *");
+		header_remove('Access-Control-Allow-Origin');
+		header('Access-Control-Allow-Origin: *');
 		
 		$vars["results"] = null;
 		
